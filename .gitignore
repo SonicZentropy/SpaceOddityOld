@@ -1,0 +1,46 @@
+# =============== #
+# Unity generated #
+# =============== #
+UnityGenerated/
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/Content/
+CSharp70Support/compilation.log
+CSharp60Support/compilation.log
+Assets/Standard Assets/FullInspector/FullInspector2_Generated/fiBackupStorage.prefab
+Assets/Standard Assets/FullInspector/FullInspector2_Generated/fiBackupStorage.prefab.meta
+Assets/Standard Assets/FullInspector/FullInspector2_Generated/fiPersistentEditorStorage.prefab
+Assets/Standard Assets/FullInspector/FullInspector2_Generated/fiPersistentEditorStorage.prefab.meta
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
+
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.localhistory/
+.vs/
+
+CSharp60Support/compilation.log
+*reloader.cs
+*reloader.cs.meta
