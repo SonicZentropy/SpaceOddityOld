@@ -1,0 +1,42 @@
+{
+    "EntityName": "SectorGenerationMain",
+    "Wrapper": null,
+    "_components": {
+        "Zenobit.Components.SectorGenerationComp": {
+            "StarPrefab": "Prefabs/Environment/StarContainer",
+            "renderCentralStar": false,
+            "centralStarLocation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 50.0
+            },
+            "sectorSize": 600,
+            "sectorHeight": 240,
+            "shipTriggerDistance": 96.0,
+            "objectTriggerDistance": 64.0,
+            "shipTriggerDistanceSquared": 0.0,
+            "objectTriggerDistanceSquared": 0.0,
+            "DisableOnCreate": false,
+            "spawnObjList": [
+                {
+                    "IsEntity": false,
+                    "ShouldPool": true,
+                    "PrefabToGenerate": "Prefabs/Environment/Asteroid",
+                    "EntityToGenerate": "Entities/None",
+                    "numberToSpawn": 1000,
+                    "spawnEnabled": true
+                },
+                {
+                    "IsEntity": false,
+                    "ShouldPool": true,
+                    "PrefabToGenerate": "Prefabs/Ships/Frigate",
+                    "EntityToGenerate": "Entities/None",
+                    "numberToSpawn": 200,
+                    "spawnEnabled": true
+                }
+            ],
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.SectorGenerationComp"
+        }
+    }
+}

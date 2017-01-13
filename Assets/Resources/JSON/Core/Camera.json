@@ -1,0 +1,29 @@
+{
+    "EntityName": "Camera",
+    "Wrapper": null,
+    "_components": {
+        "Zenobit.Components.CameraComp": {
+            "cameraUpdateTime": "LateUpdate",
+            "cameraType": "FirstPerson",
+            "UseManualCamera": false,
+            "MoveSpeed": 10.0,
+            "ZoomSpeed": 30.0,
+            "RotationSpeed": 0.001,
+            "MainCamera": null,
+            "TargetToFollow": null,
+            "StartingRotationOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.CameraComp"
+        },
+        "Zenobit.Components.UnityPrefabComp": {
+            "IsPooled": false,
+            "PrefabLink": "Prefabs/Core/CameraMain",
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.UnityPrefabComp"
+        }
+    }
+}

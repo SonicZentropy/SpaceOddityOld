@@ -1,0 +1,274 @@
+fileFormatVersion: 2
+guid: 2d30f84c213dec1408ab87d450e59513
+timeCreated: 1477438802
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Bay Face 003
+    100002: Bay Face 02
+    100004: Blocks005
+    100006: Blocks006
+    100008: Blocks007
+    100010: Blocks008
+    100012: Blocks01
+    100014: Blocks02
+    100016: Blocks03
+    100018: Blocks04
+    100020: Cable Brac002
+    100022: Cable Brac01
+    100024: Cables002
+    100026: Cables01
+    100028: Chute-Inlet
+    100030: Cylinder001
+    100032: Cylinder002
+    100034: Docking Bay004
+    100036: Docking Bay02
+    100038: //RootNode
+    100040: Hub
+    100042: Hub001
+    100044: Shape002
+    100046: Shape003
+    100048: Shape1
+    100050: Spoke Supp002
+    100052: Spoke Supp01
+    100054: Spoke005
+    100056: Spoke006
+    100058: Spoke007
+    100060: Spoke008
+    100062: Spoke01
+    100064: Spoke02
+    100066: Spoke03
+    100068: Spoke04
+    100070: Wheel Gird002
+    100072: Wheel Gird01
+    100074: Wheel003
+    100076: Wheel004
+    100078: Wheel01
+    100080: Wheel02
+    400000: Bay Face 003
+    400002: Bay Face 02
+    400004: Blocks005
+    400006: Blocks006
+    400008: Blocks007
+    400010: Blocks008
+    400012: Blocks01
+    400014: Blocks02
+    400016: Blocks03
+    400018: Blocks04
+    400020: Cable Brac002
+    400022: Cable Brac01
+    400024: Cables002
+    400026: Cables01
+    400028: Chute-Inlet
+    400030: Cylinder001
+    400032: Cylinder002
+    400034: Docking Bay004
+    400036: Docking Bay02
+    400038: //RootNode
+    400040: Hub
+    400042: Hub001
+    400044: Shape002
+    400046: Shape003
+    400048: Shape1
+    400050: Spoke Supp002
+    400052: Spoke Supp01
+    400054: Spoke005
+    400056: Spoke006
+    400058: Spoke007
+    400060: Spoke008
+    400062: Spoke01
+    400064: Spoke02
+    400066: Spoke03
+    400068: Spoke04
+    400070: Wheel Gird002
+    400072: Wheel Gird01
+    400074: Wheel003
+    400076: Wheel004
+    400078: Wheel01
+    400080: Wheel02
+    2300000: Bay Face 003
+    2300002: Bay Face 02
+    2300004: Blocks005
+    2300006: Blocks006
+    2300008: Blocks007
+    2300010: Blocks008
+    2300012: Blocks01
+    2300014: Blocks02
+    2300016: Blocks03
+    2300018: Blocks04
+    2300020: Cable Brac002
+    2300022: Cable Brac01
+    2300024: Cables002
+    2300026: Cables01
+    2300028: Chute-Inlet
+    2300030: Cylinder001
+    2300032: Cylinder002
+    2300034: Docking Bay004
+    2300036: Docking Bay02
+    2300038: Hub
+    2300040: Hub001
+    2300042: Shape002
+    2300044: Shape003
+    2300046: Shape1
+    2300048: Spoke Supp002
+    2300050: Spoke Supp01
+    2300052: Spoke005
+    2300054: Spoke006
+    2300056: Spoke007
+    2300058: Spoke008
+    2300060: Spoke01
+    2300062: Spoke02
+    2300064: Spoke03
+    2300066: Spoke04
+    2300068: Wheel Gird002
+    2300070: Wheel Gird01
+    2300072: Wheel003
+    2300074: Wheel004
+    2300076: Wheel01
+    2300078: Wheel02
+    3300000: Bay Face 003
+    3300002: Bay Face 02
+    3300004: Blocks005
+    3300006: Blocks006
+    3300008: Blocks007
+    3300010: Blocks008
+    3300012: Blocks01
+    3300014: Blocks02
+    3300016: Blocks03
+    3300018: Blocks04
+    3300020: Cable Brac002
+    3300022: Cable Brac01
+    3300024: Cables002
+    3300026: Cables01
+    3300028: Chute-Inlet
+    3300030: Cylinder001
+    3300032: Cylinder002
+    3300034: Docking Bay004
+    3300036: Docking Bay02
+    3300038: Hub
+    3300040: Hub001
+    3300042: Shape002
+    3300044: Shape003
+    3300046: Shape1
+    3300048: Spoke Supp002
+    3300050: Spoke Supp01
+    3300052: Spoke005
+    3300054: Spoke006
+    3300056: Spoke007
+    3300058: Spoke008
+    3300060: Spoke01
+    3300062: Spoke02
+    3300064: Spoke03
+    3300066: Spoke04
+    3300068: Wheel Gird002
+    3300070: Wheel Gird01
+    3300072: Wheel003
+    3300074: Wheel004
+    3300076: Wheel01
+    3300078: Wheel02
+    4300000: Wheel02
+    4300002: Wheel01
+    4300004: Wheel Gird01
+    4300006: Spoke04
+    4300008: Spoke03
+    4300010: Spoke02
+    4300012: Spoke01
+    4300014: Spoke Supp01
+    4300016: Hub
+    4300018: Chute-Inlet
+    4300020: Bay Face 02
+    4300022: Docking Bay02
+    4300024: Cables01
+    4300026: Cable Brac01
+    4300028: Blocks04
+    4300030: Blocks03
+    4300032: Blocks02
+    4300034: Blocks01
+    4300036: Hub001
+    4300038: Wheel003
+    4300040: Wheel004
+    4300042: Wheel Gird002
+    4300044: Spoke005
+    4300046: Spoke006
+    4300048: Spoke007
+    4300050: Spoke008
+    4300052: Spoke Supp002
+    4300054: Bay Face 003
+    4300056: Docking Bay004
+    4300058: Cables002
+    4300060: Cable Brac002
+    4300062: Blocks005
+    4300064: Blocks006
+    4300066: Blocks007
+    4300068: Blocks008
+    4300070: Shape002
+    4300072: Cylinder001
+    4300074: Cylinder002
+    4300076: Shape1
+    4300078: Shape003
+    11100000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 2
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

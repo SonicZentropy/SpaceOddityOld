@@ -1,0 +1,28 @@
+﻿#pragma warning disable 0414, 0219
+// /** 
+//  * LaserData.cs
+//  * Dylan Bailey
+//  * 20161104
+// */
+
+namespace Zenobit.Weapons
+{
+    #region Dependencies
+
+    using UnityEngine;
+
+    #endregion
+
+    public class LaserData : MonoBehaviour
+    {
+        public float laserDistance = 10;
+        public float laserSpeed = 2;
+        public float laserShieldDamage = 10;
+        public float laserHullDamage = 10;
+        public float laserPrecision = 1;
+        public float laserForce = 1;
+        public float laserForceMult = 0.1f;
+        public float laserFireRate = 1.0f;
+        public bool continuousLaser;
+    }
+}

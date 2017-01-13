@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Entity
+  - PlayerOwned
+  - NPC
+  - Static
+  - Station
+  - OnlyTrigger
+  - Item
+  - Planet
+  - Distant
+  - UICanvas
+  - Weapon
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Distant
+  - UI_2D
+  - UI_3D
+  - npc
+  - player
+  - weapons
+  - background
+  - middleground
+  - foreground
+  - stars
+  - rangetriggerdisable
+  - rangetriggerplayer
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: TextOverlay
+    uniqueID: 1091855657
+    locked: 0
+  - name: backgroundSort
+    uniqueID: 4266952681
+    locked: 0
+  - name: middlegroundSort
+    uniqueID: 3922666647
+    locked: 0
+  - name: foregroundSort
+    uniqueID: 2830029667
+    locked: 0
+  - name: NPCSort
+    uniqueID: 4293165827
+    locked: 0
+  - name: playerSort
+    uniqueID: 2501173769
+    locked: 0
+  - name: UI
+    uniqueID: 3610832503
+    locked: 0

@@ -1,0 +1,59 @@
+{
+    "EntityName": "Player",
+    "Wrapper": null,
+    "_components": {
+        "Zenobit.Components.PlayerComp": {
+            "_credits": 1000,
+            "CurrentShip": "Entities/BaseShip",
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.PlayerComp"
+        },
+        "Zenobit.Components.UnityPrefabComp": {
+            "IsPooled": false,
+            "PrefabLink": "Prefabs/Player",
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.UnityPrefabComp"
+        },
+        "Zenobit.Components.RigidbodyComp": {
+            "Rigidbody": null,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.RigidbodyComp"
+        },
+        "Zenobit.Components.PositionComp": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "UseLateUpdate": false,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.PositionComp"
+        },
+        "Zenobit.Components.CommandComp": {
+            "PitchVertical": 0.0,
+            "RotateHorizontal": 0.0,
+            "MousePitchVertical": 0.0,
+            "MouseRotateHorizontal": 0.0,
+            "RollMovement": 0.0,
+            "StrafeVertical": 0.0,
+            "StrafeHorizontal": 0.0,
+            "AttackPressed": false,
+            "InertialDampersOn": false,
+            "Acceleration": 0.0,
+            "FullHalt": false,
+            "MouseLookOn": false,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.CommandComp"
+        },
+        "Zenobit.Components.ShipConnectionComp": {
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.ShipConnectionComp"
+        }
+    }
+}

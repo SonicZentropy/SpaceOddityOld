@@ -8,6 +8,10 @@ UnityGenerated/
 /[Bb]uild/
 /[Bb]uilds/
 /Content/
+/CSharp60Support/
+/CSharp70Support/
+/RewiredBackup/
+.idea/
 CSharp70Support/compilation.log
 CSharp60Support/compilation.log
 Assets/Standard Assets/FullInspector/FullInspector2_Generated/fiBackupStorage.prefab

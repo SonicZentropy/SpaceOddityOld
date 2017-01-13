@@ -1,0 +1,10 @@
+{
+    "EntityName": "GameSettings",
+    "Wrapper": null,
+    "_components": {
+        "Zenobit.Components.GameSettingsComp": {
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.GameSettingsComp"
+        }
+    }
+}

@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="5bfb8ff9-b187-4d48-98bd-aa872b73a2c9" name="WeaponSetup" linkedPackageId="8a3ce5ad-9331-4eed-ae28-662620dcd826" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="05dbe7e5-addf-4238-aa4d-2b191daf0af9" name="PlayerEntity" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="00ed9cec-e7e6-4209-a754-d841b7aa02dc" />
+        <targetEnds>
+          <association Id="3c78553d-b6b0-4b56-9303-35e369aa36f9" isDerived="false" sourceEndRoleName="Player" targetEndRoleName="ShipComp" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="2af676b8-b118-4345-8e40-88b4a0e30acd" LastKnownName="ShipComp" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0a50b741-602f-4348-ae9b-8421325b529a" name="Player" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ea2f267e-1743-481c-9514-bd8ddb98c5ed" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0ae67f65-9e33-42fe-ae9a-e90637ff23ad" name="ShipComp" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="7be75353-f082-4764-9661-97d7018bb9b7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="e652a862-2293-49ef-809a-aaa5421fd20e" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="8c88b6e5-dd3e-4d81-8bf2-9f80a8eed0ce" name="ShipComp" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="38e6aebe-da2b-48ba-af5e-01fdf7e17519" />
+        <targetEnds>
+          <association Id="beec52ee-6350-4d02-ac30-93378c29760e" isDerived="false" sourceEndRoleName="ShipComp" targetEndRoleName="ShipFittingsComp" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="3e7a7bc0-bfbf-4387-b8bd-833bb13318e2" LastKnownName="ShipFittingsComp" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="85a05417-0b20-4d0e-979a-dc06a7984e99" name="ShipComp" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="e59c5c65-b616-446b-84a6-6712911fb1ad" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c4c23d58-5ae5-4e36-b066-da982e09feb6" name="ShipFittingsComp" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="b72e1d86-d760-4be9-bf9b-6e0883c32f4a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="9ea6fd1e-7311-4d28-9fd6-544f1cca931f" />
+          </association>
+        </targetEnds>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="7320a394-357f-40ba-8987-e9ab52ef9c0b" name="ShipEntity" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="e6040162-8a41-48dc-8089-3cd93db409b2" />
+        <targetEnds>
+          <association Id="3997add1-45ec-484a-9920-ecb9eb4ef294" isDerived="false" sourceEndRoleName="Ship" targetEndRoleName="ShipData" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="8c88b6e5-dd3e-4d81-8bf2-9f80a8eed0ce" LastKnownName="ShipComp" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1a74a8f9-1af7-4c36-94e3-e93a197e1a28" name="Ship" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c9bd95f6-eb1b-4b57-9275-f0ab958a9b48" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="78d98bd8-736f-4337-9216-42cf18d48792" name="ShipData" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="9b3d25f5-070a-4e00-a988-854b3eff562b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="32e24928-a59f-432f-8323-69b65548ab07" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="2af676b8-b118-4345-8e40-88b4a0e30acd" name="ShipComp" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ad32e9c2-9d77-4355-8d34-1eef72fa0aa8" />
+        <targetEnds>
+          <association Id="b30011ae-99d0-4a6e-a056-43d1e1ae0193" isDerived="false" sourceEndRoleName="ShipComp" targetEndRoleName="Ship" isLeaf="false" isAbstract="false">
+            <classMoniker Id="7320a394-357f-40ba-8987-e9ab52ef9c0b" LastKnownName="ShipEntity" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="88f97d08-f1fb-4309-a72d-5b03eb70619d" name="ShipComp" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="54dddcae-5b38-4ca4-a23b-57d2d1d6ca5e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="485b1426-ba79-4933-b8d7-b5c3718e21cc" name="Ship" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="7da377c8-3896-4cc9-955d-aaa14c1d029c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="231dfd15-3b45-471b-af0d-722cc98c0021" />
+          </association>
+        </targetEnds>
+        <ownedAttributes>
+          <property Id="4d45054c-2c1f-467f-a064-3ed173025070" name="ShipEntityPtr" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="201bfc11-3ad8-4d00-85d8-505ba8c9341c" />
+          </property>
+        </ownedAttributes>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="5dfc5e2d-9692-45ac-be21-adc2522e291b" name="WeaponFitting" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d9e4f63a-2b76-4348-9aed-c8e704192fd4" />
+        <targetEnds>
+          <association Id="9db8bee9-c5f8-4f9c-983d-19c43e4e45bf" isDerived="false" sourceEndRoleName="WeaponFittingComp" targetEndRoleName="WeaponComp" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="66c1548f-2085-4975-a795-48f466f3de0f" LastKnownName="IWeapon" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="858f520d-25b0-49c3-bd11-b101b949ff8d" name="WeaponFittingComp" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="64c0595a-4af6-49dd-9435-4673f465feb1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="cd36ef1e-f876-4204-8d7c-5caf03c6ae6e" name="WeaponComp" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="b9a699dc-48e4-4f65-af75-a6b42d4735fa" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="e67e9333-310b-49f0-95be-d829293ca37b" />
+          </association>
+        </targetEnds>
+        <ownedAttributes>
+          <property Id="d6b92e62-6008-4513-82a7-a98bcac1ea3f" name="PositionOffset" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="8b53dcf7-9f1d-44bd-a17b-d39da67bd97b" />
+          </property>
+          <property Id="038f1ad1-e413-48d1-b88b-a406fe6ed9b9" name="RotationOffset" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="1e930ac2-04cd-442e-82a0-700b88ee4f97" />
+          </property>
+          <property Id="bc1c4acc-9b39-487f-bac5-4be331551287" name="WeaponTypesAllowed" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="34877b9b-9af3-4327-b189-d31fb51a782b" />
+          </property>
+          <property Id="90485575-69a4-4225-9ea7-c47676b09178" name="Fitted WeaponComp" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="5bc4cca1-4436-43cf-8cf7-8850ecb310bb" />
+          </property>
+        </ownedAttributes>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="66c1548f-2085-4975-a795-48f466f3de0f" name="IWeapon" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="28edcfde-e46f-4e4b-8782-f3fa3f474ab9" />
+        <ownedAttributes>
+          <property Id="480922a2-06ad-4402-99bb-43c818b4a0e2" name="Enabled" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="de54791d-a715-45b6-a5a1-82db408b6e4a" />
+          </property>
+        </ownedAttributes>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="3e7a7bc0-bfbf-4387-b8bd-833bb13318e2" name="ShipFittingsComp" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="76728b16-ae33-41df-922a-fd744f134a4d" />
+        <targetEnds>
+          <association Id="5323efe6-1da8-4dd6-bc6c-7db3432356ac" isDerived="false" sourceEndRoleName="ShipFittingsComp" targetEndRoleName="WeaponFitting" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="5dfc5e2d-9692-45ac-be21-adc2522e291b" LastKnownName="WeaponFitting" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b64e8197-3f12-4b25-8138-6a5edc70d65b" name="ShipFittingsComp" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="1c6e44a3-dca1-4e99-b0d3-e38cfdcac54e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2e46104f-2eb0-4c66-bdf4-c7a043f82262" name="WeaponFitting" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="ffe07b62-cf1c-4e27-b8d2-160ce87788e2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="5a82e3ae-ee16-4243-a663-3c1a07a49a3f" />
+          </association>
+        </targetEnds>
+        <ownedAttributes>
+          <property Id="bdd4a5e6-3269-4a1b-aec9-5be552217dad" name="List&lt;WeaponFittings&gt;" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="16ec0824-c010-4c72-9d75-cdecc7eefed6" />
+          </property>
+        </ownedAttributes>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="8a3ce5ad-9331-4eed-ae28-662620dcd826" name="SpaceOddityArchitecture">
+    <elementDefinition Id="ba5bdb00-9cc5-4189-b288-4d3341170845" />
+    <profileInstances>
+      <packageHasProfileInstances Id="3f6e30a9-7f47-450d-bef6-1c6f5091f20e">
+        <profileInstance Id="15e64225-84b2-47be-8cdd-0a5e687e8737" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="0a413f75-c310-4c1b-974c-1b663bb65d0a">
+        <profileInstance Id="1ad1473a-4c14-4899-aba0-51f39183e29f" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</logicalClassDesignerModel>

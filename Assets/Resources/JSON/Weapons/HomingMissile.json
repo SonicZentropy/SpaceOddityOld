@@ -1,0 +1,92 @@
+{
+    "EntityName": "HomingMissile",
+    "Wrapper": null,
+    "_components": {
+        "Zenobit.Components.PositionComp": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "UseLateUpdate": false,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.PositionComp"
+        },
+        "Zenobit.Components.UnityPrefabComp": {
+            "IsPooled": true,
+            "PrefabLink": "Prefabs/Weapons/HomingMissile",
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.UnityPrefabComp"
+        },
+        "Zenobit.Components.LaunchedMissileComp": {
+            "IsHit": false,
+            "ExplosionPrefabLink": "Prefabs/Weapons/HomingMissile",
+            "ExplosionPrefab": null,
+            "homingMethod": "PID",
+            "projectileInfo": {
+                "TimeToLive": 0.0,
+                "ProjectileSpeed": 0.0,
+                "StartPosition": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "fireDirection": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "OwningActorPos": null,
+                "FiringWeaponComp": null,
+                "missileFireType": "Dumbfire",
+                "target": null,
+                "ShouldDisperse": false,
+                "DispersalTime": 0.0,
+                "DetonationDistance": 0.0,
+                "PIDNavigationalConstant": 0.0,
+                "missileHomingMethod": "None",
+                "missileRetargetBehavior": "SelfDestruct"
+            },
+            "lifeTime": 5.0,
+            "TimeAlive": 0.0,
+            "target": null,
+            "layerMask": {
+                "value": 0
+            },
+            "detonationDistance": 1.0,
+            "despawnDelay": 0.0,
+            "velocity": 300.0,
+            "ShouldDisperse": true,
+            "rotationSpeed": 10.0,
+            "navigationalConstant": 0.0,
+            "timeRandom": 0.0,
+            "xRandom": 0.01,
+            "yRandom": 0.01,
+            "zRandom": 0.01,
+            "swarmRandomRange": 0.1,
+            "randomSwirlOffset": 50.0,
+            "isFXSpawned": false,
+            "targetLastPos": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "step": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "explosionTime": 0.0,
+            "myCollider": null,
+            "ownerCollider": null,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.LaunchedMissileComp"
+        }
+    }
+}

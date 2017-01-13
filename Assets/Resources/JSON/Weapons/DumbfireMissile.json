@@ -1,0 +1,28 @@
+{
+    "EntityName": "DumbfireMissile",
+    "Wrapper": null,
+    "_components": {
+        "Zenobit.Components.PositionComp": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "UseLateUpdate": false,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.PositionComp"
+        },
+        "Zenobit.Components.UnityPrefabComp": {
+            "IsPooled": true,
+            "PrefabLink": "Prefabs/Weapons/HomingMissile",
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.UnityPrefabComp"
+        }
+    }
+}
