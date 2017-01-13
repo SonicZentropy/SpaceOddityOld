@@ -1,4 +1,4 @@
-﻿// /** 
+﻿// /**
 //  * EcsEngine.cs
 //  * Will Hart and Dylan Bailey
 //  * 20161205
@@ -24,11 +24,11 @@ namespace Zenobit.Common.ZenECS
 
     #endregion
 
-    public class EcsEngine 
+    public class EcsEngine
 	{
 		private readonly Dictionary<Guid, ComponentEcs> _componentsById = new Dictionary<Guid, ComponentEcs>();
 
-	    public List<Entity> EntityList { get; set; } = new List<Entity>();
+	    [Inspect]public List<Entity> EntityList { get; set; } = new List<Entity>();
 
 	    [Descriptor("Comps:", "Components On Entity")]
 		[SerializeField] private readonly Dictionary<ComponentTypes, List<ComponentEcs>> _componentPools =
@@ -143,7 +143,8 @@ namespace Zenobit.Common.ZenECS
 
 		public Entity CreateEntity(string entityName)
 		{
-			return Factory.CreateEntityFromTemplate(entityName);
+			Entity newEnt =  Factory.CreateEntityFromTemplate(entityName);
+			return newEnt;
 		}
 
 		public void DestroyEntity(Entity entity)
@@ -168,6 +169,7 @@ namespace Zenobit.Common.ZenECS
 
                 DestroyComponent(comp);
             }
+	        EntityList.Remove(entity);
         }
 
 		/// <summary>

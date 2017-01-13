@@ -1,8 +1,10 @@
-﻿// /** 
+﻿// /**
 //  * Entity.cs
 //  * Dylan Bailey
 //  * 20161210
 // */
+#define DictDebug
+
 
 namespace Zenobit.Common.ZenECS
 {
@@ -10,32 +12,45 @@ namespace Zenobit.Common.ZenECS
 
     using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using AdvancedInspector;
+    using UnityEngine;
 
-    #endregion
+	#endregion
+
+	public class CompDictionary : UDictionary<Type, ComponentEcs> {}
 
     public class Entity
     {
         //[ShowInInspector]
-        public Dictionary<Type, ComponentEcs> _components; // = new Dictionary<Type, ComponentECS>();
+
+	    [HideInInspector]public Dictionary<Type, ComponentEcs> _components = new Dictionary<Type, ComponentEcs>();
+
+	    #if DictDebug
+	    [Inspect]public List<ComponentEcs> ComponentsList
+	    {
+		    get { return _components.Select(x => x.Value).ToList(); }
+	    }
+	    #endif
 
         public Entity()
         {
             //debug purposes
-            _components = new Dictionary<Type, ComponentEcs>();
+            //_components = new Dictionary<Type, ComponentEcs>();
         }
 
         public Entity(string entityName)
         {
             //debug purposes
-            _components = new Dictionary<Type, ComponentEcs>();
+            //_components = new Dictionary<Type, ComponentEcs>();
             EntityName = entityName;
         }
 
-        public string EntityName { get; set; }
+	    [Inspect]public string EntityName { get; set; } = "DefaultName";
 
-        public EntityWrapper Wrapper { get; set; }
+	    [HideInInspector]public EntityWrapper Wrapper { get; set; }
 
-        public IEnumerable<ComponentEcs> Components => _components.Values;
+	    [HideInInspector]public IEnumerable<ComponentEcs> Components => _components.Values;
 
         public void InitializeComponents(List<ComponentTypes> componentTypes)
         {

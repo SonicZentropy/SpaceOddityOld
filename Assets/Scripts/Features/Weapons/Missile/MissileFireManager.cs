@@ -49,7 +49,7 @@ public class MissileFireManager : Singleton<MissileFireManager>
 		for(int i = 0; i < wc.numberSwarmMissiles; i++)
 		{
 			Entity miss = EcsEngine.Instance.CreateEntity(Res.Entities.HomingMissile);
-			//InitFromProjectileInfo(miss, wc);
+			InitFromProjectileInfo(miss, wc);
 		}
 	}
 
