@@ -160,7 +160,10 @@ namespace Zenobit.Serialization
 			foreach (var typ in ComponentPools)
 			{
 				foreach (var cmp in typ.Value)
+				{
 					_newEnt.AddComponent(cmp);
+					cmp.SetId(Guid.Empty); //Keep this out of prod code
+				}
 			}
 
 			Serializer.TrySerialize(typeof(Entity), _newEnt, out _data).AssertSuccess();

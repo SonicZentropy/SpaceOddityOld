@@ -9,6 +9,7 @@ namespace Zenobit.Common.ZenECS
     #region Dependencies
 
     using System.Linq;
+    using AdvancedInspector;
     using FullInspector;
     using Serialization;
     using UnityEngine;
@@ -19,9 +20,10 @@ namespace Zenobit.Common.ZenECS
     #endregion
 
     /// Allows viewing in Inspector for debug/dev purposes, serves no in-game function
-    public class EntityWrapper : BaseBehavior //BaseBehavior 
+    public class EntityWrapper : MonoBehaviour //: BaseBehavior 
     {
-        [fiInspectorOnly] public Entity Entity;
+        //[fiInspectorOnly]
+		[Inspect]public Entity Entity;
 
 
         public void SetEntity(Entity entity)
@@ -36,7 +38,7 @@ namespace Zenobit.Common.ZenECS
             var isPooled = Entity.HasComponent(ComponentTypes.UnityPrefabComp) &&
                            Entity.GetComponent<UnityPrefabComp>().IsPooled;
 
-            if (EcsEngine.Instance == null)
+			if (EcsEngine.Instance == null)
             {
                 ZenLogger.LogWarning($"Attempting to destroy an entity ({Entity.EntityName}) while ECS Engine is null.");
             }

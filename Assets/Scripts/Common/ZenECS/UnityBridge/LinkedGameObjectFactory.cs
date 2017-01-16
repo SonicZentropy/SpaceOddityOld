@@ -1,4 +1,4 @@
-﻿// /** 
+﻿// /**
 //  * LinkedGameObjectFactory.cs
 //  * Dylan Bailey
 //  * 20161209
@@ -53,7 +53,10 @@ namespace Zenobit.Common.ZenECS
                 e.GetComponent<LightComp>().Light = go.GetComponentInChildren<Light>();
             if (e.HasComponent(ComponentTypes.LineRendererComp))
                 e.GetComponent<LineRendererComp>().LineRenderer = go.GetComponentInChildren<LineRenderer>();
-            if (e.HasComponent(ComponentTypes.MeshComp))
+	        if (e.HasComponent(ComponentTypes.RendererComp))
+		        e.GetComponent<RendererComp>().renderer = go.GetComponentInChildren<Renderer>();
+
+	        if (e.HasComponent(ComponentTypes.MeshComp))
             {
                 e.GetComponent<MeshComp>().MeshFilter = go.GetComponentInChildren<MeshFilter>();
                 e.GetComponent<MeshComp>().MeshRenderer = go.GetComponentInChildren<MeshRenderer>();

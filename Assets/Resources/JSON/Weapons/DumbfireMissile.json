@@ -20,9 +20,115 @@
         },
         "Zenobit.Components.UnityPrefabComp": {
             "IsPooled": true,
-            "PrefabLink": "Prefabs/Weapons/HomingMissile",
+            "PrefabLink": "Prefabs/Weapons/DumbfireMissile",
             "Id": "00000000-0000-0000-0000-000000000000",
             "$type": "Zenobit.Components.UnityPrefabComp"
+        },
+        "Zenobit.Components.LaunchedMissileComp": {
+            "IsHit": false,
+            "ExplosionPrefabLink": "Prefabs/Effects/Explosions/Explosion_01",
+            "ExplosionPrefab": null,
+            "homingMethod": "None",
+            "projectileInfo": {
+                "TimeToLive": 0.0,
+                "ProjectileSpeed": 0.0,
+                "StartPosition": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "fireDirection": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "OwningActorPos": null,
+                "FiringWeaponComp": null,
+                "missileFireType": "Dumbfire",
+                "target": null,
+                "ShouldDisperse": false,
+                "DispersalTime": 0.0,
+                "DetonationDistance": 0.0,
+                "PIDNavigationalConstant": 0.0,
+                "missileHomingMethod": "None",
+                "missileRetargetBehavior": "SelfDestruct"
+            },
+            "TimeAlive": 0.0,
+            "layerMask": {
+                "value": 0
+            },
+            "detonationDistance": 0.1,
+            "despawnDelay": 0.0,
+            "dispersalTime": 2.0,
+            "rotationSpeed": 10.0,
+            "previousLos": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "los": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "losDelta": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "desiredRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "navigationalConstant": 0.0,
+            "UseAdvancedMode": false,
+            "timeRandom": 0.0,
+            "xRandom": 0.01,
+            "yRandom": 0.01,
+            "zRandom": 0.01,
+            "swarmRandomRange": 0.1,
+            "randomSwirlOffset": 50.0,
+            "isFXSpawned": false,
+            "targetLastPos": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "step": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "explosionTime": 0.0,
+            "myCollider": null,
+            "ownerCollider": null,
+            "meshRenderer": null,
+            "particles": null,
+            "transform": null,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.LaunchedMissileComp"
+        },
+        "Zenobit.Components.ParticleSystemComp": {
+            "ParticleSystem": null,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.ParticleSystemComp"
+        },
+        "Zenobit.Components.ColliderComp": {
+            "collider": null,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.ColliderComp"
+        },
+        "Zenobit.Components.RendererComp": {
+            "renderer": null,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.RendererComp"
+        },
+        "Zenobit.Components.CollisionEnterComp": {
+            "Other": [],
+            "CollisionHandlingEnabled": true,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.CollisionEnterComp"
         }
     }
 }

@@ -16,7 +16,9 @@
 			engine.CreateEntity(Res.Entities.Camera);
 			engine.CreateEntity(Res.Entities.SectorGenerationMain);
 			engine.CreateEntity(Res.Entities.GameSettings);
-			
+			var ets = engine.CreateEntity(Res.Entities.EnemyTestShip);
+			ets.Wrapper.transform.position = new Vector3(0, 0, 5);
+
 			return false;
 		}
 	}

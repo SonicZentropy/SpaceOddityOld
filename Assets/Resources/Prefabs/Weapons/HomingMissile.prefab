@@ -38,7 +38,6 @@ GameObject:
   - component: {fileID: 4696587890308624}
   - component: {fileID: 33680334337401810}
   - component: {fileID: 23936620162373714}
-  - component: {fileID: 114537135367287548}
   - component: {fileID: 136936274884811900}
   m_Layer: 13
   m_Name: HomingMissile
@@ -144,33 +143,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1589881009920686}
   m_Mesh: {fileID: 4300000, guid: 9797ff622b460384bb3e4cd12a7c5c7c, type: 3}
---- !u!114 &114537135367287548
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1589881009920686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fa4b7cdae62fe348834c06b18f95770, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ExplosionPrefab: {fileID: 1798856311505638, guid: 055e05bb5c3eeaf4084fef35ec40025b,
-    type: 2}
-  target: {fileID: 0}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  detonationDistance: 15
-  lifeTime: 10
-  despawnDelay: 1
-  velocity: 70
-  alignSpeed: 5
-  RaycastAdvance: 2
-  DelayDespawn: 1
-  delayedParticles:
-  - {fileID: 198495962687605698}
-  - {fileID: 198816781159311532}
 --- !u!136 &136936274884811900
 CapsuleCollider:
   m_ObjectHideFlags: 1

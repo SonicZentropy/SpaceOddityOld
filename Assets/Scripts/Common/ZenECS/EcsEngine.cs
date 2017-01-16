@@ -190,6 +190,7 @@ namespace Zenobit.Common.ZenECS
 			OnComponentRemoved?.Invoke(component);
 			_componentPools[component.ComponentType].Remove(component);
 			_componentsById.Remove(component.Id);
+			ComponentCache.Instance.Release(component);
 
 			CurrentHash = Guid.NewGuid();
 		}

@@ -39,7 +39,6 @@ GameObject:
   - component: {fileID: 33039918343205672}
   - component: {fileID: 23460010153254522}
   - component: {fileID: 136432385545230680}
-  - component: {fileID: 114491689971761400}
   - component: {fileID: 114415193904243322}
   m_Layer: 13
   m_Name: SwarmMissile
@@ -156,25 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3175524389c23543995eb1cd857f682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114491689971761400
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1173536616073268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3a62844761fac54aa13e3f663460aa0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transform: {fileID: 0}
-  gameObject: {fileID: 0}
-  ExplosionPrefab: {fileID: 1798856311505638, guid: 055e05bb5c3eeaf4084fef35ec40025b,
-    type: 2}
-  target: {fileID: 0}
-  rotationSpeed: 10
-  UseAdvancedMode: 1
-  navigationalConstant: 0
 --- !u!136 &136432385545230680
 CapsuleCollider:
   m_ObjectHideFlags: 1

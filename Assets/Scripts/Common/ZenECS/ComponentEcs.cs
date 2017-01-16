@@ -92,5 +92,10 @@ namespace Zenobit.Common.ZenECS
         {
             Owner = entity;
         }
+
+	    public ComponentEcs()
+	    {
+		    Id = Guid.NewGuid();
+	    }
     }
 }

@@ -40,11 +40,14 @@ namespace Zenobit.Systems
 				  .AddSystem(new TacticalAiMovementSystem())
 				  .AddSystem(new PositionUpdateSystem())
 				  .AddSystem(new CameraControlSystem())
-				  .AddSystem(new CollisionCleanupSystem())
 
 				  .AddSystem(new RangedCombatSystem())
+				  .AddSystem(new MissileBehaviorSystem())
+				  .AddSystem(new MissileCollisionResolverSystem())
+				  .AddSystem(new DamageSystem())
 				  //Reactives
 				  .AddSystem(new InertialDamperSystem())
+				  .AddSystem(new CollisionCleanupSystem())
 				  ;
 
 			engine.InitAfterECS();

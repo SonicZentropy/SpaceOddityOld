@@ -106,8 +106,8 @@
             "AvailableWeapons": [
                 {
                     "missileInfoPacket": {
-                        "TimeToLive": 0.0,
-                        "ProjectileSpeed": 0.0,
+                        "TimeToLive": 10.0,
+                        "ProjectileSpeed": 10.0,
                         "StartPosition": {
                             "x": 0.0,
                             "y": 0.0,
@@ -120,16 +120,16 @@
                         },
                         "OwningActorPos": null,
                         "FiringWeaponComp": null,
-                        "missileFireType": "Swarm",
+                        "missileFireType": "Dumbfire",
                         "target": null,
                         "ShouldDisperse": false,
                         "DispersalTime": 0.0,
-                        "DetonationDistance": 0.0,
-                        "PIDNavigationalConstant": 0.0,
+                        "DetonationDistance": 0.1,
+                        "PIDNavigationalConstant": 1.0,
                         "missileHomingMethod": "None",
                         "missileRetargetBehavior": "SelfDestruct"
                     },
-                    "numberSwarmMissiles": 10,
+                    "numberSwarmMissiles": 1,
                     "ShieldDamage": 20,
                     "HullDamage": 20,
                     "AttackRange": 100.0,
@@ -145,7 +145,7 @@
                     "fittingAttached": null,
                     "WeaponPrefab": "None",
                     "WeaponGameObject": null,
-                    "ProjectilePrefab": "Prefabs/Weapons/SwarmMissile",
+                    "ProjectilePrefab": "Prefabs/Weapons/HomingMissile",
                     "Id": "00000000-0000-0000-0000-000000000000",
                     "$type": "Zenobit.Components.MissileComp"
                 }

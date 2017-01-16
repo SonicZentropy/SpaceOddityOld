@@ -125,6 +125,7 @@ namespace Zenobit.Systems
 			mc.missileInfoPacket.StartPosition = pc.transform.TransformPoint(selectedWeapon.fittingAttached.PositionOffset);
 			mc.missileInfoPacket.OwningActorPos = pc;
 			mc.missileInfoPacket.FiringWeaponComp = selectedWeapon;
+			mc.missileInfoPacket.ProjectileSpeed = mc.ProjectileSpeed;
 			mc.missileInfoPacket.target = mc.GetComponent<TargetComp>().target;
 		}
 

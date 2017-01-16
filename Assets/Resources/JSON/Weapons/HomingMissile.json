@@ -87,6 +87,21 @@
             "ownerCollider": null,
             "Id": "00000000-0000-0000-0000-000000000000",
             "$type": "Zenobit.Components.LaunchedMissileComp"
+        },
+        "Zenobit.Components.ParticleSystemComp": {
+            "ParticleSystem": null,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.ParticleSystemComp"
+        },
+        "Zenobit.Components.ColliderComp": {
+            "collider": null,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.ColliderComp"
+        },
+        "Zenobit.Components.RendererComp": {
+            "renderer": null,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.RendererComp"
         }
     }
 }

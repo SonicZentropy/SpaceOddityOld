@@ -9,12 +9,14 @@ namespace Zenobit.Common
 			public const string Camera = "Core/Camera";
 			public const string GameSettings = "Core/GameSettings";
 			public const string BaseShip = "Entities/BaseShip";
+			public const string EnemyTestShip = "Entities/EnemyTestShip";
 			public const string Player = "Entities/Player";
 			public const string PlayerBak = "Entities/PlayerBak";
 			public const string TestEnt = "Entities/TestEnt";
 			public const string SectorGenerationMain = "Sector/SectorGenerationMain";
 			public const string DumbfireMissile = "Weapons/DumbfireMissile";
 			public const string HomingMissile = "Weapons/HomingMissile";
+			public const string SwarmMissile = "Weapons/SwarmMissile";
 		}
 		
 		public static class Prefabs

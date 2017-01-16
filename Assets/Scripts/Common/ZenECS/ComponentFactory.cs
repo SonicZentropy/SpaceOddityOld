@@ -1,9 +1,9 @@
-// /** 
+// /**
 //  * ComponentFactory.cs
 //  * Will Hart and Dylan Bailey
 //  * 20161210
 // */
- 
+
 namespace Zenobit.Common.ZenECS
 {
     #region Dependencies
@@ -13,7 +13,7 @@ namespace Zenobit.Common.ZenECS
     using Zenobit.Components;
 
     #endregion
- 
+
     public static class ComponentFactory
     {
         public static readonly Dictionary<ComponentTypes, Type> ComponentLookup = new Dictionary<ComponentTypes, Type>(new FastEnumIntEqualityComparer<ComponentTypes>())
@@ -25,6 +25,7 @@ namespace Zenobit.Common.ZenECS
 			{ComponentTypes.TacticalAiStateComp, typeof(TacticalAiStateComp)},
 			{ComponentTypes.AbstractCollisionComp, typeof(AbstractCollisionComp)},
 			{ComponentTypes.CombatComp, typeof(CombatComp)},
+			{ComponentTypes.DamageComp, typeof(DamageComp)},
 			{ComponentTypes.HealthComp, typeof(HealthComp)},
 			{ComponentTypes.DisableByDistanceComp, typeof(DisableByDistanceComp)},
 			{ComponentTypes.GameSettingsComp, typeof(GameSettingsComp)},
@@ -48,6 +49,7 @@ namespace Zenobit.Common.ZenECS
 			{ComponentTypes.LineRendererComp, typeof(LineRendererComp)},
 			{ComponentTypes.MeshComp, typeof(MeshComp)},
 			{ComponentTypes.ParticleSystemComp, typeof(ParticleSystemComp)},
+			{ComponentTypes.RendererComp, typeof(RendererComp)},
 			{ComponentTypes.RigidbodyComp, typeof(RigidbodyComp)},
 			{ComponentTypes.TriggerEnterComp, typeof(TriggerEnterComp)},
 			{ComponentTypes.TriggerExitComp, typeof(TriggerExitComp)},
@@ -66,14 +68,20 @@ namespace Zenobit.Common.ZenECS
 			{ComponentTypes.LaunchedMissileComp, typeof(LaunchedMissileComp)},
 			{ComponentTypes.MissileComp, typeof(MissileComp)}
 		};
- 
+
         public static ComponentEcs Create(ComponentTypes type)
         {
             if (!ComponentLookup.ContainsKey(type)) return null;
-            return (ComponentEcs) Activator.CreateInstance(ComponentLookup[type]);
+	        return ComponentCache.Instance.Get(type);
         }
+
+	    public static ComponentEcs Instantiate(ComponentTypes type)
+	    {
+		    var comp = (ComponentEcs) Activator.CreateInstance(ComponentLookup[type]);
+		    return comp;
+	    }
     }
- 
+
     public enum ComponentTypes
     {
 		AbstractActorComp,
@@ -83,6 +91,7 @@ namespace Zenobit.Common.ZenECS
 		TacticalAiStateComp,
 		AbstractCollisionComp,
 		CombatComp,
+		DamageComp,
 		HealthComp,
 		DisableByDistanceComp,
 		GameSettingsComp,
@@ -106,6 +115,7 @@ namespace Zenobit.Common.ZenECS
 		LineRendererComp,
 		MeshComp,
 		ParticleSystemComp,
+		RendererComp,
 		RigidbodyComp,
 		TriggerEnterComp,
 		TriggerExitComp,

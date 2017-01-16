@@ -7,7 +7,7 @@
 	{
 		public MissileInfoPacket missileInfoPacket = new MissileInfoPacket();
 		public uint numberSwarmMissiles;
-		
+
 		public override ComponentTypes ComponentType => ComponentTypes.MissileComp;
 	}
 
@@ -34,24 +34,28 @@
 		PID
 	}
 
-	public struct MissileInfoPacket 
+	public struct MissileInfoPacket
 	{
 		//ProjectileInfo
 		public float TimeToLive;
 		public float ProjectileSpeed;
 		public Vector3 StartPosition;
+		[HideInInspector]
 		public Vector3 fireDirection;
-		public PositionComp OwningActorPos;
+		[HideInInspector] public PositionComp OwningActorPos;
+		[HideInInspector]
 		public WeaponComp FiringWeaponComp;
 
 		//MissileInfo
 		public MissileFireType missileFireType;
-		Vector3 FireDirection
+		[HideInInspector]
+		public Vector3 FireDirection
 		{
 			get { return fireDirection; }
 			set { fireDirection = value.normalized; }
 		}
 
+		[HideInInspector]
 		public Transform target;
 
 		public bool ShouldDisperse;

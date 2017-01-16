@@ -3,7 +3,6 @@
 //  * Dylan Bailey
 //  * 20161210
 // */
-#define DictDebug
 
 
 namespace Zenobit.Common.ZenECS
@@ -18,20 +17,17 @@ namespace Zenobit.Common.ZenECS
 
 	#endregion
 
-	public class CompDictionary : UDictionary<Type, ComponentEcs> {}
-
-    public class Entity
+	[Serializable]
+	public class Entity
     {
         //[ShowInInspector]
 
 	    [HideInInspector]public Dictionary<Type, ComponentEcs> _components = new Dictionary<Type, ComponentEcs>();
 
-	    #if DictDebug
 	    [Inspect]public List<ComponentEcs> ComponentsList
 	    {
 		    get { return _components.Select(x => x.Value).ToList(); }
 	    }
-	    #endif
 
         public Entity()
         {
@@ -95,22 +91,31 @@ namespace Zenobit.Common.ZenECS
         public void AddComponent(ComponentTypes componentType)
         {
             var comp = ComponentFactory.Create(componentType);
+	        //var comp = ComponentCache.Instance.Get(componentType);
             AddComponent(comp);
         }
 
         public T AddComponent<T>(ComponentTypes componentType) where T : ComponentEcs
         {
             var comp = ComponentFactory.Create(componentType);
-            AddComponent(comp);
+	        //var comp = ComponentCache.Instance.Get(componentType);
+	        AddComponent(comp);
             return (T) comp;
         }
 
 
         public void AddComponent(ComponentEcs component)
         {
+	        component.Owner = this;
             _components.Add(component.ObjectType, component);
             if (EcsEngine.Instance != null)
                 EcsEngine.Instance.AddComponent(component);
         }
+
+	    public void RemoveComponent(ComponentEcs component)
+	    {
+		    _components.Remove(component.ObjectType);
+		    EcsEngine.Instance.DestroyComponent(component);
+	    }
     }
 }
