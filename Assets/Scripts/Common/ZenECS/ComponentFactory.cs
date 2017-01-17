@@ -66,6 +66,7 @@ namespace Zenobit.Common.ZenECS
 			{ComponentTypes.WeaponComp, typeof(WeaponComp)},
 			{ComponentTypes.LaserComp, typeof(LaserComp)},
 			{ComponentTypes.LaunchedMissileComp, typeof(LaunchedMissileComp)},
+			{ComponentTypes.MissileAreaDamageComp, typeof(MissileAreaDamageComp)},
 			{ComponentTypes.MissileComp, typeof(MissileComp)}
 		};
 
@@ -77,8 +78,7 @@ namespace Zenobit.Common.ZenECS
 
 	    public static ComponentEcs Instantiate(ComponentTypes type)
 	    {
-		    var comp = (ComponentEcs) Activator.CreateInstance(ComponentLookup[type]);
-		    return comp;
+		    return (ComponentEcs) Activator.CreateInstance(ComponentLookup[type]);
 	    }
     }
 
@@ -132,6 +132,7 @@ namespace Zenobit.Common.ZenECS
 		WeaponComp,
 		LaserComp,
 		LaunchedMissileComp,
+		MissileAreaDamageComp,
 		MissileComp
     }
 }

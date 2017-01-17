@@ -39,6 +39,7 @@ public class MissileFireManager : Singleton<MissileFireManager>
 
 	private void FireHomingMissile(MissileComp wc)
 	{
+		if (!HasTarget(wc)) return; //don't shoot if no target to home toward
 		//var lpc = Res.Load(wc.ProjectilePrefab);
 		//var lpcinst = lpc.InstantiateFromPool();
 		//lpcinst.GetComponent<MissileController>().InitFromProjectileInfo(wc.missileInfoPacket);
@@ -48,12 +49,18 @@ public class MissileFireManager : Singleton<MissileFireManager>
 
 	private void FireSwarmMissiles(MissileComp wc)
 	{
-		//var lpc = Res.Load(wc.ProjectilePrefab);
-		for(int i = 0; i < wc.numberSwarmMissiles; i++)
+		if (!HasTarget(wc)) return; //don't shoot if no target to home toward
+
+		for (int i = 0; i < wc.numberSwarmMissiles; i++)
 		{
 			Entity miss = EcsEngine.Instance.CreateEntity(Res.Entities.SwarmMissile);
 			InitFromProjectileInfo(miss, wc);
 		}
+	}
+
+	private bool HasTarget(MissileComp mc)
+	{
+		return mc.missileInfoPacket.target != null;
 	}
 
 	private void InitFromProjectileInfo(Entity missile, MissileComp mc)
@@ -63,7 +70,10 @@ public class MissileFireManager : Singleton<MissileFireManager>
 		var pc = missile.GetComponent<PositionComp>();
 		var transform = pc.transform;
 		var lmc = missile.GetComponent<LaunchedMissileComp>();
+
 		lmc.projectileInfo = mc.missileInfoPacket;
+		lmc.projectileInfo.ShieldDamage = mc.ShieldDamage;
+		lmc.projectileInfo.HullDamage = mc.HullDamage;
 		transform.position = lmc.projectileInfo.StartPosition;
 		transform.rotation = Quaternion.LookRotation(lmc.projectileInfo.fireDirection);
 
@@ -75,7 +85,6 @@ public class MissileFireManager : Singleton<MissileFireManager>
 
 
 		//Swirl method
-		lmc.rotationSpeed = 50.0f;
 		lmc.xRandom = Random.Range(-lmc.swarmRandomRange, lmc.swarmRandomRange);
 		lmc.yRandom = Random.Range(-lmc.swarmRandomRange, lmc.swarmRandomRange);
 		lmc.zRandom = Random.Range(0, lmc.swarmRandomRange);

@@ -53,6 +53,52 @@
             "CollisionHandlingEnabled": true,
             "Id": "00000000-0000-0000-0000-000000000000",
             "$type": "Zenobit.Components.CollisionEnterComp"
+        },
+        "Zenobit.Components.ShipComp": {
+            "CurrentShields": {
+                "_value": 0.0
+            },
+            "CurrentHull": {
+                "_value": 0.0
+            },
+            "CameraOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "DefaultShields": 0.0,
+            "DefaultHull": 0.0,
+            "DefaultRotationSpeed": 0.0,
+            "DefaultMaxRotationVelocity": 0.0,
+            "DefaultMaxSpeed": 0.0,
+            "DefaultAcceleration": 0.0,
+            "DefaultReverseAcceleration": 0.0,
+            "DefaultCargoSize": 0.0,
+            "DefaultShieldRecharge": 0.0,
+            "DefaultEnergy": 0.0,
+            "DefaultEnergyRecharge": 0.0,
+            "HasInertialDampers": false,
+            "CurrentRotationSpeed": 0.0,
+            "CurrentMaxRotationVelocity": 0.0,
+            "CurrentMaxSpeed": 0.0,
+            "CurrentAcceleration": 0.0,
+            "CurrentReverseAcceleration": 0.0,
+            "CurrentCargoSize": 0.0,
+            "CurrentShieldRecharge": 0.0,
+            "CurrentEnergy": 0.0,
+            "CurrentEnergyRecharge": 0.0,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.ShipComp"
+        },
+        "Zenobit.Components.ShipFittingsComp": {
+            "fittingList": [],
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.ShipFittingsComp"
+        },
+        "Zenobit.Components.AvailableWeaponsComp": {
+            "AvailableWeapons": [],
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.AvailableWeaponsComp"
         }
     }
 }

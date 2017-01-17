@@ -25,13 +25,19 @@
             "$type": "Zenobit.Components.UnityPrefabComp"
         },
         "Zenobit.Components.LaunchedMissileComp": {
+            "TimeAlive": 0.0,
             "IsHit": false,
-            "ExplosionPrefabLink": "Prefabs/Weapons/HomingMissile",
+            "ExplosionPrefabLink": "Prefabs/Effects/Explosions/Explosion_01",
             "ExplosionPrefab": null,
             "homingMethod": "PID",
             "projectileInfo": {
                 "TimeToLive": 0.0,
+                "ExplosionImpactRadius": 0.0,
+                "ExplosionForce": 0.0,
+                "ShieldDamage": 0.0,
+                "HullDamage": 0.0,
                 "ProjectileSpeed": 0.0,
+                "RotationSpeed": 0.0,
                 "StartPosition": {
                     "x": 0.0,
                     "y": 0.0,
@@ -53,18 +59,35 @@
                 "missileHomingMethod": "None",
                 "missileRetargetBehavior": "SelfDestruct"
             },
-            "lifeTime": 5.0,
-            "TimeAlive": 0.0,
-            "target": null,
             "layerMask": {
                 "value": 0
             },
             "detonationDistance": 1.0,
             "despawnDelay": 0.0,
-            "velocity": 300.0,
-            "ShouldDisperse": true,
-            "rotationSpeed": 10.0,
+            "RaycastAdvance": 2.0,
+            "dispersalTime": 2.0,
+            "previousLos": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "los": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "losDelta": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "desiredRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
             "navigationalConstant": 0.0,
+            "UseAdvancedMode": false,
             "timeRandom": 0.0,
             "xRandom": 0.01,
             "yRandom": 0.01,
@@ -85,6 +108,9 @@
             "explosionTime": 0.0,
             "myCollider": null,
             "ownerCollider": null,
+            "meshRenderer": null,
+            "particles": null,
+            "transform": null,
             "Id": "00000000-0000-0000-0000-000000000000",
             "$type": "Zenobit.Components.LaunchedMissileComp"
         },

@@ -41,9 +41,12 @@ namespace Zenobit.Common.ZenECS
 
 		public T GetComponent<T>() where T : ComponentEcs => Owner.GetComponent<T>();
 
-		public virtual void Initialise(EcsEngine _engine)
+		public virtual void Initialise(EcsEngine _engine, Entity owner)
         {
-        }
+			SetOwner(owner);
+			if (Id == Guid.Empty) SetId(Guid.NewGuid());
+			
+		}
 
         //[Inspect("IsNotOverridden", 500)]
         //[Method]

@@ -324,7 +324,7 @@ Prefab:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 114573531446441200, guid: 60bfdc02b78b7e0489eceb16c7e27593, type: 2}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 60bfdc02b78b7e0489eceb16c7e27593, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &846706136
@@ -645,7 +645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AvoidDirtyFlag: 1
-  EntityName: Entities/BaseShip
+  EntityName: Weapons/HomingMissile
 --- !u!4 &1250855352
 Transform:
   m_ObjectHideFlags: 0
@@ -1425,15 +1425,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4937484371059978, guid: 396cd487a97fefa43aefc589aba772b3, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.004282655
+      value: 0.004878049
       objectReference: {fileID: 0}
     - target: {fileID: 4937484371059978, guid: 396cd487a97fefa43aefc589aba772b3, type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.004282655
+      value: 0.004878049
       objectReference: {fileID: 0}
     - target: {fileID: 4937484371059978, guid: 396cd487a97fefa43aefc589aba772b3, type: 2}
       propertyPath: m_LocalScale.z
-      value: 0.004282655
+      value: 0.004878049
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 396cd487a97fefa43aefc589aba772b3, type: 2}

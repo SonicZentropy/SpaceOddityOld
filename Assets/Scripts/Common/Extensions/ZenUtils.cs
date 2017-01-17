@@ -10,7 +10,9 @@ namespace Zenobit.Common.Extensions
 
 	using System;
 	using System.Collections.Generic;
+	using Components;
 	using UnityEngine;
+	using ZenECS;
 	using Random = System.Random;
 
 	#endregion
@@ -78,6 +80,24 @@ namespace Zenobit.Common.Extensions
 			float v = (targetPosition - pastTargetPosition) / t;
 			float f = pastPosition - pastTargetPosition + v;
 			return targetPosition - v + f * Mathf.Exp(-t);
+		}
+
+		public static class PhysicsUtil
+		{
+			public static void ApplyExplosionForce(EntityWrapper objectHit, Vector3 forceCenter, float forceMagnitude = 100f)
+			{
+				if (forceMagnitude.IsAlmost(0)) return;
+				Vector3 forceDirection = objectHit.transform.position - forceCenter;
+				var rbComp = objectHit.Entity.GetComponentDownward<RigidbodyComp>()?.Rigidbody;
+				if (rbComp == null)
+				{
+					return;
+				}
+				Vector3 added = forceDirection.normalized * forceMagnitude * 10;
+				//ZenLogger.Log($"Applying force to {objectHit.gameObject.name}: {added}");
+
+				rbComp.AddForce(forceDirection.normalized * forceMagnitude * 100, ForceMode.Impulse);
+			}
 		}
 
 		public static class QuaternionUtil

@@ -9,6 +9,7 @@ namespace Zenobit.Systems
 	#region Dependencies
 
 	using System.Linq;
+	using Common.Helpers;
 	using Common.ObjectPool;
 	using Common.ZenECS;
 	using Components;
@@ -19,7 +20,10 @@ namespace Zenobit.Systems
 
 	public class MissileBehaviorSystem : AbstractEcsSystem
 	{
-		public override bool Init() { return true; }
+		public override bool Init()
+		{
+			return true;
+		}
 
 		public override void Update()
 		{
@@ -34,96 +38,91 @@ namespace Zenobit.Systems
 		{
 			//projectileInfo.TimeToLive handling
 			lmc.TimeAlive += Time.deltaTime;
-			if (lmc.TimeAlive > lmc.projectileInfo.TimeToLive)
-			{
-				OnSelfDestruct(lmc, true);
-			}
 
 			// If something was hit
-			if (lmc.IsHit)
-			{
-				// Execute once
-				if (!lmc.isFXSpawned)
-				{
-					TriggerExplosion(lmc);
-					lmc.isFXSpawned = true;
-				}
-
-				// Despawn current missile
-				if (lmc.despawnDelay <= 0 || ((lmc.despawnDelay > 0) && (lmc.TimeAlive >= lmc.despawnDelay)))
-				{
-					OnMissileDestroy(lmc);
-				}
-			}
+			//if (lmc.IsHit)
+			//{
+			//	// Execute once
+			//	if (!lmc.isFXSpawned)
+			//	{
+			//		TriggerExplosion(lmc);
+			//		lmc.isFXSpawned = true;
+			//	}
+			//
+			//	// Despawn current missile
+			//	if (lmc.despawnDelay <= 0 || ((lmc.despawnDelay > 0) && (lmc.TimeAlive >= lmc.despawnDelay)))
+			//	{
+			//		OnMissileDestroy(lmc);
+			//	}
+			//}
 			// No collision occurred yet
-			else
+			if (!CheckPastTimeToLive(lmc))
 			{
 				// Navigate
-				if (lmc.projectileInfo.target != null)
+				if (lmc.projectileInfo.missileFireType == MissileFireType.Dumbfire)
+				{
+					UpdateDumbfireMethod(lmc);
+				}
+				else if (lmc.projectileInfo.target != null)
 				{
 					if (lmc.projectileInfo.ShouldDisperse)
 						UpdateDispersalMethod(lmc);
 					else
 					{
-						//////PID
-						if (lmc.projectileInfo.missileFireType == MissileFireType.Homing || lmc.projectileInfo.missileFireType == MissileFireType.Swarm)
+						switch (lmc.projectileInfo.missileHomingMethod)
 						{
-							if (lmc.projectileInfo.missileHomingMethod == MissileHomingMethod.PID)
-							{
-								Vector3 hitPos = Predict(lmc.transform.position, lmc.projectileInfo.target.position, lmc.targetLastPos, lmc.projectileInfo.ProjectileSpeed);
-								lmc.targetLastPos = lmc.projectileInfo.target.position;
-
-								lmc.transform.rotation = Quaternion.Lerp(
-								                                         lmc.transform.rotation,
-								                                         Quaternion.LookRotation(hitPos - lmc.transform.position), Time.deltaTime * lmc.rotationSpeed);
-							}
-							else
-							{
-								lmc.transform.rotation = Quaternion.Lerp(
-								                                         lmc.transform.rotation,
-								                                         Quaternion.LookRotation(lmc.projectileInfo.target.position - lmc.transform.position),
-								                                         Time.deltaTime * lmc.rotationSpeed);
-							}
-						}
-
-						else if (lmc.projectileInfo.missileFireType == MissileFireType.Dumbfire)
-						{
-							UpdateDumbfireMethod(lmc);
-						}
-						else
-						{
-							ZenLogger.LogError("Missile type not found!");
+							case MissileHomingMethod.Chase:
+								UpdateChaseMethod(lmc);
+								break;
+							case MissileHomingMethod.PID:
+								UpdatePIDMethod(lmc);
+								break;
+							case MissileHomingMethod.ProNav:
+								UpdateAdvancedNavMethod(lmc);
+								break;
+							case MissileHomingMethod.Swarm:
+								UpdateSwarmMethod(lmc);
+								break;
+							case MissileHomingMethod.Swirl:
+								UpdateRandomSwirlMethod(lmc);
+								break;
+							default:
+								ZenLogger.LogError("Missile homing method not found");
+								break;
 						}
 					}
 				}
 
-				if (lmc.projectileInfo.target != null && Vector3.SqrMagnitude(lmc.transform.position - lmc.projectileInfo.target.position) <= lmc.detonationDistance)
-				{
-					ZenLogger.Log("Close to object");
-					OnHit(lmc);
-				}
-
-				// Advances missile forward per frame based on projectileInfo.ProjectileSpeed and time
-				lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.ProjectileSpeed;
-
+				HandleDetonationDistance(lmc);
 			}
 		}
 
-
-
-		private void UpdateDumbfireMethod(LaunchedMissileComp lmc) { lmc.transform.rotation = Quaternion.LookRotation(lmc.projectileInfo.fireDirection); }
-
-		private void UpdateDispersalMethod(LaunchedMissileComp lmc)
+		private void UpdateDumbfireMethod(LaunchedMissileComp lmc)
 		{
-			if (lmc.TimeAlive < lmc.dispersalTime)
-			{
-				lmc.transform.Rotate(lmc.transform.up, Random.Range(-lmc.rotationSpeed, lmc.rotationSpeed) * Time.deltaTime, Space.World);
-				lmc.transform.Translate(lmc.transform.forward * lmc.projectileInfo.ProjectileSpeed * Time.deltaTime);
-			}
-			else
-			{
-				lmc.projectileInfo.ShouldDisperse = false;
-			}
+			lmc.transform.rotation = Quaternion.LookRotation(lmc.projectileInfo.fireDirection);
+
+			lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.ProjectileSpeed;
+		}
+
+		private void UpdateChaseMethod(LaunchedMissileComp lmc)
+		{
+			lmc.transform.rotation = Quaternion.Lerp(
+			                                         lmc.transform.rotation,
+			                                         Quaternion.LookRotation(lmc.projectileInfo.target.position - lmc.transform.position),
+			                                         Time.deltaTime * lmc.projectileInfo.RotationSpeed);
+			lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.ProjectileSpeed;
+		}
+
+		private void UpdatePIDMethod(LaunchedMissileComp lmc)
+		{
+			Vector3 hitPos = RangedCombatHelper.Predict(lmc.transform.position, lmc.projectileInfo.target.position, lmc.targetLastPos, lmc.projectileInfo.ProjectileSpeed);
+			lmc.targetLastPos = lmc.projectileInfo.target.position;
+
+			lmc.transform.rotation = Quaternion.Lerp(
+			                                         lmc.transform.rotation,
+			                                         Quaternion.LookRotation(hitPos - lmc.transform.position), Time.deltaTime * lmc.projectileInfo.RotationSpeed);
+
+			lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.ProjectileSpeed;
 		}
 
 		private void UpdateAdvancedNavMethod(LaunchedMissileComp lmc)
@@ -140,8 +139,22 @@ namespace Zenobit.Systems
 				lmc.desiredRotation = (Time.deltaTime * lmc.los) + (lmc.losDelta * lmc.navigationalConstant); // Plain proportional navigation.
 
 			// Use the Rotate function to consider the rotation rate of the missile.
-			lmc.transform.rotation = Quaternion.RotateTowards(lmc.transform.rotation, Quaternion.LookRotation(lmc.desiredRotation, lmc.transform.up), Time.deltaTime * lmc.rotationSpeed);
-			lmc.transform.Translate(lmc.transform.forward * lmc.projectileInfo.ProjectileSpeed * Time.deltaTime);
+			lmc.transform.rotation = Quaternion.RotateTowards(lmc.transform.rotation, Quaternion.LookRotation(lmc.desiredRotation, lmc.transform.up), Time.deltaTime * lmc.projectileInfo.RotationSpeed);
+
+			lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.ProjectileSpeed;
+		}
+
+		private void UpdateDispersalMethod(LaunchedMissileComp lmc)
+		{
+			if (lmc.TimeAlive < lmc.dispersalTime)
+			{
+				lmc.transform.Rotate(lmc.transform.up, Random.Range(-lmc.projectileInfo.RotationSpeed, lmc.projectileInfo.RotationSpeed) * Time.deltaTime, Space.World);
+				lmc.transform.Translate(lmc.transform.forward * lmc.projectileInfo.ProjectileSpeed * Time.deltaTime);
+			}
+			else
+			{
+				lmc.projectileInfo.ShouldDisperse = false;
+			}
 		}
 
 		//http://answers.unity3d.com/questions/698009/swarm-missile-adding-random-movement-to-a-homing-m.html
@@ -156,24 +169,15 @@ namespace Zenobit.Systems
 				lmc.timeRandom = Time.time + Random.Range(0.01f, 2);
 			}
 
-			//Moves the missile to its target
-			lmc.transform.position = Vector3.MoveTowards(
-			                                             lmc.transform.position, lmc.projectileInfo.target.position,
-			                                             Time.deltaTime * lmc.projectileInfo.ProjectileSpeed);
-
+			//Perform swarming slide behavior
 			if ((lmc.projectileInfo.target.position - lmc.transform.position).magnitude > 10)
 			{
 				lmc.transform.Translate(lmc.xRandom, lmc.yRandom, lmc.zRandom, lmc.projectileInfo.target);
 			}
-			//Adds randomized trajectory
 
 			//keeps the missile looking at its target
 			lmc.transform.LookAt(lmc.projectileInfo.target.position);
-
-			if ((lmc.projectileInfo.target.position - lmc.transform.position).magnitude < 3 || lmc.TimeAlive > lmc.projectileInfo.TimeToLive)
-			{
-				engine.DestroyEntity(lmc.Owner);
-			}
+			lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.ProjectileSpeed;
 		}
 
 		//https://www.reddit.com/r/Unity3D/comments/3xw8uc/cluster_homing_missiles_c_code/
@@ -186,7 +190,7 @@ namespace Zenobit.Systems
 					if ((lmc.projectileInfo.target.position - lmc.transform.position).magnitude > 50)
 					{
 						lmc.randomSwirlOffset = 100.0f;
-						lmc.rotationSpeed = 90.0f;
+						lmc.projectileInfo.RotationSpeed = 90.0f;
 					}
 					else
 					{
@@ -195,7 +199,7 @@ namespace Zenobit.Systems
 						if ((lmc.projectileInfo.target.position - lmc.transform.position).magnitude < 2)
 						{
 							lmc.randomSwirlOffset = 0f;
-							lmc.rotationSpeed = 180.0f;
+							lmc.projectileInfo.RotationSpeed = 180.0f;
 						}
 					}
 				}
@@ -204,41 +208,11 @@ namespace Zenobit.Systems
 				direction.Normalize();
 				lmc.transform.rotation = Quaternion.RotateTowards(
 				                                                  lmc.transform.rotation, Quaternion.LookRotation(direction),
-				                                                  lmc.rotationSpeed *
+				                                                  lmc.projectileInfo.RotationSpeed *
 				                                                  Time.deltaTime);
-				lmc.transform.Translate(Vector3.forward * lmc.projectileInfo.ProjectileSpeed * Time.deltaTime);
+
+				lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.ProjectileSpeed;
 			}
-
-			if (lmc.TimeAlive > lmc.projectileInfo.TimeToLive)
-			{
-				engine.DestroyEntity(lmc.Owner);
-			}
-		}
-
-		public static Vector3 Predict(Vector3 sPos, Vector3 tPos, Vector3 tLastPos, float pSpeed)
-		{
-			// Target projectileInfo.ProjectileSpeed
-			Vector3 tVel = (tPos - tLastPos) / Time.deltaTime;
-
-			// Time to reach the target
-			float flyTime = GetProjFlightTime(tPos - sPos, tVel, pSpeed);
-
-			if (flyTime > 0)
-				return tPos + flyTime * tVel;
-			return tPos;
-		}
-
-		static float GetProjFlightTime(Vector3 dist, Vector3 tVel, float pSpeed)
-		{
-			float a = Vector3.Dot(tVel, tVel) - pSpeed * pSpeed;
-			float b = 2.0f * Vector3.Dot(tVel, dist);
-			float c = Vector3.Dot(dist, dist);
-
-			float det = b * b - 4 * a * c;
-
-			if (det > 0)
-				return 2 * c / (Mathf.Sqrt(det) - b);
-			return -1;
 		}
 
 		public void DeactivateBeforeRelease(LaunchedMissileComp lmc)
@@ -246,79 +220,28 @@ namespace Zenobit.Systems
 			Physics.IgnoreCollision(lmc.myCollider, lmc.ownerCollider, false);
 		}
 
-		protected void TriggerExplosion(LaunchedMissileComp lmc)
+		private bool CheckPastTimeToLive(LaunchedMissileComp lmc)
 		{
-			if (lmc.ExplosionPrefab == null) return;
-
-			var exp = lmc.ExplosionPrefab.InstantiateFromPool(lmc.transform.position);
-			exp.ReleaseDelayed(lmc.explosionTime);
+			if (lmc.TimeAlive > lmc.projectileInfo.TimeToLive)
+			{
+				//ZenLogger.Log($"Past time to live with {lmc.TimeAlive} > {lmc.projectileInfo.TimeToLive}");
+				//OnSelfDestruct(lmc, true);
+				RangedCombatHelper.PerformAreaExplosion(lmc);
+				return true;
+			}
+			return false;
 		}
 
-		// Stop attached particle systems emission and allow them to fade out before despawning
-		void Delay(LaunchedMissileComp lmc)
+		private void HandleDetonationDistance(LaunchedMissileComp lmc)
 		{
-			if (lmc.particles != null)
+			if (lmc.projectileInfo.target != null && Vector3.SqrMagnitude(lmc.transform.position - lmc.projectileInfo.target.position) <= lmc.detonationDistance)
 			{
-				//bool delayed;
-
-				lmc.particles.Stop(false);
-
-				//for (int i = 0; i < particles.Length; i++)
-				//{
-				//	delayed = false;
-
-				//	for (int y = 0; y < delayedParticles.Length; y++)
-				//		if (particles[i] == delayedParticles[y])
-				//		{
-				//			delayed = true;
-				//			break;
-				//		}
-
-				//	particles[i].Stop(false);
-
-				//	if (!delayed)
-				//		particles[i].Clear(false);
-				//}
+				ZenLogger.Log("Close to object");
+				//OnHit(lmc);
+				RangedCombatHelper.PerformAreaExplosion(lmc);
 			}
 		}
 
-		// Despawn routine
-		void OnMissileDestroy(LaunchedMissileComp lmc)
-		{
-			//F3DPoolManager.Pools["GeneratedPool"].Despawn(transform);
-			engine.DestroyEntity(lmc.Owner);
-		}
-
-		void OnHit(LaunchedMissileComp lmc)
-		{
-			//TODO: SEND DAMAGE
-			lmc.meshRenderer.enabled = false;
-			lmc.IsHit = true;
-
-			// Invoke delay routine if required
-			if (lmc.despawnDelay > 0)
-			{
-				// Reset missile TimeAlive and let particles systems stop emitting and fade out correctly
-				lmc.TimeAlive = 0f;
-				Delay(lmc);
-			}
-		}
-
-		void OnSelfDestruct(LaunchedMissileComp lmc, bool ShouldExplodeInAir)
-		{
-			lmc.meshRenderer.enabled = false;
-			lmc.IsHit = true;
-
-			if (!ShouldExplodeInAir)
-				lmc.isFXSpawned = true;
-
-			// Invoke delay routine if required
-			if (lmc.despawnDelay > 0)
-			{
-				// Reset missile TimeAlive and let particles systems stop emitting and fade out correctly
-				lmc.TimeAlive = 0f;
-				Delay(lmc);
-			}
-		}
+		
 	}
 }

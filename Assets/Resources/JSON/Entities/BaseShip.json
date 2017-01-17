@@ -107,7 +107,12 @@
                 {
                     "missileInfoPacket": {
                         "TimeToLive": 10.0,
+                        "ExplosionImpactRadius": 20.0,
+                        "ExplosionForce": 20.0,
+                        "ShieldDamage": 20.0,
+                        "HullDamage": 20.0,
                         "ProjectileSpeed": 10.0,
+                        "RotationSpeed": 10.0,
                         "StartPosition": {
                             "x": 0.0,
                             "y": 0.0,
@@ -120,13 +125,13 @@
                         },
                         "OwningActorPos": null,
                         "FiringWeaponComp": null,
-                        "missileFireType": "Dumbfire",
+                        "missileFireType": "Homing",
                         "target": null,
                         "ShouldDisperse": false,
                         "DispersalTime": 0.0,
-                        "DetonationDistance": 0.1,
+                        "DetonationDistance": 0.0,
                         "PIDNavigationalConstant": 1.0,
-                        "missileHomingMethod": "None",
+                        "missileHomingMethod": "Chase",
                         "missileRetargetBehavior": "SelfDestruct"
                     },
                     "numberSwarmMissiles": 1,

@@ -48,6 +48,19 @@ namespace Zenobit.Common.ZenECS
 
 	    [HideInInspector]public IEnumerable<ComponentEcs> Components => _components.Values;
 
+		private EcsEngine _engine;
+
+		public EcsEngine engine
+		{
+			set { _engine = value; }
+			get
+			{
+				if (_engine == null)
+					_engine = EcsEngine.Instance;
+				return _engine;
+			}
+		}
+
         public void InitializeComponents(List<ComponentTypes> componentTypes)
         {
             foreach (var component in componentTypes)
@@ -84,7 +97,7 @@ namespace Zenobit.Common.ZenECS
 					}
 				}
 		    }
-		    ZenLogger.Log($"GetComponentDownward failed!");
+		    //ZenLogger.Log($"GetComponentDownward failed!");
 		    return null;
 	    }
 
@@ -106,16 +119,16 @@ namespace Zenobit.Common.ZenECS
 
         public void AddComponent(ComponentEcs component)
         {
-	        component.Owner = this;
-            _components.Add(component.ObjectType, component);
-            if (EcsEngine.Instance != null)
-                EcsEngine.Instance.AddComponent(component);
+			component.Initialise(engine, this);
+
+			_components.Add(component.ObjectType, component);
+	        engine?.AddComponent(component);
         }
 
 	    public void RemoveComponent(ComponentEcs component)
 	    {
 		    _components.Remove(component.ObjectType);
-		    EcsEngine.Instance.DestroyComponent(component);
+			engine.DestroyComponent(component);
 	    }
     }
 }

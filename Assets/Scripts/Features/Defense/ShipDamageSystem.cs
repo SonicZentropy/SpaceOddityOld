@@ -14,8 +14,13 @@ namespace Zenobit.Systems
 
 	#endregion
 
-	public class DamageSystem : AbstractEcsSystem
+	public class ShipDamageSystem : AbstractEcsSystem
 	{
+		private readonly Matcher shipMatcher = new Matcher(new List<ComponentTypes>
+																 {
+																	 ComponentTypes.ShipComp,
+																	 ComponentTypes.DamageComp
+																 });
 		public override bool Init()
 		{
 			return true;
@@ -23,11 +28,11 @@ namespace Zenobit.Systems
 
 		public override void Update()
 		{
-			var matches = engine.Get(ComponentTypes.DamageComp);
+			var matches = shipMatcher.GetMatches();
 			for (int i = 0; i < matches.Count; ++i)
 			{
 				var dam = matches[i].GetComponent<DamageComp>();
-				ZenLogger.Log($"Dmg comp found on {dam.Owner.EntityName}");
+				ZenLogger.Log($"SHIP Dmg comp found on {dam.Owner.EntityName} for {dam.ShieldDamage} shield and {dam.HealthDamage} hull dmg");
 				dam.Owner.RemoveComponent(dam);
 			}
 		}

@@ -1,5 +1,6 @@
 ﻿namespace Zenobit.Components
 {
+	using AdvancedInspector;
 	using Common.ZenECS;
 	using UnityEngine;
 
@@ -28,6 +29,7 @@
 	public enum MissileHomingMethod
 	{
 		None,
+		Chase,
 		ProNav,
 		Swarm,
 		Swirl,
@@ -38,7 +40,15 @@
 	{
 		//ProjectileInfo
 		public float TimeToLive;
+		[Tooltip("0 for no area effect")]
+		public float ExplosionImpactRadius;
+
+		public float ExplosionForce;
+
+		[ReadOnly]public float ShieldDamage;
+		[ReadOnly]public float HullDamage;
 		public float ProjectileSpeed;
+		public float RotationSpeed;
 		public Vector3 StartPosition;
 		[HideInInspector]
 		public Vector3 fireDirection;

@@ -18,7 +18,7 @@
 
 //		[Tooltip("Time (in seconds) before missile expires/self destructs")]
 //		public float lifeTime = 5f; // Missile life time
-		[HideInInspector]public float TimeAlive;
+		[HideInInspector]public float TimeAlive { get; set; }
 
 
 		[HideInInspector]
@@ -32,8 +32,6 @@
 		[HideInInspector]public float RaycastAdvance = 2f; // Raycast advance multiplier
 
 		public float dispersalTime = 2f;
-		[SerializeField, Tooltip("The maximum rotation speed of the missile. In degrees per second. Its actual rotation may vary, because it's generated randomly.")]
-		[HideInInspector]public float rotationSpeed = 10;
 
 		#region ProNav Method
 

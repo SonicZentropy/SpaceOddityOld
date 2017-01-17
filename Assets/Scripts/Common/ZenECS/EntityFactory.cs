@@ -84,9 +84,7 @@
 		{
 			foreach (var cmp in ent.Components)
 			{
-				cmp.SetOwner(ent);
-				cmp.Initialise(engine);
-                if (cmp.Id == Guid.Empty) cmp.SetId(Guid.NewGuid());
+				cmp.Initialise(engine, ent);
                 engine.AddComponent(cmp);
 			}
 
