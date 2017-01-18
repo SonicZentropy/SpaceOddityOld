@@ -34,7 +34,7 @@ public class MissileFireManager : Singleton<MissileFireManager>
 		//var lpcinst = lpc.InstantiateFromPool();
 		//lpcinst.GetComponent<MissileController>().InitFromProjectileInfo(wc.missileInfoPacket);
 
-			Entity miss = EcsEngine.Instance.CreateEntity(Res.Entities.DumbfireMissile);
+			Entity miss = EcsEngine.Instance.CreateEntity(wc.ProjectileEntity);
 			InitFromProjectileInfo(miss, wc);
 
 	}
@@ -45,7 +45,7 @@ public class MissileFireManager : Singleton<MissileFireManager>
 		//var lpc = Res.Load(wc.ProjectilePrefab);
 		//var lpcinst = lpc.InstantiateFromPool();
 		//lpcinst.GetComponent<MissileController>().InitFromProjectileInfo(wc.missileInfoPacket);
-		Entity miss = EcsEngine.Instance.CreateEntity(Res.Entities.HomingMissile);
+		Entity miss = EcsEngine.Instance.CreateEntity(wc.ProjectileEntity);
 		InitFromProjectileInfo(miss, wc);
 	}
 
@@ -66,7 +66,7 @@ public class MissileFireManager : Singleton<MissileFireManager>
 	{
 		for (int i = 0; i < numMissiles; i++)
 		{
-			Entity miss = EcsEngine.Instance.CreateEntity(Res.Entities.SwarmMissile);
+			Entity miss = EcsEngine.Instance.CreateEntity(mc.ProjectileEntity);
 			InitFromProjectileInfo(miss, mc);
 			yield return 0;
 		}
@@ -86,6 +86,7 @@ public class MissileFireManager : Singleton<MissileFireManager>
 		var lmc = missile.GetComponent<LaunchedMissileComp>();
 
 		lmc.projectileInfo = mc.missileInfoPacket;
+		lmc.projectileInfo.FlightSpeed = mc.ProjectileSpeed;
 		lmc.projectileInfo.ShieldDamage = mc.ShieldDamage;
 		lmc.projectileInfo.HullDamage = mc.HullDamage;
 		transform.position = lmc.projectileInfo.StartPosition;
@@ -104,9 +105,9 @@ public class MissileFireManager : Singleton<MissileFireManager>
 		}
 
 		//Swirl method
-		lmc.xRandom = Random.Range(-lmc.swarmRandomRange, lmc.swarmRandomRange);
-		lmc.yRandom = Random.Range(-lmc.swarmRandomRange, lmc.swarmRandomRange);
-		lmc.zRandom = Random.Range(0, lmc.swarmRandomRange);
+		lmc.xRandom = Random.Range(-lmc.clusterRandomRange, lmc.clusterRandomRange);
+		lmc.yRandom = Random.Range(-lmc.clusterRandomRange, lmc.clusterRandomRange);
+		lmc.zRandom = Random.Range(0, lmc.clusterRandomRange);
 		lmc.timeRandom = Time.time + Random.Range(0.01f, 2);
 
 		//Explosion caching

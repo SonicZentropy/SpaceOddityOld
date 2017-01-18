@@ -33,7 +33,7 @@
 		private float dispersalTime = 2f;
 		[SerializeField, Tooltip("The maximum rotation speed of the missile. In degrees per second. Its actual rotation may vary, because it's generated randomly.")] float rotationSpeed = 10;
 
-		#region ProNav Method
+		#region AdvNav Method
 
 		Vector3 previousLos;
 		Vector3 los;
@@ -48,13 +48,13 @@
 
 		#endregion
 
-		#region SwarmMethod
+		#region ClusterMethod
 
 		private float timeRandom;
 		private float xRandom = 0.01f;
 		private float yRandom = 0.01f;
 		private float zRandom = 0.01f;
-		private float swarmRandomRange = 0.1f;
+		private float clusterRandomRange = 0.1f;
 
 		#endregion
 
@@ -110,9 +110,9 @@
 //
 //			//Swirl method
 //			rocketTurnSpeed = 50.0f;
-//			xRandom = Random.Range(-swarmRandomRange, swarmRandomRange);
-//			yRandom = Random.Range(-swarmRandomRange, swarmRandomRange);
-//			zRandom = Random.Range(0, swarmRandomRange);
+//			xRandom = Random.Range(-clusterRandomRange, clusterRandomRange);
+//			yRandom = Random.Range(-clusterRandomRange, clusterRandomRange);
+//			zRandom = Random.Range(0, clusterRandomRange);
 //			timeRandom = Time.time + Random.Range(0.01f, 2);
 //
 //			//Explosion caching
@@ -299,21 +299,21 @@
 		}
 
 		//http://answers.unity3d.com/questions/698009/swarm-missile-adding-random-movement-to-a-homing-m.html
-		private void UpdateSwarmMethod()
+		private void UpdateClusterMethod()
 		{
 			//defines a new random float for x,y,z every frame only if the time specfied has elapsed.  Creates random changes in x, y, z, variables at random times.
 			if (Time.time > timeRandom)
 			{
-				xRandom = Random.Range(-swarmRandomRange, swarmRandomRange);
-				yRandom = Random.Range(-swarmRandomRange, swarmRandomRange);
-				zRandom = Random.Range(0, swarmRandomRange);
+				xRandom = Random.Range(-clusterRandomRange, clusterRandomRange);
+				yRandom = Random.Range(-clusterRandomRange, clusterRandomRange);
+				zRandom = Random.Range(0, clusterRandomRange);
 				timeRandom = Time.time + Random.Range(0.01f, 2);
 			}
 
 			//Moves the missile to its target
 			transform.position = Vector3.MoveTowards(
 			                                         transform.position, target.position,
-			                                         Time.deltaTime * projectileInfo.ProjectileSpeed);
+			                                         Time.deltaTime * projectileInfo.FlightSpeed);
 
 			if ((target.position - transform.position).magnitude > 10)
 			{

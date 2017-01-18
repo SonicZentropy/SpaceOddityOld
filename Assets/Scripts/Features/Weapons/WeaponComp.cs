@@ -45,14 +45,25 @@ namespace Zenobit.Components
 
 		[TextField(TextFieldType.Prefab)] public string WeaponPrefab = "None";
 
-		public GameObject WeaponGameObject;
+		[HideInInspector]public GameObject WeaponGameObject;
 
 		// Projectile Information
 		[Inspect]
 		public float ProjectileSpeed { get; set; }
 
-		[Inspect]
-		public bool ProjectileIsEntity { get; set; }
+		private bool ProjIsNotMissile()
+		{
+			return WeaponType != WeaponTypes.Missile;
+		}
+
+		private bool projectileIsEntity;
+
+		[Inspect("ProjIsNotMissile")]
+		public bool ProjectileIsEntity
+		{
+			get { return (projectileIsEntity || WeaponType == WeaponTypes.Missile); }
+			set { projectileIsEntity = value; }
+		}
 
 		private bool ProjectileUsesPrefab() { return !ProjectileIsEntity; }
 
@@ -68,7 +79,7 @@ namespace Zenobit.Components
 		[HideInInspector]
 		public float NextAttackTime { get; set; }
 
-		[Inspect]
+		[Inspect(500)]
 		public ShipFitting fittingAttached { get; set; }
 
 		public override ComponentTypes ComponentType => ComponentTypes.WeaponComp;

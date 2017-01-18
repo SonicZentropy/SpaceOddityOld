@@ -19,19 +19,19 @@
 		Swarm
 	}
 
-	public enum MissileRetargetBehavior
-	{
-		SelfDestruct,
-		FlyStraight,
-		FindNewTarget
-	}
+	//public enum MissileRetargetBehavior
+	//{
+	//	SelfDestruct,
+	//	FlyStraight,
+	//	FindNewTarget
+	//}
 
 	public enum MissileHomingMethod
 	{
 		None,
 		Chase,
-		ProNav,
-		Swarm,
+		AdvNav,
+		Cluster,
 		Swirl,
 		PID
 	}
@@ -45,17 +45,23 @@
 
 		public float ExplosionForce;
 
-		[ReadOnly]public float ShieldDamage;
-		[ReadOnly]public float HullDamage;
-		public float ProjectileSpeed;
+		[HideInInspector]public float ShieldDamage;
+		[HideInInspector]public float HullDamage;
+		[HideInInspector]
+		public float FlightSpeed;
 		public float RotationSpeed;
+		[HideInInspector]
 		public Vector3 StartPosition;
 		[HideInInspector]
 		public Vector3 fireDirection;
 		[HideInInspector] public PositionComp OwningActorPos;
 		[HideInInspector]
 		public WeaponComp FiringWeaponComp;
-
+		public bool ShouldDisperse;
+		public float DispersalTime;
+		public float DispersalRandomTime;
+		public float DetonationDistance;
+		public float PIDNavigationalConstant;
 		//MissileInfo
 		public MissileFireType missileFireType;
 		[HideInInspector]
@@ -67,13 +73,8 @@
 
 		[HideInInspector]
 		public Transform target;
-
-		public bool ShouldDisperse;
-		public float DispersalTime;
-		public float DispersalRandomTime;
-		public float DetonationDistance;
-		public float PIDNavigationalConstant;
+		
 		public MissileHomingMethod missileHomingMethod;
-		public MissileRetargetBehavior missileRetargetBehavior;
+		//public MissileRetargetBehavior missileRetargetBehavior;
 	}
 }

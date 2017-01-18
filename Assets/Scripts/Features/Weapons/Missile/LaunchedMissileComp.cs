@@ -33,7 +33,7 @@
 		
 		public Vector3 dispersalTarget;
 
-		#region ProNav Method
+		#region AdvNav Method
 
 		[HideInInspector] public Vector3 previousLos;
 		[HideInInspector] public Vector3 los;
@@ -49,13 +49,13 @@
 
 		#endregion
 
-		#region SwarmMethod
+		#region ClusterMethod
 
 		[HideInInspector] public float timeRandom;
 		[HideInInspector] public float xRandom = 0.05f;
 		[HideInInspector] public float yRandom = 0.05f;
 		[HideInInspector] public float zRandom = 0.05f;
-		[HideInInspector] public float swarmRandomRange = 0.51f;
+		[HideInInspector] public float clusterRandomRange = 0.51f;
 
 		#endregion
 

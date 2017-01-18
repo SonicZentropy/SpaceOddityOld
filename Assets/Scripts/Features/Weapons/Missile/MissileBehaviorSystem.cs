@@ -78,11 +78,11 @@ namespace Zenobit.Systems
 							case MissileHomingMethod.PID:
 								UpdatePIDMethod(lmc);
 								break;
-							case MissileHomingMethod.ProNav:
+							case MissileHomingMethod.AdvNav:
 								UpdateAdvancedNavMethod(lmc);
 								break;
-							case MissileHomingMethod.Swarm:
-								UpdateSwarmMethod(lmc);
+							case MissileHomingMethod.Cluster:
+								UpdateClusterMethod(lmc);
 								break;
 							case MissileHomingMethod.Swirl:
 								UpdateRandomSwirlMethod(lmc);
@@ -102,7 +102,7 @@ namespace Zenobit.Systems
 		{
 			lmc.transform.rotation = Quaternion.LookRotation(lmc.projectileInfo.fireDirection);
 
-			lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.ProjectileSpeed;
+			lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.FlightSpeed;
 		}
 
 		private void UpdateChaseMethod(LaunchedMissileComp lmc)
@@ -110,19 +110,19 @@ namespace Zenobit.Systems
 			lmc.transform.rotation = Quaternion.Lerp(lmc.transform.rotation,
 			                                         Quaternion.LookRotation(lmc.projectileInfo.target.position - lmc.transform.position),
 			                                         Time.deltaTime * lmc.projectileInfo.RotationSpeed);
-			lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.ProjectileSpeed;
+			lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.FlightSpeed;
 		}
 
 		private void UpdatePIDMethod(LaunchedMissileComp lmc)
 		{
-			Vector3 hitPos = RangedCombatHelper.Predict(lmc.transform.position, lmc.projectileInfo.target.position, lmc.targetLastPos, lmc.projectileInfo.ProjectileSpeed);
+			Vector3 hitPos = RangedCombatHelper.Predict(lmc.transform.position, lmc.projectileInfo.target.position, lmc.targetLastPos, lmc.projectileInfo.FlightSpeed);
 			lmc.targetLastPos = lmc.projectileInfo.target.position;
 
 			lmc.transform.rotation = Quaternion.Lerp(lmc.transform.rotation,
 			                                         Quaternion.LookRotation(hitPos - lmc.transform.position),
 			                                         Time.deltaTime * lmc.projectileInfo.RotationSpeed);
 
-			lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.ProjectileSpeed;
+			lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.FlightSpeed;
 		}
 
 		private void UpdateAdvancedNavMethod(LaunchedMissileComp lmc)
@@ -144,7 +144,7 @@ namespace Zenobit.Systems
 			                                         Quaternion.LookRotation(lmc.desiredRotation), // lmc.transform.up),
 			                                         Time.deltaTime * lmc.projectileInfo.RotationSpeed);
 
-			lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.ProjectileSpeed;
+			lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.FlightSpeed;
 		}
 
 		private void UpdateDispersalMethod(LaunchedMissileComp lmc)
@@ -169,7 +169,7 @@ namespace Zenobit.Systems
 				//	controller.Rotate(transform.rotation * Quaternion.LookRotation(transform.up * Random.Range(-rotationSpeed, rotationSpeed) * Time.deltaTime, Vector3.up));
 				//else
 				//	transform.Rotate(transform.up, Random.Range(-rotationSpeed, rotationSpeed) * Time.deltaTime, Space.World);
-				lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.ProjectileSpeed;
+				lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.FlightSpeed;
 			}
 			else
 			{
@@ -182,21 +182,21 @@ namespace Zenobit.Systems
 		{
 			var randomX = Random.Range(-15, 15);
 			var randomY = Random.Range(-15, 15);
-			var zDistance = lmc.projectileInfo.DispersalTime * lmc.projectileInfo.ProjectileSpeed;
+			var zDistance = lmc.projectileInfo.DispersalTime * lmc.projectileInfo.FlightSpeed;
 
 			lmc.dispersalTarget = lmc.transform.position + new Vector3(randomX, randomY, zDistance);
 
 		}
 
 		//http://answers.unity3d.com/questions/698009/swarm-missile-adding-random-movement-to-a-homing-m.html
-		private void UpdateSwarmMethod(LaunchedMissileComp lmc)
+		private void UpdateClusterMethod(LaunchedMissileComp lmc)
 		{
 			//defines a new random float for x,y,z every frame only if the time specfied has elapsed.  Creates random changes in x, y, z, variables at random times.
 			if (Time.time > lmc.timeRandom)
 			{
-				lmc.xRandom = Random.Range(-lmc.swarmRandomRange, lmc.swarmRandomRange);
-				lmc.yRandom = Random.Range(-lmc.swarmRandomRange, lmc.swarmRandomRange);
-				lmc.zRandom = Random.Range(0, lmc.swarmRandomRange);
+				lmc.xRandom = Random.Range(-lmc.clusterRandomRange, lmc.clusterRandomRange);
+				lmc.yRandom = Random.Range(-lmc.clusterRandomRange, lmc.clusterRandomRange);
+				lmc.zRandom = Random.Range(0, lmc.clusterRandomRange);
 				lmc.timeRandom = Time.time + Random.Range(0.01f, 2);
 			}
 
@@ -211,7 +211,7 @@ namespace Zenobit.Systems
 			lmc.transform.rotation = Quaternion.Slerp(lmc.transform.rotation,
 			                                         Quaternion.LookRotation(lmc.projectileInfo.target.position - lmc.transform.position), // lmc.transform.up),
 			                                         Time.deltaTime * lmc.projectileInfo.RotationSpeed);
-			lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.ProjectileSpeed;
+			lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.FlightSpeed;
 		}
 
 		//https://www.reddit.com/r/Unity3D/comments/3xw8uc/cluster_homing_missiles_c_code/
@@ -246,7 +246,7 @@ namespace Zenobit.Systems
 				                                                  Quaternion.LookRotation(direction),
 				                                                  lmc.randomSwirlRotation * Time.deltaTime);
 
-				lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.ProjectileSpeed;
+				lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.FlightSpeed;
 			}
 		}
 
