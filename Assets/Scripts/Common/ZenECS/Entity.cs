@@ -101,6 +101,13 @@ namespace Zenobit.Common.ZenECS
 		    return null;
 	    }
 
+		public T GetOrAddComponent<T>(ComponentTypes ctypes) where T : ComponentEcs
+		{
+			if (!HasComponent(ctypes))
+				AddComponent(ctypes);
+			return GetComponent<T>();
+		}
+
         public void AddComponent(ComponentTypes componentType)
         {
             var comp = ComponentFactory.Create(componentType);

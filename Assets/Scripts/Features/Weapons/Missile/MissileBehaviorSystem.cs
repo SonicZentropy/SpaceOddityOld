@@ -9,6 +9,7 @@ namespace Zenobit.Systems
 	#region Dependencies
 
 	using System.Linq;
+	using Common.Extensions;
 	using Common.Helpers;
 	using Common.ObjectPool;
 	using Common.ZenECS;
@@ -106,8 +107,7 @@ namespace Zenobit.Systems
 
 		private void UpdateChaseMethod(LaunchedMissileComp lmc)
 		{
-			lmc.transform.rotation = Quaternion.Lerp(
-			                                         lmc.transform.rotation,
+			lmc.transform.rotation = Quaternion.Lerp(lmc.transform.rotation,
 			                                         Quaternion.LookRotation(lmc.projectileInfo.target.position - lmc.transform.position),
 			                                         Time.deltaTime * lmc.projectileInfo.RotationSpeed);
 			lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.ProjectileSpeed;
@@ -118,9 +118,9 @@ namespace Zenobit.Systems
 			Vector3 hitPos = RangedCombatHelper.Predict(lmc.transform.position, lmc.projectileInfo.target.position, lmc.targetLastPos, lmc.projectileInfo.ProjectileSpeed);
 			lmc.targetLastPos = lmc.projectileInfo.target.position;
 
-			lmc.transform.rotation = Quaternion.Lerp(
-			                                         lmc.transform.rotation,
-			                                         Quaternion.LookRotation(hitPos - lmc.transform.position), Time.deltaTime * lmc.projectileInfo.RotationSpeed);
+			lmc.transform.rotation = Quaternion.Lerp(lmc.transform.rotation,
+			                                         Quaternion.LookRotation(hitPos - lmc.transform.position),
+			                                         Time.deltaTime * lmc.projectileInfo.RotationSpeed);
 
 			lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.ProjectileSpeed;
 		}
@@ -139,22 +139,53 @@ namespace Zenobit.Systems
 				lmc.desiredRotation = (Time.deltaTime * lmc.los) + (lmc.losDelta * lmc.navigationalConstant); // Plain proportional navigation.
 
 			// Use the Rotate function to consider the rotation rate of the missile.
-			lmc.transform.rotation = Quaternion.RotateTowards(lmc.transform.rotation, Quaternion.LookRotation(lmc.desiredRotation, lmc.transform.up), Time.deltaTime * lmc.projectileInfo.RotationSpeed);
+			//lmc.transform.rotation = Quaternion.RotateTowards(lmc.transform.rotation, Quaternion.LookRotation(lmc.desiredRotation, lmc.transform.up), Time.deltaTime * lmc.projectileInfo.RotationSpeed);
+			lmc.transform.rotation = Quaternion.Lerp(lmc.transform.rotation,
+			                                         Quaternion.LookRotation(lmc.desiredRotation), // lmc.transform.up),
+			                                         Time.deltaTime * lmc.projectileInfo.RotationSpeed);
 
 			lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.ProjectileSpeed;
 		}
 
 		private void UpdateDispersalMethod(LaunchedMissileComp lmc)
 		{
-			if (lmc.TimeAlive < lmc.dispersalTime)
+			if (lmc.TimeAlive < lmc.projectileInfo.DispersalTime)
 			{
-				lmc.transform.Rotate(lmc.transform.up, Random.Range(-lmc.projectileInfo.RotationSpeed, lmc.projectileInfo.RotationSpeed) * Time.deltaTime, Space.World);
-				lmc.transform.Translate(lmc.transform.forward * lmc.projectileInfo.ProjectileSpeed * Time.deltaTime);
+				if (lmc.dispersalTarget == Vector3.zero)
+					CalculateDispersalTarget(lmc);
+
+				lmc.transform.rotation = Quaternion.Lerp(lmc.transform.rotation,
+													 Quaternion.LookRotation(lmc.dispersalTarget - lmc.transform.position), // lmc.transform.up),
+													 Time.deltaTime * lmc.projectileInfo.RotationSpeed);
+
+				//lmc.transform.Rotate(lmc.transform.up, Random.Range(-lmc.projectileInfo.RotationSpeed, lmc.projectileInfo.RotationSpeed) * Time.deltaTime, Space.Self);
+				//lmc.transform.Translate(lmc.transform.forward * lmc.projectileInfo.ProjectileSpeed * Time.deltaTime);
+				//Quaternion desired = lmc.transform.rotation * Quaternion.LookRotation(lmc.transform.up * Random.Range(-lmc.projectileInfo.RotationSpeed, lmc.projectileInfo.RotationSpeed) * Time.deltaTime, Vector3.up);
+				//lmc.transform.rotation = Quaternion.RotateTowards(lmc.transform.rotation, desired, Time.deltaTime * 20);
+				//var range = Random.Range(-lmc.projectileInfo.RotationSpeed, lmc.projectileInfo.RotationSpeed);
+				////lmc.transform.Rotate(lmc.transform.up, range * Time.deltaTime, Space.World);
+				//lmc.transform.rotation = Quaternion.AngleAxis(range, lmc.transform.up);
+				//if (considerController)
+				//	controller.Rotate(transform.rotation * Quaternion.LookRotation(transform.up * Random.Range(-rotationSpeed, rotationSpeed) * Time.deltaTime, Vector3.up));
+				//else
+				//	transform.Rotate(transform.up, Random.Range(-rotationSpeed, rotationSpeed) * Time.deltaTime, Space.World);
+				lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.ProjectileSpeed;
 			}
 			else
 			{
+				ZenLogger.Log($"Completed dispersal time of {lmc.projectileInfo.DispersalTime} at time alive: {lmc.TimeAlive}");
 				lmc.projectileInfo.ShouldDisperse = false;
 			}
+		}
+
+		private static void CalculateDispersalTarget(LaunchedMissileComp lmc)
+		{
+			var randomX = Random.Range(-15, 15);
+			var randomY = Random.Range(-15, 15);
+			var zDistance = lmc.projectileInfo.DispersalTime * lmc.projectileInfo.ProjectileSpeed;
+
+			lmc.dispersalTarget = lmc.transform.position + new Vector3(randomX, randomY, zDistance);
+
 		}
 
 		//http://answers.unity3d.com/questions/698009/swarm-missile-adding-random-movement-to-a-homing-m.html
@@ -176,7 +207,10 @@ namespace Zenobit.Systems
 			}
 
 			//keeps the missile looking at its target
-			lmc.transform.LookAt(lmc.projectileInfo.target.position);
+			//lmc.transform.LookAt(lmc.projectileInfo.target.position);
+			lmc.transform.rotation = Quaternion.Slerp(lmc.transform.rotation,
+			                                         Quaternion.LookRotation(lmc.projectileInfo.target.position - lmc.transform.position), // lmc.transform.up),
+			                                         Time.deltaTime * lmc.projectileInfo.RotationSpeed);
 			lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.ProjectileSpeed;
 		}
 
@@ -185,31 +219,32 @@ namespace Zenobit.Systems
 		{
 			if (lmc.projectileInfo.target != null)
 			{
-				if (lmc.TimeAlive > 1)
+				if (lmc.TimeAlive > lmc.projectileInfo.DispersalTime + 1.5f)
 				{
 					if ((lmc.projectileInfo.target.position - lmc.transform.position).magnitude > 50)
 					{
 						lmc.randomSwirlOffset = 100.0f;
-						lmc.projectileInfo.RotationSpeed = 90.0f;
+						//lmc.projectileInfo.RotationSpeed = 90.0f;
+						lmc.randomSwirlRotation = 90f;
 					}
 					else
 					{
-						lmc.randomSwirlOffset = 25f;
+						lmc.randomSwirlOffset = 15f;
 						//if close to target
-						if ((lmc.projectileInfo.target.position - lmc.transform.position).magnitude < 2)
+						if ((lmc.projectileInfo.target.position - lmc.transform.position).magnitude < 10)
 						{
 							lmc.randomSwirlOffset = 0f;
-							lmc.projectileInfo.RotationSpeed = 180.0f;
+							//lmc.projectileInfo.RotationSpeed = 180.0f;
+							lmc.randomSwirlRotation = 180f;
 						}
 					}
 				}
 
 				Vector3 direction = lmc.projectileInfo.target.position - lmc.transform.position + Random.insideUnitSphere * lmc.randomSwirlOffset;
 				direction.Normalize();
-				lmc.transform.rotation = Quaternion.RotateTowards(
-				                                                  lmc.transform.rotation, Quaternion.LookRotation(direction),
-				                                                  lmc.projectileInfo.RotationSpeed *
-				                                                  Time.deltaTime);
+				lmc.transform.rotation = Quaternion.RotateTowards(lmc.transform.rotation,
+				                                                  Quaternion.LookRotation(direction),
+				                                                  lmc.randomSwirlRotation * Time.deltaTime);
 
 				lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.ProjectileSpeed;
 			}
@@ -234,14 +269,13 @@ namespace Zenobit.Systems
 
 		private void HandleDetonationDistance(LaunchedMissileComp lmc)
 		{
+			if (lmc.detonationDistance.IsAlmost(0)) return;
 			if (lmc.projectileInfo.target != null && Vector3.SqrMagnitude(lmc.transform.position - lmc.projectileInfo.target.position) <= lmc.detonationDistance)
 			{
-				ZenLogger.Log("Close to object");
+				//ZenLogger.Log("Close to object");
 				//OnHit(lmc);
 				RangedCombatHelper.PerformAreaExplosion(lmc);
 			}
 		}
-
-		
 	}
 }

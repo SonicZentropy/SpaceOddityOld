@@ -59,9 +59,9 @@ namespace Zenobit.Systems
 							if (!oth.Entity.HasComponent(ComponentTypes.DamageComp))
 							{
 								ZenLogger.Log($"Missile Collision system adding collision to {oth.Entity.EntityName}");
-								var dc = oth.Entity.AddComponent<DamageComp>(ComponentTypes.DamageComp);
-								dc.HealthDamage = lmc.projectileInfo.HullDamage;
-								dc.ShieldDamage = lmc.projectileInfo.ShieldDamage;
+								var dc = oth.Entity.GetOrAddComponent<DamageComp>(ComponentTypes.DamageComp);
+								dc.damagePackets.Push(new DamagePacket(lmc.projectileInfo.HullDamage, lmc.projectileInfo.ShieldDamage));
+								
 								ZenUtils.PhysicsUtil.ApplyExplosionForce(oth, coll.contacts[0].point, lmc.projectileInfo.ExplosionImpactRadius);
 							}
 						}
@@ -70,7 +70,7 @@ namespace Zenobit.Systems
 					if (cc.Other.Count > 0) // missile hit *something* so blow up
 					{
 						ZenLogger.Log($"Missile Collision system adding damage from collision to missile");
-						match.AddComponent(ComponentTypes.DamageComp);
+						match.GetOrAddComponent<DamageComp>(ComponentTypes.DamageComp).damagePackets.Push(new DamagePacket());
 					}
 				}
 			}

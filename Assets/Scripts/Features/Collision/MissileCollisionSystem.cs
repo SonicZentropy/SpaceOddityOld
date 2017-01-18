@@ -36,13 +36,15 @@ namespace Zenobit.Systems
 				var colls = match.GetComponent<CollisionEnterComp>();
 				if (colls.Other.Count <= 0)
 					continue;
+
+				var lmc = match.GetComponent<LaunchedMissileComp>();
 				foreach (var o in colls.Other)
 				{
 					var ew = o.gameObject.GetComponent<EntityWrapper>();
 					if (ew != null)
 					{
-						var dc = ew.Entity.AddComponent<DamageComp>(ComponentTypes.DamageComp);
-
+						var dc = ew.Entity.GetOrAddComponent<DamageComp>(ComponentTypes.DamageComp);
+						dc.damagePackets.Push(new DamagePacket(lmc.projectileInfo.HullDamage, lmc.projectileInfo.ShieldDamage));
 					}
 				}
 

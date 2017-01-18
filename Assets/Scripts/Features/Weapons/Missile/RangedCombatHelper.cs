@@ -9,6 +9,7 @@ namespace Zenobit.Common.Helpers
 
 	#region Dependencies
 
+	using System;
 	using UnityEngine;
 	using Zenobit.Common.ZenECS;
 	using Zenobit.Components;
@@ -21,9 +22,17 @@ namespace Zenobit.Common.Helpers
 		{
 			if (lmc.projectileInfo.ExplosionImpactRadius > 0)
 			{
-				var mdc = lmc.Owner.AddComponent<MissileAreaDamageComp>(ComponentTypes.MissileAreaDamageComp);
-				mdc.AreaRadius = lmc.projectileInfo.ExplosionImpactRadius;
-				mdc.ExplosionCenter = lmc.GetComponent<PositionComp>().transform.position;
+				try
+				{
+					var mdc = lmc.Owner.AddComponent<MissileAreaDamageComp>(ComponentTypes.MissileAreaDamageComp);
+					mdc.AreaRadius = lmc.projectileInfo.ExplosionImpactRadius;
+					mdc.ExplosionCenter = lmc.GetComponent<PositionComp>().transform.position;
+				}
+				catch (Exception)
+				{
+					ZenLogger.Log($"exception");
+				}
+				
 			}
 			else //just self destruct
 			{

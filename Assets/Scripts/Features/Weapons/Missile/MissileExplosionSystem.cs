@@ -9,9 +9,11 @@ namespace Zenobit.Systems
 	#region Dependencies
 
 	using System.Collections.Generic;
+	using Common.Extensions;
 	using Common.ObjectPool;
 	using Common.ZenECS;
 	using Components;
+	using UnityEngine;
 
 	#endregion
 
@@ -34,7 +36,9 @@ namespace Zenobit.Systems
 			for (int i = matches.Count -1; i >= 0; i--)
 			{
 				var lmc = matches[i].GetComponent<LaunchedMissileComp>();
-				lmc.ExplosionPrefab.InstantiateFromPool(lmc.GetComponent<PositionComp>().transform.position);
+				var ps = lmc.ExplosionPrefab.InstantiateFromPool(lmc.GetComponent<PositionComp>().transform.position);
+				//ps.GetComponent<ParticleSystem>()?.ScaleByTransform(lmc.projectileInfo.ExplosionImpactRadius, true);
+				ps.GetComponent<ParticleScalingController>()?.SetScale(lmc.projectileInfo.ExplosionImpactRadius, true);
 				engine.DestroyEntity(matches[i]);
 			}
 

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using MEC;
+using UnityEngine;
 using Zenobit.Common;
 using Zenobit.Common.Extensions;
 using Zenobit.Common.ObjectPool;
@@ -51,10 +53,22 @@ public class MissileFireManager : Singleton<MissileFireManager>
 	{
 		if (!HasTarget(wc)) return; //don't shoot if no target to home toward
 
-		for (int i = 0; i < wc.numberSwarmMissiles; i++)
+		Timing.RunCoroutine(FireSwarmMissileCrt(wc, (int) wc.numberSwarmMissiles));
+
+		//for (int i = 0; i < wc.numberSwarmMissiles; i++)
+		//{
+		//	Entity miss = EcsEngine.Instance.CreateEntity(Res.Entities.SwarmMissile);
+		//	InitFromProjectileInfo(miss, wc);
+		//}
+	}
+
+	private IEnumerator<float> FireSwarmMissileCrt(MissileComp mc, int numMissiles)
+	{
+		for (int i = 0; i < numMissiles; i++)
 		{
 			Entity miss = EcsEngine.Instance.CreateEntity(Res.Entities.SwarmMissile);
-			InitFromProjectileInfo(miss, wc);
+			InitFromProjectileInfo(miss, mc);
+			yield return 0;
 		}
 	}
 
@@ -83,6 +97,11 @@ public class MissileFireManager : Singleton<MissileFireManager>
 		lmc.step = Vector3.zero;
 		lmc.TimeAlive = 0f;
 
+		//Dispersal randomization
+		if (lmc.projectileInfo.ShouldDisperse && lmc.projectileInfo.DispersalRandomTime > 0)
+		{
+			lmc.projectileInfo.DispersalTime += Random.Range(-lmc.projectileInfo.DispersalRandomTime, lmc.projectileInfo.DispersalRandomTime);
+		}
 
 		//Swirl method
 		lmc.xRandom = Random.Range(-lmc.swarmRandomRange, lmc.swarmRandomRange);

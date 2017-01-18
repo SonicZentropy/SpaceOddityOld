@@ -20,7 +20,7 @@ namespace Zenobit.Systems
 		int mask;
 		public override bool Init()
 		{
-			mask = ZenUtils.LayerMaskFromIDs(SRLayerMask.npc, SRLayerMask.player, SRLayerMask.foreground, SRLayerMask.weapons);
+			mask = ZenUtils.LayerMaskFromIDs(SRLayerMask.npc, SRLayerMask.player, SRLayerMask.foreground);
 			return true;
 		}
 
@@ -29,22 +29,23 @@ namespace Zenobit.Systems
 			var areas = engine.Get(ComponentTypes.MissileAreaDamageComp);
 			for (int i = areas.Count - 1; i >= 0; i--)
 			{
+				//#HERE: testing rotations and area explosions causing other missiles to throw exceptions
 				var hits = PerformAreaCast((MissileAreaDamageComp) areas[i]);
 				foreach (var hit in hits)
 				{
 					var ew = (EntityWrapper) hit.gameObject.GetComponentDownThenUp<EntityWrapper>();
 					if (ew != null)
 					{
-						ZenLogger.Log($"adding dmg comp to {ew.Entity.EntityName}");
-						var dc = ew.Entity.AddComponent<DamageComp>(ComponentTypes.DamageComp);
+						//ZenLogger.Log($"adding dmg comp to {ew.Entity.EntityName}");
 						var lmc = ((MissileAreaDamageComp) areas[i]).GetComponent<LaunchedMissileComp>();
-						dc.HealthDamage = lmc.projectileInfo.HullDamage;
-						dc.ShieldDamage = lmc.projectileInfo.ShieldDamage;
+						var dc = ew.Entity.GetOrAddComponent<DamageComp>(ComponentTypes.DamageComp);
+						dc.damagePackets.Push(new DamagePacket(lmc.projectileInfo.HullDamage, lmc.projectileInfo.ShieldDamage));
 						ZenUtils.PhysicsUtil.ApplyExplosionForce(ew, lmc.Owner.Wrapper.transform.position, lmc.projectileInfo.ExplosionImpactRadius);
 					}
 				}
 
-				//areas[i].Owner.AddComponent(ComponentTypes.DamageComp);
+				//Adding damage comp here so the missile itself explodes
+				areas[i].Owner.AddComponent(ComponentTypes.DamageComp);
 				areas[i].Owner.RemoveComponent(areas[i]);
 			}
 		}

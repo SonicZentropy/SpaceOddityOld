@@ -30,8 +30,8 @@
 		[Tooltip("Despawn delay for particle effect lifetimes")]
 		public float despawnDelay; // Delay despawn in ms
 		[HideInInspector]public float RaycastAdvance = 2f; // Raycast advance multiplier
-
-		public float dispersalTime = 2f;
+		
+		public Vector3 dispersalTarget;
 
 		#region ProNav Method
 
@@ -64,7 +64,7 @@
 		//[Tooltip("Swirl Method")]
 		//public float rocketTurnSpeed = 10f;
 		[Tooltip("Swirl Method")]public float randomSwirlOffset = 50;
-
+		[HideInInspector]public float randomSwirlRotation = 10;
 		#endregion
 
 		[HideInInspector]public bool IsHit { get; set; } = false;

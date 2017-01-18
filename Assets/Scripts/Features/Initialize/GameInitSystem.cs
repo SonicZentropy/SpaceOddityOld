@@ -18,16 +18,16 @@
 			engine.CreateEntity(Res.Entities.GameSettings);
 
 			var ets = engine.CreateEntity(Res.Entities.EnemyTestShip);
-			ets.Wrapper.transform.position = new Vector3(0, 0, 25);
+			ets.Wrapper.transform.position = new Vector3(5, 0, 75);
 
-			ets = engine.CreateEntity(Res.Entities.EnemyTestShip);
-			ets.Wrapper.transform.position = new Vector3(5, 0, 25);
-
-			ets = engine.CreateEntity(Res.Entities.EnemyTestShip);
-			ets.Wrapper.transform.position = new Vector3(5, 5, 25);
-
-			ets = engine.CreateEntity(Res.Entities.EnemyTestShip);
-			ets.Wrapper.transform.position = new Vector3(10, 10, 25);
+			//ets = engine.CreateEntity(Res.Entities.EnemyTestShip);
+			//ets.Wrapper.transform.position = new Vector3(5, 0, 25);
+			//
+			//ets = engine.CreateEntity(Res.Entities.EnemyTestShip);
+			//ets.Wrapper.transform.position = new Vector3(5, 5, 25);
+			//
+			//ets = engine.CreateEntity(Res.Entities.EnemyTestShip);
+			//ets.Wrapper.transform.position = new Vector3(10, 10, 25);
 
 			return false;
 		}

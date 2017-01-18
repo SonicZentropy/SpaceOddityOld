@@ -120,7 +120,8 @@ namespace Zenobit.Systems
 		private static void CreateMissileInfoPacket(WeaponComp selectedWeapon, PositionComp pc, Vector3 direction)
 		{
 			MissileComp mc = (MissileComp) selectedWeapon;
-			mc.missileInfoPacket.TimeToLive = selectedWeapon.AttackRange / selectedWeapon.ProjectileSpeed;
+			if (mc.missileInfoPacket.TimeToLive == -1f)
+				mc.missileInfoPacket.TimeToLive = selectedWeapon.AttackRange / selectedWeapon.ProjectileSpeed;
 			mc.missileInfoPacket.fireDirection = direction;
 			mc.missileInfoPacket.StartPosition = pc.transform.TransformPoint(selectedWeapon.fittingAttached.PositionOffset);
 			mc.missileInfoPacket.OwningActorPos = pc;

@@ -32,8 +32,11 @@ namespace Zenobit.Systems
 			for (int i = 0; i < matches.Count; ++i)
 			{
 				var dam = matches[i].GetComponent<DamageComp>();
-				ZenLogger.Log($"SHIP Dmg comp found on {dam.Owner.EntityName} for {dam.ShieldDamage} shield and {dam.HealthDamage} hull dmg");
-				dam.Owner.RemoveComponent(dam);
+				for (int j = 0; j < dam.damagePackets.Count; j++)
+				{
+					var damageDone = dam.damagePackets.Pop();
+					ZenLogger.Log($"Dealing damage to ship: {damageDone.HealthDamage}");
+				}
 			}
 		}
 	}

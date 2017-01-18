@@ -38,7 +38,7 @@
 
 	public struct MissileInfoPacket
 	{
-		//ProjectileInfo
+		[Tooltip("Set to -1 in order to calculate TLL automatically based on speed and launcher range")]
 		public float TimeToLive;
 		[Tooltip("0 for no area effect")]
 		public float ExplosionImpactRadius;
@@ -70,6 +70,7 @@
 
 		public bool ShouldDisperse;
 		public float DispersalTime;
+		public float DispersalRandomTime;
 		public float DetonationDistance;
 		public float PIDNavigationalConstant;
 		public MissileHomingMethod missileHomingMethod;
