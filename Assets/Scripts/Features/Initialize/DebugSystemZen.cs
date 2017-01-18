@@ -43,7 +43,7 @@ namespace Zenobit.Systems
 
 				  .AddSystem(new RangedCombatSystem())
 				  
-				  .AddSystem(new MissileBehaviorSystem())
+				  .AddSystem(new MissileFlightSystem())
 				  .AddSystem(new MissileCollisionResolverSystem())
 				  .AddSystem(new MissileAreaDamageSystem())
 				  .AddSystem(new MissileExplosionSystem())

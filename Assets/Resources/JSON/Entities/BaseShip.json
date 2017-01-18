@@ -32,7 +32,7 @@
                         "DispersalRandomTime": 0.2,
                         "DetonationDistance": 0.0,
                         "PIDNavigationalConstant": 1.0,
-                        "missileHomingMethod": "Swarm",
+                        "missileHomingMethod": "Cluster",
                         "missileRetargetBehavior": "SelfDestruct"
                     },
                     "numberSwarmMissiles": 10,

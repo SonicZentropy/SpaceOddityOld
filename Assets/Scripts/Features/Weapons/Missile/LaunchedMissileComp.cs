@@ -55,7 +55,7 @@
 		[HideInInspector] public float xRandom = 0.05f;
 		[HideInInspector] public float yRandom = 0.05f;
 		[HideInInspector] public float zRandom = 0.05f;
-		[HideInInspector] public float clusterRandomRange = 0.51f;
+		[HideInInspector] public float clusterRandomRange = 0.1f;
 
 		#endregion
 

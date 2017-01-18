@@ -1,5 +1,5 @@
 ﻿// /**
-// * MissileBehaviorSystem.cs
+// * MissileFlightSystem.cs
 // * Will Hart and Dylan Bailey
 // * 20170111
 // */
@@ -19,7 +19,7 @@ namespace Zenobit.Systems
 
 	#endregion
 
-	public class MissileBehaviorSystem : AbstractEcsSystem
+	public class MissileFlightSystem : AbstractEcsSystem
 	{
 		public override bool Init()
 		{
@@ -145,16 +145,6 @@ namespace Zenobit.Systems
 			}
 		}
 
-		private static void CalculateDispersalTarget(LaunchedMissileComp lmc)
-		{
-			var randomX = Random.Range(-15, 15);
-			var randomY = Random.Range(-15, 15);
-			var zDistance = lmc.projectileInfo.DispersalTime * lmc.projectileInfo.FlightSpeed;
-
-			lmc.dispersalTarget = lmc.transform.position + new Vector3(randomX, randomY, zDistance);
-
-		}
-
 		//http://answers.unity3d.com/questions/698009/swarm-missile-adding-random-movement-to-a-homing-m.html
 		private void UpdateClusterMethod(LaunchedMissileComp lmc)
 		{
@@ -179,7 +169,7 @@ namespace Zenobit.Systems
 			                                         Time.deltaTime * lmc.projectileInfo.RotationSpeed);
 			lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.FlightSpeed;
 		}
-
+		
 		//https://www.reddit.com/r/Unity3D/comments/3xw8uc/cluster_homing_missiles_c_code/
 		private void UpdateRandomSwirlMethod(LaunchedMissileComp lmc)
 		{
@@ -212,6 +202,16 @@ namespace Zenobit.Systems
 
 				lmc.transform.position += lmc.transform.forward * Time.deltaTime * lmc.projectileInfo.FlightSpeed;
 			}
+		}
+
+		private static void CalculateDispersalTarget(LaunchedMissileComp lmc)
+		{
+			var randomX = Random.Range(-15, 15);
+			var randomY = Random.Range(-15, 15);
+			var zDistance = lmc.projectileInfo.DispersalTime * lmc.projectileInfo.FlightSpeed;
+
+			lmc.dispersalTarget = lmc.transform.position + new Vector3(randomX, randomY, zDistance);
+
 		}
 
 		public void DeactivateBeforeRelease(LaunchedMissileComp lmc)
