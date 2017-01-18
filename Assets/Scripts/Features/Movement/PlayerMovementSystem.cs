@@ -46,9 +46,8 @@ namespace Zenobit.Systems
 		private bool cursorIsTarget;
 		private CursorMode cursorMode = CursorMode.ForceSoftware;
 
-		private readonly Matcher _playerMatcher = new Matcher(new List<ComponentTypes> {
-			ComponentTypes.PlayerComp
-		});
+		private readonly Matcher _playerMatcher = new Matcher()
+			.AllOf(ComponentTypes.PlayerComp);
 
 		private bool SmoothMovements = false;
 

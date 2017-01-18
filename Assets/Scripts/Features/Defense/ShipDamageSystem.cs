@@ -16,11 +16,9 @@ namespace Zenobit.Systems
 
 	public class ShipDamageSystem : AbstractEcsSystem
 	{
-		private readonly Matcher shipMatcher = new Matcher(new List<ComponentTypes>
-																 {
-																	 ComponentTypes.ShipComp,
-																	 ComponentTypes.DamageComp
-																 });
+		private readonly Matcher shipMatcher = new Matcher()
+			.AllOf(ComponentTypes.ShipComp, ComponentTypes.DamageComp);
+
 		public override bool Init()
 		{
 			return true;

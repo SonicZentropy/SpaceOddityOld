@@ -21,7 +21,10 @@ namespace Zenobit.Common.ZenECS
         private readonly List<Entity> _matchedEntities = new List<Entity>();
         private Guid _storedGuid = Guid.Empty;
 
-        public Matcher(List<ComponentTypes> match) : this(match, new List<ComponentTypes>())
+	    public Matcher() : this(new List<ComponentTypes>(), new List<ComponentTypes>())
+	    {}
+		
+	    public Matcher(List<ComponentTypes> match) : this(match, new List<ComponentTypes>())
         {
         }
 
@@ -34,6 +37,20 @@ namespace Zenobit.Common.ZenECS
 	    public Entity GetSingleMatch()
 	    {
 		    return GetMatches().First();
+	    }
+
+	    public Matcher AllOf(params ComponentTypes[] componentTypesToInclude)
+	    {
+		    _match.AddRange(componentTypesToInclude);
+			InvalidateMatcher();
+		    return this;
+	    }
+
+	    public Matcher NoneOf(params ComponentTypes[] componentTypesToExclude)
+	    {
+		    _dontMatch.AddRange(componentTypesToExclude);
+			InvalidateMatcher();
+			return this;
 	    }
 
         public List<Entity> GetMatches()
@@ -59,7 +76,12 @@ namespace Zenobit.Common.ZenECS
                 .Where(ent => HasAll(_match, _dontMatch, ent)));
         }
 
-        private static bool HasAll(IEnumerable<ComponentTypes> match, List<ComponentTypes> dontMatch, Entity ent)
+		private void InvalidateMatcher()
+		{
+			_storedGuid = Guid.Empty;
+		}
+
+		private static bool HasAll(IEnumerable<ComponentTypes> match, List<ComponentTypes> dontMatch, Entity ent)
         {
             return match.All(ent.HasComponent) 
                 && (!dontMatch.Any() || dontMatch.All(comp => !ent.HasComponent(comp)));

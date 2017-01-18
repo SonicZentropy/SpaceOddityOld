@@ -18,19 +18,13 @@ namespace Zenobit.Systems
 
 	public class RangedCombatSystem : AbstractEcsSystem
 	{
-		private readonly Matcher playerShipMatcher = new Matcher(new List<ComponentTypes>
-		                                                         {
-			                                                         ComponentTypes.CombatComp,
-			                                                         ComponentTypes.PlayerShipComp
-		                                                         });
+		private readonly Matcher playerShipMatcher = new Matcher()
+			.AllOf(ComponentTypes.CombatComp, ComponentTypes.PlayerShipComp);
 
-		private readonly Matcher enemyShipMatcher = new Matcher(new List<ComponentTypes>
-		                                                        {
-			                                                        ComponentTypes.CombatComp
-		                                                        }, new List<ComponentTypes>
-		                                                           {
-			                                                           ComponentTypes.PlayerShipComp
-		                                                           });
+		private readonly Matcher enemyShipMatcher = new Matcher()
+			.AllOf(ComponentTypes.CombatComp)
+			.NoneOf(ComponentTypes.PlayerShipComp);
+	
 
 		private CommandComp playerCommand;
 

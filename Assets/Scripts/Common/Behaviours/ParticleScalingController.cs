@@ -16,6 +16,7 @@ public class ParticleScalingController : MonoBehaviour
 	public void SetScale(float newScale, bool includeChildren)
 	{
 		//Scaling is persistent across pooling reuses, so we need to adjust for previous iterations of the scaling
+		if (!(newScale > 0.01f)) newScale = 1f;
 		mainPS.ScaleByTransform(newScale / CurrentScale, includeChildren);
 		CurrentScale = newScale;
 	}

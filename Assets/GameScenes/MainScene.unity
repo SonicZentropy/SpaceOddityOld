@@ -644,8 +644,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc6413bbc0abf04e9c82155ed9a47a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AvoidDirtyFlag: 0
-  EntityName: Entities/BaseShip
+  AvoidDirtyFlag: 1
+  EntityName: Weapons/SwarmMissile
 --- !u!4 &1250855352
 Transform:
   m_ObjectHideFlags: 0

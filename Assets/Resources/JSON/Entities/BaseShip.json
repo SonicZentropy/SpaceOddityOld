@@ -7,11 +7,11 @@
                 {
                     "missileInfoPacket": {
                         "TimeToLive": 30.0,
-                        "ExplosionImpactRadius": 5.0,
+                        "ExplosionImpactRadius": 0.0,
                         "ExplosionForce": 20.0,
                         "ShieldDamage": 20.0,
                         "HullDamage": 20.0,
-                        "ProjectileSpeed": 10.0,
+                        "FlightSpeed": 0.0,
                         "RotationSpeed": 30.0,
                         "StartPosition": {
                             "x": 0.0,
@@ -25,15 +25,14 @@
                         },
                         "OwningActorPos": null,
                         "FiringWeaponComp": null,
-                        "missileFireType": "Swarm",
-                        "target": null,
                         "ShouldDisperse": true,
                         "DispersalTime": 1.0,
                         "DispersalRandomTime": 0.2,
                         "DetonationDistance": 0.0,
                         "PIDNavigationalConstant": 1.0,
-                        "missileHomingMethod": "Cluster",
-                        "missileRetargetBehavior": "SelfDestruct"
+                        "missileFireType": "Dumbfire",
+                        "target": null,
+                        "missileHomingMethod": "None"
                     },
                     "numberSwarmMissiles": 10,
                     "ShieldDamage": 20,
@@ -44,7 +43,6 @@
                     "ResolutionType": "Projectile",
                     "FiringSoundEffect": "GunFire",
                     "ProjectileSpeed": 20.0,
-                    "ProjectileIsEntity": true,
                     "ProjectileEntity": "Weapons/SwarmMissile",
                     "IsFitted": false,
                     "NextAttackTime": 0.0,

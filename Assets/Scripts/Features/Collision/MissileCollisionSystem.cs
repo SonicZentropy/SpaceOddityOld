@@ -17,12 +17,9 @@ namespace Zenobit.Systems
 
 	public class MissileCollisionSystem : AbstractEcsSystem
 	{
-		private readonly Matcher missileMatcher = new Matcher(
-		                                                      new List<ComponentTypes>
-		                                                      {
-			                                                      ComponentTypes.LaunchedMissileComp
-			                                                      , ComponentTypes.CollisionEnterComp
-		                                                      });
+		private readonly Matcher missileMatcher = new Matcher()
+			.AllOf(ComponentTypes.LaunchedMissileComp, ComponentTypes.CollisionEnterComp);
+		                                                     
 		public override bool Init()
 		{
 			return true;

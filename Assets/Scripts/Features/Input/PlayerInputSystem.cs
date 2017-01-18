@@ -22,9 +22,8 @@ namespace Zenobit.Systems
 	{
 		private CommandComp _command;
 		private Player player;
-		private readonly Matcher _playerMatcher = new Matcher(new List<ComponentTypes> {
-			ComponentTypes.PlayerComp
-		});
+		private readonly Matcher _playerMatcher = new Matcher()
+			.AllOf(ComponentTypes.PlayerComp);
 
 		public override bool Init()
 		{
