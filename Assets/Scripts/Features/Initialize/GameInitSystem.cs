@@ -9,6 +9,9 @@
 	{
 		public override bool Init()
 		{
+			engine.AddSystem(new EntityTagInitSystem())
+			      .AddSystem(new PooledEntityInitSystem());
+
 			var cam = GameObject.FindGameObjectWithTag("MainCamera");
 			Object.Destroy(cam);
 			
@@ -17,9 +20,9 @@
 			engine.CreateEntity(Res.Entities.SectorGenerationMain);
 			engine.CreateEntity(Res.Entities.GameSettings);
 
-			var ets = engine.CreateEntity(Res.Entities.EnemyTestShip);
-			ets.Wrapper.transform.position = new Vector3(5, 0, 75);
-
+			var ets = engine.CreateEntity(Res.Entities.Enemy);
+			ets.Wrapper.transform.position = new Vector3(0, 0, 30);
+			
 			//ets = engine.CreateEntity(Res.Entities.EnemyTestShip);
 			//ets.Wrapper.transform.position = new Vector3(5, 0, 25);
 			//

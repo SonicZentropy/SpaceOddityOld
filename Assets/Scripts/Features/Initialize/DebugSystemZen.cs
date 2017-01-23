@@ -28,8 +28,7 @@ namespace Zenobit.Systems
 
 		private void InitSystems()
 		{
-			engine.AddSystem(new PooledEntityInitSystem())
-				  .AddSystem(new PlayerInitSystem())
+			engine.AddSystem(new PlayerInitSystem())
 				  //.AddSystem(new SectorGenerationSystem())
 				  .AddSystem(new ShipInitSystem())
 				  .AddSystem(new PlayerInputSystem())
@@ -51,6 +50,8 @@ namespace Zenobit.Systems
 				  
 				  .AddSystem(new InertialDamperSystem())
 				  .AddSystem(new CollisionCleanupSystem())
+
+				  //Reactives
 				  ;
 
 			engine.InitAfterECS();

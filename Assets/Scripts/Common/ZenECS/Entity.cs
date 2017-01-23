@@ -75,6 +75,17 @@ namespace Zenobit.Common.ZenECS
                    _components.ContainsKey(ComponentFactory.ComponentLookup[type]);
         }
 
+		public bool TryGetComponent<T>(ComponentTypes type, out T component) where T : ComponentEcs
+		{
+			if (!HasComponent(type))
+			{
+				component = null;
+				return false;
+			}
+			component = GetComponent<T>();
+			return true;
+		}
+
         public T GetComponent<T>() where T : ComponentEcs => (T) _components[typeof(T)];
 
 	    public T GetComponentDownward<T>() where T : ComponentEcs

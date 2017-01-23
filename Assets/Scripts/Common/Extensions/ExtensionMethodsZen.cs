@@ -4,33 +4,26 @@
 //  * 20161210
 // */
 
+using System;
 
 #pragma warning disable 0414, 0219, 649, 169, 1570
 
 namespace Zenobit.Common.Extensions
 {
-    #region Dependencies
+	#region Dependencies
 
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using UnityEngine;
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using UnityEngine;
+	using ZenECS;
 
-    #endregion
+	#endregion
 
-    public static class ExtensionMethodsZen
-    {
-        public static T GetComponentDownThenUp<T>(this Component gameObject)
-        {
-            var comp = gameObject.GetComponentInChildren<T>();
-            if (comp == null)
-                comp = gameObject.GetComponentInParent<T>();
-
-            return comp;
-        }
-
-        public static T GetComponentDownThenUp<T>(this GameObject gameObject)
-        {
+	public static class ExtensionMethodsZen
+	{
+		public static T GetComponentDownThenUp<T>(this Component gameObject)
+		{
 			var comp = gameObject.GetComponentInChildren<T>();
 			if (comp == null)
 				comp = gameObject.GetComponentInParent<T>();
@@ -38,79 +31,88 @@ namespace Zenobit.Common.Extensions
 			return comp;
 		}
 
-        public static void SetAllActiveRecursively(this GameObject rootObject, bool active)
-        {
-            rootObject.SetActive(active);
+		public static T GetComponentDownThenUp<T>(this GameObject gameObject)
+		{
+			var comp = gameObject.GetComponentInChildren<T>();
+			if (comp == null)
+				comp = gameObject.GetComponentInParent<T>();
 
-            foreach (Transform childTransform in rootObject.transform)
-            {
-                SetAllActiveRecursively(childTransform.gameObject, active);
-            }
-        }
+			return comp;
+		}
 
-        public static void SetChildrenLayerRecursively(this GameObject rootObject)
-        {
-            var newLayer = rootObject.layer;
-            foreach (Transform t in rootObject.transform)
-                t.gameObject.layer = newLayer;
-        }
+		public static void SetAllActiveRecursively(this GameObject rootObject, bool active)
+		{
+			rootObject.SetActive(active);
 
-        public static T[] RemoveAt<T>(this T[] source, int index)
-        {
-            var dest = new T[source.Length - 1];
-            int i = 0, j = 0;
+			foreach (Transform childTransform in rootObject.transform)
+			{
+				SetAllActiveRecursively(childTransform.gameObject, active);
+			}
+		}
 
-            while (i < source.Length)
-            {
-                if (i != index)
-                {
-                    dest[j] = source[i];
-                    j++;
-                }
-                i++;
-            }
+		public static void SetChildrenLayerRecursively(this GameObject rootObject)
+		{
+			var newLayer = rootObject.layer;
+			foreach (Transform t in rootObject.transform)
+				t.gameObject.layer = newLayer;
+		}
 
-            return dest;
-        }
+		public static T[] RemoveAt<T>(this T[] source, int index)
+		{
+			var dest = new T[source.Length - 1];
+			int i = 0, j = 0;
 
-        /// <summary>
-        ///     Gets or add a component. Usage example:
-        ///     BoxCollider boxCollider = transform.GetOrAddComponent<BoxCollider>();
-        /// </summary>
-        public static T GetOrAddComponent<T>(this Component child) where T : Component
-        {
-            var result = child.GetComponent<T>();
-            if (result == null)
-            {
-                result = child.gameObject.AddComponent<T>();
-            }
-            return result;
-        }
+			while (i < source.Length)
+			{
+				if (i != index)
+				{
+					dest[j] = source[i];
+					j++;
+				}
+				i++;
+			}
 
-        public static RaycastHit2D[] FilterObjects(this RaycastHit2D[] hits, params GameObject[] objsToFilter)
-        {
-            var filtered = new List<RaycastHit2D>(hits.Length);
-            foreach (var t in hits)
-            {
-                var shouldFilter = false;
-                foreach (var t1 in objsToFilter)
-                {
-                    if (t && (t.transform.gameObject == t1))
-                    {
-                        shouldFilter = true;
-                    }
-                }
+			return dest;
+		}
 
-                if (!shouldFilter) filtered.Add(t);
-            }
+		/// <summary>
+		///     Gets or add a component. Usage example:
+		///     BoxCollider boxCollider = transform.GetOrAddComponent<BoxCollider>();
+		/// </summary>
+		public static T GetOrAddComponent<T>(this Component child) where T : Component
+		{
+			var result = child.GetComponent<T>();
+			if (result == null)
+			{
+				result = child.gameObject.AddComponent<T>();
+			}
+			return result;
+		}
 
-            return filtered.ToArray();
-        }
+		public static RaycastHit2D[] FilterObjects(this RaycastHit2D[] hits, params GameObject[] objsToFilter)
+		{
+			var filtered = new List<RaycastHit2D>(hits.Length);
+			foreach (var t in hits)
+			{
+				var shouldFilter = false;
+				foreach (var t1 in objsToFilter)
+				{
+					if (t && (t.transform.gameObject == t1))
+					{
+						shouldFilter = true;
+					}
+				}
 
-        public static bool HasFlag(this Enum e, Enum flag)
-        {
-            return (Convert.ToInt64(e) & Convert.ToInt64(flag)) != 0;
-        }
+				if (!shouldFilter) filtered.Add(t);
+			}
+
+			return filtered.ToArray();
+		}
+
+		public static bool HasFlag(this Enum e, Enum flag)
+		{
+			return (Convert.ToInt64(e) & Convert.ToInt64(flag)) != 0;
+		}
 
 		public static float MaxVectorElement(this Vector3 v)
 		{
@@ -126,10 +128,10 @@ namespace Zenobit.Common.Extensions
 				);
 		}
 
-	    public static bool IsAlmost(this float a, float b)
-	    {
-		    return Mathf.Approximately(a, b);
-	    }
+		public static bool IsAlmost(this float a, float b)
+		{
+			return Mathf.Approximately(a, b);
+		}
 
 		public static bool IsAlmost(this float a, int b)
 		{
@@ -140,5 +142,41 @@ namespace Zenobit.Common.Extensions
 		{
 			return new string(inString.Where(c => char.IsLetterOrDigit(c) || c == '_').ToArray());
 		}
+
+		
+
 	}
+}
+
+[Flags]
+public enum EntityTags
+{
+	Player = 1 << 0,
+	Ship = 1 << 1,
+	Xenith = 1 << 2, //bio mech AI
+	Aermedian = 1 << 3,
+	IsEntity = 1 << 4
+}
+
+[Flags]
+public enum Tags
+{
+	//None = 0,
+	Player = 1 << 0,
+	NPC = 1 << 1,
+	Eclipse = 1 << 2,
+	Foreground = 1 << 3,
+	Middleground = 1 << 4,
+	Background = 1 << 5,
+	Weapons = 1 << 6,
+	Lighting = 1 << 7,
+	Laser = 1 << 8,
+	Missile = 1 << 9,
+	Enemy = 1 << 10,
+	Ally = 1 << 11,
+	Station = 1 << 12,
+	Planet = 1 << 13,
+	Star = 1 << 14,
+	PlayerRangeTrigger = 1 << 15,
+	DisableDistanceTrigger = 1 << 16
 }

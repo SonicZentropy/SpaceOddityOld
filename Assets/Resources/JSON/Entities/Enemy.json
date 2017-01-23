@@ -1,16 +1,10 @@
 {
-    "EntityName": "Player",
+    "EntityName": "Enemy",
     "Wrapper": null,
     "_components": {
-        "Zenobit.Components.PlayerComp": {
-            "_credits": 1000,
-            "CurrentShip": "Entities/BaseShip",
-            "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.PlayerComp"
-        },
         "Zenobit.Components.UnityPrefabComp": {
-            "IsPooled": false,
-            "PrefabLink": "Prefabs/Player",
+            "IsPooled": true,
+            "PrefabLink": "Prefabs/EnemyShip",
             "Id": "00000000-0000-0000-0000-000000000000",
             "$type": "Zenobit.Components.UnityPrefabComp"
         },
@@ -59,8 +53,8 @@
             "$type": "Zenobit.Components.ShipConnectionComp"
         },
         "Zenobit.Components.EntityTagComp": {
-            "entityTags": "Player,Aermedian",
-            "tags": "NPC,Station,DisableDistanceTrigger",
+            "entityTags": "Ship,IsEntity",
+            "tags": "NPC",
             "Id": "00000000-0000-0000-0000-000000000000",
             "$type": "Zenobit.Components.EntityTagComp"
         }

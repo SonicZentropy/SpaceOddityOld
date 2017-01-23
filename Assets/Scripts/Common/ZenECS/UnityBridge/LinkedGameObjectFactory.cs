@@ -100,7 +100,7 @@ namespace Zenobit.Common.ZenECS
 
             var pc = e.GetComponent<UnityPrefabComp>();
 			//string prefabString
-            var go = pc.IsPooled
+            GameObject go = pc.IsPooled
                 ? Resources.Load<GameObject>(pc.PrefabLink).InstantiateFromPool()
                 : Instantiate(Resources.Load<GameObject>(pc.PrefabLink));
 
@@ -122,7 +122,13 @@ namespace Zenobit.Common.ZenECS
             InitializeGameObject(go);
             InjectGameObjectReferences(e, go);
             PerformCustomInitializations(e, go);
+	        AddEntityFlag(e, go); //Add entity flag to game object
             return go;
         }
+
+	    private void AddEntityFlag(Entity e, GameObject go)
+	    {
+		    go.AddEntityTags(EntityTags.IsEntity);
+	    }
     }
 }

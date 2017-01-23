@@ -10,6 +10,7 @@ namespace Zenobit.Systems
 
 	using System.Collections.Generic;
 	using AdvancedInspector;
+	using Common.Extensions;
 	using Common.ZenECS;
 	using Components;
 
@@ -37,7 +38,7 @@ namespace Zenobit.Systems
 				var lmc = match.GetComponent<LaunchedMissileComp>();
 				foreach (var o in colls.Other)
 				{
-					var ew = o.gameObject.GetComponent<EntityWrapper>();
+					var ew = o.gameObject.GetEntityWrapper();
 					if (ew != null)
 					{
 						var dc = ew.Entity.GetOrAddComponent<DamageComp>(ComponentTypes.DamageComp);

@@ -45,7 +45,8 @@ namespace Zenobit.Systems
 				{
 					foreach (var coll in cc.Other)
 					{
-						var oth = coll.gameObject.GetComponent<EntityWrapper>();
+						//var oth = coll.gameObject.GetComponent<EntityWrapper>();
+						var oth = coll.gameObject.GetEntityWrapper();
 						if (oth != null)
 						{
 							if (!oth.Entity.HasComponent(ComponentTypes.DamageComp))

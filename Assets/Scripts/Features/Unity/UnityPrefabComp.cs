@@ -9,6 +9,8 @@ namespace Zenobit.Components
     #region Dependencies
 
     using AdvancedInspector;
+    using Pathfinding.Serialization;
+    using UnityEngine;
     using Zenobit.Common.ZenECS;
 
     #endregion
@@ -19,6 +21,10 @@ namespace Zenobit.Components
 
         [Inspect]
         public bool IsPooled { get; set; }
+
+		//[Inspect]public UnityLayer layer { get; set; } = new UnityLayer(0);
+	    public LayerMask layer;
+
 
         public override ComponentTypes ComponentType => ComponentTypes.UnityPrefabComp;
     }

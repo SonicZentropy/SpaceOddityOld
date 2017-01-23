@@ -144,6 +144,7 @@ namespace Zenobit.Common.ZenECS
 		public Entity CreateEntity(string entityName)
 		{
 			Entity newEnt =  Factory.CreateEntityFromTemplate(entityName);
+			OnEntityAdded?.Invoke(newEnt);
 			return newEnt;
 		}
 
