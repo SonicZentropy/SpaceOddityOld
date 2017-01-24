@@ -1,0 +1,289 @@
+Version = 1.9.0.26281;
+CParticleEffect	$LOCAL$/Resource
+{
+	EditorInfosPosition = int2(73, 52);
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	EditorInfosPosition = int2(413, -144);
+	Position = float3(-2.4330285e-001, 2.6633152e-001, 7.7859414e-001);
+	EulerOrientation = float3(-1.4937967e+001, -1.5246014e+001, 0.0000000e+000);
+	Backdrops = "$LOCAL$/_BackdropList";
+	ShowGrid = true;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Timer
+{
+	EditorInfosPosition = int2(-288, -61);
+	Descriptor = "$LOCAL$/CParticleDescriptor_AE135B2A";
+	DurationInSeconds = 1.0000000e-003;
+	SpawnCountMode = TotalParticleCount;
+	SpawnCount = 1.1000000e+004;
+	FirstSpawnDelay = 5.0000000e-001;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AE135B2A
+{
+	EditorInfosPosition = int2(-392, -44);
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_6B12D2BB";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_D2F8C065",
+		"$LOCAL$/CParticleFieldDeclaration_2355848C",
+		"$LOCAL$/CParticleFieldDeclaration_7D272500",
+		"$LOCAL$/CParticleFieldDeclaration_6F2B1C85",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7";
+	States = 
+	{
+		"$LOCAL$/CParticleState_3AF8190E",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	EditorInfosPosition = int2(-162, -81);
+	ChildList = 
+	{
+		"$LOCAL$/Timer",
+		"$LOCAL$/Timer_Optimized",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_6B12D2BB
+{
+	Diffuse = "Textures/FX/TextAtlas.dds";
+	AtlasDefinition = "Textures/FX/TextAtlas.pkat";
+	BillboardMode = PlanarAlignedQuad;
+	AxisField = "AxisUp";
+	Axis2Field = "AxisNormal";
+	AxisScale = 5.0000000e-001;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7
+{
+	EditorInfosPosition = int2(-508, 22);
+	Expression = "function void	Eval()
+{
+	Life = infinity;
+	Size = 0.1;
+	
+	AxisUp = scene.axisUp();
+	AxisNormal = scene.axisForward();
+
+	// spawn pattern: HH:MM:SS:cc
+	float	spawnCount = spawner.BaseSpawnCount;	// must match the spawner\'s \'SpawnCount\' property
+	float	particlePerLayer = 11;
+	float	layerCount = spawnCount / particlePerLayer;
+	float	rawParticleId = spawner.EmittedCount;
+	float	layer = floor(rawParticleId / particlePerLayer);
+	float	particleId = rawParticleId - layer * particlePerLayer;
+
+	Digit = int(particleId);
+	TextureID = 0;
+
+	float	atlasRectAspect = 0.5;	// the texture rects widths are half the heights. (Matches the \'AxisScale\' property of the planar billboarder)
+	Position = float3((particleId - 0.5 * (particlePerLayer-1)) * Size * atlasRectAspect, 0, layer*-0.002);
+	
+	float	a = (pow(1 - saturate(layer / layerCount),4) * 0.998 + 0.002) * 0.01;
+	Color = select(float4(1,1,1,a), float4(8,1,1,1), layer == 0);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_3AF8190E
+{
+	EditorInfosPosition = int2(-508, 65);
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/Script_1",
+	};
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Timer_Optimized
+{
+	EditorInfosPosition = int2(-288, -61);
+	Descriptor = "$LOCAL$/CParticleDescriptor_72942910";
+	DurationInSeconds = 1.0000000e-003;
+	SpawnCountMode = TotalParticleCount;
+	SpawnCount = 1.1000000e+004;
+	FirstSpawnDelay = 5.0000000e-001;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_19089209
+{
+	Expression = "function void	Eval()
+{
+	float	realTime = scene.Time * 100;	// for testing, run 100 times faster than realtime
+	
+	int		digPart = Digit / 3;
+	int		subDig = Digit - digPart * 3;
+	int		isSeparator = subDig == 2;
+	
+	float4	digPartScaleSel = -float4(digPart == int4(0,1,2,3));
+	float	digPartScaleA = dot(digPartScaleSel, float4(1.0/(60*60), 1.0/60, 1/1, 1/0.01));
+	float	digPartScaleB = dot(digPartScaleSel, float4(100, 60, 60, 100));
+
+	float	value = int(realTime * digPartScaleA) % int(digPartScaleB);
+	float	digScale = select(0.1001, 0.01001, subDig == 0);
+	float	digit = floor(10*frac(value * digScale));
+	
+	TextureID = select(\'0\'-\' \' + digit, \':\'-\' \', isSeparator);	// subtract \' \' because our atlas starts at \' \'
+}
+";
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+	EditorInfosPosition = int2(-599, -20);
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(125, -433);
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Brush_9A913525",
+	};
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/CNEdEditorBackdrop_Brush_9A913525
+{
+	EditorInfosPosition = int2(-27, -485);
+	LayerName = "Layer_Brush";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_7D272500
+{
+	FieldName = "Digit";
+	FieldType = int;
+}
+CParticleEvolver_Script	$LOCAL$/Script_1
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_19089209";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_2355848C
+{
+	FieldName = "AxisNormal";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_D2F8C065
+{
+	FieldName = "AxisUp";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_6F2B1C85
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_72942910
+{
+	EditorInfosPosition = int2(-392, -44);
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_749A7513";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_DCDFDFD2",
+		"$LOCAL$/CParticleFieldDeclaration_0A3B31FD",
+		"$LOCAL$/CParticleFieldDeclaration_ADAB032C",
+		"$LOCAL$/CParticleFieldDeclaration_431B0B5F",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_509D6026";
+	States = 
+	{
+		"$LOCAL$/CParticleState_064FCEE1",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_749A7513
+{
+	Diffuse = "Textures/FX/TextAtlas.dds";
+	AtlasDefinition = "Textures/FX/TextAtlas.pkat";
+	BillboardMode = PlanarAlignedQuad;
+	AxisField = "AxisUp";
+	Axis2Field = "AxisNormal";
+	AxisScale = 5.0000000e-001;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_DCDFDFD2
+{
+	FieldName = "AxisUp";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_0A3B31FD
+{
+	FieldName = "AxisNormal";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_431B0B5F
+{
+	FieldName = "DigitFactors";
+	FieldType = float3;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_ADAB032C
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_509D6026
+{
+	EditorInfosPosition = int2(-508, 22);
+	Expression = "function void	Eval()
+{
+	Life = infinity;
+	Size = 0.1;
+	
+	AxisUp = scene.axisUp();
+	AxisNormal = scene.axisForward();
+
+	// spawn pattern: HH:MM:SS:cc
+	float	spawnCount = spawner.BaseSpawnCount;	// must match the spawner\'s \'SpawnCount\' property
+	float	particlePerLayer = 11;
+	float	layerCount = spawnCount / particlePerLayer;
+	float	rawParticleId = spawner.EmittedCount;
+	float	layer = floor(rawParticleId / particlePerLayer);
+	float	particleId = rawParticleId - layer * particlePerLayer;
+
+	int		Digit = int(particleId);
+	int		digPart = Digit / 3;
+	int		subDig = Digit - digPart * 3;
+	int		isSeparator = subDig == 2;
+	
+	int		digID = digPart * 2 + subDig;
+	float4	digPartScaleSel0 = -float4(digID == int4(0,1,2,3));
+	float4	digPartScaleSel1 = -float4(digID == int4(4,5,6,7));
+	float	digPartScaleA = dot(digPartScaleSel0, float4(1.0/(10*60*60), 1.0/(60*60), 1.0/(10*60), 1.0/(60))) +
+							dot(digPartScaleSel1, float4(1.0/10, 1.0/1, 1/0.1, 1/0.01));
+	float	digPartScaleB = dot(digPartScaleSel0, float4(10, 10, 6, 10)) +
+							dot(digPartScaleSel1, float4(6, 10, 10, 10));
+							
+	DigitFactors = float3(digPartScaleA, digPartScaleB, isSeparator);
+
+	TextureID = 0;
+
+	float	atlasRectAspect = 0.5;	// the texture rects widths are half the heights. (Matches the \'AxisScale\' property of the planar billboarder)
+	Position = float3((particleId - 0.5 * (particlePerLayer-1)) * Size * atlasRectAspect, 0.1, layer*-0.002);
+	
+	float	a = (pow(1 - saturate(layer / layerCount),4) * 0.998 + 0.002) * 0.01;
+	Color = select(float4(1,1,1,a), float4(1,5,1,1), layer == 0);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_064FCEE1
+{
+	EditorInfosPosition = int2(-508, 65);
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Script_DB2636B8",
+	};
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_DB2636B8
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_91F13FDB";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_91F13FDB
+{
+	Expression = "function void	Eval()
+{
+	float	realTime = scene.Time * 100;	// for testing, run 100 times faster than realtime
+	float	digit = floor((realTime * DigitFactors.x) % DigitFactors.y);
+	
+	TextureID = select(\'0\'-\' \' + digit, \':\'-\' \', DigitFactors.z != 0);	// subtract \' \' because our atlas starts at \' \'
+}
+";
+}

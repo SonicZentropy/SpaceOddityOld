@@ -1,0 +1,235 @@
+Version = 1.10.2.31070;
+CHmlFactory	$LOCAL$/Resource
+{
+	MeshTree = "$LOCAL$/CHmlMeshTreeNode_LOD_AEF651DD";
+	Skins = 
+	{
+		"$LOCAL$/CHmlSkinDescriptor_0656B7F7",
+	};
+}
+CHmlMeshTreeNode_LOD	$LOCAL$/CHmlMeshTreeNode_LOD_AEF651DD
+{
+	LODs = 
+	{
+		"$LOCAL$/CHmlMeshTreeNode_ModelRef_6C893764",
+	};
+}
+CHmlMeshTreeNode_ModelRef	$LOCAL$/CHmlMeshTreeNode_ModelRef_6C893764
+{
+	MeshResourcePath = "Meshes/RockPart_01.pkmm";
+}
+CHmlSkinDescriptor	$LOCAL$/CHmlSkinDescriptor_0656B7F7
+{
+	PublishedName = "Default";
+	Materials = 
+	{
+		"$LOCAL$/CHmlSkinMaterial_1CF22A86",
+		"$LOCAL$/CHmlSkinMaterial_326538C1",
+		"$LOCAL$/CHmlSkinMaterial_2530F618",
+		"$LOCAL$/CHmlSkinMaterial_034942BB",
+		"$LOCAL$/CHmlSkinMaterial_98326A9A",
+		"$LOCAL$/CHmlSkinMaterial_F38FB065",
+		"$LOCAL$/CHmlSkinMaterial_233F348C",
+		"$LOCAL$/CHmlSkinMaterial_E320683F",
+	};
+}
+CMaterialProxy	$LOCAL$/Material_0
+{
+	VirtualName = "RockPart";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+	Fields = 
+	{
+		"$LOCAL$/Material_0_Field_0",
+		"$LOCAL$/Material_0_Field_1",
+	};
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_1CF22A86
+{
+	VirtualName = "RockPart";
+	MaterialProxy = "$LOCAL$/Material_0";
+}
+CMaterialProxyField	$LOCAL$/Material_0_Field_0
+{
+	FieldName = "DiffuseTexture";
+	ValTexturePath = "Textures/Meshes/RockPartDBW.jpg";
+}
+CMaterialProxyField	$LOCAL$/Material_0_Field_1
+{
+	FieldName = "NormalTexture";
+	ValTexturePath = "Textures/Meshes/RockPartN.JPG";
+}
+CMaterialProxy	$LOCAL$/Material_1
+{
+	VirtualName = "RockPart";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+	Fields = 
+	{
+		"$LOCAL$/Material_1_Field_0",
+		"$LOCAL$/Material_1_Field_1",
+	};
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_326538C1
+{
+	VirtualName = "RockPart";
+	MaterialProxy = "$LOCAL$/Material_1";
+}
+CMaterialProxyField	$LOCAL$/Material_1_Field_0
+{
+	FieldName = "DiffuseTexture";
+	ValTexturePath = "Textures/Meshes/RockPartDBW.jpg";
+}
+CMaterialProxyField	$LOCAL$/Material_1_Field_1
+{
+	FieldName = "NormalTexture";
+	ValTexturePath = "Textures/Meshes/RockPartN.JPG";
+}
+CMaterialProxy	$LOCAL$/Material_2
+{
+	VirtualName = "RockPart";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+	Fields = 
+	{
+		"$LOCAL$/Material_2_Field_0",
+		"$LOCAL$/Material_2_Field_1",
+	};
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_2530F618
+{
+	VirtualName = "RockPart";
+	MaterialProxy = "$LOCAL$/Material_2";
+}
+CMaterialProxyField	$LOCAL$/Material_2_Field_0
+{
+	FieldName = "DiffuseTexture";
+	ValTexturePath = "Textures/Meshes/RockPartDBW.jpg";
+}
+CMaterialProxyField	$LOCAL$/Material_2_Field_1
+{
+	FieldName = "NormalTexture";
+	ValTexturePath = "Textures/Meshes/RockPartN.JPG";
+}
+CMaterialProxy	$LOCAL$/Material_3
+{
+	VirtualName = "RockPart";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+	Fields = 
+	{
+		"$LOCAL$/Material_3_Field_0",
+		"$LOCAL$/Material_3_Field_1",
+	};
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_034942BB
+{
+	VirtualName = "RockPart";
+	MaterialProxy = "$LOCAL$/Material_3";
+}
+CMaterialProxyField	$LOCAL$/Material_3_Field_0
+{
+	FieldName = "DiffuseTexture";
+	ValTexturePath = "Textures/Meshes/RockPartDBW.jpg";
+}
+CMaterialProxyField	$LOCAL$/Material_3_Field_1
+{
+	FieldName = "NormalTexture";
+	ValTexturePath = "Textures/Meshes/RockPartN.JPG";
+}
+CMaterialProxy	$LOCAL$/Material_4
+{
+	VirtualName = "RockPart";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+	Fields = 
+	{
+		"$LOCAL$/Material_4_Field_0",
+		"$LOCAL$/Material_4_Field_1",
+	};
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_98326A9A
+{
+	VirtualName = "RockPart";
+	MaterialProxy = "$LOCAL$/Material_4";
+}
+CMaterialProxyField	$LOCAL$/Material_4_Field_0
+{
+	FieldName = "DiffuseTexture";
+	ValTexturePath = "Textures/Meshes/RockPartDBW.jpg";
+}
+CMaterialProxyField	$LOCAL$/Material_4_Field_1
+{
+	FieldName = "NormalTexture";
+	ValTexturePath = "Textures/Meshes/RockPartN.JPG";
+}
+CMaterialProxy	$LOCAL$/Material_5
+{
+	VirtualName = "RockPart";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+	Fields = 
+	{
+		"$LOCAL$/Material_5_Field_0",
+		"$LOCAL$/Material_5_Field_1",
+	};
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_F38FB065
+{
+	VirtualName = "RockPart";
+	MaterialProxy = "$LOCAL$/Material_5";
+}
+CMaterialProxyField	$LOCAL$/Material_5_Field_0
+{
+	FieldName = "DiffuseTexture";
+	ValTexturePath = "Textures/Meshes/RockPartDBW.jpg";
+}
+CMaterialProxyField	$LOCAL$/Material_5_Field_1
+{
+	FieldName = "NormalTexture";
+	ValTexturePath = "Textures/Meshes/RockPartN.JPG";
+}
+CMaterialProxy	$LOCAL$/Material_6
+{
+	VirtualName = "RockPart";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+	Fields = 
+	{
+		"$LOCAL$/Material_6_Field_0",
+		"$LOCAL$/Material_6_Field_1",
+	};
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_233F348C
+{
+	VirtualName = "RockPart";
+	MaterialProxy = "$LOCAL$/Material_6";
+}
+CMaterialProxyField	$LOCAL$/Material_6_Field_0
+{
+	FieldName = "DiffuseTexture";
+	ValTexturePath = "Textures/Meshes/RockPartDBW.jpg";
+}
+CMaterialProxyField	$LOCAL$/Material_6_Field_1
+{
+	FieldName = "NormalTexture";
+	ValTexturePath = "Textures/Meshes/RockPartN.JPG";
+}
+CMaterialProxy	$LOCAL$/Material_7
+{
+	VirtualName = "RockPart";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+	Fields = 
+	{
+		"$LOCAL$/Material_7_Field_0",
+		"$LOCAL$/Material_7_Field_1",
+	};
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_E320683F
+{
+	VirtualName = "RockPart";
+	MaterialProxy = "$LOCAL$/Material_7";
+}
+CMaterialProxyField	$LOCAL$/Material_7_Field_0
+{
+	FieldName = "DiffuseTexture";
+	ValTexturePath = "Textures/Meshes/RockPartDBW.jpg";
+}
+CMaterialProxyField	$LOCAL$/Material_7_Field_1
+{
+	FieldName = "NormalTexture";
+	ValTexturePath = "Textures/Meshes/RockPartN.JPG";
+}

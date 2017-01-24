@@ -4,6 +4,8 @@ CModuleConfigBaseEditor	$LOCAL$/ModuleConfigBaseEditor
 }
 CModuleConfigParticleEditor	$LOCAL$/ModuleConfigParticleEditor
 {
+	ShowDebugInfos = false;
+	ShowDetailedBudgets = false;
 }
 CModuleConfigSplineEditor	$LOCAL$/ModuleConfigSplineEditor
 {

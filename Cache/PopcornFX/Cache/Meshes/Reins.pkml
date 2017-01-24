@@ -1,0 +1,38 @@
+Version = 1.10.2.31070;
+CHmlFactory	$LOCAL$/Resource
+{
+	MeshTree = "$LOCAL$/CHmlMeshTreeNode_LOD_F8A23E20";
+	Skins = 
+	{
+		"$LOCAL$/CHmlSkinDescriptor_FB15D862",
+	};
+}
+CHmlMeshTreeNode_LOD	$LOCAL$/CHmlMeshTreeNode_LOD_F8A23E20
+{
+	LODs = 
+	{
+		"$LOCAL$/CHmlMeshTreeNode_ModelRef_5FD8A763",
+	};
+}
+CHmlMeshTreeNode_ModelRef	$LOCAL$/CHmlMeshTreeNode_ModelRef_5FD8A763
+{
+	MeshResourcePath = "Meshes/Reins.pkmm";
+}
+CHmlSkinDescriptor	$LOCAL$/CHmlSkinDescriptor_FB15D862
+{
+	PublishedName = "Default";
+	Materials = 
+	{
+		"$LOCAL$/CHmlSkinMaterial_68854DCD",
+	};
+}
+CMaterialProxy	$LOCAL$/Material_0
+{
+	VirtualName = "veins";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_68854DCD
+{
+	VirtualName = "veins";
+	MaterialProxy = "$LOCAL$/Material_0";
+}

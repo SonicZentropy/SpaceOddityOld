@@ -1,0 +1,236 @@
+CParticleEffect	$LOCAL$/Resource
+{
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	Position = float3(2.1969187e+000, 1.5568119e+001, 3.1337626e+000);
+	EulerOrientation = float3(-7.7769989e+001, 3.5266052e+001, 0.0000000e+000);
+	Backdrops = "$LOCAL$/_BackdropList";
+	IsLooping = true;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Layer_1
+{
+	Descriptor = "$LOCAL$/CParticleDescriptor_AE135B2A";
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 3.5000000e+004;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AE135B2A
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_9136D2F4";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerProceduralTurbulence_8F74C215",
+		"$LOCAL$/CParticleSamplerCurve_59093688",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7";
+	States = 
+	{
+		"$LOCAL$/CParticleState_3AF8190E",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	ChildList = 
+	{
+		"$LOCAL$/Layer_1",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_9136D2F4
+{
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisScale = 2.0000000e-001;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7
+{
+	Expression = "function void     Eval()
+{
+	Life = 3.0;
+	Size = 0.02;
+	
+	float	angle = CurrentDate;
+	Position = StartPos.samplePosition() + 5 * float3(sin(angle), 0, cos(angle));
+	Velocity = 0.5 * cross(float3(0,1,0), Position.x0z) - Position.x0z * 0.2;
+//	Velocity = 0.5 * Turb.sample(Position);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_3AF8190E
+{
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Physics_36D6D4BD",
+		"$LOCAL$/CParticleEvolver_Script_0C697F1E",
+		"$LOCAL$/CParticleEvolver_Field_0BC201B0",
+	};
+}
+CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_36D6D4BD
+{
+	Drag = 1.5000000e+000;
+	VelocityFieldSampler = "Turb";
+}
+CNEdEditorLightFactory	$LOCAL$/_Backdrop_Light_Factory
+{
+	NearClipPlane = 1.0000000e+002;
+	LightSize = 9.9999998e-003;
+	SpotFalloff = 8.8541701e-002;
+	Magnitude = 1.0000000e+005;
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+	SamplerList = 
+	{
+		"$LOCAL$/CParticleSamplerShape_9B94EC84",
+		"$LOCAL$/CParticleSamplerShape_102BFF83",
+	};
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_102BFF83
+{
+	SamplerName = "StartPos";
+	SamplerDescription = "Spawn volume where the particles are generated";
+	Shape = "$LOCAL$/CShapeDescriptor_7E0A6C3A";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_7E0A6C3A
+{
+	Position = float3(0.0000000e+000, 2.0000000e+000, 0.0000000e+000);
+	ShapeType = SPHERE;
+	Radius = 7.5000000e-001;
+}
+CParticleSamplerProceduralTurbulence	$LOCAL$/CParticleSamplerProceduralTurbulence_8F74C215
+{
+	SamplerName = "Turb";
+	Scale = 2.0000000e+000;
+	Strength = 1.5000001e-001;
+	TimeScale = 2.0000000e-001;
+	UseNoiseDerivatives = true;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_9B94EC84
+{
+	SamplerName = "Pusher_MoveMeAround";
+	SamplerDescription = "Collision object that pushes the particles out.";
+	Shape = "$LOCAL$/CShapeDescriptor_81C6E937";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_81C6E937
+{
+	Position = float3(3.9302163e+000, 1.9965510e+000, -1.5847068e+000);
+	ShapeType = SPHERE;
+	BoxDimensions = float3(2.0000000e+000, 4.0000000e+000, 2.0000000e+000);
+	Height = 2.0000000e+000;
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_0C697F1E
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_5E081969";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5E081969
+{
+	Expression = "function void	Eval()
+{
+	int	isInside = Pusher_MoveMeAround.contains(Position);
+	float4	pToSurface = Pusher_MoveMeAround.project(Position);
+	float3	posOffset = select(float3(0), pToSurface.xyz, isInside);
+	Position += posOffset;
+	
+	float3	pForce = select(-pToSurface.xyz / pToSurface.w, float3(0), abs(pToSurface.w) < 1.0e-8);
+	Velocity += pForce * dt * InfluenceFalloff.sample(max(0, pToSurface.w));
+	
+	float3	impulse = posOffset / dt;
+	Velocity += impulse;
+	
+	float	maxSpeed = 3.0;
+	float	speed = length(Velocity);
+	Velocity = select(Velocity, Velocity * maxSpeed / speed, speed > maxSpeed);
+}
+";
+}
+CParticleSamplerCurve	$LOCAL$/CParticleSamplerCurve_59093688
+{
+	SamplerName = "InfluenceFalloff";
+	Times = 
+	{
+		0.0000000e+000,
+		1.0000000e+000,
+	};
+	FloatValues = 
+	{
+		1.0000000e+000,
+		0.0000000e+000,
+	};
+	FloatTangents = 
+	{
+		0.0000000e+000,
+		-2.3422871e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+	};
+	MinLimits = float4(0.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+}
+CParticleEvolver_Field	$LOCAL$/CParticleEvolver_Field_0BC201B0
+{
+	Name = "Size";
+	Evaluator = "$LOCAL$/CParticleSamplerCurve_6A6359B3";
+}
+CParticleSamplerCurve	$LOCAL$/CParticleSamplerCurve_6A6359B3
+{
+	Times = 
+	{
+		0.0000000e+000,
+		7.3212814e-001,
+		1.0000000e+000,
+	};
+	FloatValues = 
+	{
+		2.4768479e-002,
+		2.0877510e-002,
+		0.0000000e+000,
+	};
+	FloatTangents = 
+	{
+		0.0000000e+000,
+		0.0000000e+000,
+		-1.2998700e-002,
+		-4.7559789e-003,
+		0.0000000e+000,
+		0.0000000e+000,
+	};
+	MinLimits = float4(0.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+}
+CNEdEditorBackdrop_Light	$LOCAL$/_Backdrop_Light
+{
+	LayerName = "GlobalLight";
+	UniformScale = 9.9999994e-001;
+	Position = float3(1.1233553e+002, 2.8270447e+002, 2.2297581e+002);
+	EulerOrientation = float3(-4.8550171e+001, 2.6739031e+001, -9.5600376e-007);
+	LightDistance = 3.7717276e+002;
+	LightFactory = "$LOCAL$/_Backdrop_Light_Factory";
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(-100, -365);
+	EditorInfosIsBlockMinimized = 0;
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/_Backdrop_Brush",
+	};
+	SceneLayers3D = 
+	{
+		"$LOCAL$/_Backdrop_Model3D",
+		"$LOCAL$/_Backdrop_Light",
+	};
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/_Backdrop_Brush
+{
+	EditorInfosPosition = int2(-253, -417);
+	LayerName = "Layer_Brush";
+}
+CNEdEditorBackdrop_Model3D	$LOCAL$/_Backdrop_Model3D
+{
+	EditorInfosPosition = int2(-252, -371);
+	EditorInfosIsBlockMinimized = 2;
+	LayerName = "Layer_Model";
+	ResourceModel = "meshes/cuberoom_dark.fbx";
+}

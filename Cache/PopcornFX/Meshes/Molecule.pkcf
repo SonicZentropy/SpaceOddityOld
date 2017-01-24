@@ -1,0 +1,23 @@
+Version = 1.10.0.30144;
+COvenBakeConfig_Mesh	$LOCAL$/Resource
+{
+	MD5 = "5a851663bbb2d038305e2bf6f9792aa2";
+	TexturePath = "Textures/";
+}
+CNEdEditorMesh_Data	$LOCAL$/EDITOR
+{
+	Position = float3(-7.8414887e-002, 5.8524117e-002, 1.0507413e-001);
+	EulerOrientation = float3(-2.3716003e+001, -3.6883011e+001, 0.0000000e+000);
+	Backdrops = "$LOCAL$/CNEdEditorBackdrop_List_00269EC3";
+	HmlFactory = "PopcornFX/Cache/Meshes/Molecule.pkml/Resource";
+}
+CNEdEditorBackdrop_List	$LOCAL$/CNEdEditorBackdrop_List_00269EC3
+{
+	SceneLayers3D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Model3D_69D57342",
+	};
+}
+CNEdEditorBackdrop_Model3D	$LOCAL$/CNEdEditorBackdrop_Model3D_69D57342
+{
+}

@@ -1,0 +1,32 @@
+Version = 1.10.0.30144;
+COvenBakeConfig_Mesh	$LOCAL$/Resource
+{
+	MD5 = "103d1e0fb079fbb1b43fddc4506426c6";
+	TexturePath = "Textures/";
+}
+CNEdEditorMesh_Data	$LOCAL$/EDITOR
+{
+	Position = float3(-2.9616222e+000, 2.9487801e+000, 2.6666720e+000);
+	EulerOrientation = float3(-3.3340981e+001, -5.0973854e+001, 0.0000000e+000);
+	Backdrops = "$LOCAL$/CNEdEditorBackdrop_List_D978AFF3";
+	HmlFactory = "PopcornFX/Cache/Meshes/Mustang2014_Wire.pkml/Resource";
+	ShowGrid = false;
+}
+CNEdEditorBackdrop_List	$LOCAL$/CNEdEditorBackdrop_List_D978AFF3
+{
+	SceneLayers3D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Light_950B4432",
+	};
+}
+CNEdEditorBackdrop_Light	$LOCAL$/CNEdEditorBackdrop_Light_950B4432
+{
+	LightFactory = "$LOCAL$/CNEdEditorLightFactory_DF3E3DDD";
+}
+CNEdEditorLightFactory	$LOCAL$/CNEdEditorLightFactory_DF3E3DDD
+{
+	NearClipPlane = 1.0000000e+002;
+	Fov = 3.0000000e+001;
+	SpotFalloff = 9.9999998e-003;
+	Magnitude = 1.0000000e+003;
+}

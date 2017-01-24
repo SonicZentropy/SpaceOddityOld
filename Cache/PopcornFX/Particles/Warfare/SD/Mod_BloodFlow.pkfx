@@ -1,0 +1,213 @@
+Version = 1.9.0.26281;
+CParticleEffect	$LOCAL$/Resource
+{
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	Position = float3(-1.4940360e+000, 2.7073708e-001, -1.5613571e+000);
+	EulerOrientation = float3(-9.9329805e+000, -3.5728153e+001, 0.0000000e+000);
+	Backdrops = "$LOCAL$/_BackdropList";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Blood
+{
+	Descriptor = "$LOCAL$/CParticleDescriptor_AE135B2A";
+	Infinite = true;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+001;
+	Evaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_E359DE47";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AE135B2A
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_8BC6A8D4";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_BBE79B3B",
+		"$LOCAL$/CParticleFieldDeclaration_8B5E5531",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7";
+	States = 
+	{
+		"$LOCAL$/CParticleState_3AF8190E",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	ChildList = 
+	{
+		"$LOCAL$/Blood",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_8BC6A8D4
+{
+	BillboardingMaterial = AlphaBlend_Soft;
+	Diffuse = "Textures/Fx/Drop_01.dds";
+	AtlasDefinition = "Textures/Fx/AtlasX2.pkat";
+	BillboardMode = VelocitySpheroidalAlign;
+	Axis2Field = "Vaxis2";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7
+{
+	EditorInfosIsBlockMinimized = 0;
+	Expression = "function void	Eval()
+{
+	Life = BloodLife;
+	Size = BloodSize * GlobalScale * 0.01;
+	
+	Position = vrand() * 0.05 * float3(rand(-Zone,Zone)) * GlobalScale;
+	
+	TextureID = rand(0, 4);
+	Velocity = vrand() * BloodSpill * 0.03 * GlobalScale;
+	Accel = float3(0, -BloodWeight, 0) * GlobalScale;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_3AF8190E
+{
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Physics_36D6D4BD",
+		"$LOCAL$/CParticleEvolver_Script_EA8B9DCE",
+	};
+}
+CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_36D6D4BD
+{
+	WorldInteractionMode = OneWay;
+	DieOnContact = true;
+}
+CNEdEditorBackdrop_Model3D	$LOCAL$/_Backdrop_Model3D
+{
+	EditorInfosPosition = int2(-252, -371);
+	EditorInfosIsBlockMinimized = 2;
+	LayerName = "Layer_Model";
+	Position = float3(-2.1632665e-001, -1.0218595e+000, 4.4318795e-001);
+	ResourceModel = "Meshes/PopMan_Weapon.FBX";
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+	AttributeList = 
+	{
+		"$LOCAL$/CParticleAttributeDeclaration_05255768",
+		"$LOCAL$/CParticleAttributeDeclaration_9463E1B4",
+		"$LOCAL$/CParticleAttributeDeclaration_E1162716",
+		"$LOCAL$/CParticleAttributeDeclaration_4A73A891",
+		"$LOCAL$/CParticleAttributeDeclaration_342081F3",
+		"$LOCAL$/CParticleAttributeDeclaration_B8EE0992",
+		"$LOCAL$/CParticleAttributeDeclaration_D8067E32",
+		"$LOCAL$/CParticleAttributeDeclaration_F8891348",
+	};
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_342081F3
+{
+	AttributeName = "BloodFlux";
+	DefaultValueF4 = float4(1.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(1.0000000e+002, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(-100, -365);
+	SceneLayers3D = 
+	{
+		"$LOCAL$/_Backdrop_Model3D",
+		"$LOCAL$/CNEdEditorBackdrop_Model3D_603A4A70",
+	};
+}
+CNEdEditorBackdrop_Model3D	$LOCAL$/CNEdEditorBackdrop_Model3D_603A4A70
+{
+	Position = float3(0.0000000e+000, -1.0120726e+000, 0.0000000e+000);
+	ResourceModel = "Meshes/TestArea.FBX";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_BBE79B3B
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_9463E1B4
+{
+	AttributeName = "BloodColor";
+	AttributeType = float3;
+	DefaultValueF4 = float4(1.5000001e-001, 9.9999998e-003, 0.0000000e+000, 1.0000000e+000);
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_2FD87D59
+{
+	Expression = "function void	Eval()
+{
+	Color = float4(BloodColor, 1 - pow(LifeRatio, 4));
+}
+";
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_EA8B9DCE
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_2FD87D59";
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_D8067E32
+{
+	AttributeName = "BloodSize";
+	DefaultValueF4 = float4(1.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(5.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_8B5E5531
+{
+	FieldName = "Accel";
+	FieldType = float3;
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_F8891348
+{
+	AttributeName = "BloodWeight";
+	DefaultValueF4 = float4(2.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(1.0000000e+001, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_E359DE47
+{
+	Expression = "function void	Run()
+{
+	float	bruit = noise(float4(Position, scene.Time));
+	float	aNoise = saturate(bruit);
+	float	pNoise = pow(aNoise, 0.5) * 0.7 + 0.3;
+		
+	Flux = pNoise * BloodFlux;
+}
+";
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_E1162716
+{
+	AttributeName = "Zone";
+	AttributeType = float3;
+	HasMin = true;
+	MaxValueF4 = float4(5.0000000e+000, 5.0000000e+000, 5.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_4A73A891
+{
+	AttributeName = "BloodSpill";
+	DefaultValueF4 = float4(1.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_05255768
+{
+	AttributeName = "GlobalScale";
+	DefaultValueF4 = float4(1.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(5.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_B8EE0992
+{
+	AttributeName = "BloodLife";
+	DefaultValueF4 = float4(5.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(5.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}

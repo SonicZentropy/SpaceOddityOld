@@ -1,0 +1,148 @@
+Version = 1.9.0.26281;
+CParticleEffect	$LOCAL$/Resource
+{
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	Position = float3(-2.9788187e+000, 8.8136578e-001, 2.2989018e+000);
+	EulerOrientation = float3(-4.2350121e+000, -3.5959095e+001, 0.0000000e+000);
+	Backdrops = "$LOCAL$/_BackdropList";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Probes
+{
+	Descriptor = "$LOCAL$/CParticleDescriptor_AE135B2A";
+	Infinite = true;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 8.0000000e+002;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AE135B2A
+{
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_A86DAC34",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7";
+	States = 
+	{
+		"$LOCAL$/CParticleState_3AF8190E",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	ChildList = 
+	{
+		"$LOCAL$/Probes",
+	};
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(-100, -365);
+	EditorInfosIsBlockMinimized = 0;
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/_Backdrop_Brush",
+	};
+	SceneLayers3D = 
+	{
+		"$LOCAL$/_Backdrop_Model3D",
+		"$LOCAL$/_Backdrop_Light",
+	};
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7
+{
+	Expression = "function void	Eval()
+{
+	// instant kill, this is a dummy particle whose sole purpose is to probe the scene
+	Life = 0.0;
+}
+
+function void	PostEval()
+{
+	// here, all our Position, Velocity, etc.. are in worldspace.
+	// we can query the scene for intersections using these:
+	float3	probeDir = vrand();
+	float	halfProbeVar = ProbeLength * (0.5 * ProbeRandomVariation);
+	float4	it = scene.intersect(Position, probeDir, ProbeLength + rand(-halfProbeVar, +halfProbeVar));
+//	float4	it = scene.intersect(float3(0), probeDir, 3.5 + rand(-halfProbeVar, +halfProbeVar));
+	
+	int hasHit = it.w != infinity;
+	
+	float3	contactNormal = it.xyz;
+	float3	toContactPoint = probeDir * it.w - contactNormal * 0.01;	// offset a bit from the contact surface;
+	
+	// here, we\'ll use a trick that consists of using the Velocity to
+	// send a float3 information to the child layer we\'re going to trigger.
+	// it knows our position (it will be instantiated there)
+	// but it also needs to know the contact point we want it to shoot at.
+	Velocity = toContactPoint;
+//	OnProbeHit.trigger(hasHit);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_3AF8190E
+{
+	EditorInfosIsBlockMinimized = 0;
+	StateName = "State_0";
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_832FE16F
+{
+	AttributeName = "ProbeLength";
+	AttributeDescription = "Average length of probe-rays cast in the scene\\nThe rays are randomly cast on a sphere.\\nThis attribute directly controls the radius of that sphere.";
+	DefaultValueF4 = float4(3.5000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	HasMax = true;
+	MaxValueF4 = float4(2.0000000e+001, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+}
+CNEdEditorBackdrop_Light	$LOCAL$/_Backdrop_Light
+{
+	LayerName = "GlobalLight";
+	Position = float3(1.1233553e+002, 2.8270447e+002, 2.2297581e+002);
+	EulerOrientation = float3(-4.8550171e+001, 2.6739031e+001, -9.5600376e-007);
+	LightDistance = 3.7717276e+002;
+	LightFactory = "$LOCAL$/_Backdrop_Light_Factory";
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+	AttributeList = 
+	{
+		"$LOCAL$/CParticleAttributeDeclaration_832FE16F",
+		"$LOCAL$/CParticleAttributeDeclaration_9BDD555E",
+	};
+}
+CNEdEditorBackdrop_Model3D	$LOCAL$/_Backdrop_Model3D
+{
+	EditorInfosPosition = int2(-252, -371);
+	EditorInfosIsBlockMinimized = 2;
+	LayerName = "Layer_Model";
+	Position = float3(-1.0000000e+000, -1.0000000e+000, -2.0000000e+000);
+	ResourceModel = "meshes/lowpolyhebe.fbx";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_A86DAC34
+{
+	FieldName = "Velocity";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/_Backdrop_Brush
+{
+	EditorInfosPosition = int2(-253, -417);
+	LayerName = "Layer_Brush";
+}
+CNEdEditorLightFactory	$LOCAL$/_Backdrop_Light_Factory
+{
+	NearClipPlane = 1.0000000e+002;
+	SpotFalloff = 8.8541701e-002;
+	Magnitude = 1.0000000e+005;
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_9BDD555E
+{
+	AttributeName = "ProbeRandomVariation";
+	AttributeDescription = "Random variation on the probe-rays length.\\nAs a fraction of their original length.";
+	DefaultValueF4 = float4(2.0000000e-001, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	HasMax = true;
+	MaxValueF4 = float4(1.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+}

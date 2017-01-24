@@ -1,0 +1,29 @@
+Version = 1.10.0.30144;
+COvenBakeConfig_Mesh	$LOCAL$/Resource
+{
+	MD5 = "33ab5377a2a8bd1f371bd39f3716c591";
+	TexturePath = "Textures/";
+}
+CNEdEditorMesh_Data	$LOCAL$/EDITOR
+{
+	Backdrops = "$LOCAL$/CNEdEditorBackdrop_List_F221012D";
+	HmlFactory = "Cache/Meshes/popman_weapon.pkml/Resource";
+}
+CNEdEditorBackdrop_List	$LOCAL$/CNEdEditorBackdrop_List_F221012D
+{
+	SceneLayers3D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Light_EBB6F0F4",
+	};
+}
+CNEdEditorBackdrop_Light	$LOCAL$/CNEdEditorBackdrop_Light_EBB6F0F4
+{
+	LightFactory = "$LOCAL$/CNEdEditorLightFactory_262328C7";
+}
+CNEdEditorLightFactory	$LOCAL$/CNEdEditorLightFactory_262328C7
+{
+	NearClipPlane = 1.0000000e+002;
+	Fov = 3.0000000e+001;
+	SpotFalloff = 9.9999998e-003;
+	Magnitude = 1.0000000e+003;
+}

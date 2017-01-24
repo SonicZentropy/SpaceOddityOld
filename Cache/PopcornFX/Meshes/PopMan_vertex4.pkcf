@@ -1,0 +1,29 @@
+Version = 1.10.2.31068;
+COvenBakeConfig_Mesh	$LOCAL$/Resource
+{
+	MD5 = "89e0c108c9c50b8e47c2a074cb2bf077";
+}
+CNEdEditorMesh_Data	$LOCAL$/EDITOR
+{
+	Position = float3(-7.6993942e-001, 1.1111416e+000, 2.2257254e+000);
+	EulerOrientation = float3(-7.3150010e+000, -2.1560024e+001, 0.0000000e+000);
+	HmlFactory = "Cache/Meshes/PopMan_vertex4.pkml/Resource";
+}
+CNEdEditorBackdrop_List	$LOCAL$/CNEdEditorBackdrop_List_4401E669
+{
+	SceneLayers3D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Light_6516E0E0",
+	};
+}
+CNEdEditorBackdrop_Light	$LOCAL$/CNEdEditorBackdrop_Light_6516E0E0
+{
+	LightFactory = "$LOCAL$/CNEdEditorLightFactory_9904A123";
+}
+CNEdEditorLightFactory	$LOCAL$/CNEdEditorLightFactory_9904A123
+{
+	NearClipPlane = 1.0000000e+002;
+	Fov = 3.0000000e+001;
+	SpotFalloff = 9.9999998e-003;
+	Magnitude = 1.0000000e+003;
+}

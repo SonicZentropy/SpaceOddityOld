@@ -1,0 +1,31 @@
+Version = 1.10.0.30144;
+COvenBakeConfig_Mesh	$LOCAL$/Resource
+{
+	MD5 = "0ef6ee5b228fc302966c6298f0c6f385";
+	TexturePath = "Textures/";
+}
+CNEdEditorMesh_Data	$LOCAL$/EDITOR
+{
+	Position = float3(-1.0315286e+000, 9.9206412e-001, 1.1255586e+000);
+	EulerOrientation = float3(-1.7863998e+001, -4.2503994e+001, 0.0000000e+000);
+	Backdrops = "$LOCAL$/CNEdEditorBackdrop_List_A3B45D7A";
+	HmlFactory = "PopcornFX/Cache/Meshes/DominoDestroy_01.pkml/Resource";
+}
+CNEdEditorBackdrop_List	$LOCAL$/CNEdEditorBackdrop_List_A3B45D7A
+{
+	SceneLayers3D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Light_98CD2CC5",
+	};
+}
+CNEdEditorBackdrop_Light	$LOCAL$/CNEdEditorBackdrop_Light_98CD2CC5
+{
+	LightFactory = "$LOCAL$/CNEdEditorLightFactory_3B32386C";
+}
+CNEdEditorLightFactory	$LOCAL$/CNEdEditorLightFactory_3B32386C
+{
+	NearClipPlane = 1.0000000e+002;
+	Fov = 3.0000000e+001;
+	SpotFalloff = 9.9999998e-003;
+	Magnitude = 1.0000000e+003;
+}

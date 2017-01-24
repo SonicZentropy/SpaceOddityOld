@@ -1,0 +1,31 @@
+Version = 1.10.0.30144;
+COvenBakeConfig_Mesh	$LOCAL$/Resource
+{
+	MD5 = "eb8e68bea8a968f286a4e442d8b7acaa";
+	TexturePath = "Textures/";
+}
+CNEdEditorMesh_Data	$LOCAL$/EDITOR
+{
+	Position = float3(-1.4112270e+000, 1.2704428e+000, 1.5920320e+000);
+	EulerOrientation = float3(-1.1241997e+001, -4.2965996e+001, 0.0000000e+000);
+	Backdrops = "$LOCAL$/CNEdEditorBackdrop_List_8C3B8843";
+	HmlFactory = "PopcornFX/Cache/Meshes/PopMan_Fireball.pkml/Resource";
+}
+CNEdEditorBackdrop_List	$LOCAL$/CNEdEditorBackdrop_List_8C3B8843
+{
+	SceneLayers3D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Light_072FDAC2",
+	};
+}
+CNEdEditorBackdrop_Light	$LOCAL$/CNEdEditorBackdrop_Light_072FDAC2
+{
+	LightFactory = "$LOCAL$/CNEdEditorLightFactory_18AC4FAD";
+}
+CNEdEditorLightFactory	$LOCAL$/CNEdEditorLightFactory_18AC4FAD
+{
+	NearClipPlane = 1.0000000e+002;
+	Fov = 3.0000000e+001;
+	SpotFalloff = 9.9999998e-003;
+	Magnitude = 1.0000000e+003;
+}

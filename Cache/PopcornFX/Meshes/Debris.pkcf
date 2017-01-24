@@ -1,0 +1,28 @@
+Version = 1.10.3.31086;
+COvenBakeConfig_Mesh	$LOCAL$/Resource
+{
+	MD5 = "a5486497620ad8c9a9f22aca1625368b";
+	TexturePath = "Textures/";
+}
+CNEdEditorMesh_Data	$LOCAL$/EDITOR
+{
+	HmlFactory = "Cache/Meshes/Debris.pkml/Resource";
+}
+CNEdEditorBackdrop_List	$LOCAL$/CNEdEditorBackdrop_List_4BAE909B
+{
+	SceneLayers3D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Light_9F18DDFA",
+	};
+}
+CNEdEditorBackdrop_Light	$LOCAL$/CNEdEditorBackdrop_Light_9F18DDFA
+{
+	LightFactory = "$LOCAL$/CNEdEditorLightFactory_54537745";
+}
+CNEdEditorLightFactory	$LOCAL$/CNEdEditorLightFactory_54537745
+{
+	NearClipPlane = 1.0000000e+002;
+	Fov = 3.0000000e+001;
+	SpotFalloff = 9.9999998e-003;
+	Magnitude = 1.0000000e+003;
+}

@@ -1,0 +1,38 @@
+Version = 1.10.2.31070;
+CHmlFactory	$LOCAL$/Resource
+{
+	MeshTree = "$LOCAL$/CHmlMeshTreeNode_LOD_0611779B";
+	Skins = 
+	{
+		"$LOCAL$/CHmlSkinDescriptor_E1E06645",
+	};
+}
+CHmlMeshTreeNode_LOD	$LOCAL$/CHmlMeshTreeNode_LOD_0611779B
+{
+	LODs = 
+	{
+		"$LOCAL$/CHmlMeshTreeNode_ModelRef_A13250FA",
+	};
+}
+CHmlMeshTreeNode_ModelRef	$LOCAL$/CHmlMeshTreeNode_ModelRef_A13250FA
+{
+	MeshResourcePath = "Meshes/GlobuleBlanc.pkmm";
+}
+CHmlSkinDescriptor	$LOCAL$/CHmlSkinDescriptor_E1E06645
+{
+	PublishedName = "Default";
+	Materials = 
+	{
+		"$LOCAL$/CHmlSkinMaterial_CF412FEC",
+	};
+}
+CMaterialProxy	$LOCAL$/Material_0
+{
+	VirtualName = "GlobuleBlanc";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_CF412FEC
+{
+	VirtualName = "GlobuleBlanc";
+	MaterialProxy = "$LOCAL$/Material_0";
+}

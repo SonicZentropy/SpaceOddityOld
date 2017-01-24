@@ -1,0 +1,408 @@
+Version = 1.9.0.26281;
+CParticleEffect	$LOCAL$/Resource
+{
+	EditorInfosPosition = int2(73, 52);
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	EditorInfosPosition = int2(413, -144);
+	Position = float3(-1.6122741e+000, 1.6796704e-001, 3.0692866e+000);
+	EulerOrientation = float3(2.7720156e+000, -2.4486036e+001, 0.0000000e+000);
+	Backdrops = "$LOCAL$/_BackdropList";
+	ShowGrid = true;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Text
+{
+	EditorInfosPosition = int2(-288, -61);
+	Descriptor = "$LOCAL$/CParticleDescriptor_AE135B2A";
+	DurationInSeconds = 1.0000000e-003;
+	SpawnCountMode = TotalParticleCount;
+	SpawnCount = 6.4000000e+001;
+	FirstSpawnDelay = 5.0000000e-001;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AE135B2A
+{
+	EditorInfosPosition = int2(-392, -44);
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_6B12D2BB";
+	ParentEffect = "$LOCAL$/Resource";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_D2F8C065",
+		"$LOCAL$/CParticleFieldDeclaration_2355848C",
+		"$LOCAL$/CParticleFieldDeclaration_7D272500",
+		"$LOCAL$/CParticleFieldDeclaration_6B7759BE",
+		"$LOCAL$/CParticleFieldDeclaration_9EEF6DA2",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerCurve_8348F45C",
+		"$LOCAL$/CParticleSamplerCurve_189A3C4F",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7";
+	States = 
+	{
+		"$LOCAL$/CParticleState_3AF8190E",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	EditorInfosPosition = int2(-162, -81);
+	ChildList = 
+	{
+		"$LOCAL$/Text",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_6B12D2BB
+{
+	Diffuse = "Textures/FX/TextAtlas.dds";
+	AtlasDefinition = "Textures/FX/TextAtlas.pkat";
+	BillboardMode = PlanarAlignedQuad;
+	AxisField = "AxisUp";
+	Axis2Field = "AxisNormal";
+	AxisScale = 5.0000000e-001;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7
+{
+	EditorInfosPosition = int2(-508, 22);
+	Expression = "function void	Eval()
+{
+	float	spawnCount = 8*8;				// same value as in the \'SpawnCount\' property of the layer
+	float	particlesPerBlock = 4 + 1 + 3;	// we\'re displaying 4-digits for the integer part, the decimal point, and 2 digits for the fraction
+	int		lineCount = int(spawnCount / particlesPerBlock);
+	
+	float	particleId = floor(spawner.LifeRatio * spawnCount);
+	float	block = floor(particleId / particlesPerBlock);
+	float	digitId = particleId - block * particlesPerBlock;
+
+	BlockAndDigit = float3(block, digitId, block / float(lineCount));
+	
+	float4	decimalSelector = (digitId == float4(0,1,2,3));	// up to 4 integer digits
+	float	decimalDigit = dot(1 / float4(10000, 1000, 100, 10), decimalSelector);
+	float4	fracSelector = (digitId == float4(8,7,6,5));	// up to 4 fractional digits
+	float	fracDigit = dot(1 * float4(1000, 100, 10, 1), fracSelector);
+	
+	DigitFactor = fracDigit + decimalDigit;
+	
+	float4	posAndSize = PositionAndSizes.sample(BlockAndDigit.z);
+	
+	Life = infinity;
+	Size = posAndSize.w;
+	TextureID = 0;
+	
+	AxisUp = scene.axisUp();
+	AxisNormal = scene.axisForward();
+	
+	float	atlasRectAspect = 0.5;	// the texture rects witchs are half the heights. (Matches the \'AxisScale\' property of the planar billboarder)
+	Position = posAndSize.xyz + float3(BlockAndDigit.y * Size * atlasRectAspect, 0, 0);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_3AF8190E
+{
+	EditorInfosPosition = int2(-508, 65);
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/Script_1",
+	};
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_1614ECAE
+{
+	AttributeName = "ValueBatch1";
+	AttributeType = float4;
+	DefaultValueF4 = float4(3.1197878e+001, 1.4195150e+003, 9.3594385e+003, 4.9917007e+002);
+	HasMin = true;
+	HasMax = true;
+	MaxValueF4 = float4(9.9990000e+003, 9.9990000e+003, 9.9990000e+003, 9.9990000e+003);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleSamplerCurve	$LOCAL$/CParticleSamplerCurve_189A3C4F
+{
+	SamplerName = "ColorGradient";
+	ValueType = Float4;
+	Times = 
+	{
+		0.0000000e+000,
+		1.0000000e+000,
+	};
+	FloatValues = 
+	{
+		1.1400455e-001,
+		9.0119612e-001,
+		3.8001537e-002,
+		1.0000000e+000,
+		1.0000000e+000,
+		9.9999998e-003,
+		9.9999998e-003,
+		1.0000000e+000,
+	};
+	FloatTangents = 
+	{
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		2.7315094e+000,
+		-1.0006809e+000,
+		8.4766716e-001,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+	};
+	MinLimits = float4(0.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+	EditorInfosPosition = int2(-599, -20);
+	AttributeList = 
+	{
+		"$LOCAL$/CParticleAttributeDeclaration_5C4C877F",
+		"$LOCAL$/CParticleAttributeDeclaration_1614ECAE",
+		"$LOCAL$/CParticleAttributeDeclaration_F09B3042",
+	};
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(125, -433);
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Brush_9A913525",
+	};
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/CNEdEditorBackdrop_Brush_9A913525
+{
+	EditorInfosPosition = int2(-27, -485);
+	LayerName = "Layer_Brush";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_6B7759BE
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CParticleSamplerCurve	$LOCAL$/CParticleSamplerCurve_8348F45C
+{
+	SamplerName = "PositionAndSizes";
+	ValueType = Float4;
+	Times = 
+	{
+		0.0000000e+000,
+		1.2500000e-001,
+		2.5000000e-001,
+		3.7500000e-001,
+		5.0000000e-001,
+		6.2500000e-001,
+		7.5000000e-001,
+		8.7500000e-001,
+		1.0000000e+000,
+	};
+	FloatValues = 
+	{
+		-1.4142627e+000,
+		2.7622318e-001,
+		0.0000000e+000,
+		9.9999994e-002,
+		-1.1822351e+000,
+		5.4750931e-001,
+		0.0000000e+000,
+		7.7902168e-002,
+		-7.6022935e-001,
+		7.9792726e-001,
+		0.0000000e+000,
+		9.9999994e-002,
+		-3.9776158e-001,
+		1.0002185e+000,
+		0.0000000e+000,
+		1.2209782e-001,
+		1.3258708e-001,
+		1.1599727e+000,
+		0.0000000e+000,
+		1.9944036e-001,
+		7.7342510e-001,
+		8.5123324e-001,
+		0.0000000e+000,
+		9.9999994e-002,
+		1.1159418e+000,
+		5.5973369e-001,
+		0.0000000e+000,
+		1.6629347e-001,
+		1.3325871e+000,
+		2.7622318e-001,
+		0.0000000e+000,
+		9.9999994e-002,
+		0.0000000e+000,
+		2.7622318e-001,
+		0.0000000e+000,
+		9.9999994e-002,
+	};
+	FloatTangents = 
+	{
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+	};
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_2355848C
+{
+	FieldName = "AxisNormal";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_D2F8C065
+{
+	FieldName = "AxisUp";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_5C4C877F
+{
+	AttributeName = "ValueBatch0";
+	AttributeType = float4;
+	DefaultValueF4 = float4(3.4500000e-001, 7.3939565e+003, 4.9917007e+003, 2.0278772e+002);
+	HasMin = true;
+	HasMax = true;
+	MaxValueF4 = float4(9.9990000e+003, 9.9990000e+003, 9.9990000e+003, 9.9990000e+003);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleEvolver_Script	$LOCAL$/Script_1
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_19089209";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_19089209
+{
+	Expression = "function void	Eval()
+{
+	float3	blockAndDigit = BlockAndDigit;
+	float4	blockId = blockAndDigit.x;
+	float	digitId = blockAndDigit.y;
+	
+	// extract value from the 8 values stored in the two float4 attributes:
+	float4	batchSelector0 = (blockId == float4(0,1,2,3));
+	float4	batchSelector1 = (blockId == float4(4,5,6,7));
+	float	value = -(dot(ValueBatch0, batchSelector0) + dot(ValueBatch1, batchSelector1));
+	
+	// extract digit in the [0, 9] range
+	float	digit = floor(-10 * frac(value * DigitFactor));
+	
+	// compute digit count to know if we need to display the digit or not
+	// (if it\'s one of the left digits equal to zero)
+	float4	digitCountSelector = (value >= float4(-1, 10, 100, 1000));	// -1 : display zero
+	float	digitCount = dot(digitCountSelector, digitCountSelector);
+	
+	// map digit to TextureID, and handle special characters \'.\' and \'-\'
+	float	charDigit = digit + 16;	// \'0\' is TextureID 16
+	float	charDecimalPoint = 14;	// \'.\' is TextureID 14
+	float	charEmpty = 0;			// \' \' is TextureID 0
+	int		isDecimalPoint = (digitId == 4);
+	int		isInNumber = (4 - digitId <= digitCount) || ShowZeroes;
+	
+	float	charInside = select(charDigit, charDecimalPoint, isDecimalPoint);
+	TextureID = select(charEmpty, charInside, isInNumber);
+
+	// re-adjust position so it\'s centered on the decimal point,
+	// and uses the positions encoded by the curve \'PositionAndSizes\'
+	float4	posAndSize = PositionAndSizes.sample(blockAndDigit.z);
+	Size = posAndSize.w;
+	float	xOffset = 4;	// we\'ve got 4 particle integer digits in front of the decimal point, and want to center on the point
+	Position = posAndSize.xyz + float3((digitId - xOffset) * Size * 0.5, 0, 0);
+	
+	// map the values in the [0,10000] range to the [0,1] range to sample the color curve
+	Color = ColorGradient.sample(value / 10000);
+}
+";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_7D272500
+{
+	FieldName = "BlockAndDigit";
+	FieldType = float3;
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_F09B3042
+{
+	AttributeName = "ShowZeroes";
+	AttributeType = int;
+	HasMin = true;
+	HasMax = true;
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(1, 10, 10, 10);
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_9EEF6DA2
+{
+	FieldName = "DigitFactor";
+}

@@ -1,0 +1,32 @@
+Version = 1.10.0.30144;
+COvenBakeConfig_Mesh	$LOCAL$/Resource
+{
+	MD5 = "7c9300b9600dffbafd5c4151e964f8d3";
+	TexturePath = "Textures/";
+	ImportAnimation = true;
+}
+CNEdEditorMesh_Data	$LOCAL$/EDITOR
+{
+	Position = float3(9.5261011e+000, 9.2428999e+000, -6.4247684e+000);
+	EulerOrientation = float3(-4.1964996e+001, 1.2604897e+002, 0.0000000e+000);
+	Backdrops = "$LOCAL$/CNEdEditorBackdrop_List_92061B03";
+	HmlFactory = "PopcornFX/Cache/Meshes/AnimPingPong.pkml/Resource";
+}
+CNEdEditorBackdrop_List	$LOCAL$/CNEdEditorBackdrop_List_92061B03
+{
+	SceneLayers3D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Light_B8708482",
+	};
+}
+CNEdEditorBackdrop_Light	$LOCAL$/CNEdEditorBackdrop_Light_B8708482
+{
+	LightFactory = "$LOCAL$/CNEdEditorLightFactory_AC015C6D";
+}
+CNEdEditorLightFactory	$LOCAL$/CNEdEditorLightFactory_AC015C6D
+{
+	NearClipPlane = 1.0000000e+002;
+	Fov = 3.0000000e+001;
+	SpotFalloff = 9.9999998e-003;
+	Magnitude = 1.0000000e+003;
+}

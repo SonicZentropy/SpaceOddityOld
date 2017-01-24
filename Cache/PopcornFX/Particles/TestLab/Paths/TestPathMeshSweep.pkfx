@@ -1,0 +1,323 @@
+Version = 1.9.0.26281;
+CParticleEffect	$LOCAL$/Resource
+{
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	Backdrops = "$LOCAL$/_BackdropList";
+	Position = float3(1.3828317e+001, 1.1303671e+001, 9.4501867e+000);
+	EulerOrientation = float3(-2.2560951e+001, 5.5055119e+001, 0.0000000e+000);
+	SubEntityTreeFactory = "$LOCAL$/CEntityWithTransformsFactory_DD51C56D";
+	IsLooping = true;
+	LoopDelay = 4.0000000e+000;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Layer_1
+{
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_AE135B2A";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AE135B2A
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_9136D2F4";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_5EA9A841",
+		"$LOCAL$/CParticleFieldDeclaration_067CE816",
+		"$LOCAL$/CParticleFieldDeclaration_29C86340",
+		"$LOCAL$/CParticleFieldDeclaration_B7A58800",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerAnimTrack_882E3992",
+		"$LOCAL$/CParticleSamplerShape_5B9CBA0D",
+		"$LOCAL$/CParticleSamplerAnimTrack_B59372D6",
+		"$LOCAL$/CParticleSamplerAnimTrack_626F1E41",
+		"$LOCAL$/CParticleSamplerCurve_695606C3",
+		"$LOCAL$/CParticleSamplerShape_F3622040",
+		"$LOCAL$/CParticleSamplerShape_D2F7C853",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7";
+	States = 
+	{
+		"$LOCAL$/CParticleState_3AF8190E",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	ChildList = 
+	{
+		"$LOCAL$/Layer_1",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_9136D2F4
+{
+	AxisScale = 5.0000001e-002;
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7
+{
+	Expression = "function void     Eval()
+{
+	Life = 2.5;
+	Size = 0.05;
+	
+	version (none)
+		PathSelector = frac(CurveSelect.sample(spawner.LifeRatio) + rand(-0.2,0.2));
+	else
+		PathSelector = pow(rand(0,1), 1);
+
+	//Velocity = rand(float3(-1), float3(1)) + float3(0,4,0);
+	//Position = Sampler_0.samplePosition();
+	
+	pCoords = SweptMesh.sampleParametricCoords();
+	
+	float3	p0 = Path0.samplePosition(spawner.LifeRatio, pCoords);
+	float3	p1 = Path1.samplePosition(spawner.LifeRatio, pCoords);
+	float3	p2 = Path2.samplePosition(spawner.LifeRatio, pCoords);
+
+	Position = select(p0, select(p1, p2, PathSelector > 0.666), PathSelector > 0.333);
+	Velocity = float3(0, -5, 0);
+}";
+}
+CParticleState	$LOCAL$/CParticleState_3AF8190E
+{
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Script_6A87C74F",
+		"$LOCAL$/CParticleEvolver_Field_7F536D95",
+		"$LOCAL$/CParticleEvolver_Physics_AE4DE5E8",
+		"$LOCAL$/CParticleEvolver_Collisions_58068D0B",
+	};
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_276D44D6
+{
+	Expression = "function void	Eval()
+{
+	version(none)
+	{
+		float3	accel(0,-4,0);
+	
+		Position += Velocity * dt + 0.5 * accel * dt * dt;
+		Velocity += accel * dt;
+	}
+	
+//	float3	p0 = Path0.samplePosition(LifeRatio, pCoords);
+//	float3	p1 = Path1.samplePosition(LifeRatio, pCoords);
+//	float3	p2 = Path2.samplePosition(LifeRatio, pCoords);
+	
+//	Position = select(p0, select(p1, p2, PathSelector > 0.666), PathSelector > 0.333);
+}
+";
+}
+CEntityWithTransformsFactory	$LOCAL$/CEntityWithTransformsFactory_DD51C56D
+{
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_6A87C74F
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_276D44D6";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_5EA9A841
+{
+	FieldName = "Velocity";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_29C86340
+{
+	FieldName = "pCoords";
+	FieldType = int3;
+}
+CParticleSamplerCurve	$LOCAL$/CParticleSamplerCurve_695606C3
+{
+	SamplerName = "CurveSelect";
+	Times = 
+	{
+		0.0000000e+000,
+		1.0000000e+000,
+	};
+	FloatValues = 
+	{
+		0.0000000e+000,
+		9.9048775e-001,
+	};
+	FloatTangents = 
+	{
+		0.0000000e+000,
+		1.0537212e+000,
+		1.0343130e+000,
+		0.0000000e+000,
+	};
+	MinLimits = float4(0.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_8C330EE1
+{
+	ShapeType = MESH;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Height = 8.0000000e+000;
+	MeshResource = "Meshes/Crystal.pkmm";
+	MeshScale = float3(5.0000000e+000, 5.0000000e+000, 5.0000000e+000);
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_067CE816
+{
+	EditorInfosIsBlockMinimized = 0;
+	FieldName = "Color";
+	FieldType = float4;
+	Initializer = "1";
+}
+CParticleSamplerAnimTrack	$LOCAL$/CParticleSamplerAnimTrack_882E3992
+{
+	SamplerName = "Path0";
+	AnimResource = "Meshes/Path.pkan";
+	TransformScale = false;
+	Sampler = "$LOCAL$/CParticleSamplerShape_F3622040";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_5B9CBA0D
+{
+	SamplerName = "SweptShape";
+	Shape = "$LOCAL$/CShapeDescriptor_8C330EE1";
+}
+CParticleSamplerCurve	$LOCAL$/CParticleSamplerCurve_F406EA04
+{
+	ValueType = Float4;
+	Times = 
+	{
+		0.0000000e+000,
+		1.0000000e+000,
+	};
+	FloatValues = 
+	{
+		3.9299073e+000,
+		4.6409523e-001,
+		2.4708486e-001,
+		5.9671235e-001,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		9.5847607e-001,
+	};
+	FloatTangents = 
+	{
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		1.5269768e+001,
+		7.5296903e+000,
+		5.4517884e+000,
+		1.3097093e+000,
+		-2.0006564e+000,
+		-1.1154786e+000,
+		0.0000000e+000,
+		2.1643002e-001,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+	};
+}
+CParticleEvolver_Field	$LOCAL$/CParticleEvolver_Field_7F536D95
+{
+	Name = "Color";
+	Evaluator = "$LOCAL$/CParticleSamplerCurve_F406EA04";
+}
+CParticleSamplerAnimTrack	$LOCAL$/CParticleSamplerAnimTrack_B59372D6
+{
+	SamplerName = "Path1";
+	AnimResource = "Meshes/Path.pkan";
+	AnimTrackIndex = 1;
+	TransformScale = false;
+	Sampler = "$LOCAL$/CParticleSamplerShape_F3622040";
+}
+CParticleSamplerAnimTrack	$LOCAL$/CParticleSamplerAnimTrack_626F1E41
+{
+	EditorInfosIsBlockMinimized = 0;
+	SamplerName = "Path2";
+	AnimResource = "Meshes/Path.pkan";
+	AnimTrackIndex = 2;
+	TransformScale = false;
+	Sampler = "$LOCAL$/CParticleSamplerShape_F3622040";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_B7A58800
+{
+	FieldName = "PathSelector";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_F3622040
+{
+	SamplerName = "SweptMesh";
+	Shape = "$LOCAL$/CShapeDescriptor_97513E03";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_97513E03
+{
+	ShapeType = MESH;
+	MeshResource = "Meshes/Anneau.pkmm";
+}
+CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_AE4DE5E8
+{
+}
+CParticleEvolver_Collisions	$LOCAL$/CParticleEvolver_Collisions_58068D0B
+{
+	Collider = "$LOCAL$/CParticleSamplerShape_D2F7C853";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_D2F7C853
+{
+	SamplerName = "CollideSphere";
+	Shape = "$LOCAL$/CShapeDescriptor_B16E51CA";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_B16E51CA
+{
+	Position = float3(0.0000000e+000, -2.5000000e+000, 0.0000000e+000);
+	ShapeType = SPHERE;
+	Radius = 2.0000000e+000;
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(-100, -365);
+	EditorInfosIsBlockMinimized = 0;
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/_Backdrop_Brush",
+	};
+	SceneLayers3D = 
+	{
+		"$LOCAL$/_Backdrop_Model3D",
+			"$LOCAL$/_Backdrop_Light",
+	};
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/_Backdrop_Brush
+{
+	EditorInfosPosition = int2(-253, -417);
+	LayerName = "Layer_Brush";
+}
+CNEdEditorBackdrop_Model3D	$LOCAL$/_Backdrop_Model3D
+{
+	EditorInfosPosition = int2(-252, -371);
+	EditorInfosIsBlockMinimized = 2;
+	LayerName = "Layer_Model";
+	ResourceModel = "meshes/cuberoom_dark.fbx";
+}
+CNEdEditorLightFactory	$LOCAL$/_Backdrop_Light_Factory
+{
+	NearClipPlane = 1.0000000e+002;
+	FarClipPlane = 1000.0f
+	Fov = 1.1154704e+002
+	LightSize = 1.0000000e-003;
+	SpotFalloff = 8.8541701e-002;
+	Magnitude = 1.0000000e+005;
+}
+CNEdEditorBackdrop_Light	$LOCAL$/_Backdrop_Light
+{
+	LayerName = "GlobalLight";
+	UniformScale = 1.0000000;
+	Position = float3(1.1233553e+002, 2.8270447e+002, 2.2297581e+002);
+	EulerOrientation = float3(-4.8550171e+001, 2.6739031e+001, -9.5600376e-007);
+	LightDistance = 3.7717276e+002;
+	LightFactory = "$LOCAL$/_Backdrop_Light_Factory";
+}

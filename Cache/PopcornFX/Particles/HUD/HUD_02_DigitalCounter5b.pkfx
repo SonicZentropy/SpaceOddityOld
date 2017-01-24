@@ -1,0 +1,331 @@
+Version = 1.9.0.26281;
+CParticleEffect	$LOCAL$/Resource
+{
+	EditorInfosPosition = int2(73, 52);
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	EditorInfosPosition = int2(413, -144);
+	Position = float3(-1.6063993e-001, 4.0075365e-001, 1.5357070e+000);
+	EulerOrientation = float3(-1.6939976e+000, -4.9280157e+000, 0.0000000e+000);
+	Backdrops = "$LOCAL$/_BackdropList";
+	ShowGrid = true;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Hexadecimal
+{
+	EditorInfosPosition = int2(-288, -61);
+	Descriptor = "$LOCAL$/CParticleDescriptor_AE135B2A";
+	DurationInSeconds = 1.0000000e-003;
+	SpawnCountMode = TotalParticleCount;
+	SpawnCount = 6.4000000e+003;
+	FirstSpawnDelay = 5.0000000e-001;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AE135B2A
+{
+	EditorInfosPosition = int2(-392, -44);
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_6B12D2BB";
+	ParentEffect = "$LOCAL$/Resource";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_D2F8C065",
+		"$LOCAL$/CParticleFieldDeclaration_2355848C",
+		"$LOCAL$/CParticleFieldDeclaration_7D272500",
+		"$LOCAL$/CParticleFieldDeclaration_290F9663",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7";
+	States = 
+	{
+		"$LOCAL$/CParticleState_3AF8190E",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	EditorInfosPosition = int2(-162, -81);
+	ChildList = 
+	{
+		"$LOCAL$/Hexadecimal",
+		"$LOCAL$/Hexadecimal_Optimized",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_6B12D2BB
+{
+	Diffuse = "Textures/FX/TextAtlas.dds";
+	AtlasDefinition = "Textures/FX/TextAtlas.pkat";
+	BillboardMode = PlanarAlignedQuad;
+	AxisField = "AxisUp";
+	Axis2Field = "AxisNormal";
+	AxisScale = 5.0000000e-001;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7
+{
+	EditorInfosPosition = int2(-508, 22);
+	Expression = "function void	Eval()
+{
+	float	spawnCount = 6400;		// same value as in the \'SpawnCount\' property of the layer
+	float	particlesPerDepth = 64;
+	float	particlesPerBlock = 8;	// we\'re displaying 8-digit numbers
+	float	layerCount = spawnCount / particlesPerDepth;
+	
+	float	rawId = floor(spawner.LifeRatio * spawnCount);
+	float	layer = floor(rawId / particlesPerDepth);
+	float	particleId = rawId - layer * particlesPerDepth;
+	float	block = floor(particleId / particlesPerBlock);
+	float	digitId = particleId - block * particlesPerBlock;
+
+	BlockAndDigit = float2(block, digitId);
+	
+	Life = infinity;
+	Size = 0.1;
+	TextureID = 0;
+	
+	AxisUp = scene.axisUp();
+	AxisNormal = scene.axisForward();
+	
+	float	xOffset = 1 + 1;
+	Position = float3((digitId + xOffset) * Size * 0.5, block * Size, layer*-0.02);
+	
+	float	a = (pow(1 - saturate(layer / layerCount),4) * 0.998 + 0.002) * 0.1;
+	Color = select(float4(1,1,1,a), float4(8,1,1,1), layer == 0);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_3AF8190E
+{
+	EditorInfosPosition = int2(-508, 65);
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/Script_1",
+	};
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_1614ECAE
+{
+	AttributeName = "ValueBatch1";
+	AttributeType = int4;
+	DefaultValueF4 = float4(3.1197878e+001, 1.4195150e+003, 9.3594385e+003, 4.9917007e+002);
+	DefaultValueI4 = int4(31200, 374414, 7769110, 4243369);
+	HasMin = true;
+	HasMax = true;
+	MaxValueF4 = float4(9.9990000e+003, 9.9990000e+003, 9.9990000e+003, 9.9990000e+003);
+	MaxValueI4 = int4(9999999, 9999999, 9999999, 9999999);
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_290F9663
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+	EditorInfosPosition = int2(-599, -20);
+	AttributeList = 
+	{
+		"$LOCAL$/CParticleAttributeDeclaration_5C4C877F",
+		"$LOCAL$/CParticleAttributeDeclaration_1614ECAE",
+	};
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(125, -433);
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Brush_9A913525",
+	};
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/CNEdEditorBackdrop_Brush_9A913525
+{
+	EditorInfosPosition = int2(-27, -485);
+	LayerName = "Layer_Brush";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_730FF362
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Hexadecimal_Optimized
+{
+	EditorInfosPosition = int2(-288, -61);
+	Descriptor = "$LOCAL$/CParticleDescriptor_56474DA1";
+	DurationInSeconds = 1.0000000e-003;
+	SpawnCountMode = TotalParticleCount;
+	SpawnCount = 6.4000000e+003;
+	FirstSpawnDelay = 5.0000000e-001;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_2355848C
+{
+	FieldName = "AxisNormal";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_D2F8C065
+{
+	FieldName = "AxisUp";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_5C4C877F
+{
+	AttributeName = "ValueBatch0";
+	AttributeType = int4;
+	DefaultValueF4 = float4(6.2396259e+002, 7.3939565e+003, 4.9917007e+003, 2.0278772e+002);
+	DefaultValueI4 = int4(4726988, 1872074, 296411, 9687987);
+	HasMin = true;
+	HasMax = true;
+	MaxValueF4 = float4(9.9990000e+003, 9.9990000e+003, 9.9990000e+003, 9.9990000e+003);
+	MaxValueI4 = int4(9999999, 9999999, 9999999, 9999999);
+}
+CParticleEvolver_Script	$LOCAL$/Script_1
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_19089209";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_19089209
+{
+	Expression = "function void	Eval()
+{
+	// extract value from the 8 values stored in the two float4 attributes:
+	int4	batch0 = ValueBatch0 & (BlockAndDigit.x == float4(0,1,2,3));
+	int4	batch1 = ValueBatch1 & (BlockAndDigit.x == float4(4,5,6,7));
+	int		value = batch0.x + batch0.y + batch0.z + batch0.w + batch1.x + batch1.y + batch1.z + batch1.w;
+	
+	// Decimal is base 10, Hexadecimal is base 16.
+	// Each hex digit is in the [0, 15] range: 0123456789ABCDEF
+	// Each hex digit takes exactly 4 bits in the 32-bits number.
+	// we can do a fast digit extraction by using bit operations:
+	// shift the number by digitID * 4 bits, then only keep the lower 4 bits
+	// we use the \'>>\' operator to right-shift, and the \'&\' operator to mask the remaining bits.
+	int4	digitsSelect0 = (BlockAndDigit.y == float4(4,5,6,7));
+	int4	digitsSelect1 = (BlockAndDigit.y == float4(0,1,2,3));
+	int4	digitsShift0 = digitsSelect0 & int4(12, 8, 4, 0);
+	int4	digitsShift1 = digitsSelect1 & int4(28,24,20,16);
+	int4	digitsMask = (digitsSelect0 | digitsSelect1) % 16;
+	int4	digits = (value >> (digitsShift0 | digitsShift1)) & digitsMask;
+	int		digit = digits.x | digits.y | digits.z | digits.w;
+	
+	// if digit is in the [0,9] range, have TextureID start at 16 (\'0\' in our atlas)
+	// if digit is in the [10,15] range, have TextureID start at 33 (\'A\' in our atlas), for hexadecimal characters
+	TextureID = digit + select(16, 33 - 10, digit >= 10);
+}
+";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_7D272500
+{
+	FieldName = "BlockAndDigit";
+	FieldType = float2;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_56474DA1
+{
+	EditorInfosPosition = int2(-392, -44);
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_56603C78";
+	ParentEffect = "$LOCAL$/Resource";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_FBCCD89B",
+		"$LOCAL$/CParticleFieldDeclaration_8EF0C5FA",
+		"$LOCAL$/CParticleFieldDeclaration_5B957F45",
+		"$LOCAL$/CParticleFieldDeclaration_730FF362",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_871FBCEC";
+	States = 
+	{
+		"$LOCAL$/CParticleState_19AD681F",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_56603C78
+{
+	Diffuse = "Textures/FX/TextAtlas.dds";
+	AtlasDefinition = "Textures/FX/TextAtlas.pkat";
+	BillboardMode = PlanarAlignedQuad;
+	AxisField = "AxisUp";
+	Axis2Field = "AxisNormal";
+	AxisScale = 5.0000000e-001;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_FBCCD89B
+{
+	FieldName = "AxisUp";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_8EF0C5FA
+{
+	FieldName = "AxisNormal";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_5B957F45
+{
+	FieldName = "BlockAndDigit";
+	FieldType = int2;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_871FBCEC
+{
+	EditorInfosPosition = int2(-508, 22);
+	Expression = "function void	Eval()
+{
+	float	spawnCount = 6400;		// same value as in the \'SpawnCount\' property of the layer
+	float	particlesPerDepth = 64;
+	float	particlesPerBlock = 8;	// we\'re displaying 8-digit numbers
+	float	layerCount = spawnCount / particlesPerDepth;
+	
+	float	rawId = floor(spawner.LifeRatio * spawnCount);
+	float	layer = floor(rawId / particlesPerDepth);
+	float	particleId = rawId - layer * particlesPerDepth;
+	float	block = floor(particleId / particlesPerBlock);
+	float	digitId = particleId - block * particlesPerBlock;
+
+	// note: here, for optimization, instead of storing the raw digitId in \'y\',
+	// we\'ll store 4 * (7 - digitId) so that we can use that as a bit-shift count at evolve
+	BlockAndDigit = int2(int(block), 4 * (7 - int(digitId)));
+	
+	Life = infinity;
+	Size = 0.1;
+	TextureID = 0;
+	
+	AxisUp = scene.axisUp();
+	AxisNormal = scene.axisForward();
+	
+	float	atlasRectAspect = 0.5;	// the texture rects witchs are half the heights. (Matches the \'AxisScale\' property of the planar billboarder)
+	float	xOffset = -8 - 1;
+	Position = float3((digitId + xOffset) * Size * atlasRectAspect, block * Size, layer*-0.02);
+	
+	float	a = (pow(1 - saturate(layer / layerCount),4) * 0.998 + 0.002) * 0.1;
+	Color = select(float4(1,1,1,a), float4(1,5,1,1), layer == 0);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_19AD681F
+{
+	EditorInfosPosition = int2(-508, 65);
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Script_64C109CE",
+	};
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_64C109CE
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_738A65A9";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_738A65A9
+{
+	Expression = "function void	Eval()
+{
+	int2	blockAndDigit = BlockAndDigit;
+	
+	// extract value from the 8 values stored in the two float4 attributes:
+	int4	blockId = blockAndDigit.x;
+	int4	batch0 = ValueBatch0 & (blockId == int4(0,1,2,3));
+	int4	batch1 = ValueBatch1 & (blockId == int4(4,5,6,7));
+	int4	batch2 = batch0 + batch1;
+	int		value = batch2.x + batch2.y + batch2.z + batch2.w;
+	
+	// extract digit in the [0, 15] range
+	int		digit = (value >> blockAndDigit.y) % 16;
+	
+	// if digit is in the [0,9] range, have TextureID start at 16 (\'0\' in our atlas)
+	// if digit is in the [10,15] range, have TextureID start at 33 (\'A\' in our atlas), for hexadecimal characters
+	TextureID = digit + select(16, 33 - 10, digit >= 10);
+}
+";
+}

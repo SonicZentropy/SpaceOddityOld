@@ -1,0 +1,31 @@
+Version = 1.10.0.30144;
+COvenBakeConfig_Mesh	$LOCAL$/Resource
+{
+	MD5 = "d39e09284f33640f003f40e9e78f1359";
+	TexturePath = "Textures/";
+}
+CNEdEditorMesh_Data	$LOCAL$/EDITOR
+{
+	Position = float3(-2.0343812e+000, 1.8884580e+000, 2.2635779e+000);
+	EulerOrientation = float3(-1.9172995e+001, -4.0116970e+001, 0.0000000e+000);
+	Backdrops = "$LOCAL$/CNEdEditorBackdrop_List_EE4B5F67";
+	HmlFactory = "PopcornFX/Cache/Meshes/crusaderidle.pkml/Resource";
+}
+CNEdEditorBackdrop_List	$LOCAL$/CNEdEditorBackdrop_List_EE4B5F67
+{
+	SceneLayers3D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Light_F4D72EB6",
+	};
+}
+CNEdEditorBackdrop_Light	$LOCAL$/CNEdEditorBackdrop_Light_F4D72EB6
+{
+	LightFactory = "$LOCAL$/CNEdEditorLightFactory_7C5F78B1";
+}
+CNEdEditorLightFactory	$LOCAL$/CNEdEditorLightFactory_7C5F78B1
+{
+	NearClipPlane = 1.0000000e+002;
+	Fov = 3.0000000e+001;
+	SpotFalloff = 9.9999998e-003;
+	Magnitude = 1.0000000e+003;
+}

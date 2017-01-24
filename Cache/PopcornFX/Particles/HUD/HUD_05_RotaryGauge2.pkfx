@@ -1,0 +1,292 @@
+Version = 1.9.0.26281;
+CParticleEffect	$LOCAL$/Resource
+{
+	EditorInfosPosition = int2(73, 52);
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	EditorInfosPosition = int2(413, -144);
+	Position = float3(0.0000000e+000, 5.0000000e-001, 2.4274678e+000);
+	EulerOrientation = float3(-1.0000000e+001, 0.0000000e+000, 0.0000000e+000);
+	Backdrops = "$LOCAL$/_BackdropList";
+	ShowGrid = true;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/CirclesRoot
+{
+	EditorInfosPosition = int2(-288, -61);
+	Descriptor = "$LOCAL$/CParticleDescriptor_AE135B2A";
+	SpawnCountMode = TotalParticleCount;
+	SpawnCount = 2.0000000e+000;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AE135B2A
+{
+	EditorInfosPosition = int2(-392, -44);
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_805D77E3",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7";
+	States = 
+	{
+		"$LOCAL$/CParticleState_3AF8190E",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	EditorInfosPosition = int2(-162, -81);
+	ChildList = 
+	{
+		"$LOCAL$/CirclesRoot",
+		"$LOCAL$/Ticks",
+	};
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_471AB2E2
+{
+	AttributeName = "StartEndAngles";
+	AttributeType = float2;
+	DefaultValueF4 = float4(1.0000000e-001, 8.9999998e-001, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	HasMax = true;
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7
+{
+	EditorInfosPosition = int2(-508, 22);
+	Expression = "function void	Eval()
+{
+	Life = 0.1;
+	
+	float	radiusA = 0.7;
+	float	radiusB = 0.73;
+	RadiusAndSize = Radius * float2(spawner.LifeRatio * (radiusB - radiusA) + radiusA, 0.25);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_3AF8190E
+{
+	EditorInfosPosition = int2(-508, 65);
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/Circles",
+	};
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_CEDB8394
+{
+	FieldName = "BBAxis";
+	FieldType = float3;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_1B3A5531
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+	EditorInfosPosition = int2(-599, -20);
+	AttributeList = 
+	{
+		"$LOCAL$/CParticleAttributeDeclaration_C541691B",
+		"$LOCAL$/CParticleAttributeDeclaration_471AB2E2",
+		"$LOCAL$/CParticleAttributeDeclaration_B6EF6851",
+	};
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(125, -433);
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Brush_9A913525",
+	};
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/CNEdEditorBackdrop_Brush_9A913525
+{
+	EditorInfosPosition = int2(-27, -485);
+	LayerName = "Layer_Brush";
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_C541691B
+{
+	AttributeName = "Radius";
+	DefaultValueF4 = float4(1.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	HasMax = true;
+	MaxValueF4 = float4(2.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleEvolver_Spawner	$LOCAL$/Circles
+{
+	SpawnMetric = Time;
+	SpawnInterval = 1.0000000e-003;
+	FirstSpawnDelay = 5.0000000e-001;
+	Descriptor = "$LOCAL$/CParticleDescriptor_1DF7EBC5";
+}
+CParticleState	$LOCAL$/CParticleState_FAC0607A
+{
+	StateName = "State_0";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_1DF7EBC5
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Ribbon_A8CB7DE2";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_CEDB8394",
+		"$LOCAL$/CParticleFieldDeclaration_1B3A5531",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_F144636C";
+	States = 
+	{
+		"$LOCAL$/CParticleState_FAC0607A",
+	};
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_F144636C
+{
+	Expression = "function void	Eval()
+{
+	float2	radiusAndSize = parent.RadiusAndSize;
+
+	Life = infinity;
+	Size = radiusAndSize.y * 0.02;
+	
+	// k = spawner.firstSpawnDelay * (spawner.spawnInterval / parent.Life)
+	// k = 0.5 * 0.001 / 0.1
+	// k = 0.005
+	// spawner.LifeRatio goes from [k, 1 - k];
+	
+	float	a0 = StartEndAngles.x;
+	float	a1 = StartEndAngles.y;
+	
+	float	k = 0.5 * 0.001 / 0.1;
+	float	a = (((spawner.LifeRatio - k) / (1 - 2*k)) * (a1 - a0) + a0) * 2 * pi;
+	Position = float3(-sin(a), -cos(a), 0) * radiusAndSize.x;
+	BBAxis = float3(0,0,1);
+	
+	Color = float4(1);
+}
+";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_805D77E3
+{
+	FieldName = "RadiusAndSize";
+	FieldType = float2;
+}
+CParticleRenderer_Ribbon	$LOCAL$/CParticleRenderer_Ribbon_A8CB7DE2
+{
+	Diffuse = "Textures/White.dds";
+	BillboardMode = AxisAlignedQuad;
+	AxisField = "BBAxis";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_80E66CE5
+{
+	EditorInfosPosition = int2(-392, -44);
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_0E466B0C";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_DF04A0BF",
+		"$LOCAL$/CParticleFieldDeclaration_3CF65EEE",
+		"$LOCAL$/CParticleFieldDeclaration_BD31D149",
+		"$LOCAL$/CParticleFieldDeclaration_F54FDD03",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_AEBC6E82";
+	States = 
+	{
+		"$LOCAL$/CParticleState_5AE68E6D",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_0E466B0C
+{
+	EditorInfosPosition = int2(-508, -63);
+	BillboardingMaterial = AlphaBlend;
+	Diffuse = "Textures/White.dds";
+	BillboardMode = PlanarAlignedQuad;
+	AxisField = "UpAxis";
+	Axis2Field = "NormalAxis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_DF04A0BF
+{
+	FieldName = "UpAxis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_3CF65EEE
+{
+	FieldName = "NormalAxis";
+	FieldType = float3;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_BD31D149
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_B6EF6851
+{
+	AttributeName = "TickCount";
+	AttributeType = int2;
+	DefaultValueI4 = int4(30, 30, 0, 0);
+	HasMin = true;
+	HasMax = true;
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(100, 100, 10, 10);
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_F54FDD03
+{
+	FieldName = "Size";
+	FieldType = float2;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_AEBC6E82
+{
+	EditorInfosPosition = int2(-508, 22);
+	Expression = "function void	Eval()
+{
+	float	spawnCount = TickCount.x;
+
+	float	radiusA = 0.7;
+	float	radiusB = 0.73;
+	float	radius = select(radiusA, radiusB, spawner.LifeRatio > 0.5);//Radius * (spawner.LifeRatio * (radiusB - radiusA) + radiusA);
+	float	circleSide = sign(spawner.LifeRatio - 0.5);
+
+	float	a0 = StartEndAngles.x;
+	float	a1 = StartEndAngles.y;
+	float	aRange = a1 - a0;
+	
+	float2	s = float2(0.01, 0.1);
+	
+	float	arcLength = (aRange * 2 * pi) * radius;
+	float	circleTickOffset = s.x / arcLength;
+	float	circleOffset = (1.0 / (spawnCount - 1)) - circleTickOffset;
+	float	t = frac(spawner.LifeRatio * 2) * (1 + circleOffset) - 0.5*circleOffset;
+	float	particleId = t * spawnCount;
+
+	float	a = lerp(a0, a1, t) * 2 * pi;
+	float3	v = float3(-sin(a), -cos(a), 0);
+
+	Size = s * Radius;
+	Position = v * (Radius * radius + circleSide * Size.y * 0.5);
+	
+	Life = infinity;
+	UpAxis = v;
+	NormalAxis = scene.axisForward();
+	
+	Color = float4(1);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_5AE68E6D
+{
+	EditorInfosPosition = int2(-508, 65);
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Ticks
+{
+	EditorInfosPosition = int2(-288, -61);
+	Descriptor = "$LOCAL$/CParticleDescriptor_80E66CE5";
+	DurationInSeconds = 1.0000000e-003;
+	SpawnCountMode = TotalParticleCount;
+	SpawnCount = 2.0000000e+000;
+	FirstSpawnDelay = 5.0000000e-001;
+	FluxFactorExpression = "TickCount.x";
+}

@@ -1,0 +1,36 @@
+Version = 1.10.0.30144;
+COvenBakeConfig_Mesh	$LOCAL$/Resource
+{
+	MD5 = "212dc7a805cfff2988344d6ba9212a2f";
+	TexturePath = "Textures/";
+}
+CNEdEditorMesh_Data	$LOCAL$/EDITOR
+{
+	Position = float3(1.2538793e+001, 5.5829501e+000, 7.7449164e+000);
+	EulerOrientation = float3(-1.5938999e+001, 4.6970062e+001, 0.0000000e+000);
+	Backdrops = "$LOCAL$/CNEdEditorBackdrop_List_A8FDE063";
+	HmlFactory = "PopcornFX/Cache/Meshes/TestArea.pkml/Resource";
+	ShowGrid = false;
+	EnableShadows = false;
+}
+CNEdEditorBackdrop_List	$LOCAL$/CNEdEditorBackdrop_List_A8FDE063
+{
+	SceneLayers3D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Light_A1170562",
+	};
+}
+CNEdEditorBackdrop_Light	$LOCAL$/CNEdEditorBackdrop_Light_A1170562
+{
+	Position = float3(4.6844906e+001, 4.6844906e+001, 4.6844906e+001);
+	EulerOrientation = float3(-3.5495300e+001, 4.4835552e+001, -3.2701990e-001);
+	LightDistance = 8.1137756e+001;
+	LightFactory = "$LOCAL$/CNEdEditorLightFactory_61D77ECD";
+}
+CNEdEditorLightFactory	$LOCAL$/CNEdEditorLightFactory_61D77ECD
+{
+	NearClipPlane = 1.0000000e+002;
+	Fov = 3.0000000e+001;
+	SpotFalloff = 9.9999998e-003;
+	Magnitude = 7.9000034e+003;
+}
