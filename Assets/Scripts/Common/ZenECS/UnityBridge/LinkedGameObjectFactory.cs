@@ -123,8 +123,16 @@ namespace Zenobit.Common.ZenECS
             InjectGameObjectReferences(e, go);
             PerformCustomInitializations(e, go);
 	        AddEntityFlag(e, go); //Add entity flag to game object
+	        SetGameObjectLayer(e, go);
             return go;
         }
+
+	    private void SetGameObjectLayer(Entity entity, GameObject go)
+	    {
+		    UnityPrefabComp upc = entity.GetComponent<UnityPrefabComp>();
+		    go.layer = upc.layer.value;
+			
+	    }
 
 	    private void AddEntityFlag(Entity e, GameObject go)
 	    {

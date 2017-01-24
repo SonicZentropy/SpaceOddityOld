@@ -1,0 +1,47 @@
+Version = 1.10.3.31086;
+CHmlFactory	$LOCAL$/Resource
+{
+	MeshTree = "$LOCAL$/CHmlMeshTreeNode_LOD_E9534245";
+	Skins = 
+	{
+		"$LOCAL$/CHmlSkinDescriptor_FB33531F",
+	};
+}
+CHmlMeshTreeNode_LOD	$LOCAL$/CHmlMeshTreeNode_LOD_E9534245
+{
+	LODs = 
+	{
+		"$LOCAL$/CHmlMeshTreeNode_ModelRef_0BFF3BEC",
+	};
+}
+CHmlMeshTreeNode_ModelRef	$LOCAL$/CHmlMeshTreeNode_ModelRef_0BFF3BEC
+{
+	MeshResourcePath = "Meshes/TestArea.pkmm";
+}
+CHmlSkinDescriptor	$LOCAL$/CHmlSkinDescriptor_FB33531F
+{
+	PublishedName = "Default";
+	Materials = 
+	{
+		"$LOCAL$/CHmlSkinMaterial_6F77D0CE",
+	};
+}
+CMaterialProxy	$LOCAL$/Material_0
+{
+	VirtualName = "TestArea";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+	Fields = 
+	{
+		"$LOCAL$/Material_0_Field_0",
+	};
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_6F77D0CE
+{
+	VirtualName = "TestArea";
+	MaterialProxy = "$LOCAL$/Material_0";
+}
+CMaterialProxyField	$LOCAL$/Material_0_Field_0
+{
+	FieldName = "DiffuseTexture";
+	ValTexturePath = "Textures/EditorModelGround_Dark.dds";
+}

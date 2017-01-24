@@ -1,0 +1,459 @@
+Version = 1.10.2.31070;
+CParticleEffect	$LOCAL$/Resource
+{
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	Position = float3(1.3412670e+000, 9.3233895e-001, 1.4996648e+000);
+	EulerOrientation = float3(-2.1944990e+001, 4.2734989e+001, 0.0000000e+000);
+	Backdrops = "$LOCAL$/_BackdropList";
+	LoopDelay = 1.0000000e+000;
+	IsLooping = true;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Sparks
+{
+	Descriptor = "$LOCAL$/CParticleDescriptor_AE135B2A";
+	DurationInSeconds = 1.0000000e-001;
+	SpawnCountMode = TotalParticleCount;
+	SpawnCount = 1.5000000e+001;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AE135B2A
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_9136D2F4";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_08FF7F37",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerProceduralTurbulence_3814BA84",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7";
+	States = 
+	{
+		"$LOCAL$/CParticleState_3AF8190E",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	ChildList = 
+	{
+		"$LOCAL$/Sparks",
+		"$LOCAL$/FlashLight",
+		"$LOCAL$/RandomSound",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_9136D2F4
+{
+	CustomName = "Billboard";
+	BillboardingMaterial = Additive_Soft;
+	Diffuse = "Textures/FX/BB_Glow_02_64.tga";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisScale = 1.5000001e-001;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7
+{
+	Expression = "function void     Eval()
+{
+	Life = rand(0.1, 0.35);
+	Size = rand(0.01, 0.02);
+	Velocity = float3(rand(-1, 1), rand(0.5, 1.5), rand(-1, 1)) * 3;
+}";
+}
+CParticleState	$LOCAL$/CParticleState_3AF8190E
+{
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Physics_3D7B4DC0",
+		"$LOCAL$/CParticleEvolver_Field_F19BB583",
+	};
+}
+CNEdEditorLightFactory	$LOCAL$/_Backdrop_Light_Factory
+{
+	NearClipPlane = 1.0000000e+002;
+	SpotFalloff = 8.8541701e-002;
+	Magnitude = 1.0000000e+005;
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+}
+CNEdEditorBackdrop_Audio2D	$LOCAL$/_Backdrop_Audio2D
+{
+	EditorInfosPosition = int2(-252, -460);
+	LayerName = "Layer_Audio2D";
+}
+CNEdEditorBackdrop_Model3D	$LOCAL$/_Backdrop_Model3D
+{
+	EditorInfosPosition = int2(-252, -371);
+	EditorInfosIsBlockMinimized = 2;
+	LayerName = "Layer_Model";
+	ResourceModel = "meshes/cuberoom_dark.fbx";
+}
+CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_3D7B4DC0
+{
+	CustomName = "Physics";
+	ConstantAcceleration = float3(0.0000000e+000, -9.8000002e+000, 0.0000000e+000);
+	Drag = 5.0000000e-001;
+}
+CParticleEvolver_Field	$LOCAL$/CParticleEvolver_Field_F19BB583
+{
+	CustomName = "Field";
+	Name = "Color";
+	Evaluator = "$LOCAL$/CParticleSamplerCurve_A8134A3A";
+}
+CParticleSamplerCurve	$LOCAL$/CParticleSamplerCurve_A8134A3A
+{
+	ValueType = Float4;
+	Times = 
+	{
+		0.0000000e+000,
+		3.1783247e-001,
+		1.0000000e+000,
+	};
+	FloatValues = 
+	{
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		1.1733952e+001,
+		3.8298359e+000,
+		1.1920266e+000,
+		4.4734197e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+	};
+	FloatTangents = 
+	{
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		2.6322317e+000,
+		2.6498039e+000,
+		2.6498039e+000,
+		2.6498039e+000,
+		-1.5199119e-001,
+		-1.5264547e-001,
+		-1.5264547e-001,
+		-1.5264547e-001,
+		-3.2622042e-001,
+		-3.2762477e-001,
+		-3.2762477e-001,
+		-3.2762477e-001,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+	};
+}
+CParticleSamplerProceduralTurbulence	$LOCAL$/CParticleSamplerProceduralTurbulence_3814BA84
+{
+	SamplerName = "Turbulence";
+	Strength = 4.4194174e+000;
+	Gain = 1.0000000e+000;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_08FF7F37
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_681E7A14
+{
+	CustomName = "Billboard";
+	BillboardingMaterial = Additive_Soft;
+	Diffuse = "Textures/FX/BB_Glow_02_64.tga";
+	ColorField = "ColorLight";
+	AxisScale = 1.5000001e-001;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_E3F6B1A8
+{
+	FieldName = "ColorLight";
+	FieldType = float4;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_8881F92E
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_D604FB7B
+{
+	Expression = "function void     Eval()
+{
+	Life = 0.2;
+	Size = 0.1;
+	Position = float3(0,0.2,0);
+}";
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/_Backdrop_Brush
+{
+	EditorInfosPosition = int2(-253, -417);
+	LayerName = "Layer_Brush";
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(-100, -365);
+	EditorInfosIsBlockMinimized = 0;
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/_Backdrop_Brush",
+		"$LOCAL$/_Backdrop_Audio2D",
+	};
+	SceneLayers3D = 
+	{
+		"$LOCAL$/_Backdrop_Model3D",
+		"$LOCAL$/_Backdrop_Light",
+	};
+}
+CParticleSamplerCurve	$LOCAL$/CParticleSamplerCurve_FE3422AF
+{
+	ValueType = Float4;
+	Times = 
+	{
+		0.0000000e+000,
+		3.2533246e-001,
+		7.5749999e-001,
+		1.0000000e+000,
+	};
+	FloatValues = 
+	{
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		9.2839289e-001,
+		5.9109712e-001,
+		5.2247155e-001,
+		1.0264982e-001,
+		3.7991887e-001,
+		3.8303208e-001,
+		3.8303208e-001,
+		3.1705990e-002,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+	};
+	FloatTangents = 
+	{
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		2.6322320e+000,
+		2.6498039e+000,
+		2.6498039e+000,
+		3.2301831e-001,
+		-1.5557776e-001,
+		-1.5624751e-001,
+		-1.5624751e-001,
+		-1.0835785e-002,
+		-2.0746458e-001,
+		-2.0835766e-001,
+		-2.0835766e-001,
+		-1.4394120e-002,
+		-8.2334501e-001,
+		-8.2884139e-001,
+		-8.2884139e-001,
+		-1.3100207e-001,
+		-5.4256505e-001,
+		-5.4618698e-001,
+		-5.4618698e-001,
+		-7.3508538e-002,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+	};
+}
+CParticleEvolver_Field	$LOCAL$/CParticleEvolver_Field_46CDB2B6
+{
+	CustomName = "Field";
+	Name = "Color";
+	Evaluator = "$LOCAL$/CParticleSamplerCurve_FE3422AF";
+}
+CParticleState	$LOCAL$/CParticleState_E757DEA1
+{
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Field_46CDB2B6",
+		"$LOCAL$/CParticleEvolver_Field_7143E1B5",
+		"$LOCAL$/CParticleEvolver_Field_DB322B92",
+	};
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_3D24C6E0
+{
+	Renderer = "$LOCAL$/CParticleRenderer_List_2AD31B09";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_8881F92E",
+		"$LOCAL$/CParticleFieldDeclaration_E3F6B1A8",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_D604FB7B";
+	States = 
+	{
+		"$LOCAL$/CParticleState_E757DEA1",
+	};
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/FlashLight
+{
+	EditorInfosIsBlockMinimized = 0;
+	Descriptor = "$LOCAL$/CParticleDescriptor_3D24C6E0";
+	SpawnCountMode = TotalParticleCount;
+}
+CActionFactorySound	$LOCAL$/Bullet4
+{
+	SoundPath = "Sounds/Bullet4.wav";
+}
+CParticleEvolver_Field	$LOCAL$/CParticleEvolver_Field_7143E1B5
+{
+	CustomName = "Field";
+	Name = "Size";
+	Evaluator = "$LOCAL$/CParticleSamplerCurve_596E0DA4";
+}
+CParticleSamplerCurve	$LOCAL$/CParticleSamplerCurve_596E0DA4
+{
+	Times = 
+	{
+		0.0000000e+000,
+		4.2250004e-001,
+		1.0000000e+000,
+	};
+	FloatValues = 
+	{
+		6.0181522e-001,
+		1.3577855e+000,
+		6.0181522e-001,
+	};
+	FloatTangents = 
+	{
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+	};
+}
+CParticleRenderer_Light	$LOCAL$/CParticleRenderer_Light_AA00A93E
+{
+	CustomName = "Light";
+	ColorField = "ColorLight";
+	ConstantRadius = 4.0000000e+000;
+	LightIntensityMultiplier = 5.0000000e+000;
+	LightAttenuationSteepnessRange = float2(0.0000000e+000, 8.0000000e+000);
+	LightAttenuationSteepness = 1.0000000e+000;
+}
+CParticleRenderer_List	$LOCAL$/CParticleRenderer_List_2AD31B09
+{
+	CustomName = "List";
+	Renderers = 
+	{
+		"$LOCAL$/CParticleRenderer_Billboard_681E7A14",
+		"$LOCAL$/CParticleRenderer_Light_AA00A93E",
+	};
+}
+CParticleEvolver_Field	$LOCAL$/CParticleEvolver_Field_DB322B92
+{
+	CustomName = "Field";
+	Name = "ColorLight";
+	Evaluator = "$LOCAL$/CParticleSamplerCurve_44D8E40D";
+}
+CParticleSamplerCurve	$LOCAL$/CParticleSamplerCurve_44D8E40D
+{
+	ValueType = Float4;
+	Times = 
+	{
+		0.0000000e+000,
+		1.8914774e-001,
+		1.0000000e+000,
+	};
+	FloatValues = 
+	{
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		1.0000000e+000,
+		5.0000000e-001,
+		1.5000001e-001,
+		4.0666461e-002,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+	};
+	FloatTangents = 
+	{
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		2.5137613e+000,
+		1.2535087e+000,
+		4.2279267e-001,
+		1.2032276e-001,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		-4.7377971e-001,
+		0.0000000e+000,
+		0.0000000e+000,
+		-4.5544639e-002,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+	};
+	MinLimits = float4(0.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+}
+CNEdEditorBackdrop_Light	$LOCAL$/_Backdrop_Light
+{
+	LayerName = "GlobalLight";
+	Position = float3(1.1233553e+002, 2.8270447e+002, 2.2297581e+002);
+	EulerOrientation = float3(-4.8645687e+001, 2.6523003e+001, -2.1307579e-001);
+	LightFactory = "$LOCAL$/_Backdrop_Light_Factory";
+	LightDistance = 3.7717276e+002;
+}
+CActionFactorySound	$LOCAL$/Bullet1
+{
+	SoundPath = "Sounds/Bullet1.wav";
+}
+CActionFactoryWithRandomChilds	$LOCAL$/RandomSound
+{
+	ChildList = 
+	{
+		"$LOCAL$/Bullet1",
+		"$LOCAL$/Bullet2",
+		"$LOCAL$/Bullet3",
+		"$LOCAL$/Bullet4",
+	};
+}
+CActionFactorySound	$LOCAL$/Bullet2
+{
+	SoundPath = "Sounds/Bullet2.wav";
+}
+CActionFactorySound	$LOCAL$/Bullet3
+{
+	SoundPath = "Sounds/Bullet3.wav";
+}

@@ -76,8 +76,17 @@ namespace Zenobit.Components
 		[HideInInspector]
 		public bool IsFitted { get; set; }
 
+		private float _nextAttackTime;
 		[HideInInspector]
-		public float NextAttackTime { get; set; }
+		public float NextAttackTime
+		{
+			get { return _nextAttackTime; }
+			set
+			{
+				Debug.Log("Setting next atk time to " + value);
+				_nextAttackTime = value;
+			}
+		}
 
 		[Inspect(500)]
 		public ShipFitting fittingAttached { get; set; }

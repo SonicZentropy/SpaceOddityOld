@@ -1,0 +1,32 @@
+Version = 1.10.0.30144;
+COvenBakeConfig_Mesh	$LOCAL$/Resource
+{
+	MD5 = "f282ecb2d122bb04bf830458c00c5ec7";
+	OutputPath = "Meshes/";
+	TexturePath = "Textures/";
+}
+CNEdEditorMesh_Data	$LOCAL$/EDITOR
+{
+	Position = float3(0.0000000e+000, 5.0000000e-001, 2.0000000e+000);
+	Backdrops = "$LOCAL$/CNEdEditorBackdrop_List_DFA17606";
+	HmlFactory = "Cache/Meshes/CubeRoom_Light.pkml/Resource";
+	ShowGrid = false;
+}
+CNEdEditorBackdrop_List	$LOCAL$/CNEdEditorBackdrop_List_DFA17606
+{
+	SceneLayers3D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Light_9D58AA41",
+	};
+}
+CNEdEditorBackdrop_Light	$LOCAL$/CNEdEditorBackdrop_Light_9D58AA41
+{
+	LightFactory = "$LOCAL$/CNEdEditorLightFactory_6C088598";
+}
+CNEdEditorLightFactory	$LOCAL$/CNEdEditorLightFactory_6C088598
+{
+	NearClipPlane = 1.0000000e+002;
+	Fov = 3.0000000e+001;
+	SpotFalloff = 9.9999998e-003;
+	Magnitude = 1.0000000e+003;
+}

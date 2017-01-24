@@ -24,7 +24,6 @@ namespace Zenobit.Systems
 		private readonly Matcher enemyShipMatcher = new Matcher()
 			.AllOf(ComponentTypes.CombatComp)
 			.NoneOf(ComponentTypes.PlayerShipComp);
-	
 
 		private CommandComp playerCommand;
 
@@ -126,6 +125,7 @@ namespace Zenobit.Systems
 
 		private static void CreateLaserInfoPacket(WeaponComp selectedWeapon, PositionComp pc, Vector3 direction)
 		{
+			//laser info packet laser fire type wrong
 			LaserComp lc = (LaserComp) selectedWeapon;
 			lc.laserInfoPacket.TimeToLive = selectedWeapon.AttackRange / selectedWeapon.ProjectileSpeed;
 			lc.laserInfoPacket.fireDirection = direction;
@@ -134,9 +134,15 @@ namespace Zenobit.Systems
 			lc.laserInfoPacket.FiringWeaponComp = selectedWeapon;
 		}
 
-		private static void SetNextAttackTime(CombatComp combat, WeaponComp selectedWeapon) { selectedWeapon.NextAttackTime = Time.time + selectedWeapon.AttackRate; }
+		private static void SetNextAttackTime(CombatComp combat, WeaponComp selectedWeapon)
+		{
+			selectedWeapon.NextAttackTime = Time.time + selectedWeapon.AttackRate;
+		}
 
-		private static bool UnitCanAttack(CombatComp combat, WeaponComp selectedWeapon) { return selectedWeapon.NextAttackTime < Time.time; }
+		private static bool UnitCanAttack(CombatComp combat, WeaponComp selectedWeapon)
+		{
+			return selectedWeapon.NextAttackTime < Time.time;
+		}
 
 		private static void PlayAttackNoise(CombatComp attacker, WeaponComp weapon)
 		{

@@ -15,7 +15,7 @@ namespace Zenobit.Systems
 	using Common.Extensions;
 	using Common.ZenECS;
 	using Components;
-	using HighlightingSystem;
+	//using HighlightingSystem;
 	using TypeSafe;
 	using UniRx;
 	using UnityEngine;
@@ -31,7 +31,7 @@ namespace Zenobit.Systems
 		private TargetComp targetComp;
 		private int selectableLayerMask;
 		private GameObject Target;
-		private Highlighter targetHighlighter;
+		//private Highlighter targetHighlighter;
 
 		public override bool Init()
 		{
@@ -70,13 +70,7 @@ namespace Zenobit.Systems
 			}
 		}
 
-		private void DisableHighlight()
-		{
-			if (targetHighlighter != null)
-			{
-				targetHighlighter.Off();
-			}
-		}
+		
 	
 	}
 }
