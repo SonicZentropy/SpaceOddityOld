@@ -30,6 +30,16 @@
             How the fields are sorted.
             </summary>
         </member>
+        <member name="P:AdvancedInspector.AdvancedInspectorControl.ShowIconPreview">
+            <summary>
+            Should an object field display a preview icon?
+            </summary>
+        </member>
+        <member name="P:AdvancedInspector.AdvancedInspectorControl.IconPreviewSize">
+            <summary>
+            At which size the preview icon should be displayed.
+            </summary>
+        </member>
         <member name="E:AdvancedInspector.AdvancedInspectorControl.SortingChanged">
             <summary>
             Raised if the inspector needs a redraw.
@@ -307,7 +317,7 @@
             Override this if you implement your own inspector and doesn't want it to be expandable.
             </summary>
         </member>
-        <member name="F:AdvancedInspector.InspectorEditor.refresh">
+        <member name="F:AdvancedInspector.InspectorEditor.rebuild">
             <summary>
             When a value changed internally, this forces the fields to be refreshed.
             </summary>
@@ -359,12 +369,13 @@
             Preview Settings
             </summary>
         </member>
-        <member name="M:AdvancedInspector.InspectorEditor.Refresh">
+        <member name="M:AdvancedInspector.InspectorEditor.DataChanged">
             <summary>
-            Forces the inspector to rebuild its structure.
+            Call a refresh of this editor, assuming the layout needs to be rebuilt.
+            Expensive operation.
             </summary>
         </member>
-        <member name="M:AdvancedInspector.InspectorEditor.DataChanged">
+        <member name="M:AdvancedInspector.InspectorEditor.DataChanged(System.Boolean)">
             <summary>
             Data Changed, repaint.
             </summary>
@@ -410,6 +421,11 @@
         <member name="M:AdvancedInspector.BehaviourEditor.OnEnable">
             <summary>
             Unity's OnEnable.
+            </summary>
+        </member>
+        <member name="M:AdvancedInspector.BehaviourEditor.OnInspectorGUI">
+            <summary>
+            Override to display Audio VU
             </summary>
         </member>
         <member name="T:AdvancedInspector.ExternalEditor">
@@ -555,6 +571,11 @@
             <summary>
             In case of a dictionary, returns the key type.
             Return null otherwise.
+            </summary>
+        </member>
+        <member name="P:AdvancedInspector.InspectorField.PropertyDrawers">
+            <summary>
+            Associated property drawers, if any.
             </summary>
         </member>
         <member name="P:AdvancedInspector.InspectorField.Editor">
@@ -1398,6 +1419,60 @@
             Get currenty Unity's Selection 
             </summary>
         </member>
+        <member name="T:AdvancedInspector.Clipboard">
+            <summary>
+            A copy/paste buffer.
+            Does not use the System buffer, as it's limited to a string and Unity does not provide a uniformed string serialization.
+            </summary>
+        </member>
+        <member name="P:AdvancedInspector.Clipboard.Data">
+            <summary>
+            In case of any normal object, returns deep copy of that object.
+            In case of a Component, returns the original so you can apply it on a GameObject yourself (sorry)
+            In case of a UnityEngine.Object, create a new one and perforce a Serialization Copy.
+            </summary>
+        </member>
+        <member name="M:AdvancedInspector.Clipboard.CreateInstance(System.Type,UnityEngine.Object)">
+            <summary>
+            Create an instance of type
+            Works with values, list, array, scriptableObject, string
+            Components are ignored.
+            
+            The owner MonoBeahviour is used in case of the creation of a ComponentMonoBehaviour for its internal binding.
+            </summary>
+        </member>
+        <member name="M:AdvancedInspector.Clipboard.Copy(System.Object,UnityEngine.Object)">
+            <summary>
+            Perform a deep copy if an object.
+            Does not perform copies of Components or GameObject
+            Values are returned as is (ex.: 14)
+            strings are cloned.
+            List/Array are enumerated and copied.
+            Everything else is deep copied by fields.
+            </summary>
+        </member>
+        <member name="P:AdvancedInspector.Clipboard.Type">
+            <summary>
+            Type of the current data in the clipboard.
+            </summary>
+        </member>
+        <member name="M:AdvancedInspector.Clipboard.TryConvertion(System.Type,System.Object@)">
+            <summary>
+            Test if the current clipboard data can be converted into a specific type.
+            Ex.: int to string
+            </summary>
+        </member>
+        <member name="M:AdvancedInspector.Clipboard.TryConvertion``1(``0@)">
+            <summary>
+            Test if the current clipboard data can be converted into a specific type.
+            Ex.: int to string
+            </summary>
+        </member>
+        <member name="M:AdvancedInspector.Clipboard.CanConvert(System.Type,System.Object)">
+            <summary>
+            Return true if an object is convertable to a type.
+            </summary>
+        </member>
         <member name="T:AdvancedInspector.IControl">
             <summary>
             Define a control that can be drawn in an EditorWindow.
@@ -2047,60 +2122,6 @@
         <member name="P:AdvancedInspector.EditorResources.White">
             <summary>
               Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="T:Clipboard">
-            <summary>
-            A copy/paste buffer.
-            Does not use the System buffer, as it's limited to a string and Unity does not provide a uniformed string serialization.
-            </summary>
-        </member>
-        <member name="P:Clipboard.Data">
-            <summary>
-            In case of any normal object, returns deep copy of that object.
-            In case of a Component, returns the original so you can apply it on a GameObject yourself (sorry)
-            In case of a UnityEngine.Object, create a new one and perforce a Serialization Copy.
-            </summary>
-        </member>
-        <member name="M:Clipboard.CreateInstance(System.Type,UnityEngine.Object)">
-            <summary>
-            Create an instance of type
-            Works with values, list, array, scriptableObject, string
-            Components are ignored.
-            
-            The owner MonoBeahviour is used in case of the creation of a ComponentMonoBehaviour for its internal binding.
-            </summary>
-        </member>
-        <member name="M:Clipboard.Copy(System.Object,UnityEngine.Object)">
-            <summary>
-            Perform a deep copy if an object.
-            Does not perform copies of Components or GameObject
-            Values are returned as is (ex.: 14)
-            strings are cloned.
-            List/Array are enumerated and copied.
-            Everything else is deep copied by fields.
-            </summary>
-        </member>
-        <member name="P:Clipboard.Type">
-            <summary>
-            Type of the current data in the clipboard.
-            </summary>
-        </member>
-        <member name="M:Clipboard.TryConvertion(System.Type,System.Object@)">
-            <summary>
-            Test if the current clipboard data can be converted into a specific type.
-            Ex.: int to string
-            </summary>
-        </member>
-        <member name="M:Clipboard.TryConvertion``1(``0@)">
-            <summary>
-            Test if the current clipboard data can be converted into a specific type.
-            Ex.: int to string
-            </summary>
-        </member>
-        <member name="M:Clipboard.CanConvert(System.Type,System.Object)">
-            <summary>
-            Return true if an object is convertable to a type.
             </summary>
         </member>
         <member name="T:Separator">

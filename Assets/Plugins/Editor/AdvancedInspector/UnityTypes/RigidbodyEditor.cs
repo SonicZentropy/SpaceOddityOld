@@ -30,17 +30,17 @@ namespace AdvancedInspector
             Fields.Add(new InspectorField(type, Instances, type.GetProperty("constraints"), new EnumAttribute(true),
                 new DescriptorAttribute("Constraints", "Controls which degrees of freedom are allowed for the simulation of this Rigidbody", "https://docs.unity3d.com/Documentation/ScriptReference/Rigidbody-constraints.html")));
 
-            Fields.Add(new InspectorField(type, Instances, type.GetProperty("centerOfMass"), new InspectAttribute(InspectorLevel.Debug), 
+            Fields.Add(new InspectorField(type, Instances, type.GetProperty("centerOfMass"), new InspectAttribute(InspectorLevel.Advanced), 
                 new DescriptorAttribute("Center of Mass", "In essence, the pivot around which the object spins", "https://docs.unity3d.com/Documentation/ScriptReference/Rigidbody-centerOfMass.html")));
-            Fields.Add(new InspectorField(type, Instances, type.GetProperty("freezeRotation"), new InspectAttribute(InspectorLevel.Debug),
+            Fields.Add(new InspectorField(type, Instances, type.GetProperty("freezeRotation"), new InspectAttribute(InspectorLevel.Advanced),
                 new DescriptorAttribute("Freeze Rotation", "Controls whether physics will change the rotation of the object", "https://docs.unity3d.com/Documentation/ScriptReference/Rigidbody-freezeRotation.html")));
 
-            Fields.Add(new InspectorField(type, Instances, type.GetProperty("inertiaTensor"), new InspectAttribute(InspectorLevel.Debug),
+            Fields.Add(new InspectorField(type, Instances, type.GetProperty("inertiaTensor"), new InspectAttribute(InspectorLevel.Advanced),
                 new DescriptorAttribute("Inertia Tensor", "The diagonal inertia tensor of mass relative to the center of mass", "https://docs.unity3d.com/Documentation/ScriptReference/Rigidbody-inertiaTensor.html")));
-            Fields.Add(new InspectorField(type, Instances, type.GetProperty("inertiaTensorRotation"), new InspectAttribute(InspectorLevel.Debug),
+            Fields.Add(new InspectorField(type, Instances, type.GetProperty("inertiaTensorRotation"), new InspectAttribute(InspectorLevel.Advanced),
                 new DescriptorAttribute("Inertia Tensor Rotation", "The rotation of the inertia tensor", "https://docs.unity3d.com/Documentation/ScriptReference/Rigidbody-inertiaTensorRotation.html")));
 
-            Fields.Add(new InspectorField(type, Instances, type.GetProperty("maxAngularVelocity"), new InspectAttribute(InspectorLevel.Debug),
+            Fields.Add(new InspectorField(type, Instances, type.GetProperty("maxAngularVelocity"), new InspectAttribute(InspectorLevel.Advanced),
                 new DescriptorAttribute("Max Angular Velocity", "The maximimum angular velocity of the rigidbody. (Default 7) range { 0, infinity }", "https://docs.unity3d.com/Documentation/ScriptReference/Rigidbody-maxAngularVelocity.html")));
 
             Fields.Add(new InspectorField(type, Instances, type.GetProperty("sleepThreshold"), new InspectAttribute(InspectorLevel.Advanced),
@@ -50,7 +50,7 @@ namespace AdvancedInspector
             Fields.Add(new InspectorField(type, Instances, type.GetProperty("solverIterationCount"), new InspectAttribute(InspectorLevel.Advanced),
                 new DescriptorAttribute("Solver Iteration Count", "Allows you to override the solver iteration count per rigidbody", "https://docs.unity3d.com/Documentation/ScriptReference/Rigidbody-solverIterationCount.html")));
 #else
-            Fields.Add(new InspectorField(type, Instances, type.GetProperty("solverIterations"), new InspectAttribute(InspectorLevel.Debug),
+            Fields.Add(new InspectorField(type, Instances, type.GetProperty("solverIterations"), new InspectAttribute(InspectorLevel.Advanced),
                 new DescriptorAttribute("Solver Iteration Count", "Allows you to override the solver iteration count per rigidbody", "https://docs.unity3d.com/Documentation/ScriptReference/Rigidbody-solverIterationCount.html")));
 #endif
 

@@ -83,13 +83,7 @@ namespace AdvancedInspector
         public GroupAttribute(string name, int priority)
             : this(name, "", priority) { }
 
-		public GroupAttribute(string name, int priority, bool expandable)
-			: this(name, "", priority)
-		{
-			Expandable = expandable;
-		}
-
-		public GroupAttribute(string name, string style)
+        public GroupAttribute(string name, string style)
             : this(name, style, 0) { }
 
         public GroupAttribute(string name, float r, float g, float b)

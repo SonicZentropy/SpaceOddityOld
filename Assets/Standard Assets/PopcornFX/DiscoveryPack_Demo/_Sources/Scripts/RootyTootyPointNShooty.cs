@@ -19,6 +19,9 @@ public class RootyTootyPointNShooty : MonoBehaviour {
 	public Texture			tex;
 	public Texture			tex2;
 
+	private bool EffectTriggered = false;
+	private Vector3 AxisRotation = new Vector3(0, 1, 0);
+
 	void OnGUI()
 	{
 		if (tex2 != null)
@@ -63,8 +66,21 @@ public class RootyTootyPointNShooty : MonoBehaviour {
 			Invoke("CoolDown", m_CoolDowns[m_CurrentAmmoType]);
 		}
 		else if (Input.GetMouseButton(1))
+		{
+			if (!EffectTriggered)
+			{
+				AxisRotation = Random.onUnitSphere.normalized;
+				var aor = m_FlameThrower.GetAttribute("AxisOfRotation");
+				aor.ValueFloat3 = AxisRotation;
+				m_FlameThrower.SetAttribute(aor);
+				EffectTriggered = true;
+			}
 			m_FlameThrower.StartEffect();
+		}
 		else
+		{
 			m_FlameThrower.StopEffect();
+			EffectTriggered = false;
+		}
 	}
 }

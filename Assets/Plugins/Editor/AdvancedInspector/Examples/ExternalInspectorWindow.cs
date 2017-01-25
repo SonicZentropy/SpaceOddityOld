@@ -8,7 +8,7 @@ namespace AdvancedInspector
         private ExternalEditor editor;
 
         private GameObject go;
-        private UnityEngine.Component component;
+        private Component component;
 
         [MenuItem("Window/Advanced Insector Example")]
         public static void Init()
@@ -37,7 +37,7 @@ namespace AdvancedInspector
             }
             else
             {
-                UnityEngine.Component[] components = go.GetComponents(typeof(UnityEngine.Component));
+                Component[] components = go.GetComponents(typeof(Component));
                 GUIContent[] contents = new GUIContent[components.Length + 1];
                 contents[0] = new GUIContent("None");
                 int index = -1;

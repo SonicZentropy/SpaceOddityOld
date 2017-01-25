@@ -1,4 +1,4 @@
-﻿namespace Zenobit.Editor
+﻿/*namespace Zenobit.Editor
 {
 	using AdvancedInspector;
 	using Common.ZenECS;
@@ -137,4 +137,4 @@
 			return flag;
 		}
 	}
-}
+}*/

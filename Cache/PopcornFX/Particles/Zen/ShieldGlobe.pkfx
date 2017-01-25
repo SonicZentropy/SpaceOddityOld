@@ -1,16 +1,17 @@
-Version = 1.10.2.31070;
+Version = 1.11.0.32777;
 CParticleEffect	$LOCAL$/Resource
 {
 	EditorInfosPosition = int2(73, 52);
 	OnSpawn = "$LOCAL$/Spawner";
 	CustomAttributes = "$LOCAL$/_GlobalAttributes";
-	Autostart = true;
 }
 CNEdEditorParticle_Data	$LOCAL$/EDITOR
 {
 	EditorInfosPosition = int2(413, -144);
 	Position = float3(1.6114064e+000, 8.1171751e-001, -1.7285095e+000);
 	EulerOrientation = float3(-2.0096954e+001, -2.2361192e+002, 0.0000000e+000);
+	PostFx_EnableDistortion = false;
+	PostFx_EnableVignetting = false;
 	BackdropToShapeSamplerMapping = 
 	{
 		"$LOCAL$/CNEdEditorParticle_BackdropToSamplerShape_B64F0F03",
@@ -92,6 +93,7 @@ CNEdEditorBackdrop_Light	$LOCAL$/_Backdrop_Light
 CNEdEditorLightFactory	$LOCAL$/_Backdrop_Light_Factory
 {
 	NearClipPlane = 1.0000000e+002;
+	LightSize = 9.9999998e-003;
 	SpotFalloff = 8.8541701e-002;
 	Magnitude = 1.0000000e+005;
 }
@@ -111,9 +113,9 @@ CParticleAttributeList	$LOCAL$/_GlobalAttributes
 	SamplerList = 
 	{
 		"$LOCAL$/CParticleSamplerShape_F45C69FD",
-		"$LOCAL$/CParticleSamplerTexture_1A55881B",
 		"$LOCAL$/CParticleSamplerCurve_E34AAD34",
 		"$LOCAL$/CParticleSamplerCurve_BCF9D0E2",
+		"$LOCAL$/CParticleSamplerTexture_A416581A",
 	};
 }
 CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
@@ -236,12 +238,6 @@ CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_7E215485
 	Diffuse = "Textures/FX/bokeh_x3.dds";
 	AtlasDefinition = "Textures/FX/bokeh_x3.pkat";
 	SoftAnimationBlending = true;
-}
-CParticleSamplerTexture	$LOCAL$/CParticleSamplerTexture_1A55881B
-{
-	SamplerName = "GlobeLookup";
-	TextureResource = "Textures/EarthLookup.png";
-	SampleRawValues = false;
 }
 CParticleDescriptor	$LOCAL$/CParticleDescriptor_8D2B2C31
 {
@@ -843,10 +839,12 @@ function void	PostEval()
 	float	imgLookup = GlobeLookup.sample(-angles).b;	// Blue channel : main land
 	int3	pCoords = Sphere.buildParametricCoordsSphere(angles, 0);
 	Position = Sphere.samplePosition(pCoords)*1.5;
-//	float2	ar = float2(spawner.LifeRatio*2, parent.Phi-0.5) * pi;
-//	Position = float3(cos(ar.x) * cos(ar.y), sin(ar.y), sin(ar.x) * cos(ar.y))*1.5;
+	//These Commented
+	//float2	ar = float2(spawner.LifeRatio*2, parent.Phi-0.5) * pi;
+	//Position = float3(cos(ar.x) * cos(ar.y), sin(ar.y), sin(ar.x) * cos(ar.y))*1.5;
 
-	Life = select(0, infinity, imgLookup > 0.5);
+	//Life = select(0, infinity, imgLookup > 0.5);
+	Life = select(0, infinity, imgLookup > 0.1);
 //	Normal = normalize(Position);	// cheap extraction of the normal: it\'s a sphere anyway.
 }
 ";
@@ -900,7 +898,6 @@ CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_FE901AFC
 CActionFactoryParticleSpawnerBase	$LOCAL$/OuterShellRoot
 {
 	EditorInfosPosition = int2(-288, -61);
-	EditorInfosIsBlockMinimized = 0;
 	Descriptor = "$LOCAL$/CParticleDescriptor_302D7BAC";
 	SpawnCount = 1.5000000e+000;
 	FluxFactorExpression = "Subdivisions.y";
@@ -1284,7 +1281,7 @@ function void	PostEval()
 	// could be done in \'Eval\'
 //	float	lookup = GlobeLookup.sample(-parent.PolarAngles).z;
 //	Life = select(0,2,lookup > 0.5);
-	Size = 0.0075;
+	Size = 4.0075;
 	
 	Brightness = OverbrightProbability.sample(rand(0,1));
 	ChildLife = rand(0.5,1.5);
@@ -1372,7 +1369,6 @@ CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_033E37E6
 CActionFactoryParticleSpawnerBase	$LOCAL$/HotspotsRoot
 {
 	EditorInfosPosition = int2(-288, -61);
-	EditorInfosIsBlockMinimized = 0;
 	Descriptor = "$LOCAL$/CParticleDescriptor_C31A1116";
 	SpawnCount = 8.0000000e+001;
 }
@@ -1388,9 +1384,9 @@ CParticleSamplerCurve	$LOCAL$/CParticleSamplerCurve_621F60EC
 	Times = 
 	{
 		0.0000000e+000,
-		7.9999995e-001,
-		9.3615675e-001,
-		9.5436156e-001,
+		8.0000001e-001,
+		9.3615669e-001,
+		9.5436162e-001,
 		1.0000000e+000,
 	};
 	FloatValues = 
@@ -1406,7 +1402,7 @@ CParticleSamplerCurve	$LOCAL$/CParticleSamplerCurve_621F60EC
 		0.0000000e+000,
 		0.0000000e+000,
 		5.1180452e-001,
-		1.4576545e+000,
+		1.4576540e+000,
 		5.5810320e-003,
 		7.4621040e-004,
 		0.0000000e+000,
@@ -3593,4 +3589,9 @@ CActionFactoryWithChilds	$LOCAL$/Detail
 		"$LOCAL$/EjectionsCRoot",
 		"$LOCAL$/Orbiters",
 	};
+}
+CParticleSamplerTexture	$LOCAL$/CParticleSamplerTexture_A416581A
+{
+	SamplerName = "GlobeLookup";
+	TextureResource = "Textures/Zen/ZenGlobeLookup.png";
 }

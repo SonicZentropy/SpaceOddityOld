@@ -23,7 +23,6 @@ namespace AdvancedInspector
 
         private string name = "";
 
-
         /// <summary>
         /// Give this item a name.
         /// </summary>
@@ -149,7 +148,7 @@ namespace AdvancedInspector
         public DescriptorAttribute(string name, string description)
             : this(name, description, "", 0, 0, 0, 0) { }
 
-		public DescriptorAttribute(string name, string description, string url)
+        public DescriptorAttribute(string name, string description, string url)
             : this(name, description, url, 0, 0, 0, 0) { }
 
         public DescriptorAttribute(string name, string description, string url, float r, float g, float b)

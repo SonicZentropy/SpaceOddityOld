@@ -1,4 +1,4 @@
-Version = 1.9.0.27371;
+Version = 1.11.0.32777;
 CParticleEffect	$LOCAL$/Resource
 {
 	EditorInfosPosition = int2(73, 52);
@@ -8,7 +8,6 @@ CParticleEffect	$LOCAL$/Resource
 		"$LOCAL$/Fire",
 	};
 	CustomAttributes = "$LOCAL$/_GlobalAttributes";
-	Autostart = true;
 }
 CActionFactoryParticleSpawnerBase	$LOCAL$/Explosion
 {
@@ -56,6 +55,7 @@ CActionFactoryWithChilds	$LOCAL$/Spawner
 CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_9136D2F4
 {
 	EditorInfosPosition = int2(-508, -63);
+	CustomName = "Billboard";
 	BillboardingMaterial = AlphaBlend_Soft;
 	Diffuse = "Textures/Fx/Fire_02.dds";
 	AtlasDefinition = "Textures/Fx/Fire_02.pkat";
@@ -95,6 +95,7 @@ CParticleState	$LOCAL$/CParticleState_3AF8190E
 CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_36D6D4BD
 {
 	EditorInfosPosition = int2(-590, 86);
+	CustomName = "Physics";
 	Mass = 4.0000000e+000;
 	Drag = 1.0000000e+000;
 }
@@ -117,10 +118,12 @@ CParticleAttributeList	$LOCAL$/_GlobalAttributes
 }
 CParticleEvolver_Rotation	$LOCAL$/Evolver_1
 {
+	CustomName = "Rotation";
 	RotationMode = Axial;
 }
 CParticleEvolver_Script	$LOCAL$/Script_1
 {
+	CustomName = "Script";
 	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_2672FCCA";
 }
 CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_2672FCCA
@@ -329,6 +332,7 @@ CParticleState	$LOCAL$/CParticleState_EC583BB3
 CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_11273B9D
 {
 	EditorInfosPosition = int2(-590, 86);
+	CustomName = "Physics";
 	Drag = 1.0000000e+000;
 	WorldInteractionMode = OneWay;
 	DieOnContact = true;
@@ -336,6 +340,7 @@ CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_11273B9D
 }
 CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_4F738424
 {
+	CustomName = "Script";
 	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_B8F4A3B7";
 }
 CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_B8F4A3B7
@@ -391,6 +396,7 @@ CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5C5D2BD2
 }
 CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_719C6DFD
 {
+	CustomName = "Billboard";
 	BillboardingMaterial = AlphaBlend_Distortion;
 	Diffuse = "Textures/Fx/Distortion_01.dds";
 }
@@ -405,9 +411,11 @@ CParticleState	$LOCAL$/CParticleState_E07D7604
 }
 CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_014A8B17
 {
+	CustomName = "Physics";
 }
 CParticleEvolver_Script	$LOCAL$/Script_2
 {
+	CustomName = "Script";
 	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_2EDAEC26";
 }
 CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_2EDAEC26
@@ -426,6 +434,7 @@ CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_17564AE1
 }
 CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_8D1F98BE
 {
+	CustomName = "Billboard";
 	BillboardingMaterial = AlphaBlend_Soft;
 	Diffuse = "Textures/Fx/Fire_02.dds";
 	AtlasDefinition = "Textures/Fx/Fire_02.pkat";
@@ -473,10 +482,12 @@ CParticleDescriptor	$LOCAL$/CParticleDescriptor_73D8B288
 }
 CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_D63A3C90
 {
+	CustomName = "Physics";
 }
 CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_30A47FEB
 {
 	EditorInfosPosition = int2(-508, -63);
+	CustomName = "Billboard";
 	BillboardingMaterial = AlphaBlend_Soft;
 	Diffuse = "Textures/Fx/Debris_01.dds";
 	AtlasDefinition = "Textures/Fx/Debris_01.pkat";
@@ -495,14 +506,15 @@ CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_2CE84E93
 }
 CParticleEvolver_Script	$LOCAL$/Script_6
 {
+	CustomName = "Script";
 	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_BD6DF752";
 }
 CParticleRenderer_Ribbon	$LOCAL$/CParticleRenderer_Ribbon_A5388C12
 {
+	CustomName = "Ribbon";
 	BillboardingMaterial = AlphaBlend_Soft;
 	Diffuse = "Textures/Fx/Smoke_03.dds";
 	AtlasDefinition = "Textures/Fx/AtlasX2.pkat";
-	TextureIDField = "TextureID";
 	TextureUField = "Uribbon";
 }
 CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_083FB866
@@ -574,11 +586,13 @@ CParticleState	$LOCAL$/CParticleState_DE7EB35D
 }
 CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_082076E4
 {
+	CustomName = "Physics";
 	Drag = 1.0000000e+000;
 	BounceRestitution = 1.0000000e+000;
 }
 CParticleEvolver_Spawner	$LOCAL$/Trail_1
 {
+	CustomName = "Spawner";
 	CustomSpawnIntervalScaleField = "S";
 	Descriptor = "$LOCAL$/CParticleDescriptor_09D90E06";
 }
@@ -629,10 +643,12 @@ CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_87866053
 }
 CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_AA0A003B
 {
+	CustomName = "Physics";
 	Drag = 1.0000000e+000;
 }
 CParticleEvolver_Script	$LOCAL$/Script_4
 {
+	CustomName = "Script";
 	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_90FB361A";
 }
 CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_90FB361A
@@ -726,6 +742,7 @@ CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_A38C6907
 CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_C06228D6
 {
 	DrawOrder = 1;
+	CustomName = "Billboard";
 	BillboardingMaterial = Additive_Soft;
 	Diffuse = "Textures/Fx/Glow_03.dds";
 	SoftnessDistance = 5.0000001e-002;
@@ -741,9 +758,11 @@ CParticleState	$LOCAL$/CParticleState_CC8AED51
 }
 CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_3E077DE8
 {
+	CustomName = "Physics";
 }
 CParticleEvolver_Script	$LOCAL$/Script_5
 {
+	CustomName = "Script";
 	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_EFAB7ECB";
 }
 CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_EFAB7ECB
@@ -823,10 +842,9 @@ CNEdEditorParticle_Data	$LOCAL$/EDITOR
 	EditorInfosPosition = int2(413, -144);
 	Position = float3(-7.1209779e+000, 5.7545357e+000, -6.7687759e+000);
 	EulerOrientation = float3(-2.7334988e+001, -4.9125954e+001, 0.0000000e+000);
-	EditorScript = "$LOCAL$/CCompilerSyntaxNodeExpression_3BAFD88E";
 	Backdrops = "$LOCAL$/_BackdropList";
-	IsLooping = true;
 	LoopDelay = 4.0000000e+000;
+	IsLooping = true;
 }
 CNEdEditorBackdrop_Model3D	$LOCAL$/CNEdEditorBackdrop_Model3D_578F322E
 {
@@ -930,6 +948,7 @@ CParticleDescriptor	$LOCAL$/CParticleDescriptor_B5941F04
 CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_F061E817
 {
 	DrawOrder = -1;
+	CustomName = "Billboard";
 	BillboardingMaterial = AlphaBlend_Additive_Soft;
 	Diffuse = "Textures/Fx/BigFlame.dds";
 	AtlasDefinition = "Textures/Fx/BigFlame.pkat";
@@ -1021,6 +1040,7 @@ CParticleState	$LOCAL$/CParticleState_5B79782C
 }
 CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_7620245F
 {
+	CustomName = "Script";
 	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_7BD05B0E";
 }
 CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_7BD05B0E

@@ -56,7 +56,7 @@ namespace AdvancedInspector
             if (behaviour == null)
                 return;
 
-            List<UnityEngine.Component> components = new List<UnityEngine.Component>(behaviour.gameObject.GetComponents(field.BaseType));
+            List<Component> components = new List<Component>(behaviour.gameObject.GetComponents(field.BaseType));
             if (components.Count == 1)
                 return;
 
