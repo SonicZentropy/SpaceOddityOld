@@ -8,7 +8,7 @@ namespace Haste {
 
 	public class HasteMenuItemSource : IEnumerable<HasteItem> {
 
-    static readonly Regex modifiers = new Regex(@"\s+[\%\#\&\_]+\w$", RegexOptions.IgnoreCase);
+    static readonly Regex modifiers = new Regex(@"\s+[\%\#\&_]+\w$", RegexOptions.IgnoreCase);
 
     public const string NAME = "Menu Item";
 

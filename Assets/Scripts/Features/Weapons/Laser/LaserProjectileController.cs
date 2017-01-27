@@ -69,6 +69,7 @@ public class LaserProjectileController : ZenBehaviour, IOnUpdate
 		ZenLogger.Log($"Laser hit {go.name}");
 		if (go.HasEntityTag(EntityTags.IsDamageable))
 		{
+			ZenLogger.Log($"Adding dmg component to ship");
 			go.GetEntity().GetComponent<DamageComp>().damagePackets.Push(new DamagePacket(10, 10));
 		}
 	}

@@ -5,6 +5,11 @@
         "Zenobit.Components.UnityPrefabComp": {
             "IsPooled": true,
             "PrefabLink": "Prefabs/EnemyShip",
+            "layer": {
+                "value": 2048
+            },
+            "entityTags": "Ship,IsEntity,IsDamageable",
+            "tags": "",
             "Id": "00000000-0000-0000-0000-000000000000",
             "$type": "Zenobit.Components.UnityPrefabComp"
         },
