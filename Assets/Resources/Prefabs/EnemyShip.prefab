@@ -20,8 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4812722185764840}
   - component: {fileID: 54213137631507624}
-  - component: {fileID: 114632927897038554}
-  - component: {fileID: 114784749408585990}
+  - component: {fileID: 114590195828559158}
   m_Layer: 11
   m_Name: EnemyShip
   m_TagString: Untagged
@@ -39,9 +38,26 @@ GameObject:
   - component: {fileID: 4502706653044750}
   - component: {fileID: 33863666881425272}
   - component: {fileID: 23883093083215470}
-  - component: {fileID: 64910613682795396}
+  - component: {fileID: 136463163490088728}
   m_Layer: 11
   m_Name: Mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1868559816959640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4804771254343606}
+  - component: {fileID: 114859635787833114}
+  - component: {fileID: 114246520200982998}
+  m_Layer: 20
+  m_Name: VibrantShieldSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,7 +70,20 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1215541860824088}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0043792725, y: -0.074848175, z: -5.4211426}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4812722185764840}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4804771254343606
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1868559816959640}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4812722185764840}
@@ -70,6 +99,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4804771254343606}
   - {fileID: 4502706653044750}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -128,26 +158,36 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &64910613682795396
-MeshCollider:
+--- !u!114 &114246520200982998
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1215541860824088}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_GameObject: {fileID: 1868559816959640}
   m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 1
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: bacc1aeb0f3db7444a1e31bcbc309528, type: 3}
---- !u!114 &114632927897038554
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 609a61e11f2d74e43968199fb22507f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShieldPfx: {fileID: 0}
+--- !u!114 &114590195828559158
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1100796810099420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3175524389c23543995eb1cd857f682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnableLogging: 0
+--- !u!114 &114859635787833114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1868559816959640}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 325033367, guid: 097bb12263a8c413f87630c377349664, type: 3}
@@ -171,7 +211,7 @@ MonoBehaviour:
       MaxValue1: 0
       MaxValue2: 0
       MaxValue3: 0
-    m_Value0: 2
+    m_Value0: 0.6
     m_Value1: 0
     m_Value2: 0
     m_Value3: 0
@@ -192,7 +232,7 @@ MonoBehaviour:
       MaxValue1: 0
       MaxValue2: 0
       MaxValue3: 0
-    m_Value0: 1
+    m_Value0: 1.23
     m_Value1: 0
     m_Value2: 0
     m_Value3: 0
@@ -213,7 +253,7 @@ MonoBehaviour:
       MaxValue1: 0
       MaxValue2: 0
       MaxValue3: 0
-    m_Value0: -2.58
+    m_Value0: 1.84
     m_Value1: 0
     m_Value2: 0
     m_Value3: 0
@@ -255,8 +295,8 @@ MonoBehaviour:
       MaxValue1: 1
       MaxValue2: 1
       MaxValue3: 0
-    m_Value0: 0
-    m_Value1: 1
+    m_Value0: 0.8140408
+    m_Value1: 0
     m_Value2: 0
     m_Value3: 0
   - m_Descriptor:
@@ -276,7 +316,7 @@ MonoBehaviour:
       MaxValue1: 0
       MaxValue2: 0
       MaxValue3: 0
-    m_Value0: 1.026
+    m_Value0: 1
     m_Value1: 0
     m_Value2: 0
     m_Value3: 0
@@ -297,7 +337,7 @@ MonoBehaviour:
       MaxValue1: 0
       MaxValue2: 0
       MaxValue3: 0
-    m_Value0: 20
+    m_Value0: 2.07
     m_Value1: 0
     m_Value2: 0
     m_Value3: 0
@@ -305,8 +345,8 @@ MonoBehaviour:
       Type: 28
       MinMaxFlag: 3
       Name: ParticleSize
-      Description: 
-      DefaultValue0: 0
+      Description: Individual Particle Size
+      DefaultValue0: 10
       DefaultValue1: 0
       DefaultValue2: 0
       DefaultValue3: 0
@@ -318,7 +358,7 @@ MonoBehaviour:
       MaxValue1: 0
       MaxValue2: 0
       MaxValue3: 0
-    m_Value0: 200
+    m_Value0: 42.8
     m_Value1: 0
     m_Value2: 0
     m_Value3: 0
@@ -339,23 +379,66 @@ MonoBehaviour:
       MaxValue1: 0
       MaxValue2: 0
       MaxValue3: 0
-    m_Value0: 200000
+    m_Value0: 13267
     m_Value1: 0
     m_Value2: 0
     m_Value3: 0
+  - m_Descriptor:
+      Type: 30
+      MinMaxFlag: 0
+      Name: LocalPosOffset
+      Description: Local space position offset
+      DefaultValue0: 0
+      DefaultValue1: 0
+      DefaultValue2: 0
+      DefaultValue3: 0
+      MinValue0: 0
+      MinValue1: 0
+      MinValue2: 0
+      MinValue3: 0
+      MaxValue0: 0
+      MaxValue1: 0
+      MaxValue2: 0
+      MaxValue3: 0
+    m_Value0: -7.275958e-12
+    m_Value1: 0.0000000037252903
+    m_Value2: 30
+    m_Value3: 0
+  - m_Descriptor:
+      Type: 31
+      MinMaxFlag: 3
+      Name: BaseDistortion
+      Description: 
+      DefaultValue0: 1
+      DefaultValue1: 1
+      DefaultValue2: 1
+      DefaultValue3: 1
+      MinValue0: 0
+      MinValue1: 0
+      MinValue2: 0
+      MinValue3: 0
+      MaxValue0: 1
+      MaxValue1: 1
+      MaxValue2: 1
+      MaxValue3: 1
+    m_Value0: 1
+    m_Value1: 1
+    m_Value2: 1
+    m_Value3: 1
   m_FxSamplersList: []
-  m_PlayOnStart: 1
+  m_PlayOnStart: 0
   m_BoundFx: {fileID: 102900000, guid: d8fcf392ae62f1f48bd527ec8e95ca31, type: 3}
   m_FxName: Particles/Zen/ZenShieldVibrant.pkfx
---- !u!114 &114784749408585990
-MonoBehaviour:
+--- !u!136 &136463163490088728
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1100796810099420}
+  m_GameObject: {fileID: 1215541860824088}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 609a61e11f2d74e43968199fb22507f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShieldPfx: {fileID: 114632927897038554}
+  m_Radius: 1.1289444
+  m_Height: 3.8730528
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: -0.18}

@@ -12,7 +12,6 @@ public class LaserFireManager : Singleton<LaserFireManager>
 
 	public void Fire(LaserComp wc)
 	{
-
 		switch (wc.laserInfoPacket.laserFireType)
 		{
 			case LaserFireType.ProjectileGO:

@@ -96,9 +96,14 @@ namespace Zenobit.Common.ZenECS
             Owner = entity;
         }
 
-	    public ComponentEcs()
+	    protected ComponentEcs()
 	    {
 		    Id = Guid.NewGuid();
+	    }
+
+	    public override string ToString()
+	    {
+		    return this.GetType().Name;
 	    }
     }
 }

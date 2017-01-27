@@ -147,36 +147,3 @@ namespace Zenobit.Common.Extensions
 
 	}
 }
-
-[Flags]
-public enum EntityTags
-{
-	Player = 1 << 0,
-	Ship = 1 << 1,
-	Xenith = 1 << 2, //bio mech AI
-	Aermedian = 1 << 3,
-	IsEntity = 1 << 4
-}
-
-[Flags]
-public enum Tags
-{
-	//None = 0,
-	Player = 1 << 0,
-	NPC = 1 << 1,
-	Eclipse = 1 << 2,
-	Foreground = 1 << 3,
-	Middleground = 1 << 4,
-	Background = 1 << 5,
-	Weapons = 1 << 6,
-	Lighting = 1 << 7,
-	Laser = 1 << 8,
-	Missile = 1 << 9,
-	Enemy = 1 << 10,
-	Ally = 1 << 11,
-	Station = 1 << 12,
-	Planet = 1 << 13,
-	Star = 1 << 14,
-	PlayerRangeTrigger = 1 << 15,
-	DisableDistanceTrigger = 1 << 16
-}

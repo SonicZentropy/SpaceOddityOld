@@ -45,5 +45,10 @@ namespace Zenobit.Systems
         public virtual void LateUpdate()
         {
         }
+
+	    public override string ToString()
+	    {
+		    return this.GetType().Name;
+	    }
     }
 }

@@ -94,10 +94,10 @@ public static class UnityDrawerStatics
 
 	public static void RefreshEntityList()
 	{
-		EntityList = FindAllFilesRecursively(Application.dataPath + "/Resources/JSON", ".json")
+		EntityList = FindAllFilesRecursively(Application.dataPath + "/Resources/Entities", ".json")
 			.Select(
 				f => f.FullName.Replace(@"\", @"/")
-					.Replace(Application.dataPath.Replace(@"\", @"/") + "/Resources/JSON/", "")
+					.Replace(Application.dataPath.Replace(@"\", @"/") + "/Resources/Entities/", "")
 					.Replace(".json", ""))
 			.ToArray();
 	}

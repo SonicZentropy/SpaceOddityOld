@@ -93,7 +93,7 @@ namespace Zenobit.Serialization
 			}
 		}
 
-		[TextField(TextFieldType.JSON)]
+		[TextField(TextFieldType.Entity)]
 		[Inspect(90)]
 		public string EntityLoad
 		{
@@ -101,7 +101,7 @@ namespace Zenobit.Serialization
 			set
 			{
 				Reset();
-				_entityLoad = Application.dataPath + "/Resources/JSON/" + value + ".json";
+				_entityLoad = Application.dataPath + "/Resources/Entities/" + value + ".json";
 				LoadJson(_entityLoad);
 				_entityLoad = value;
 				EntityName = value;
@@ -168,9 +168,9 @@ namespace Zenobit.Serialization
 
 			Serializer.TrySerialize(typeof(Entity), _newEnt, out _data).AssertSuccess();
 
-			var filePath = Application.dataPath + "/Resources/JSON/" + EntityName + ".json";
+			var filePath = Application.dataPath + "/Resources/Entities/" + EntityName + ".json";
 
-			Directory.CreateDirectory(Application.dataPath + "/Resources/JSON/" + GetTypeFromFullName(EntityName) + "/");
+			Directory.CreateDirectory(Application.dataPath + "/Resources/Entities/" + GetTypeFromFullName(EntityName) + "/");
 
 			using (var file = File.Open(filePath, FileMode.Create))
 			{

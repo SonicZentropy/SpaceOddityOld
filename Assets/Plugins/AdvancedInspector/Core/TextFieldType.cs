@@ -9,7 +9,7 @@
         File,
         Folder,
 		Prefab,
-		JSON,
+		Entity,
 		Component
     }
 }

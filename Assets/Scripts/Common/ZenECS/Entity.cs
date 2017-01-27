@@ -148,5 +148,10 @@ namespace Zenobit.Common.ZenECS
 		    _components.Remove(component.ObjectType);
 			engine.DestroyComponent(component);
 	    }
+
+	    public override string ToString()
+	    {
+		    return EntityName;
+	    }
     }
 }

@@ -1,34 +1,30 @@
-using UnityEngine;
-using UnityEditor;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text.RegularExpressions;
-using System.IO;
-
 namespace Haste {
+	using System;
+	using System.Collections;
+	using System.Collections.Generic;
+	using System.Text.RegularExpressions;
+	using UnityEditor;
+	using UnityEngine;
 
-  public class HasteMenuItemSource : IEnumerable<HasteItem> {
+	public class HasteMenuItemSource : IEnumerable<HasteItem> {
 
     static readonly Regex modifiers = new Regex(@"\s+[\%\#\&\_]+\w$", RegexOptions.IgnoreCase);
 
     public const string NAME = "Menu Item";
 
-    static string[] MacPlatformMenuItems = new string[]{
+    static string[] MacPlatformMenuItems = {
       "Unity/About Unity...",
       "Unity/Preferences...",
       "Assets/Reveal in Finder"
     };
 
-    static string[] WindowsPlatformMenuItems = new string[]{
+    static string[] WindowsPlatformMenuItems = {
       "Help/About Unity...",
       "File/Preferences...",
       "Assets/Show in Explorer"
     };
 
-    static string[] CustomMenuItems = new string[]{
+    static string[] CustomMenuItems = {
       "Assets/Instantiate Prefab",
 
       "GameObject/Lock",
@@ -58,7 +54,7 @@ namespace Haste {
 
     public IEnumerator<HasteItem> GetEnumerator() {
       // Menu items found in the currently loaded assembly
-      foreach (var assembly in System.AppDomain.CurrentDomain.GetAssemblies()) {
+      foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies()) {
         // Exclude built-in assemblies for performance reasons
         if (assembly.FullName.StartsWith("Mono")) continue;
         if (assembly.FullName.StartsWith("ICSharpCode")) continue;
@@ -74,7 +70,7 @@ namespace Haste {
         // if (assembly.FullName.StartsWith("Assembly-CSharp-Editor")) continue;
 
         foreach (var result in HasteReflection.GetAttributesInAssembly<MenuItem>(assembly)) {
-          MenuItem menuItem = (MenuItem)result.First;
+          MenuItem menuItem = result.First;
 
           if (menuItem.menuItem == "Window/Haste") continue;
           if (menuItem.menuItem.StartsWith("internal:")) continue;

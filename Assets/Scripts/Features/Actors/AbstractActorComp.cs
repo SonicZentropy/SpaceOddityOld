@@ -5,7 +5,7 @@
 
 	public class AbstractActorComp : ComponentEcs
 	{
-		[TextField(TextFieldType.JSON)]
+		[TextField(TextFieldType.Entity)]
 		[Inspect(90)]
 		public string CurrentShip;
 

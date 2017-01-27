@@ -18,7 +18,6 @@ namespace Zenobit.Common.ZenECS
     using AdvancedInspector;
     using Common.ObjectPool;
     using Editor.Utils;
-    using Extensions;
     using Zenobit.Systems;
     using UnityEngine;
 

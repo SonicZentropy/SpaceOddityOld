@@ -68,7 +68,7 @@ namespace Zenobit.Components
 		private bool ProjectileUsesPrefab() { return !ProjectileIsEntity; }
 
 		[Inspect("ProjectileIsEntity")]
-		[TextField(TextFieldType.JSON)]
+		[TextField(TextFieldType.Entity)]
 		public string ProjectileEntity { get; set; }
 
 		[Inspect("ProjectileUsesPrefab")] [TextField(TextFieldType.Prefab)] public string ProjectilePrefab = "None";
@@ -83,7 +83,7 @@ namespace Zenobit.Components
 			get { return _nextAttackTime; }
 			set
 			{
-				Debug.Log("Setting next atk time to " + value);
+				//Debug.Log("Setting next atk time to " + value);
 				_nextAttackTime = value;
 			}
 		}

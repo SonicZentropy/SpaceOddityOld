@@ -17,17 +17,21 @@ CNEdEditorParticle_Data	$LOCAL$/EDITOR
 		"$LOCAL$/CNEdEditorParticle_BackdropToSamplerShape_B64F0F03",
 	};
 	Backdrops = "$LOCAL$/_BackdropList";
+	LoopDelay = 0.0000000e+000;
+	IsLooping = true;
 }
 CActionFactoryWithChilds	$LOCAL$/Spawner
 {
 	EditorInfosPosition = int2(-162, -81);
 	ChildList = 
 	{
-		"$LOCAL$/Detail",
+		"$LOCAL$/HotspotsRoot",
+		"$LOCAL$/Layer_1",
 	};
 }
 CNEdEditorBackdrop_Light	$LOCAL$/_Backdrop_Light
 {
+	IsVisible = false;
 	LayerName = "GlobalLight";
 	Position = float3(1.1233553e+002, 2.8270447e+002, 2.2297581e+002);
 	EulerOrientation = float3(-4.8550171e+001, 2.6739031e+001, -9.5600376e-007);
@@ -65,7 +69,6 @@ CParticleAttributeList	$LOCAL$/_GlobalAttributes
 CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
 {
 	EditorInfosPosition = int2(125, -433);
-	EditorInfosIsBlockMinimized = 0;
 	BackgroundLayers2D = 
 	{
 		"$LOCAL$/CNEdEditorBackdrop_Brush_9A913525",
@@ -78,6 +81,7 @@ CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
 CNEdEditorBackdrop_Brush	$LOCAL$/CNEdEditorBackdrop_Brush_9A913525
 {
 	EditorInfosPosition = int2(-27, -485);
+	IsVisible = false;
 	LayerName = "Layer_Brush";
 	BackgroundColorTop = float4(2.6717556e-001, 8.1796430e-002, 2.5047708e-002, 1.0000000e+000);
 	BackgroundColorBottom = float4(3.3369016e-002, 2.3258615e-002, 1.5267175e-001, 1.0000000e+000);
@@ -435,8 +439,8 @@ CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_4DE2F20B
 	
 	int3	pCoords = Sphere.buildParametricCoordsSphere(PolarAngles, 0);
 	Position = Sphere.samplePosition(pCoords);
-//	float2	ar = (PolarAngles + float2(0,-0.5)) * pi;
-//	Position = float3(cos(ar.x) * cos(ar.y), sin(ar.y), sin(ar.x) * cos(ar.y));
+	//float2	ar = (PolarAngles + float2(0,-0.5)) * pi;
+	//Position = float3(cos(ar.x) * cos(ar.y), sin(ar.y), sin(ar.x) * cos(ar.y));
 }
 ";
 }
@@ -446,6 +450,7 @@ CParticleState	$LOCAL$/CParticleState_EBFB242A
 	StateName = "State_0";
 	Evolvers = 
 	{
+		"$LOCAL$/LocalSpace_1",
 		"$LOCAL$/CParticleEvolver_Script_E6932135",
 		"$LOCAL$/Hotspots",
 	};
@@ -462,14 +467,16 @@ CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_826C0D9C
 	float2	angles = frac(PolarAngles + float2(LifeRatio, 0));
 	int3	pCoords = Sphere.buildParametricCoordsSphere(angles, 0);
 	Position = Sphere.samplePosition(pCoords);
-//	float2	ar = (angles + float2(0,-0.5)) * pi;
-//	Position = float3(cos(ar.x) * cos(ar.y), sin(ar.y), sin(ar.x) * cos(ar.y));
+	//float2	ar = (angles + float2(0,-0.5)) * pi;
+	//Position = float3(cos(ar.x) * cos(ar.y), sin(ar.y), sin(ar.x) * cos(ar.y));
 }
 ";
 }
 CParticleEvolver_Spawner	$LOCAL$/Hotspots
 {
+	EditorInfosIsBlockMinimized = 0;
 	CustomName = "Spawner";
+	Active = false;
 	SpawnInterval = 1.0000000e+000;
 	FirstSpawnDelay = 5.0000000e-001;
 	CustomSpawnIntervalScaleField = "ChildSpawnIntervalScale";
@@ -622,7 +629,9 @@ CActionFactoryParticleSpawnerBase	$LOCAL$/HotspotsRoot
 {
 	EditorInfosPosition = int2(-288, -61);
 	Descriptor = "$LOCAL$/CParticleDescriptor_C31A1116";
+	DurationInSeconds = 1.0000000e+000;
 	SpawnCount = 8.0000000e+001;
+	ContinuousSpawner = false;
 }
 CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_784F2078
 {
@@ -709,285 +718,6 @@ CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_FC00091B
 	HasMax = true;
 	MaxValueF4 = float4(2.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
 	MaxValueI4 = int4(10, 10, 10, 10);
-}
-CParticleDescriptor	$LOCAL$/CParticleDescriptor_D3B035EC
-{
-	CustomFields = 
-	{
-		"$LOCAL$/CParticleFieldDeclaration_45DAD51F",
-	};
-	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_4D947ACE";
-	States = 
-	{
-		"$LOCAL$/CParticleState_173A2AA9",
-	};
-}
-CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_45DAD51F
-{
-	FieldName = "Normal";
-	FieldType = float3;
-	TransformFilter = rotate;
-}
-CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_4D947ACE
-{
-	Expression = "function void	Eval()
-{
-	float3	normal = normalize(Sphere.samplePosition());
-	float	rot_speed = RotationSpeed*0.3;
-	float3	rot_normal = rotate(normal, float3(0,1,0), scene.Time * rot_speed);
-	float	surface_velocity = length(normal.xz) * rot_speed;
-	
-	Position = rot_normal;
-	Velocity = rot_normal * 0.5 + surface_velocity * cross(float3(0,1,0), rot_normal);
-
-	float	killer = noise(Position*8);
-	Life = select(0, 1, killer > 0.6);
-}
-";
-}
-CParticleState	$LOCAL$/CParticleState_173A2AA9
-{
-	StateName = "State_0";
-	Evolvers = 
-	{
-		"$LOCAL$/CParticleEvolver_Physics_18165A20",
-		"$LOCAL$/EjectionsB",
-	};
-}
-CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_18165A20
-{
-	CustomName = "Physics";
-	Drag = 1.0000000e+000;
-}
-CParticleEvolver_Spawner	$LOCAL$/EjectionsB
-{
-	CustomName = "Spawner";
-	SpawnInterval = 4.9999999e-003;
-	Descriptor = "$LOCAL$/CParticleDescriptor_6C4E1462";
-}
-CParticleDescriptor	$LOCAL$/CParticleDescriptor_6C4E1462
-{
-	InheritInitialVelocity = 5.0000000e-001;
-	Renderer = "$LOCAL$/CParticleRenderer_Billboard_A5C439CD";
-	CustomFields = 
-	{
-		"$LOCAL$/CParticleFieldDeclaration_EA284614",
-		"$LOCAL$/CParticleFieldDeclaration_EA5807B6",
-	};
-	Samplers = 
-	{
-		"$LOCAL$/CParticleSamplerCurve_F214C5B1",
-		"$LOCAL$/CParticleSamplerProceduralTurbulence_A42BAEAF",
-		"$LOCAL$/CParticleSamplerShape_FBB28B9E",
-	};
-	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_27D00DC8";
-	States = 
-	{
-		"$LOCAL$/CParticleState_10355C2B",
-	};
-}
-CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_A5C439CD
-{
-	CustomName = "Billboard";
-	Diffuse = "Textures/FX/bokeh_x3.dds";
-	AtlasDefinition = "Textures/FX/bokeh_x3.pkat";
-	SoftAnimationBlending = true;
-	AxisScale = 2.0000000e-002;
-}
-CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_EA284614
-{
-	FieldName = "Color";
-	FieldType = float4;
-}
-CParticleEvolver_Physics	$LOCAL$/Evolver_2
-{
-	CustomName = "Physics";
-	Drag = 1.5000000e+000;
-	VelocityFieldSampler = "Turb";
-}
-CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_EA5807B6
-{
-	FieldName = "Brightness";
-}
-CParticleSamplerCurve	$LOCAL$/CParticleSamplerCurve_F214C5B1
-{
-	SamplerName = "ColorLookup";
-	ValueType = Float4;
-	Times = 
-	{
-		0.0000000e+000,
-		1.4999999e-001,
-		5.2199745e-001,
-		7.0101136e-001,
-		8.4999996e-001,
-		1.0000000e+000,
-	};
-	FloatValues = 
-	{
-		2.9163778e+000,
-		2.6652601e+000,
-		2.3624818e+000,
-		0.0000000e+000,
-		1.1744095e+001,
-		2.2664750e+000,
-		1.9871552e+000,
-		1.0000000e+000,
-		2.9398355e+000,
-		7.1825099e-001,
-		3.9201516e-001,
-		1.0000000e+000,
-		2.9398355e+000,
-		7.1825099e-001,
-		3.9201516e-001,
-		7.5591993e-001,
-		2.9398355e+000,
-		7.1825099e-001,
-		3.9201516e-001,
-		4.5081973e-001,
-		2.9398355e+000,
-		7.1825099e-001,
-		3.9201516e-001,
-		0.0000000e+000,
-	};
-	FloatTangents = 
-	{
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		-4.2769542e+000,
-		-1.3728957e+000,
-		-1.5863732e+000,
-		0.0000000e+000,
-		-1.0606775e+001,
-		-3.4047585e+000,
-		-3.9341791e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		2.2757890e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		3.4609869e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		2.9182155e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-		0.0000000e+000,
-	};
-	MinLimits = float4(0.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
-}
-CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_27D00DC8
-{
-	Expression = "function void	Eval()
-{
-	Life = 1.0;
-	float	spawnerAge = 1 - spawner.LifeRatio;
-	
-	Brightness = spawnerAge * (pow(ninja,4)*2 + 0.3);
-	Velocity = StartVel.samplePosition() * spawnerAge;
-}
-
-function void	PostEval()
-{
-	float globeSide = dot(parent.Velocity, normalize(Position - ViewPosition));
-	
-	Brightness *= pow(BrightnessLookup.sample(globeSide * 0.5 + 0.5),3)*2;
-}
-";
-}
-CParticleState	$LOCAL$/CParticleState_10355C2B
-{
-	StateName = "State_0";
-	Evolvers = 
-	{
-		"$LOCAL$/Evolver_2",
-		"$LOCAL$/CParticleEvolver_Script_3DCAC8CA",
-	};
-}
-CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_3DCAC8CA
-{
-	CustomName = "Script";
-	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_0B335255";
-}
-CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_0B335255
-{
-	Expression = "function void	Eval()
-{
-	Color = ColorLookup.sample(LifeRatio) * Brightness;
-
-	float	realSize = 0.004;
-
-	float	distToView = dot(Position - ViewPosition, ViewDirection);
-	float	dofSignedDist = distToView - FocusDistance;
-	float	dofDist = abs(dofSignedDist);
-	
-	float	dofFactor = min(1, max(0, dofDist - FocusRange.y) / FocusRange.x);
-	float	dofFactorNonLin = pow(dofFactor,2);
-
-	float	cocFactor = dofFactorNonLin;
-	float	cocScale = distToView * cocFactor;
-	
-	float	newSize = realSize + cocScale * MaxCocRadius;
-	float	areaDiffusion = pow(realSize / newSize, 2);
-	
-//	float	cocBias = sqrt(min(realSize / (newSize - realSize), 100));	// hack
-	TextureID = 3*cocFactor;// + 2*cocBias;
-	
-	Size = newSize;
-	Color *= (areaDiffusion).111x;
-}
-";
-}
-CActionFactoryParticleSpawnerBase	$LOCAL$/EjectionsBRoot
-{
-	EditorInfosIsBlockMinimized = 0;
-	Descriptor = "$LOCAL$/CParticleDescriptor_D3B035EC";
-	Infinite = true;
-	DurationInSeconds = 2.0000000e+000;
-	SpawnCount = 5.0000000e+002;
-}
-CParticleSamplerProceduralTurbulence	$LOCAL$/CParticleSamplerProceduralTurbulence_A42BAEAF
-{
-	SamplerName = "Turb";
-	Wavelength = 3.9999999e-002;
-	Strength = 4.5254830e-002;
-}
-CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_FBB28B9E
-{
-	SamplerName = "StartVel";
-	Shape = "$LOCAL$/CShapeDescriptor_0C4623B9";
-	SampleDimensionality = Volume;
-}
-CShapeDescriptor	$LOCAL$/CShapeDescriptor_0C4623B9
-{
-	ShapeType = SPHERE;
-	Radius = 5.0000001e-002;
 }
 CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_EC634432
 {
@@ -1150,14 +880,6 @@ CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_6EFB27A7
 {
 	FieldName = "SpawnMetricScale2";
 }
-CActionFactoryWithChilds	$LOCAL$/Detail
-{
-	ChildList = 
-	{
-		"$LOCAL$/HotspotsRoot",
-		"$LOCAL$/EjectionsBRoot",
-	};
-}
 CParticleSamplerTexture	$LOCAL$/CParticleSamplerTexture_A416581A
 {
 	SamplerName = "GlobeLookup";
@@ -1166,4 +888,66 @@ CParticleSamplerTexture	$LOCAL$/CParticleSamplerTexture_A416581A
 CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_E558ADD3
 {
 	FieldName = "SpawnMetricScale";
+}
+CParticleEvolver_Localspace	$LOCAL$/LocalSpace_1
+{
+	CustomName = "Localspace";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Layer_1
+{
+	EditorInfosIsBlockMinimized = 0;
+	Descriptor = "$LOCAL$/CParticleDescriptor_D716FC4E";
+	Infinite = true;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 5.0000000e+000;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_D716FC4E
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_8EBF76E3";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_9497EFA0",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_59460A29";
+	States = 
+	{
+		"$LOCAL$/CParticleState_57151DE2",
+	};
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_59460A29
+{
+	Expression = "function void	Eval()
+{
+	Life = 1.0;
+	Size = 0.09;
+	Velocity = scene.axisUp();
+	Color = float4(1.0);
+}
+";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_9497EFA0
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_8EBF76E3
+{
+	CustomName = "Billboard";
+}
+CParticleState	$LOCAL$/CParticleState_57151DE2
+{
+	StateName = "Evolvers";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Physics_70AB414D",
+		"$LOCAL$/LocalSpace_2",
+	};
+}
+CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_70AB414D
+{
+	CustomName = "Physics";
+}
+CParticleEvolver_Localspace	$LOCAL$/LocalSpace_2
+{
+	CustomName = "Localspace";
 }

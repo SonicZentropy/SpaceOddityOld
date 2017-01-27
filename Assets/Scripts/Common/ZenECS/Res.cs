@@ -6,13 +6,13 @@ namespace Zenobit.Common
 	{
 		public static class Entities
 		{
+			public const string BaseShip = "Actors/BaseShip";
+			public const string Enemy = "Actors/Enemy";
+			public const string EnemyTestShip = "Actors/EnemyTestShip";
+			public const string Player = "Actors/Player";
+			public const string TestEnt = "Actors/TestEnt";
 			public const string Camera = "Core/Camera";
 			public const string GameSettings = "Core/GameSettings";
-			public const string BaseShip = "Entities/BaseShip";
-			public const string Enemy = "Entities/Enemy";
-			public const string EnemyTestShip = "Entities/EnemyTestShip";
-			public const string Player = "Entities/Player";
-			public const string TestEnt = "Entities/TestEnt";
 			public const string SectorGenerationMain = "Sector/SectorGenerationMain";
 			public const string DumbfireMissile = "Weapons/DumbfireMissile";
 			public const string HomingMissile = "Weapons/HomingMissile";
@@ -23,6 +23,7 @@ namespace Zenobit.Common
 		{
 			public const string EnemyShip = "EnemyShip";
 			public const string Player = "Player";
+			public const string ShieldPFXObj = "ShieldPFXObj";
 			public const string CameraMain = "Core/CameraMain";
 			public const string Explosion_007_example = "Effects/Explosions/Explosion_007_example";
 			public const string Explosion_01 = "Effects/Explosions/Explosion_01";
@@ -35,6 +36,8 @@ namespace Zenobit.Common
 			public const string trail_007 = "Effects/RedParticleTrails/trail_007";
 			public const string trail_014 = "Effects/RedParticleTrails/trail_014";
 			public const string trail_017 = "Effects/RedParticleTrails/trail_017";
+			public const string ShieldSmallShell = "Effects/Shields/ShieldSmallShell";
+			public const string VibrantShieldSmall = "Effects/Shields/VibrantShieldSmall";
 			public const string Asteroid = "Environment/Asteroid";
 			public const string StarContainer = "Environment/StarContainer";
 			public const string UIRoot3D = "GUI/UI Root (3D)";

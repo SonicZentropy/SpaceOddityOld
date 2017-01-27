@@ -87,7 +87,7 @@ namespace AdvancedInspector
 				int idx = EditorGUILayout.Popup(sel, UnityDrawerStatics.PrefabList);
 				result = "Prefabs/" + UnityDrawerStatics.PrefabList[idx];
 			}
-			else if (text.Type == TextFieldType.JSON)
+			else if (text.Type == TextFieldType.Entity)
 			{
 				int sel = Math.Max(Array.IndexOf(UnityDrawerStatics.EntityList, field.GetValue<string>()), 0);
 

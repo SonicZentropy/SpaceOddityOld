@@ -8,10 +8,10 @@ namespace Zenobit.Components
 {
     #region Dependencies
 
-    using AdvancedInspector;
-    using Pathfinding.Serialization;
+	using AdvancedInspector;
     using UnityEngine;
-    using Zenobit.Common.ZenECS;
+	using Zenobit.Common.Extensions;
+	using Zenobit.Common.ZenECS;
 
     #endregion
 
@@ -25,6 +25,13 @@ namespace Zenobit.Components
 		//[Inspect]public UnityLayer layer { get; set; } = new UnityLayer(0);
 	    public LayerMask layer;
 
+	    [Enum(true)] public EntityTags entityTags;
+	    [Enum(true)] public Tags tags;
+
+	    public override string ToString()
+	    {
+		    return "UnityPrefabComp";
+	    }
 
         public override ComponentTypes ComponentType => ComponentTypes.UnityPrefabComp;
     }

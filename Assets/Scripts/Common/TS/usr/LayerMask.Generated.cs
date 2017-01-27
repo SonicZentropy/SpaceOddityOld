@@ -58,4 +58,6 @@ public sealed class SRLayerMask {
     public const int rangetriggerdisable = 262144;
     
     public const int rangetriggerplayer = 524288;
+    
+    public const int particles = 1048576;
 }

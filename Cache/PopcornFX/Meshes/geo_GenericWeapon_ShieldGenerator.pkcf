@@ -1,0 +1,29 @@
+Version = 1.10.0.30144;
+COvenBakeConfig_Mesh	$LOCAL$/Resource
+{
+	MD5 = "92fdd37e504b543498a54a324280836c";
+	TexturePath = "Textures/";
+}
+CNEdEditorMesh_Data	$LOCAL$/EDITOR
+{
+	Backdrops = "$LOCAL$/CNEdEditorBackdrop_List_D30193CE";
+	HmlFactory = "Cache/Meshes/geo_GenericWeapon_ShieldGenerator.pkml/Resource";
+}
+CNEdEditorBackdrop_List	$LOCAL$/CNEdEditorBackdrop_List_D30193CE
+{
+	SceneLayers3D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Light_6930B7A9",
+	};
+}
+CNEdEditorBackdrop_Light	$LOCAL$/CNEdEditorBackdrop_Light_6930B7A9
+{
+	LightFactory = "$LOCAL$/CNEdEditorLightFactory_67D96B20";
+}
+CNEdEditorLightFactory	$LOCAL$/CNEdEditorLightFactory_67D96B20
+{
+	NearClipPlane = 1.0000000e+002;
+	Fov = 3.0000000e+001;
+	SpotFalloff = 9.9999998e-003;
+	Magnitude = 1.0000000e+003;
+}

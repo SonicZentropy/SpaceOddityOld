@@ -13,6 +13,7 @@ namespace Zenobit.Systems
 	using System.Collections.Generic;
 	using Common;
 	using UnityEngine;
+	using Zenobit.Common.Extensions;
 
 	#endregion
 
@@ -113,7 +114,7 @@ namespace Zenobit.Systems
 		private static void CreateMissileInfoPacket(WeaponComp selectedWeapon, PositionComp pc, Vector3 direction)
 		{
 			MissileComp mc = (MissileComp) selectedWeapon;
-			if (mc.missileInfoPacket.TimeToLive == -1f)
+			if (mc.missileInfoPacket.TimeToLive.IsAlmost( -1f))
 				mc.missileInfoPacket.TimeToLive = selectedWeapon.AttackRange / selectedWeapon.ProjectileSpeed;
 			mc.missileInfoPacket.fireDirection = direction;
 			mc.missileInfoPacket.StartPosition = pc.transform.TransformPoint(selectedWeapon.fittingAttached.PositionOffset);
@@ -132,6 +133,8 @@ namespace Zenobit.Systems
 			lc.laserInfoPacket.StartPosition = pc.transform.TransformPoint(selectedWeapon.fittingAttached.PositionOffset);
 			lc.laserInfoPacket.OwningActorPos = pc;
 			lc.laserInfoPacket.FiringWeaponComp = selectedWeapon;
+			lc.laserInfoPacket.ProjectileSpeed = selectedWeapon.ProjectileSpeed;
+			lc.laserInfoPacket.laserFireType = LaserFireType.ProjectileGO;
 		}
 
 		private static void SetNextAttackTime(CombatComp combat, WeaponComp selectedWeapon)

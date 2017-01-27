@@ -18,7 +18,7 @@ namespace Zenobit.Systems
 
 	public class EntityTagInitSystem : AbstractEcsSystem, IDisposable
 	{
-		EntityTagComp etc;
+		UnityPrefabComp etc;
 
 		public override bool Init()
 		{
@@ -33,7 +33,7 @@ namespace Zenobit.Systems
 
 		public void InitializeEntity(Entity e)
 		{
-			if (e.TryGetComponent(ComponentTypes.EntityTagComp, out etc))
+			if (e.TryGetComponent(ComponentTypes.UnityPrefabComp, out etc))
 			{
 				GameObject go = e.Wrapper.gameObject;
 				go.AddEntityTags(etc.entityTags);

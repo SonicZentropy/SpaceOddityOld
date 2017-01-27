@@ -32,7 +32,7 @@
 
 		private void PreparseJson()
 		{
-			var resourcePaths = UnityDrawerStatics.EntityList.Select(s => "JSON/" + s).ToArray();
+			var resourcePaths = UnityDrawerStatics.EntityList.Select(s => "Entities/" + s).ToArray();
 
 			foreach (var filePath in resourcePaths)
 			{

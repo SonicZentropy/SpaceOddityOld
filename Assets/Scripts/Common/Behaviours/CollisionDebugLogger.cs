@@ -6,7 +6,7 @@ using Zenobit.Common.Debug;
 public class CollisionDebugLogger : MonoBehaviour
 {
 	private int numCollisions = 0;
-	public bool EnableLogging = false;
+	public bool EnableLogging = true;
 	
 	private void OnParticleCollision(GameObject other)
 	{
