@@ -58,15 +58,15 @@ namespace AdvancedInspector
         }
 
         public TextFieldAttribute(TextFieldType type)
-            : this(type, TITLE, PATH, EXTENSION) { }
+            : this(type, PATH, TITLE, EXTENSION) { }
 
-        public TextFieldAttribute(TextFieldType type, string title)
-            : this(type, title, PATH, EXTENSION) { }
+        public TextFieldAttribute(TextFieldType type, string path)
+            : this(type, path, TITLE, EXTENSION) { }
 
-        public TextFieldAttribute(TextFieldType type, string title, string path)
-            : this(type, title, path, EXTENSION) { }
+        public TextFieldAttribute(TextFieldType type, string path, string title)
+            : this(type, path, title, EXTENSION) { }
 
-        public TextFieldAttribute(TextFieldType type, string title, string path, string extension)
+        public TextFieldAttribute(TextFieldType type, string path, string title, string extension)
         {
             this.type = type;
             this.title = title;

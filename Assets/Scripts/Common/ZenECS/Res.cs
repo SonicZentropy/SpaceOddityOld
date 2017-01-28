@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Zenobit.Common
 {
+    using System.Collections.Generic;
+	using Zenobit.Common.ObjectPool;
+
 	public static class Res
 	{
 		public static class Entities
@@ -60,14 +63,31 @@ namespace Zenobit.Common
 			public const string SwarmMissile = "Weapons/SwarmMissile";
 		}
 			
+		private static Dictionary<string, GameObject> LoadCache = new Dictionary<string,GameObject>();
+
 		public static GameObject Load(string PrefabToLoad)
 		{
-			return Resources.Load<GameObject>(PrefabToLoad);
+			if (!PrefabToLoad.StartsWith("Prefabs"))
+			{
+				PrefabToLoad = "Prefabs/" + PrefabToLoad;
+			}
+			GameObject go;
+			if (!LoadCache.TryGetValue(PrefabToLoad, out go))
+			{
+				go = Resources.Load<GameObject>(PrefabToLoad);
+				LoadCache.Add(PrefabToLoad, go);
+			}
+			return go;
 		}
 
 		public static GameObject Instantiate(string PrefabToCreate)
 		{
 			return Object.Instantiate(Load(PrefabToCreate));
+		}
+
+		public static GameObject CreateFromPool(string PrefabToCreate)
+		{
+			return Load(PrefabToCreate).InstantiateFromPool();
 		}
 	}
 }

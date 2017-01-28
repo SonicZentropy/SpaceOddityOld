@@ -143,6 +143,11 @@ namespace Zenobit.Common.Extensions
 			return new string(inString.Where(c => char.IsLetterOrDigit(c) || c == '_').ToArray());
 		}
 
+		public static bool IsNullEmpty(this string inString)
+		{
+			return String.IsNullOrEmpty(inString);
+		}
+
 		public static int GetLayerIndex(this LayerMask layerMask)
 		{
 			int layerNumber = 0;

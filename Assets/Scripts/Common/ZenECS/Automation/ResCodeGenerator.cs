@@ -16,7 +16,7 @@ namespace Zenobit.Common.Automation
 	public static class ResCodeGenerator
 	{
 		public static readonly string ResFilePath;
-		public static bool AutoGenerate = true;
+		public static bool AutoGenerate = false;
 
 		//[MenuItem("Zenobit/Enable Res File Auto Generation")]
 		public static void EnableGenerateCode()
@@ -39,20 +39,36 @@ namespace Zenobit.Common.Automation
 
 namespace Zenobit.Common
 {
+    using System.Collections.Generic;
+	using Zenobit.Common.ObjectPool;
+
 	public static class Res
 	{
 		";
 
 		public const string FOOTER_FORMAT = @"
 			
+		private static Dictionary<string, GameObject> LoadCache = new Dictionary<string,GameObject>();
+
 		public static GameObject Load(string PrefabToLoad)
 		{
-			return Resources.Load<GameObject>(PrefabToLoad);
+			GameObject go;
+			if (!LoadCache.TryGetValue(PrefabToLoad, out go))
+			{
+				go = Resources.Load<GameObject>(PrefabToLoad);
+				LoadCache.Add(PrefabToLoad, go);
+			}
+			return go;
 		}
 
 		public static GameObject Instantiate(string PrefabToCreate)
 		{
 			return Object.Instantiate(Load(PrefabToCreate));
+		}
+
+		public static GameObject CreateFromPool(string PrefabToCreate)
+		{
+			return Load(PrefabToCreate).InstantiateFromPool();
 		}
 	}
 }";

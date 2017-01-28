@@ -1,5 +1,7 @@
 ﻿using System;
+using Features.Explosions;
 using UnityEngine;
+using Zenobit.Common;
 using Zenobit.Common.Extensions;
 using Zenobit.Common.ObjectPool;
 using Zenobit.Common.ZenECS;
@@ -72,6 +74,8 @@ public class LaserProjectileController : ZenBehaviour, IOnUpdate
 			ZenLogger.Log($"Adding dmg component to ship");
 			go.GetEntity().GetComponent<DamageComp>().damagePackets.Push(new DamagePacket(10, 10));
 		}
+		Explosions.Create(Res.Prefabs.Explosion_01, transform.position);
+		gameObject.Release();
 	}
 
 	public override int ExecutionPriority { get; } = 0;

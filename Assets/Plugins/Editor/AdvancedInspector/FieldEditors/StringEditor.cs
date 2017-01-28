@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System;
-using System.Collections;
 
 namespace AdvancedInspector
 {
-    public class StringEditor : FieldEditor
+	using System.Collections.Generic;
+
+	public class StringEditor : FieldEditor
     {
         public override Type[] EditedTypes
         {
@@ -81,11 +82,23 @@ namespace AdvancedInspector
 			//Custom
 			else if (text.Type == TextFieldType.Prefab)
 			{
-				string prefabRemoved = field.GetValue<string>().Replace("Prefabs/", "");
-				int sel = Math.Max(Array.IndexOf(UnityDrawerStatics.PrefabList, prefabRemoved), 0);
-
-				int idx = EditorGUILayout.Popup(sel, UnityDrawerStatics.PrefabList);
-				result = "Prefabs/" + UnityDrawerStatics.PrefabList[idx];
+				if (String.IsNullOrEmpty(text.Path))
+				{
+					string prefabRemoved = field.GetValue<string>().Replace("Prefabs/", "");
+					int sel = Math.Max(Array.IndexOf(UnityDrawerStatics.PrefabList, prefabRemoved), 0);
+					int idx = EditorGUILayout.Popup(sel, UnityDrawerStatics.PrefabList);
+					result = "Prefabs/" + UnityDrawerStatics.PrefabList[idx];
+				}
+				else
+				{
+					//Debug.Log($"Pruning by {text.Path}");
+					string[] pruned = PrunePrefabListByPath(UnityDrawerStatics.PrefabList, text.Path);
+					string prefabRemoved = field.GetValue<string>().Replace("Prefabs/", "");
+					int sel = Math.Max(Array.IndexOf(pruned, prefabRemoved), 0);
+					int idx = EditorGUILayout.Popup(sel, pruned);
+					result = "Prefabs/" + pruned[idx];
+					//Debug.Log($"Result of prune is {result}");
+				}
 			}
 			else if (text.Type == TextFieldType.Entity)
 			{
@@ -109,5 +122,19 @@ namespace AdvancedInspector
 
             GUILayout.EndHorizontal();
         }
+
+	    public string[] PrunePrefabListByPath(string[] prefabList, string inPath)
+	    {
+		    List<String> newList = new List<string>();
+		    foreach (var prefab in prefabList)
+		    {
+			    if (prefab.Contains(inPath))
+			    {
+				    newList.Add(prefab);
+			    }
+		    }
+
+		    return newList.ToArray();
+	    }
     }
 }
