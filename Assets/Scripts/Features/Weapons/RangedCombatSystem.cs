@@ -20,11 +20,11 @@ namespace Zenobit.Systems
 	public class RangedCombatSystem : AbstractEcsSystem
 	{
 		private readonly Matcher playerShipMatcher = new Matcher()
-			.AllOf(ComponentTypes.CombatComp, ComponentTypes.PlayerShipComp);
+			.AllOf(ComponentTypes.CombatComp, ComponentTypes.PlayerComp);
 
 		private readonly Matcher enemyShipMatcher = new Matcher()
 			.AllOf(ComponentTypes.CombatComp)
-			.NoneOf(ComponentTypes.PlayerShipComp);
+			.NoneOf(ComponentTypes.PlayerComp);
 
 		private CommandComp playerCommand;
 
@@ -92,7 +92,7 @@ namespace Zenobit.Systems
 
 		private static bool FireProjectile(WeaponComp selectedWeapon, Vector3 direction)
 		{
-			var pc = selectedWeapon.GetComponent<ShipComp>().OwningActor.GetComponent<PositionComp>();
+			var pc = selectedWeapon.GetComponent<PositionComp>();
 			if (selectedWeapon.WeaponType == WeaponTypes.Laser)
 			{
 				//need to set weapon comp owner properly i think?

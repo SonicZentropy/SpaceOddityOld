@@ -8,6 +8,7 @@ namespace Zenobit.Common
 		{
 			public const string BaseShip = "Actors/BaseShip";
 			public const string Enemy = "Actors/Enemy";
+			public const string EnemyOld = "Actors/EnemyOld";
 			public const string EnemyTestShip = "Actors/EnemyTestShip";
 			public const string Player = "Actors/Player";
 			public const string TestEnt = "Actors/TestEnt";

@@ -37,7 +37,7 @@ namespace Zenobit.Systems
 		{
 			player = engine.FindEntity(Res.Entities.Player);
 			cam = Camera.main;
-			targetComp = player.GetComponent<ShipConnectionComp>().Ship.GetComponent<TargetComp>();
+			targetComp = player.GetComponent<TargetComp>();
 			selectableLayerMask = ZenUtils.LayerMaskFromIDs(SRLayerMask.npc, SRLayerMask.foreground);
 
 			player.GetComponent<CommandComp>().SelectTarget.Where(x => x).Subscribe(SelectTargetClicked);

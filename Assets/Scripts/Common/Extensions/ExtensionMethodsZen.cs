@@ -143,7 +143,17 @@ namespace Zenobit.Common.Extensions
 			return new string(inString.Where(c => char.IsLetterOrDigit(c) || c == '_').ToArray());
 		}
 
-		
-
+		public static int GetLayerIndex(this LayerMask layerMask)
+		{
+			int layerNumber = 0;
+			int layer = layerMask.value;
+			while(layer > 0)
+			{
+				layer = layer >> 1;
+				layerNumber++;
+			}
+			if (layerNumber < 1) return 0;
+			return layerNumber-1;
+		}
 	}
 }

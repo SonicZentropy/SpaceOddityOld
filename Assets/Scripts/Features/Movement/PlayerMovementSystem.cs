@@ -57,7 +57,7 @@ namespace Zenobit.Systems
 			cc = engine.FindEntity(Res.Entities.Player).GetComponent<CommandComp>();
 			pc = cc.Owner.GetComponent<PositionComp>();
 			rbComp = cc.Owner.GetComponent<RigidbodyComp>().Rigidbody;
-			sdc = cc.GetComponent<ShipConnectionComp>().Ship;
+			sdc = cc.GetComponent<ShipComp>();
 			cam = Camera.main;
 			invertYAxis = engine.GetSingle<GameSettingsComp>(ComponentTypes.GameSettingsComp).InvertYAxis;
 			TargetingCursor = Resources.Load<Texture2D>("Materials/TargetingCursor");

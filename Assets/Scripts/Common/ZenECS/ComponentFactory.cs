@@ -19,6 +19,7 @@ namespace Zenobit.Common.ZenECS
         public static readonly Dictionary<ComponentTypes, Type> ComponentLookup = new Dictionary<ComponentTypes, Type>(new FastEnumIntEqualityComparer<ComponentTypes>())
         {
 			{ComponentTypes.AbstractActorComp, typeof(AbstractActorComp)},
+			{ComponentTypes.AIActorComp, typeof(AIActorComp)},
 			{ComponentTypes.PlayerComp, typeof(PlayerComp)},
 			{ComponentTypes.PlayerShipComp, typeof(PlayerShipComp)},
 			{ComponentTypes.CreepComp, typeof(CreepComp)},
@@ -36,7 +37,6 @@ namespace Zenobit.Common.ZenECS
 			{ComponentTypes.SectorGenerationComp, typeof(SectorGenerationComp)},
 			{ComponentTypes.ScannerComp, typeof(ScannerComp)},
 			{ComponentTypes.ShipComp, typeof(ShipComp)},
-			{ComponentTypes.ShipConnectionComp, typeof(ShipConnectionComp)},
 			{ComponentTypes.ShipPrefabComp, typeof(ShipPrefabComp)},
 			{ComponentTypes.UnitPropertiesComp, typeof(UnitPropertiesComp)},
 			{ComponentTypes.AbstractModuleComp, typeof(AbstractModuleComp)},
@@ -87,6 +87,7 @@ namespace Zenobit.Common.ZenECS
     public enum ComponentTypes
     {
 		AbstractActorComp,
+		AIActorComp,
 		PlayerComp,
 		PlayerShipComp,
 		CreepComp,
@@ -104,7 +105,6 @@ namespace Zenobit.Common.ZenECS
 		SectorGenerationComp,
 		ScannerComp,
 		ShipComp,
-		ShipConnectionComp,
 		ShipPrefabComp,
 		UnitPropertiesComp,
 		AbstractModuleComp,

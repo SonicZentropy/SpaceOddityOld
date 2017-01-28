@@ -27,7 +27,7 @@ namespace Zenobit.Systems
 		protected override void ApplyModule(ComponentEcs comp)
 		{
 			comp.Owner.GetComponent<ShipComp>().HasInertialDampers = true;
-			var rb = comp.GetComponent<ShipComp>().OwningActor.GetComponent<RigidbodyComp>().Rigidbody;
+			var rb = comp.GetComponent<RigidbodyComp>().Rigidbody;
 			rb.angularDrag = 5f;
 			rb.drag = 1;
 		}
@@ -44,7 +44,7 @@ namespace Zenobit.Systems
 			if (comp.Owner == null) return;
 
 			comp.Owner.GetComponent<ShipComp>().HasInertialDampers = false;
-			var rb = comp?.GetComponent<ShipComp>()?.OwningActor?.GetComponent<RigidbodyComp>()?.Rigidbody;
+			var rb = comp.GetComponent<RigidbodyComp>()?.Rigidbody;
 			if (rb == null) return;
 			rb.angularDrag = 0f;
 			rb.drag = 0f;
