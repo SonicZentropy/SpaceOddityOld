@@ -1,4 +1,4 @@
-﻿// /** 
+﻿// /**
 //  * ObjectPool.cs
 //  * Dylan Bailey
 //  * 20161209
@@ -149,17 +149,6 @@ namespace Zenobit.Common.ObjectPool
             {
                 var current = _pool[prefab];
 
-                //GameObject keywordActiveGameObject = new GameObject(current.Keyword);
-                //keywordActiveGameObject.transform.SetParent(activeParent.transform);
-                //current.activeParentGO = keywordActiveGameObject;
-                //
-                //GameObject keywordInactiveGameObject = new GameObject(current.Keyword);
-                //keywordInactiveGameObject.transform.SetParent(inactiveParent.transform);
-                //current.inactiveParentGO = keywordInactiveGameObject;
-
-                //if (current.activeParentGO == null)
-
-
                 return current.Request(position, rotation);
             }
             var newpool = new Pool();
@@ -258,7 +247,7 @@ namespace Zenobit.Common.ObjectPool
             }
 
             //Culling
-            // Trigger culling if the feature is ON and the size  of the 
+            // Trigger culling if the feature is ON and the size  of the
             //   overall pool is over the Cull Above threashold.
             //   This is triggered here because Despawn has to occur before
             //   it is worth culling anyway, and it is run fairly often.
@@ -327,7 +316,7 @@ namespace Zenobit.Common.ObjectPool
 
             [ReadOnly] public int CountFree;
             [ReadOnly] public int CountInUse;
-			
+
 	        public bool cullDespawned = false;
 
 			[Inspect("CullDespawn")]

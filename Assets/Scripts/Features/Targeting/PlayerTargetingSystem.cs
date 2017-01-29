@@ -15,7 +15,7 @@ namespace Zenobit.Systems
 	using Common.Extensions;
 	using Common.ZenECS;
 	using Components;
-	using HighlightingSystem;
+	//using HighlightingSystem;
 	using TypeSafe;
 	using UniRx;
 	using UnityEngine;
@@ -31,13 +31,13 @@ namespace Zenobit.Systems
 		private TargetComp targetComp;
 		private int selectableLayerMask;
 		private GameObject Target;
-		private Highlighter targetHighlighter;
+		//private Highlighter targetHighlighter;
 
 		public override bool Init()
 		{
 			player = engine.FindEntity(Res.Entities.Player);
 			cam = Camera.main;
-			targetComp = player.GetComponent<ShipConnectionComp>().Ship.GetComponent<TargetComp>();
+			targetComp = player.GetComponent<TargetComp>();
 			selectableLayerMask = ZenUtils.LayerMaskFromIDs(SRLayerMask.npc, SRLayerMask.foreground);
 
 			player.GetComponent<CommandComp>().SelectTarget.Where(x => x).Subscribe(SelectTargetClicked);
@@ -70,13 +70,7 @@ namespace Zenobit.Systems
 			}
 		}
 
-		private void DisableHighlight()
-		{
-			if (targetHighlighter != null)
-			{
-				targetHighlighter.Off();
-			}
-		}
+		
 	
 	}
 }

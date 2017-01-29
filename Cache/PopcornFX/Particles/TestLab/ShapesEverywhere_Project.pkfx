@@ -1,0 +1,3300 @@
+Version = 1.9.0.26281;
+CParticleEffect	$LOCAL$/Resource
+{
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	Backdrops = "$LOCAL$/_BackdropList";
+	Position = float3(2.1500000e+001, 5.5000000e+001, 0.0000000e+000);
+	EulerOrientation = float3(-7.0000000e+001, 9.0000000e+001, 0.0000000e+000);
+	SubEntityTreeFactory = "$LOCAL$/CEntityWithTransformsFactory_F5F799F9";
+	IsLooping = true;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/BoxSurfPC
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_AE135B2A";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AE135B2A
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_9136D2F4";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_E37BC36F",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_4C85203B",
+		"$LOCAL$/CParticleSamplerShape_9101A88D",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7";
+	States = 
+	{
+		"$LOCAL$/CParticleState_3AF8190E",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	ChildList = 
+	{
+		"$LOCAL$/Box",
+		"$LOCAL$/Sphere",
+		"$LOCAL$/Cylinder",
+		"$LOCAL$/Cone",
+		"$LOCAL$/Capsule",
+		"$LOCAL$/ComplexEllipsoid",
+		"$LOCAL$/Mesh",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_9136D2F4
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_3AF8190E
+{
+	StateName = "State_0";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_B78E191C
+{
+	Position = float3(-9.0000000e+000, 0.0000000e+000, 1.5000000e+001);
+	ShapeType = SPHERE;
+	BoxDimensions = float3(3.0000000e+000, 3.0000000e+000, 3.0000000e+000);
+	Radius = 3.0000000e+000;
+}
+CEntityWithTransformsFactory	$LOCAL$/CEntityWithTransformsFactory_F5F799F9
+{
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+	AttributeList = 
+	{
+		"$LOCAL$/CParticleAttributeDeclaration_ACDC856D",
+		"$LOCAL$/CParticleAttributeDeclaration_1D49027C",
+	};
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_4C85203B
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_D7D7EA12";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_D7D7EA12
+{
+	Position = float3(-9.0000000e+000, 0.0000000e+000, 1.5000000e+001);
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_9101A88D
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_B78E191C";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_E37BC36F
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_8D275CF4
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_894CDA59";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_A67CF30E",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_3B11C9F8",
+		"$LOCAL$/CParticleSamplerShape_F3F46832",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_8F4B883C";
+	States = 
+	{
+		"$LOCAL$/CParticleState_FB27F60F",
+	};
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_9A368321
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_35BAD960";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_A67CF30E
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/SphereSurf
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_F9121495";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_3B11C9F8
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_667F20DB";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_667F20DB
+{
+	Position = float3(-3.0000000e+000, 0.0000000e+000, 1.5000000e+001);
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_F3F46832
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_488CAE2D";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_488CAE2D
+{
+	Position = float3(-3.0000000e+000, 0.0000000e+000, 1.5000000e+001);
+	ShapeType = SPHERE;
+	BoxDimensions = float3(3.0000000e+000, 3.0000000e+000, 3.0000000e+000);
+	Radius = 3.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_8F4B883C
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_FB27F60F
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/BoxVolPC
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_8D275CF4";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_EEF03542
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_B0CB5C56";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_19343DCC",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_BAE89AA6",
+		"$LOCAL$/CParticleSamplerShape_00906E50",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_36CBEF4A";
+	States = 
+	{
+		"$LOCAL$/CParticleState_553078E5",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_F7C514CF
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_19343DCC
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleState	$LOCAL$/CParticleState_7FEDBA4C
+{
+	StateName = "State_0";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_BAE89AA6
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_6872E6D1";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_6872E6D1
+{
+	Position = float3(-9.0000000e+000, 0.0000000e+000, 9.0000000e+000);
+	ShapeType = SPHERE;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 2.0000000e+000;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_00906E50
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_A6B293D3";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_A6B293D3
+{
+	Position = float3(-9.0000000e+000, 0.0000000e+000, 9.0000000e+000);
+	ShapeType = SPHERE;
+	BoxDimensions = float3(3.0000000e+000, 3.0000000e+000, 3.0000000e+000);
+	Radius = 3.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_36CBEF4A
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_553078E5
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/SphereSurfPC
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_EEF03542";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_72E674E0
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_074D61C1";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_B43CAA5A",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_34161BA4",
+		"$LOCAL$/CParticleSamplerShape_6799273E",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_89831FA8";
+	States = 
+	{
+		"$LOCAL$/CParticleState_96FDDFCB",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_B0CB5C56
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_B43CAA5A
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_CB2C5D7D
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_34161BA4
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_9627DBD7";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_9627DBD7
+{
+	Position = float3(-3.0000000e+000, 0.0000000e+000, 9.0000000e+000);
+	ShapeType = SPHERE;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 2.0000000e+000;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_6799273E
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_ED81A109";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_ED81A109
+{
+	Position = float3(-3.0000000e+000, 0.0000000e+000, 9.0000000e+000);
+	ShapeType = SPHERE;
+	BoxDimensions = float3(3.0000000e+000, 3.0000000e+000, 3.0000000e+000);
+	Radius = 3.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_89831FA8
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_96FDDFCB
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/SphereVolPC
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_72E674E0";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_0BA6CB4E
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_8D1CF4D9";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_B185D472",
+		"$LOCAL$/CParticleSamplerShape_1C62567C",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_0ECEF8D6";
+	States = 
+	{
+		"$LOCAL$/CParticleState_B8548C41",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_8D1CF4D9
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_8CD392A3
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_0094F373
+{
+	StateName = "State_0";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_B185D472
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_F559696D";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_F559696D
+{
+	Position = float3(3.0000000e+000, 0.0000000e+000, 1.5000000e+001);
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_1C62567C
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_CD6C8B4F";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_CD6C8B4F
+{
+	Position = float3(3.0000000e+000, 0.0000000e+000, 1.5000000e+001);
+	BoxDimensions = float3(3.0000000e+000, 3.0000000e+000, 3.0000000e+000);
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_0ECEF8D6
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_B8548C41
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/BoxVol
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_0BA6CB4E";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_93065C0C
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_0BAABA9F";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_97400090",
+		"$LOCAL$/CParticleSamplerShape_0D62138A",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_C4624E54";
+	States = 
+	{
+		"$LOCAL$/CParticleState_BACA03C7",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_0BAABA9F
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_35BAD960
+{
+	Position = float3(3.0000000e+000, 0.0000000e+000, -2.1000000e+001);
+	ShapeType = MESH;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 3.0000000e+000;
+	Height = 2.0000000e+000;
+	CutPlane = 5.0000000e-001;
+	NonUniformScale = float3(5.0000000e-001, 1.5000000e+000, 5.0000000e-001);
+	MeshResource = "Meshes/LordGausspic.pkmm";
+	MeshScale = float3(3.0000001e-001, 3.0000001e-001, 3.0000001e-001);
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_A9E7CE70
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_97400090
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_3C3CDD13";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_3C3CDD13
+{
+	Position = float3(9.0000000e+000, 0.0000000e+000, 1.5000000e+001);
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_0D62138A
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_1FCF0C25";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_1FCF0C25
+{
+	Position = float3(9.0000000e+000, 0.0000000e+000, 1.5000000e+001);
+	BoxDimensions = float3(3.0000000e+000, 3.0000000e+000, 3.0000000e+000);
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_C4624E54
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_BACA03C7
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/BoxSurf
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_93065C0C";
+	FluxFactorExpression = "SpawnFactor";
+}
+CActionFactoryWithChilds	$LOCAL$/Box
+{
+	EditorInfosIsBlockMinimized = 0;
+	ChildList = 
+	{
+		"$LOCAL$/BoxSurfPC",
+		"$LOCAL$/BoxVolPC",
+		"$LOCAL$/BoxVol",
+		"$LOCAL$/BoxSurf",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Sphere
+{
+	EditorInfosIsBlockMinimized = 0;
+	ChildList = 
+	{
+		"$LOCAL$/SphereSurfPCIR",
+		"$LOCAL$/SphereVolPCIR",
+		"$LOCAL$/SphereSurfPC",
+		"$LOCAL$/SphereVolPC",
+		"$LOCAL$/SphereVol",
+		"$LOCAL$/SphereSurf",
+		"$LOCAL$/SphereVolIR",
+		"$LOCAL$/SphereSurfIR",
+	};
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_8148253F
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_15EFEB06";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_F9BD99B3",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_EED7B267";
+	States = 
+	{
+		"$LOCAL$/CParticleState_9637E38E",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_15EFEB06
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_12D84E3E
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_27202C09";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_3B1CB3EC",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_A9E7CE70";
+	States = 
+	{
+		"$LOCAL$/CParticleState_0094F373",
+	};
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_E565E708
+{
+	Position = float3(9.0000000e+000, 0.0000000e+000, 9.0000000e+000);
+	ShapeType = SPHERE;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 2.0000000e+000;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_F9BD99B3
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_3CDA5DAA";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_3CDA5DAA
+{
+	Position = float3(3.0000000e+000, 0.0000000e+000, 9.0000000e+000);
+	ShapeType = SPHERE;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 2.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_EE6D5E2E
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_5C6CBC39
+{
+	StateName = "State_0";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_EED7B267
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_9637E38E
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/SphereVol
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_8148253F";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_F9121495
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_2026F504";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_A01733E9",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_CB2C5D7D";
+	States = 
+	{
+		"$LOCAL$/CParticleState_7FEDBA4C",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_2026F504
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/CylinderVolIR
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_11A8CCCC";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_A01733E9
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_E565E708";
+}
+CActionFactoryWithChilds	$LOCAL$/Cylinder
+{
+	EditorInfosIsBlockMinimized = 0;
+	ChildList = 
+	{
+		"$LOCAL$/CylinderSurfPCIR",
+		"$LOCAL$/CylinderVolPCIR",
+		"$LOCAL$/CylinderSurfPC",
+		"$LOCAL$/CylinderVolPC",
+		"$LOCAL$/CylinderVol",
+		"$LOCAL$/CylinderSurf",
+		"$LOCAL$/CylinderVolIR",
+		"$LOCAL$/CylinderSurfIR",
+	};
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_564C99DF
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_4315697D";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_F3DF8F51",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_0FF88053",
+		"$LOCAL$/CParticleSamplerShape_BEB9C965",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_38ECAB07";
+	States = 
+	{
+		"$LOCAL$/CParticleState_33E379AE",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_1824E9C2
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_F3DF8F51
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/CylinderSurf
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_BBCFDE91";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_0FF88053
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_534C29CA";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_534C29CA
+{
+	Position = float3(-9.0000000e+000, 0.0000000e+000, 3.0000000e+000);
+	ShapeType = CYLINDER;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 1.6000000e+000;
+	Height = 3.0000000e+000;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_BEB9C965
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_79A71694";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_79A71694
+{
+	Position = float3(-9.0000000e+000, 0.0000000e+000, 3.0000000e+000);
+	ShapeType = SPHERE;
+	BoxDimensions = float3(3.0000000e+000, 3.0000000e+000, 3.0000000e+000);
+	Radius = 3.0000000e+000;
+	Height = 4.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_38ECAB07
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_33E379AE
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/CylinderSurfPC
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_564C99DF";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_1ED77835
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_2362964C";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_0DBC5057",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_9F0DB989",
+		"$LOCAL$/CParticleSamplerShape_5CDEBC4B",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_BB4EA51D";
+	States = 
+	{
+		"$LOCAL$/CParticleState_A16D636C",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_4315697D
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_0DBC5057
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleState	$LOCAL$/CParticleState_B5953FD8
+{
+	StateName = "State_0";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_9F0DB989
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_F4E0D628";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_F4E0D628
+{
+	Position = float3(-3.0000000e+000, 0.0000000e+000, 3.0000000e+000);
+	ShapeType = CYLINDER;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 1.6000000e+000;
+	Height = 3.0000000e+000;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_5CDEBC4B
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_486F55E2";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_486F55E2
+{
+	Position = float3(-3.0000000e+000, 0.0000000e+000, 3.0000000e+000);
+	ShapeType = SPHERE;
+	BoxDimensions = float3(3.0000000e+000, 3.0000000e+000, 3.0000000e+000);
+	Radius = 3.0000000e+000;
+	Height = 4.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_BB4EA51D
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_A16D636C
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/CylinderVolPC
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_1ED77835";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_4527CE9B
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_2F615EF2";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_F712EFCF",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_B3A4B143";
+	States = 
+	{
+		"$LOCAL$/CParticleState_B81756FA",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_2F615EF2
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_3B1CB3EC
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_0A5F32FF";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_393F80F9
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_F712EFCF
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_F20DCB56";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_F20DCB56
+{
+	Position = float3(3.0000000e+000, 0.0000000e+000, 3.0000000e+000);
+	ShapeType = CYLINDER;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 1.6000000e+000;
+	Height = 3.0000000e+000;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/ComplexEllipsoidSurfIR
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_FBAEA0E5";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleState	$LOCAL$/CParticleState_BE066BCD
+{
+	StateName = "State_0";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_B3A4B143
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_B81756FA
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/CylinderVol
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_4527CE9B";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_BBCFDE91
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_9F888710";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_4B46DCA5",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_393F80F9";
+	States = 
+	{
+		"$LOCAL$/CParticleState_B5953FD8",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_9F888710
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_798BFE52
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/CylinderSurfIR
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_12D84E3E";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_4B46DCA5
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_86DCDCD4";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_86DCDCD4
+{
+	Position = float3(9.0000000e+000, 0.0000000e+000, 3.0000000e+000);
+	ShapeType = CYLINDER;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 1.6000000e+000;
+	Height = 3.0000000e+000;
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_27202C09
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CActionFactoryWithChilds	$LOCAL$/Capsule
+{
+	ChildList = 
+	{
+		"$LOCAL$/CapsuleSurfPCIR",
+		"$LOCAL$/CapsuleVolPCIR",
+		"$LOCAL$/CapsuleSurfPC",
+		"$LOCAL$/CapsuleVolPC",
+		"$LOCAL$/CapsuleVol",
+		"$LOCAL$/CapsuleSurf",
+		"$LOCAL$/CapsuleVolIR",
+		"$LOCAL$/CapsuleSurfIR",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Cone
+{
+	ChildList = 
+	{
+		"$LOCAL$/ConeSurfPC",
+		"$LOCAL$/ConeVolPC",
+		"$LOCAL$/ConeVol",
+		"$LOCAL$/ConeSurf",
+	};
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_6359CC7D
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_88CF0BDF";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_E76E86DF",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_2258E451",
+		"$LOCAL$/CParticleSamplerShape_A8C47D53",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_08ADAE65";
+	States = 
+	{
+		"$LOCAL$/CParticleState_139F6794",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_2362964C
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_E76E86DF
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/CapsuleSurf
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_A4A27B70";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_2258E451
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_E2B475D0";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_E2B475D0
+{
+	Position = float3(-9.0000000e+000, 0.0000000e+000, -3.0000000e+000);
+	ShapeType = CONE;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 1.6000000e+000;
+	Height = 3.0000000e+000;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_A8C47D53
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_AF1C32CA";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_AF1C32CA
+{
+	Position = float3(-9.0000000e+000, 1.0000000e+000, -3.0000000e+000);
+	ShapeType = SPHERE;
+	BoxDimensions = float3(3.0000000e+000, 3.0000000e+000, 3.0000000e+000);
+	Radius = 3.0000000e+000;
+	Height = 4.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_08ADAE65
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_139F6794
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/ConeSurfPC
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_6359CC7D";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_86A589A3
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_887DB726";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_31579D35",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_2F459D57",
+		"$LOCAL$/CParticleSamplerShape_60296E89",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_9460194B";
+	States = 
+	{
+		"$LOCAL$/CParticleState_159F3EE2",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_34CA84F1
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_31579D35
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleState	$LOCAL$/CParticleState_62998E1B
+{
+	StateName = "State_0";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_2F459D57
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_C825E2BE";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_C825E2BE
+{
+	Position = float3(-3.0000000e+000, 0.0000000e+000, -3.0000000e+000);
+	ShapeType = CONE;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 1.6000000e+000;
+	Height = 3.0000000e+000;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_60296E89
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_2CA1B728";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_2CA1B728
+{
+	Position = float3(-3.0000000e+000, 1.0000000e+000, -3.0000000e+000);
+	ShapeType = SPHERE;
+	BoxDimensions = float3(3.0000000e+000, 3.0000000e+000, 3.0000000e+000);
+	Radius = 3.0000000e+000;
+	Height = 4.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_9460194B
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_159F3EE2
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/ConeVolPC
+{
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_86A589A3";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_8C2EA259
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_A5C55BB8";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_8E5B6B9B",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_82A94EED",
+		"$LOCAL$/CParticleSamplerShape_A4779CCF",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_80D429C1";
+	States = 
+	{
+		"$LOCAL$/CParticleState_56046580",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_A5C55BB8
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_8E5B6B9B
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_A2815038
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_82A94EED
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_5DE8A5FC";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_5DE8A5FC
+{
+	Position = float3(3.0000000e+000, 0.0000000e+000, -3.0000000e+000);
+	ShapeType = CONE;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 1.6000000e+000;
+	Height = 3.0000000e+000;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_A4779CCF
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_AED3C456";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_AED3C456
+{
+	Position = float3(3.0000000e+000, 0.0000000e+000, -3.0000000e+000);
+	ShapeType = CONE;
+	BoxDimensions = float3(3.0000000e+000, 3.0000000e+000, 3.0000000e+000);
+	Radius = 2.7000000e+000;
+	Height = 4.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_80D429C1
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_56046580
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/ConeVol
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_8C2EA259";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_DB0CAC1F
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_D115D666";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_DD0A3391",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_84324693",
+		"$LOCAL$/CParticleSamplerShape_B44BC1A5",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_C6E86547";
+	States = 
+	{
+		"$LOCAL$/CParticleState_96294AEE",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_D115D666
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_DD0A3391
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/SphereSurfIR
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_A0BC2013";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_84324693
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_A207D70A";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_A207D70A
+{
+	Position = float3(9.0000000e+000, 0.0000000e+000, -3.0000000e+000);
+	ShapeType = CONE;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 1.6000000e+000;
+	Height = 3.0000000e+000;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_B44BC1A5
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_47A22DD4";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_47A22DD4
+{
+	Position = float3(9.0000000e+000, 0.0000000e+000, -3.0000000e+000);
+	ShapeType = CONE;
+	BoxDimensions = float3(3.0000000e+000, 3.0000000e+000, 3.0000000e+000);
+	Radius = 2.7000000e+000;
+	Height = 4.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_C6E86547
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_96294AEE
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/ConeSurf
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_DB0CAC1F";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_58CED686
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_BF61F3CA";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_E67B8930",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_237AE12A",
+		"$LOCAL$/CParticleSamplerShape_A84A88F4",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_34997F0E";
+	States = 
+	{
+		"$LOCAL$/CParticleState_A543D999",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_88CF0BDF
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_E67B8930
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleState	$LOCAL$/CParticleState_AE4BA5BB
+{
+	StateName = "State_0";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_237AE12A
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_DD032345";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_DD032345
+{
+	Position = float3(-9.0000000e+000, 0.0000000e+000, -9.0000000e+000);
+	ShapeType = CAPSULE;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 1.4000000e+000;
+	Height = 2.0000000e+000;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_A84A88F4
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_6E83D3E7";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_6E83D3E7
+{
+	Position = float3(-9.0000000e+000, 0.0000000e+000, -9.0000000e+000);
+	ShapeType = CAPSULE;
+	BoxDimensions = float3(3.0000000e+000, 3.0000000e+000, 3.0000000e+000);
+	Radius = 2.5000000e+000;
+	Height = 2.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_34997F0E
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_A543D999
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/CapsuleSurfPC
+{
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_58CED686";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_08B3F484
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_A2206B65";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_5DC0C71E",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_8A5ABE88",
+		"$LOCAL$/CParticleSamplerShape_2E9F8142",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5D3DE9CC";
+	States = 
+	{
+		"$LOCAL$/CParticleState_17EB115F",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_887DB726
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_5DC0C71E
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_7A18E127
+{
+	Position = float3(9.0000000e+000, 0.0000000e+000, -9.0000000e+000);
+	ShapeType = CAPSULE;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 1.4000000e+000;
+	Height = 2.0000000e+000;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_8A5ABE88
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_B74A832B";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_B74A832B
+{
+	Position = float3(-3.0000000e+000, 0.0000000e+000, -9.0000000e+000);
+	ShapeType = CAPSULE;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 1.4000000e+000;
+	Height = 2.0000000e+000;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_2E9F8142
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_5663A2FD";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_5663A2FD
+{
+	Position = float3(-3.0000000e+000, 0.0000000e+000, -9.0000000e+000);
+	ShapeType = CAPSULE;
+	BoxDimensions = float3(3.0000000e+000, 3.0000000e+000, 3.0000000e+000);
+	Radius = 2.5000000e+000;
+	Height = 2.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5D3DE9CC
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_17EB115F
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/CapsuleVolPC
+{
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_08B3F484";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_99420252
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_C3F45FCD";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_41CF7CB6",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_0A6E765A";
+	States = 
+	{
+		"$LOCAL$/CParticleState_9B5923B5",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_C3F45FCD
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_003C5379
+{
+	Position = float3(2.1000000e+001, 0.0000000e+000, 9.0000000e+000);
+	ShapeType = SPHERE;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 2.0000000e+000;
+	InnerRadius = 1.4000000e+000;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_8C112F34
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_7A18E127";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_41CF7CB6
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_CDFA80A1";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_CDFA80A1
+{
+	Position = float3(3.0000000e+000, 0.0000000e+000, -9.0000000e+000);
+	ShapeType = CAPSULE;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 1.4000000e+000;
+	Height = 2.0000000e+000;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_DDF0197B
+{
+	Position = float3(2.1000000e+001, 0.0000000e+000, -1.5000000e+001);
+	ShapeType = COMPLEX_ELLIPSOID;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 3.0000000e+000;
+	InnerRadius = 2.0999999e+000;
+	Height = 2.0000000e+000;
+	CutPlane = 5.0000000e-001;
+	NonUniformScale = float3(5.0000000e-001, 1.5000000e+000, 5.0000000e-001);
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_100DD66E
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_003C5379";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_0A6E765A
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_9B5923B5
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/CapsuleVol
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_99420252";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_A4A27B70
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_AD58EC73";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_8C112F34",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_A2815038";
+	States = 
+	{
+		"$LOCAL$/CParticleState_62998E1B",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_AD58EC73
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_0008C858
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_ACDC856D
+{
+	AttributeName = "SpawnFactor";
+	DefaultValueF4 = float4(2.0000000e-001, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	HasMax = true;
+	MaxValueF4 = float4(1.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_1D49027C
+{
+	AttributeName = "ParticleStartSize";
+	DefaultValueF4 = float4(5.0000001e-002, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	HasMax = true;
+	MaxValueF4 = float4(5.0000000e-001, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/ComplexEllipsoidSurfPC
+{
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_6CEE352B";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_6CEE352B
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_A1F1ABB9";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_7174E4FD",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_F813A4D1",
+		"$LOCAL$/CParticleSamplerShape_088941D3",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_446C96E5";
+	States = 
+	{
+		"$LOCAL$/CParticleState_CFA4AE14",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_F87B3094
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_7174E4FD
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_CB02DE73
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CActionFactoryWithChilds	$LOCAL$/ComplexEllipsoid
+{
+	ChildList = 
+	{
+		"$LOCAL$/ComplexEllipsoidSurfPCIR",
+		"$LOCAL$/ComplexEllipsoidVolPCIR",
+		"$LOCAL$/ComplexEllipsoidSurfPC",
+		"$LOCAL$/ComplexEllipsoidVolPC",
+		"$LOCAL$/ComplexEllipsoidVol",
+		"$LOCAL$/ComplexEllipsoidSurf",
+		"$LOCAL$/ComplexEllipsoidVolIR",
+		"$LOCAL$/ComplexEllipsoidSurfIR",
+	};
+}
+CParticleState	$LOCAL$/CParticleState_FD8D8F6A
+{
+	StateName = "State_0";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_F813A4D1
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_3E263450";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_3E263450
+{
+	Position = float3(-9.0000000e+000, 0.0000000e+000, -1.5000000e+001);
+	ShapeType = COMPLEX_ELLIPSOID;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 3.0000000e+000;
+	Height = 2.0000000e+000;
+	CutPlane = 5.0000000e-001;
+	NonUniformScale = float3(5.0000000e-001, 1.5000000e+000, 5.0000000e-001);
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_088941D3
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_217FE54A";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_217FE54A
+{
+	Position = float3(-9.0000000e+000, 0.0000000e+000, -1.5000000e+001);
+	BoxDimensions = float3(5.0000000e+000, 3.0000000e+000, 5.0000000e+000);
+	Radius = 4.0000000e+000;
+	Height = 2.0000000e+000;
+	CutPlane = 5.0000000e-001;
+	NonUniformScale = float3(5.0000000e-001, 1.5000000e+000, 5.0000000e-001);
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_446C96E5
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_CFA4AE14
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/ComplexEllipsoidVolPC
+{
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_E159CD2E";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_E159CD2E
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_6BE863AE";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_DCF27518",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_2FB19F7B",
+		"$LOCAL$/CParticleSamplerShape_244421CD",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_AD1406AF";
+	States = 
+	{
+		"$LOCAL$/CParticleState_5EBE06B6",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_61585D07
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_DCF27518
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_2FB19F7B
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_7DDF6C52";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_7DDF6C52
+{
+	Position = float3(-3.0000000e+000, 0.0000000e+000, -1.5000000e+001);
+	ShapeType = COMPLEX_ELLIPSOID;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 3.0000000e+000;
+	Height = 2.0000000e+000;
+	CutPlane = 5.0000000e-001;
+	NonUniformScale = float3(5.0000000e-001, 1.5000000e+000, 5.0000000e-001);
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_244421CD
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_11BBAD5C";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_11BBAD5C
+{
+	Position = float3(-3.0000000e+000, 0.0000000e+000, -1.5000000e+001);
+	BoxDimensions = float3(5.0000000e+000, 3.0000000e+000, 5.0000000e+000);
+	Radius = 4.0000000e+000;
+	Height = 2.0000000e+000;
+	CutPlane = 5.0000000e-001;
+	NonUniformScale = float3(5.0000000e-001, 1.5000000e+000, 5.0000000e-001);
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_AD1406AF
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_5EBE06B6
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/ComplexEllipsoidVol
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_66B7BAE0";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_66B7BAE0
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_CA42EE23";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_F0B425B5",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_4E989F09";
+	States = 
+	{
+		"$LOCAL$/CParticleState_7BB625A8",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_CA42EE23
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_FB0AF718
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_DDF0197B";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_F0B425B5
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_792D41A4";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_792D41A4
+{
+	Position = float3(3.0000000e+000, 0.0000000e+000, -1.5000000e+001);
+	ShapeType = COMPLEX_ELLIPSOID;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 3.0000000e+000;
+	Height = 2.0000000e+000;
+	CutPlane = 5.0000000e-001;
+	NonUniformScale = float3(5.0000000e-001, 1.5000000e+000, 5.0000000e-001);
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_6E4081FC
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_5DE008CF";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_5DE008CF
+{
+	Position = float3(2.1000000e+001, 0.0000000e+000, -9.0000000e+000);
+	ShapeType = CAPSULE;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 1.4000000e+000;
+	InnerRadius = 9.7999996e-001;
+	Height = 2.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_4E989F09
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_7BB625A8
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/ComplexEllipsoidSurf
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_703B2162";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_703B2162
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_C879429D";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_A506ADFF",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_CB02DE73";
+	States = 
+	{
+		"$LOCAL$/CParticleState_FD8D8F6A",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_C879429D
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_834A8056
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_A506ADFF
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_E14750C6";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_E14750C6
+{
+	Position = float3(9.0000000e+000, 0.0000000e+000, -1.5000000e+001);
+	ShapeType = COMPLEX_ELLIPSOID;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 3.0000000e+000;
+	Height = 2.0000000e+000;
+	CutPlane = 5.0000000e-001;
+	NonUniformScale = float3(5.0000000e-001, 1.5000000e+000, 5.0000000e-001);
+}
+CParticleState	$LOCAL$/CParticleState_C15FF5C1
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/CapsuleSurfIR
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_BF9EEE59";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_17CC5E24
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_1FEA9FF2";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_6A057DBE",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_92CF49E2",
+		"$LOCAL$/CParticleSamplerShape_69ECF76C",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_F6502146";
+	States = 
+	{
+		"$LOCAL$/CParticleState_C9DED2F1",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_894CDA59
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_6A057DBE
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleState	$LOCAL$/CParticleState_083D083B
+{
+	StateName = "State_0";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_7088FCD8
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_061F9266
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_2885BFFB";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_9B252410",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_777A89D4",
+		"$LOCAL$/CParticleSamplerShape_BA2486EE",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_7088FCD8";
+	States = 
+	{
+		"$LOCAL$/CParticleState_083D083B",
+	};
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_92CF49E2
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_34FEC91D";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_34FEC91D
+{
+	Position = float3(-2.1000000e+001, 0.0000000e+000, 9.0000000e+000);
+	ShapeType = SPHERE;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 2.0000000e+000;
+	InnerRadius = 1.4000000e+000;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_69ECF76C
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_9A5C687F";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_9A5C687F
+{
+	Position = float3(-2.1000000e+001, 0.0000000e+000, 9.0000000e+000);
+	ShapeType = SPHERE;
+	BoxDimensions = float3(3.0000000e+000, 3.0000000e+000, 3.0000000e+000);
+	Radius = 3.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_F6502146
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_C9DED2F1
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/SphereSurfPCIR
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_17CC5E24";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_7A62FF56
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_F7C514CF";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_C2057880",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_AA684144",
+		"$LOCAL$/CParticleSamplerShape_994579DE",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_3FA30748";
+	States = 
+	{
+		"$LOCAL$/CParticleState_A504A8EB",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_1FEA9FF2
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_C2057880
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_52869014
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_FBAEA0E5
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_52869014";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_FB0AF718",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_798BFE52";
+	States = 
+	{
+		"$LOCAL$/CParticleState_BE066BCD",
+	};
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/ComplexEllipsoidVolIR
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_0A40F501";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_AA684144
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_760FEAF7";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_760FEAF7
+{
+	Position = float3(-1.5000000e+001, 0.0000000e+000, 9.0000000e+000);
+	ShapeType = SPHERE;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 2.0000000e+000;
+	InnerRadius = 1.4000000e+000;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_994579DE
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_164F2929";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_164F2929
+{
+	Position = float3(-1.5000000e+001, 0.0000000e+000, 9.0000000e+000);
+	ShapeType = SPHERE;
+	BoxDimensions = float3(3.0000000e+000, 3.0000000e+000, 3.0000000e+000);
+	Radius = 3.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_3FA30748
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_A504A8EB
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/SphereVolPCIR
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_7A62FF56";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_2E8D93D8
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_5B16B5AB";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_65D18112",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_D4129776",
+		"$LOCAL$/CParticleSamplerShape_1E7ED1A0",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_AF45ED1A";
+	States = 
+	{
+		"$LOCAL$/CParticleState_4C9DBF75",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_074D61C1
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_65D18112
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleState	$LOCAL$/CParticleState_A6958D69
+{
+	StateName = "State_0";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5295031E
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_6E7DBD37
+{
+	Position = float3(1.5000000e+001, 0.0000000e+000, -1.5000000e+001);
+	ShapeType = COMPLEX_ELLIPSOID;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 3.0000000e+000;
+	InnerRadius = 2.0999999e+000;
+	Height = 2.0000000e+000;
+	CutPlane = 5.0000000e-001;
+	NonUniformScale = float3(5.0000000e-001, 1.5000000e+000, 5.0000000e-001);
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_D4129776
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_3A8C3061";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_3A8C3061
+{
+	Position = float3(-2.1000000e+001, 0.0000000e+000, 3.0000000e+000);
+	ShapeType = CYLINDER;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 1.6000000e+000;
+	InnerRadius = 1.1200000e+000;
+	Height = 3.0000000e+000;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_1E7ED1A0
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_C938A9E3";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_C938A9E3
+{
+	Position = float3(-2.1000000e+001, 0.0000000e+000, 3.0000000e+000);
+	ShapeType = SPHERE;
+	BoxDimensions = float3(3.0000000e+000, 3.0000000e+000, 3.0000000e+000);
+	Radius = 3.0000000e+000;
+	InnerRadius = 6.7500001e-001;
+	Height = 4.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_AF45ED1A
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_4C9DBF75
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/CylinderSurfPCIR
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_2E8D93D8";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_1A23CC2A
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_1824E9C2";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_47B2CBF4",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_64DFE8F8",
+		"$LOCAL$/CParticleSamplerShape_ACCB7F32",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_1433573C";
+	States = 
+	{
+		"$LOCAL$/CParticleState_6C6C890F",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_5B16B5AB
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_47B2CBF4
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_6EDD5084
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_6E7DBD37";
+	SampleDimensionality = Volume;
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_6BE863AE
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_9B252410
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_64DFE8F8
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_0650C3DB";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_0650C3DB
+{
+	Position = float3(-1.5000000e+001, 0.0000000e+000, 3.0000000e+000);
+	ShapeType = CYLINDER;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 1.6000000e+000;
+	InnerRadius = 1.1200000e+000;
+	Height = 3.0000000e+000;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_ACCB7F32
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_8523692D";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_8523692D
+{
+	Position = float3(-1.5000000e+001, 0.0000000e+000, 3.0000000e+000);
+	ShapeType = SPHERE;
+	BoxDimensions = float3(3.0000000e+000, 3.0000000e+000, 3.0000000e+000);
+	Radius = 3.0000000e+000;
+	InnerRadius = 6.7500001e-001;
+	Height = 4.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_1433573C
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_6C6C890F
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/CylinderVolPCIR
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_1A23CC2A";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_11A8CCCC
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_07F6685F";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_8B7F264A",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_EE6D5E2E";
+	States = 
+	{
+		"$LOCAL$/CParticleState_5C6CBC39",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_07F6685F
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_0A5F32FF
+{
+	Position = float3(2.1000000e+001, 0.0000000e+000, 3.0000000e+000);
+	ShapeType = CYLINDER;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 1.6000000e+000;
+	InnerRadius = 1.1200000e+000;
+	Height = 3.0000000e+000;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_1A5A41F9
+{
+	Position = float3(-2.1000000e+001, 1.5000000e+000, -1.5000000e+001);
+	BoxDimensions = float3(5.0000000e+000, 8.0000000e+000, 5.0000000e+000);
+	Radius = 4.0000000e+000;
+	InnerRadius = 1.0000000e+000;
+	Height = 2.0000000e+000;
+	CutPlane = 5.0000000e-001;
+	NonUniformScale = float3(5.0000000e-001, 1.5000000e+000, 5.0000000e-001);
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_017B03C0
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_0A40F501
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_017B03C0";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_6EDD5084",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5295031E";
+	States = 
+	{
+		"$LOCAL$/CParticleState_A6958D69",
+	};
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_8B7F264A
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_96B2D3E5";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_96B2D3E5
+{
+	Position = float3(1.5000000e+001, 0.0000000e+000, 3.0000000e+000);
+	ShapeType = CYLINDER;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 1.6000000e+000;
+	InnerRadius = 1.1200000e+000;
+	Height = 3.0000000e+000;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_38381E4F
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_9A783FD6";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_D1AE337A",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_7848EDC4";
+	States = 
+	{
+		"$LOCAL$/CParticleState_BFBFE577",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_9A783FD6
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/ComplexEllipsoidVolPCIR
+{
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_5CA0DD68";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleState	$LOCAL$/CParticleState_7AA3AF45
+{
+	StateName = "State_0";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_18955D2A
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_D1AE337A
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_6B366C55";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_6B366C55
+{
+	Position = float3(1.5000000e+001, 0.0000000e+000, 9.0000000e+000);
+	ShapeType = SPHERE;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 2.0000000e+000;
+	InnerRadius = 1.4000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_7848EDC4
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_BFBFE577
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/SphereVolIR
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_38381E4F";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_A0BC2013
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_76B04A8A";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_100DD66E",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_0008C858";
+	States = 
+	{
+		"$LOCAL$/CParticleState_AE4BA5BB",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_76B04A8A
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_E03BEF33
+{
+	Position = float3(-1.5000000e+001, 1.5000000e+000, -1.5000000e+001);
+	BoxDimensions = float3(5.0000000e+000, 8.0000000e+000, 5.0000000e+000);
+	Radius = 4.0000000e+000;
+	InnerRadius = 1.0000000e+000;
+	Height = 2.0000000e+000;
+	CutPlane = 5.0000000e-001;
+	NonUniformScale = float3(5.0000000e-001, 1.5000000e+000, 5.0000000e-001);
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_A9C92530
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_E03BEF33";
+	SampleDimensionality = Volume;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_4A1614AA
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_5C626ED0";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_42AB5874",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_ECEC5D78",
+		"$LOCAL$/CParticleSamplerShape_B28F97B2",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_900C33BC";
+	States = 
+	{
+		"$LOCAL$/CParticleState_28F3F38F",
+	};
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/MeshVol
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_E78F6ED2";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_42AB5874
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_31E87F31
+{
+	Position = float3(-1.5000000e+001, 0.0000000e+000, -1.5000000e+001);
+	ShapeType = COMPLEX_ELLIPSOID;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 3.0000000e+000;
+	InnerRadius = 2.0999999e+000;
+	Height = 2.0000000e+000;
+	CutPlane = 5.0000000e-001;
+	NonUniformScale = float3(5.0000000e-001, 1.5000000e+000, 5.0000000e-001);
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_0C3E9286
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_31E87F31";
+	SampleDimensionality = Volume;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_BA2486EE
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_1A5A41F9";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_ECEC5D78
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_1A9D665B";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_1A9D665B
+{
+	Position = float3(-2.1000000e+001, 0.0000000e+000, -9.0000000e+000);
+	ShapeType = CAPSULE;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 1.4000000e+000;
+	InnerRadius = 9.7999996e-001;
+	Height = 2.0000000e+000;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_B28F97B2
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_D3D91FAD";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_D3D91FAD
+{
+	Position = float3(-2.1000000e+001, 0.0000000e+000, -9.0000000e+000);
+	ShapeType = CAPSULE;
+	BoxDimensions = float3(3.0000000e+000, 3.0000000e+000, 3.0000000e+000);
+	Radius = 2.5000000e+000;
+	InnerRadius = 6.2500000e-001;
+	Height = 2.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_900C33BC
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_28F3F38F
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/CapsuleSurfPCIR
+{
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_4A1614AA";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_B488494C
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_5CDE9253";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_27890226",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_4E64AECA",
+		"$LOCAL$/CParticleSamplerShape_2F8BC394",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_CB358EAE";
+	States = 
+	{
+		"$LOCAL$/CParticleState_84762AB9",
+	};
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_09A43B46
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_34CA84F1";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_80338105",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_DA4D1FA7";
+	States = 
+	{
+		"$LOCAL$/CParticleState_4C9C9BCE",
+	};
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_27890226
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_C3CF5147
+{
+	Position = float3(-2.1000000e+001, 0.0000000e+000, -1.5000000e+001);
+	ShapeType = COMPLEX_ELLIPSOID;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 3.0000000e+000;
+	InnerRadius = 2.0999999e+000;
+	Height = 2.0000000e+000;
+	CutPlane = 5.0000000e-001;
+	NonUniformScale = float3(5.0000000e-001, 1.5000000e+000, 5.0000000e-001);
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_777A89D4
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_C3CF5147";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_54219722
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_4E64AECA
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_DFC43A65";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_DFC43A65
+{
+	Position = float3(-1.5000000e+001, 0.0000000e+000, -9.0000000e+000);
+	ShapeType = CAPSULE;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 1.4000000e+000;
+	InnerRadius = 9.7999996e-001;
+	Height = 2.0000000e+000;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_2F8BC394
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_DC32A407";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_DC32A407
+{
+	Position = float3(-1.5000000e+001, 0.0000000e+000, -9.0000000e+000);
+	ShapeType = CAPSULE;
+	BoxDimensions = float3(3.0000000e+000, 3.0000000e+000, 3.0000000e+000);
+	Radius = 2.5000000e+000;
+	InnerRadius = 6.2500000e-001;
+	Height = 2.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_CB358EAE
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_84762AB9
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/CapsuleVolPCIR
+{
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_B488494C";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_8CA52935
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_B4C83724";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_CEF5D328",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_85F43AE2";
+	States = 
+	{
+		"$LOCAL$/CParticleState_FE93F61D",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_B4C83724
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_A1F1ABB9
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_5CA0DD68
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_4F19BF98";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_54219722",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_0C3E9286",
+		"$LOCAL$/CParticleSamplerShape_A9C92530",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_18955D2A";
+	States = 
+	{
+		"$LOCAL$/CParticleState_7AA3AF45",
+	};
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/ComplexEllipsoidSurfPCIR
+{
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_061F9266";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_CEF5D328
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_58D3C54B";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_58D3C54B
+{
+	Position = float3(1.5000000e+001, 0.0000000e+000, -9.0000000e+000);
+	ShapeType = CAPSULE;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 1.4000000e+000;
+	InnerRadius = 9.7999996e-001;
+	Height = 2.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_85F43AE2
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_FE93F61D
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/CapsuleVolIR
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_8CA52935";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_BF9EEE59
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_C3A477B8";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_6E4081FC",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_834A8056";
+	States = 
+	{
+		"$LOCAL$/CParticleState_C15FF5C1",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_C3A477B8
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CActionFactoryWithChilds	$LOCAL$/Mesh
+{
+	ChildList = 
+	{
+		"$LOCAL$/MeshSurfPC",
+		"$LOCAL$/MeshVolPC",
+		"$LOCAL$/MeshVol",
+		"$LOCAL$/MeshSurf",
+	};
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_6C60210B
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_61585D07";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_C4C92FDD",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_A24555B1",
+		"$LOCAL$/CParticleSamplerShape_30A379B3",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_348B8DC5";
+	States = 
+	{
+		"$LOCAL$/CParticleState_1D7B4974",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_BF61F3CA
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_C4C92FDD
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/MeshSurf
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_09A43B46";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleState	$LOCAL$/CParticleState_4C9C9BCE
+{
+	StateName = "State_0";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_DA4D1FA7
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartPosition.samplePosition();
+}
+";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_A24555B1
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_852CA1B0";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_852CA1B0
+{
+	Position = float3(-9.0000000e+000, 0.0000000e+000, -2.1000000e+001);
+	ShapeType = MESH;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 3.0000000e+000;
+	Height = 2.0000000e+000;
+	CutPlane = 5.0000000e-001;
+	NonUniformScale = float3(5.0000000e-001, 1.5000000e+000, 5.0000000e-001);
+	MeshResource = "Meshes/LordGausspic.pkmm";
+	MeshScale = float3(3.0000001e-001, 3.0000001e-001, 3.0000001e-001);
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_30A379B3
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_47A8BDAA";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_47A8BDAA
+{
+	Position = float3(-9.0000000e+000, 3.5000000e+000, -2.1000000e+001);
+	BoxDimensions = float3(5.0000000e+000, 1.0000000e+001, 5.0000000e+000);
+	Radius = 4.0000000e+000;
+	Height = 2.0000000e+000;
+	CutPlane = 5.0000000e-001;
+	NonUniformScale = float3(5.0000000e-001, 1.5000000e+000, 5.0000000e-001);
+	MeshResource = "Meshes/LordGausspic.pkmm";
+	MeshScale = float3(4.0000001e-001, 4.0000001e-001, 4.0000001e-001);
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_348B8DC5
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_1D7B4974
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/MeshSurfPC
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_6C60210B";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AF7EF495
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_F87B3094";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_FCA6AFB7",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_1374E9AB",
+		"$LOCAL$/CParticleSamplerShape_33853D7D",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_1ADD7FDF";
+	States = 
+	{
+		"$LOCAL$/CParticleState_05225B26",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_A2206B65
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_FCA6AFB7
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_B0E06FB4
+{
+	Position = float3(9.0000000e+000, 0.0000000e+000, -2.1000000e+001);
+	ShapeType = MESH;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 3.0000000e+000;
+	Height = 2.0000000e+000;
+	CutPlane = 5.0000000e-001;
+	NonUniformScale = float3(5.0000000e-001, 1.5000000e+000, 5.0000000e-001);
+	MeshResource = "Meshes/LordGausspic.pkmm";
+	MeshScale = float3(3.0000001e-001, 3.0000001e-001, 3.0000001e-001);
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_80338105
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_B0E06FB4";
+}
+CParticleState	$LOCAL$/CParticleState_448832DA
+{
+	StateName = "State_0";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_1374E9AB
+{
+	SamplerName = "StartPosition";
+	Shape = "$LOCAL$/CShapeDescriptor_90DA4DC2";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_90DA4DC2
+{
+	Position = float3(-3.0000000e+000, 0.0000000e+000, -2.1000000e+001);
+	ShapeType = MESH;
+	BoxDimensions = float3(2.0000000e+000, 2.0000000e+000, 2.0000000e+000);
+	Radius = 3.0000000e+000;
+	Height = 2.0000000e+000;
+	CutPlane = 5.0000000e-001;
+	NonUniformScale = float3(5.0000000e-001, 1.5000000e+000, 5.0000000e-001);
+	MeshResource = "Meshes/LordGausspic.pkmm";
+	MeshScale = float3(3.0000001e-001, 3.0000001e-001, 3.0000001e-001);
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_33853D7D
+{
+	SamplerName = "StartAxis";
+	Shape = "$LOCAL$/CShapeDescriptor_82631A4C";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_82631A4C
+{
+	Position = float3(-3.0000000e+000, 3.5000000e+000, -2.1000000e+001);
+	BoxDimensions = float3(5.0000000e+000, 1.0000000e+001, 5.0000000e+000);
+	Radius = 4.0000000e+000;
+	Height = 2.0000000e+000;
+	CutPlane = 5.0000000e-001;
+	NonUniformScale = float3(5.0000000e-001, 1.5000000e+000, 5.0000000e-001);
+	MeshResource = "Meshes/LordGausspic.pkmm";
+	MeshScale = float3(4.0000001e-001, 4.0000001e-001, 4.0000001e-001);
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_1ADD7FDF
+{
+	Expression = "function void     Eval()
+{
+	Life = 1.0;
+	Size = ParticleStartSize;
+	
+	Position = StartAxis.samplePosition();
+	float4	proj = StartPosition.project(Position);
+	Axis = proj.xyz;
+	Position += Axis * 0.5;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_05225B26
+{
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/MeshVolPC
+{
+	EditorInfosIsBlockMinimized = 0;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+004;
+	Descriptor = "$LOCAL$/CParticleDescriptor_AF7EF495";
+	FluxFactorExpression = "SpawnFactor";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_E78F6ED2
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_AF5E1A4D";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_9A368321",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_8CD392A3";
+	States = 
+	{
+		"$LOCAL$/CParticleState_448832DA",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_AF5E1A4D
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_5C626ED0
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_5CDE9253
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_4F19BF98
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_2885BFFB
+{
+	Diffuse = "Textures/Gradient1.dds";
+	BillboardMode = VelocitySpheroidalAlign;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(-100, -365);
+	EditorInfosIsBlockMinimized = 0;
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/_Backdrop_Brush",
+	};
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/_Backdrop_Brush
+{
+	EditorInfosPosition = int2(-253, -417);
+	LayerName = "Layer_Brush";
+}
+CNEdEditorLightFactory	$LOCAL$/_Backdrop_Light_Factory
+{
+	NearClipPlane = 1.0000000e+002;
+	FarClipPlane = 1000.0f
+	Fov = 1.1154704e+002
+	LightSize = 1.0000000e-003;
+	SpotFalloff = 8.8541701e-002;
+	Magnitude = 1.0000000e+005;
+}
+CNEdEditorBackdrop_Light	$LOCAL$/_Backdrop_Light
+{
+	LayerName = "GlobalLight";
+	UniformScale = 1.0000000;
+	Position = float3(1.1233553e+002, 2.8270447e+002, 2.2297581e+002);
+	EulerOrientation = float3(-4.8550171e+001, 2.6739031e+001, -9.5600376e-007);
+	LightDistance = 3.7717276e+002;
+	LightFactory = "$LOCAL$/_Backdrop_Light_Factory";
+}

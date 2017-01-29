@@ -6,20 +6,24 @@ using Zenobit.Common.Debug;
 public class CollisionDebugLogger : MonoBehaviour
 {
 	private int numCollisions = 0;
-
+	public bool EnableLogging = true;
+	
 	private void OnParticleCollision(GameObject other)
 	{
-		ZenLogger.Log($"{gameObject.name} Particle Collided with {other.name}");
+		if (EnableLogging)
+			ZenLogger.Log($"{gameObject.name} Particle Collided with {other.name}");
 	}
 	
 	void OnTriggerEnter(Collider other)
 	{
-		ZenLogger.Log($"{gameObject.name} triggered by {other.name}");
+		if (EnableLogging)
+			ZenLogger.Log($"{gameObject.name} triggered by {other.name}");
 	}
 	
 	void OnCollisionEnter(Collision other)
 	{
-		ZenLogger.Log($"{gameObject.name} collided from {other.gameObject.name}");
+		if (EnableLogging)
+			ZenLogger.Log($"{gameObject.name} collided from {other.gameObject.name}");
 	}
 
 }

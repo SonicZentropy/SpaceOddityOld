@@ -1,0 +1,71 @@
+Version = 1.10.2.31070;
+CHmlFactory	$LOCAL$/Resource
+{
+	MeshTree = "$LOCAL$/CHmlMeshTreeNode_LOD_E1E2571F";
+	Skins = 
+	{
+		"$LOCAL$/CHmlSkinDescriptor_FC3F1CA9",
+	};
+}
+CHmlMeshTreeNode_LOD	$LOCAL$/CHmlMeshTreeNode_LOD_E1E2571F
+{
+	LODs = 
+	{
+		"$LOCAL$/CHmlMeshTreeNode_ModelRef_289124CE",
+	};
+}
+CHmlMeshTreeNode_ModelRef	$LOCAL$/CHmlMeshTreeNode_ModelRef_289124CE
+{
+	MeshResourcePath = "Meshes/GroundDebris_01.pkmm";
+}
+CHmlSkinDescriptor	$LOCAL$/CHmlSkinDescriptor_FC3F1CA9
+{
+	PublishedName = "Default";
+	Materials = 
+	{
+		"$LOCAL$/CHmlSkinMaterial_F8253420",
+		"$LOCAL$/CHmlSkinMaterial_417BD563",
+		"$LOCAL$/CHmlSkinMaterial_34C19E62",
+		"$LOCAL$/CHmlSkinMaterial_18198BCD",
+	};
+}
+CMaterialProxy	$LOCAL$/Material_0
+{
+	VirtualName = "Default";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_F8253420
+{
+	VirtualName = "Default";
+	MaterialProxy = "$LOCAL$/Material_0";
+}
+CMaterialProxy	$LOCAL$/Material_1
+{
+	VirtualName = "Default";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_417BD563
+{
+	VirtualName = "Default";
+	MaterialProxy = "$LOCAL$/Material_1";
+}
+CMaterialProxy	$LOCAL$/Material_2
+{
+	VirtualName = "Default";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_34C19E62
+{
+	VirtualName = "Default";
+	MaterialProxy = "$LOCAL$/Material_2";
+}
+CMaterialProxy	$LOCAL$/Material_3
+{
+	VirtualName = "Default";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_18198BCD
+{
+	VirtualName = "Default";
+	MaterialProxy = "$LOCAL$/Material_3";
+}

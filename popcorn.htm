@@ -1,0 +1,866 @@
+<html><head><title>popcorn-engine logfile</title>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<style>body
+{
+	padding-top: 44px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	background: #bbbbbb;
+	margin: 0px;
+	color: #000000;
+	font-family: Consolas, Courier;
+	font-size: 10pt;
+}
+.header2
+{
+	font-size: 72px;
+	left: 5px;
+	color: #8a98b0;
+	position: absolute;
+	top: -22px
+}
+.header
+{
+	left: 0px;
+	overflow: hidden;
+	width: 100%;
+	color: #ffffff;
+	font-family: Verdana, Arial;
+	position: absolute;
+	top: 0px;
+	height: 44px;
+	background-color: #7b8aa6
+}
+.pagetitle
+{
+	font-size: 22px;
+	z-index: 100;
+	left: 5px;
+	color: #ffffff;
+	position: absolute;
+	top: 14px;
+}
+.copyright
+{
+	font-size: 10px;
+	z-index: 60;
+	left: -8px;
+	width: 100%;
+	color: #acb6c8;
+	position: absolute;
+	top: 1px;
+	text-align: right;
+	text-decoration: none;
+}
+.build
+{
+	font-size: 12px;
+	color: #eeeeee;
+	text-decoration: none;
+}
+a.header1:link
+{
+	font-size: 30px;
+	z-index: 50;
+	left: -8px;
+	width: 100%;
+	color: #a0acc0;
+	position: absolute;
+	top: 6px;
+	text-align: right;
+	text-decoration: none;
+}
+a.header1:visited
+{
+	font-size: 30px;
+	z-index: 50;
+	left: -8px;
+	width: 100%;
+	color: #a0acc0;
+	position: absolute;
+	top: 6px;
+	text-align: right;
+	text-decoration: none;
+}
+a.header1:hover
+{
+	font-size: 30px;
+	z-index: 50;
+	left: -8px;
+	width: 100%;
+	color: #acb6c8;
+	position: absolute;
+	top: 6px;
+	text-align: right;
+	text-decoration: none;
+}
+.log_caller { color: #666666; }
+.dll { color: #800070; }
+.M   { color: #000000; background-color: #DDDDDD; white-space: pre; }
+.W   { color: #000000; background-color: #FFAA33; white-space: pre; }
+.E   { color: #FFFFFF; background-color: #DD1100; white-space: pre; }
+.EC  { color: #FFFFFF; background-color: #DD0000; white-space: pre; }
+.EI  { color: #FFFFFF; background-color: #EE0000; white-space: pre; }
+.EF  { color: #FFFFFF; background-color: #FF0000; white-space: pre; }
+</style>
+</head>
+<body>
+<div class=header id=header>
+	<a class=header1 id=header1 href="http://www.popcornfx.com/">www.popcornfx.com</a>
+	<div class=copyright id=copyright>Copyright (c) Persistant Studios 2010-2016</div>
+	<div class=header2 id=header2>PopcornFX</div>
+	<div class=pagetitle id=pagetitle>PopcornFX logfile. <font class=build>build 1.11.0.32953, Tue Dec 20 15:24:58 2016 +0100</font></i></div>
+</div><div class=M><center>... STARTUP ...</center></div>
+<div class=M>[BOOT]> License keycode: "DiscoveryPlugin"</div>
+<div class=M>[BOOT]> PopcornFX SDK build config: ...... RELEASE</div>
+<div class=M>[BOOT]> Has debug asserts: .................... NO</div>
+<div class=M>[BOOT]> Has release asserts: ................. YES</div>
+<div class=M>[BOOT]> Has anonymous asserts: ................ NO</div>
+<div class=M>[BOOT]> Has containers monitoring: ............ NO</div>
+<div class=M>[BOOT]> Has iterators debug checks: ........... NO</div>
+<div class=M>[BOOT]> Mem debug level: ....................... 0</div>
+<div class=M>[BOOT]> Has default mem allocators: .......... YES</div>
+<div class=M>[BOOT]> |</div>
+<div class=M>[BOOT]> | ... BOOTING Kernel ...</div>
+<div class=M>[BOOT]> [Kernel_Callstack         ]:Startup       740 usec         0 bytes      0 KbTotal</div>
+<div class=M>[BOOT]> [Kernel_PerfMonitor       ]:Startup       404 usec       134 bytes      1 KbTotal</div>
+<div class=M>[BOOT]> [Kernel_Mem               ]:Startup         0 usec        99 bytes      1 KbTotal</div>
+<div class=M>[BOOT]> [Kernel_Containers        ]:Startup         1 usec         0 bytes      1 KbTotal</div>
+<div class=M>[BOOT]> [Kernel_Asserts           ]:Startup         0 usec         0 bytes      1 KbTotal</div>
+<div class=M>[BOOT]> [Kernel_Buffer            ]:Startup         5 usec      8219 bytes      9 KbTotal</div>
+<div class=M>[BOOT]> [Kernel_String            ]:Startup         1 usec      2102 bytes     11 KbTotal</div>
+<div class=M>[BOOT]> [Kernel_RTTI              ]:Startup         0 usec         0 bytes     11 KbTotal</div>
+<div class=M>[BOOT]> [Kernel_Threads           ]:Startup         8 usec         0 bytes     12 KbTotal</div>
+<div class=M>[BOOT]> [Kernel_ThreadPool        ]:Startup         0 usec         0 bytes     12 KbTotal</div>
+<div class=M>[Kernel_CapsCpu]> Multi-Core system, Multi-threaded cores</div>
+<div class=M>[Kernel_CapsCpu]>      Logical processors reported by OS : 8</div>
+<div class=M>[Kernel_CapsCpu]>      Visible logical processors        : 8</div>
+<div class=M>[Kernel_CapsCpu]>      Cores                             : 4</div>
+<div class=M>[Kernel_CapsCpu]>      Physical packages                 : 1</div>
+<div class=M>[Kernel_CapsCpu]> ---- Package 0 -------------------------</div>
+<div class=M>[Kernel_CapsCpu]>      Vendor                            : GenuineIntel</div>
+<div class=M>[Kernel_CapsCpu]>      CPU Name                          : "Intel(R) Core(TM) i7-4700MQ CPU @ 2.40GHz"</div>
+<div class=M>[Kernel_CapsCpu]>      Frequency                         : 2390.0 MHz (2393.520 measured)</div>
+<div class=M>[Kernel_CapsCpu]>      Microarchitecture                 : Haswell, 64-bits</div>
+<div class=M>[Kernel_CapsCpu]>      Extensions                        : VirMode DBG     PageSz4 RDTSC   MSR     PAE     MCE     CXCHG8  APIC    SEP     MTRR    PGE     </div>
+<div class=M>[Kernel_CapsCpu]>                                          MCA     CMOV    PAT     PSE36   CLFlush DebugSt ACPI    FXSR    SSnoop  HThread ThMon   ThMon2  </div>
+<div class=M>[Kernel_CapsCpu]>                                          IA64Ext PBE     ExecDis DTES64  MONITOR DS_CPL  VMEXT   ESpdStp CXCHG16 XTPR    PDCM    XSave   </div>
+<div class=M>[Kernel_CapsCpu]>                                          OsXSave TSCInv  MOVBE   POPCNT  CLMUL   BMI1    BMI2    F16C    AES     FMA3    RDRAND  MMX     </div>
+<div class=M>[Kernel_CapsCpu]>                                          SSE     SSE2    SSE3    SSSE3   SSE4_1  SSE4_2  AVX     AVX2    </div>
+<div class=M>[Kernel_CapsCpu]>      CPUID Leaves                      : 0000000D-00000008</div>
+<div class=M>[Kernel_CapsCpu]>      CACHE TYPE                  SIZE         ASSOCIATIVITY  LINE-SIZE</div>
+<div class=M>[Kernel_CapsCpu]>         L1 Data cache              32 KB             8 ways   64-bytes</div>
+<div class=M>[Kernel_CapsCpu]>         L1 Instruction cache       32 KB             8 ways   64-bytes</div>
+<div class=M>[Kernel_CapsCpu]>         L2 Unified cache          256 KB             8 ways   64-bytes</div>
+<div class=M>[Kernel_CapsCpu]>         L3 Unified cache         6144 KB            12 ways   64-bytes</div>
+<div class=M>[Kernel_CapsCpu]>      PROCESSOR  APIC_ID  PACKAGE     CORE   THREAD    CACHES</div>
+<div class=M>[Kernel_CapsCpu]>              0     0000        0        0        0    L1D[0] L1I[0] L2[0] L3[0]</div>
+<div class=M>[Kernel_CapsCpu]>              1     0001        0        0        1    L1D[0] L1I[0] L2[0] L3[0]</div>
+<div class=M>[Kernel_CapsCpu]>              2     0002        0        1        0    L1D[1] L1I[1] L2[1] L3[0]</div>
+<div class=M>[Kernel_CapsCpu]>              3     0003        0        1        1    L1D[1] L1I[1] L2[1] L3[0]</div>
+<div class=M>[Kernel_CapsCpu]>              4     0004        0        2        0    L1D[2] L1I[2] L2[2] L3[0]</div>
+<div class=M>[Kernel_CapsCpu]>              5     0005        0        2        1    L1D[2] L1I[2] L2[2] L3[0]</div>
+<div class=M>[Kernel_CapsCpu]>              6     0006        0        3        0    L1D[3] L1I[3] L2[3] L3[0]</div>
+<div class=M>[Kernel_CapsCpu]>              7     0007        0        3        1    L1D[3] L1I[3] L2[3] L3[0]</div>
+<div class=M>[BOOT]> [Kernel_CapsCpu           ]:Startup      2260 usec      1321 bytes     13 KbTotal</div>
+<div class=M>[Kernel_CapsMem]> Detecting memory:</div>
+<div class=M>[Kernel_CapsMem]>      MEMORY        :          USED     AVAILABLE         TOTAL</div>
+<div class=M>[Kernel_CapsMem]>      physical      :     5703.0 Mb     2404.0 Mb     8108.0 Mb</div>
+<div class=M>[Kernel_CapsMem]>      page file     :     6799.0 Mb     9415.0 Mb    16214.0 Mb</div>
+<div class=M>[Kernel_CapsMem]>      virtual       :     1933.0 Mb  8386674.0 Mb  8388608.0 Mb</div>
+<div class=M>[Kernel_CapsMem]>      Address range : 000007FFFFFEFFFF - 0000000000010000</div>
+<div class=M>[BOOT]> [Kernel_CapsMem           ]:Startup      8258 usec        99 bytes     13 KbTotal</div>
+<div class=M>[BOOT]> [Kernel_Profiler          ]:Startup         9 usec      2629 bytes     16 KbTotal</div>
+<div class=M>[BOOT]> [Kernel_Checksum          ]:Startup         0 usec         0 bytes     16 KbTotal</div>
+<div class=M>[BOOT]> [Kernel_Compression       ]:Startup         0 usec         0 bytes     16 KbTotal</div>
+<div class=M>[BOOT]> [Kernel_File              ]:Startup        11 usec        35 bytes     16 KbTotal</div>
+<div class=M>[BOOT]> [Kernel_Plugins           ]:Startup         0 usec        83 bytes     16 KbTotal</div>
+<div class=M>[BOOT]> [Kernel_Scheduler         ]:Startup      1861 usec     38686 bytes     54 KbTotal</div>
+<div class=M>[BOOT]> [Kernel_Resources         ]:Startup         0 usec       107 bytes     54 KbTotal</div>
+<div class=M>[BOOT]> |</div>
+<div class=M>[BOOT]> | ... BOOTING BaseObject ...</div>
+<div class=M>[BOOT]> [BaseObject               ]:Startup        18 usec     30159 bytes     84 KbTotal</div>
+<div class=M>[BOOT]> [BaseObject_HBOScope      ]:Startup        48 usec     99827 bytes    182 KbTotal</div>
+<div class=M>[BOOT]> |</div>
+<div class=M>[BOOT]> | ... BOOTING EngineUtils ...</div>
+<div class=M>[BOOT]> [EngineUtils_Random       ]:Startup         5 usec      5137 bytes    187 KbTotal</div>
+<div class=M>[BOOT]> [EngineUtils_Timeline     ]:Startup         0 usec         0 bytes    187 KbTotal</div>
+<div class=M>[BOOT]> [EngineUtils_Actions      ]:Startup      3976 usec     21316 bytes    208 KbTotal</div>
+<div class=M>[BOOT]> [EngineUtils_Core         ]:Startup       871 usec     13458 bytes    221 KbTotal</div>
+<div class=M>[BOOT]> [EngineUtils_Samplers     ]:Startup       347 usec      7274 bytes    228 KbTotal</div>
+<div class=M>[BOOT]> [EngineUtils_Skeleton     ]:Startup         4 usec      3471 bytes    232 KbTotal</div>
+<div class=M>[BOOT]> |</div>
+<div class=M>[BOOT]> | ... BOOTING Compiler ...</div>
+<div class=M>[BOOT]> [Compiler                 ]:Startup      1350 usec    158085 bytes    386 KbTotal</div>
+<div class=M>[BOOT]> |</div>
+<div class=M>[BOOT]> | ... BOOTING Geometrics ...</div>
+<div class=M>[BOOT]> [Geometrics_Skeleton      ]:Startup         0 usec         0 bytes    386 KbTotal</div>
+<div class=M>[BOOT]> [Geometrics_Mesh          ]:Startup      1785 usec      8148 bytes    394 KbTotal</div>
+<div class=M>[Geometrics_MeshDeformers]> CPU Dispatch mapped implementation of Skeletal Skinner to 'SIMD'</div>
+<div class=M>[BOOT]> [Geometrics_MeshDeformers ]:Startup       677 usec     44217 bytes    438 KbTotal</div>
+<div class=M>[BOOT]> [Geometrics_MeshResource  ]:Startup       599 usec      4686 bytes    442 KbTotal</div>
+<div class=M>[BOOT]> [Geometrics_MeshKdTree    ]:Startup         0 usec         0 bytes    442 KbTotal</div>
+<div class=M>[BOOT]> [Geometrics_Shapes        ]:Startup      1276 usec     10984 bytes    453 KbTotal</div>
+<div class=M>[BOOT]> [Geometrics_Colliders     ]:Startup         0 usec         0 bytes    453 KbTotal</div>
+<div class=M>[BOOT]> [Geometrics_Billboards    ]:Startup         0 usec         0 bytes    453 KbTotal</div>
+<div class=M>[BOOT]> [Geometrics_RectangleList ]:Startup         2 usec      4329 bytes    458 KbTotal</div>
+<div class=M>[BOOT]> |</div>
+<div class=M>[BOOT]> | ... BOOTING Imaging ...</div>
+<div class=M>[BOOT]> [Imaging_Images           ]:Startup      1351 usec      4491 bytes    462 KbTotal</div>
+<div class=M>[BOOT]> |</div>
+<div class=M>[BOOT]> | ... BOOTING Particles ...</div>
+<div class=M>[Particles]> Script bindings setup : 4.95 ms</div>
+<div class=M>[BOOT]> [Particles                ]:Startup     10257 usec   1375749 bytes   1806 KbTotal</div>
+<div class=M>[BOOT]> [CompilerBackend_CPU_Emulation]:Startup         3 usec     10327 bytes   1812 KbTotal</div>
+<div class=M>[Kernel_Plugins]> Registering module "CompilerBackend_CPU_Emulation" to handler "hh_compiler".</div>
+<div class=M>[Kernel_Plugins]> Registering module "PopcornFX-Image codec dds" to handler "im_codec".</div>
+<div class=M>[Kernel_Plugins]> Registering module "PopcornFX-Image codec png" to handler "im_codec".</div>
+<div class=M>[Kernel_Plugins]> Registering module "PopcornFX-Image codec targa" to handler "im_codec".</div>
+<div class=M>[Kernel_Plugins]> Registering module "PopcornFX-Image codec jpeg" to handler "im_codec".</div>
+<div class=M>[BOOT]> [UnityPlugin              ]:Startup         0 usec         0 bytes   1813 KbTotal</div>
+<div class=M>[UnityPlugin]> Startup PKFX</div>
+<div class=M>[UnityPlugin]> GraphicsEventD3D11</div>
+<div class=M>[UnityPlugin]> _PopcornFXStartup</div>
+<div class=M>[UnityPlugin]> GraphicsEventD3D11</div>
+<div class=M>[UnityPlugin]> Added Assets/StreamingAssets/PackFx for watching.</div>
+<div class=M>[UnityPlugin]> Exploring pack Assets/StreamingAssets/PackFx...</div>
+<div class=M>[UnityPlugin]>   -> Particles/Abstract/NeuroGalaxy.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Developer/TestPusher.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/ButterFly_sceneIntersect.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/CampFire_Events.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/CarHud_TextSampler.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/CoallBurn_SpatialLayers.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/ElectricalBall_pCoords.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/Explosion_vrandFunction.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/Fan_BigCastMedusa.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/FireFly_Attractor.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/Fish_Flocking.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/FlameThrower_Ribbon.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/Grenade_MeshRenderer.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/JukeBall.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/Lightning_FpsConstraint.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/Link_lerpFunction.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/MagicSpell_Dynamic.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/MagicSpell_Static.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/Matrix.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/Orb_rotateFunction.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/Pentacle_AnimTrack.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/Rain_ViewPosition.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/SimpleExplosion.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/Snow_TurbSampler.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/Soul_parentFunction.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/Spark_ExternEvents.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/Spark_Triggered.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/Teleporter.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Discovery/WorldMap_TextureSampler.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Fantasy/Fan_BigCastMedusa.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Globe/EarthPDF3.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Modern/Thruster.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/HD/Mod_AmmoFall_HD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/HD/Mod_AmmoTrail_HD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/HD/Mod_BigExplosion_HD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/HD/Mod_BloodFlow_HD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/HD/Mod_BloodSplash_HD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/HD/Mod_ExplosionGrenade_HD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/HD/Mod_ExplosionHuman_HD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/HD/Mod_Fire_HD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/HD/Mod_Flare_HD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/HD/Mod_FlashBang_HD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/HD/Mod_HelicoGround_HD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/HD/Mod_ImpactBigGround_HD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/HD/Mod_ImpactMetal_HD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/HD/Mod_LittleExplosion_HD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/HD/Mod_PetrolThrow_HD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/HD/Mod_Reactor_HD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/HD/Mod_Smoke2_HD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/HD/Mod_Smoke_HD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/HD/Mod_Tank_HD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/HD/Mod_WeaponSmoke_HD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/HD/ParticleSystem_2.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/LD/Mod_AmmoFall_LD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/LD/Mod_AmmoTrail_LD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/LD/Mod_BigExplosion_LD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/LD/Mod_BloodFlow_LD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/LD/Mod_BloodSplash_LD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/LD/Mod_ExplosionGrenade_LD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/LD/Mod_ExplosionHuman_LD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/LD/Mod_Fire_LD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/LD/Mod_Flare_LD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/LD/Mod_FlashBang_LD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/LD/Mod_HelicoGround_LD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/LD/Mod_ImpactBigGround_LD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/LD/Mod_ImpactMetal_LD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/LD/Mod_LittleExplosion_LD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/LD/Mod_PetrolThrow_LD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/LD/Mod_Reactor_LD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/LD/Mod_Smoke_LD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/LD/Mod_Tank_LD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/LD/Mod_WeaponSmoke_LD.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_AmmoFall.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_AmmoTrail.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_BigExplosion.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_BloodFlow.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_BloodSplash.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_ExplosionGrenade.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_ExplosionHuman.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_Fire.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_Flare.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_FlashBang.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_HelicoGround.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_ImpactBigGround.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_ImpactMetal.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_LittleExplosion.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_MuzzleFlashGun.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_MuzzleFlashM16.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_MuzzleFlashM4.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_MuzzleFlashPistol.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_PetrolThrow.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_Reactor.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_Smoke.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_Tank.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Warfare/SD/Mod_WeaponSmoke.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Wizard/WizardWand8.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Zen/ElectricalBall_Local.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Zen/HitEffectFlash.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Zen/KCParticles.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Zen/ZenShieldShell.pkfx</div>
+<div class=M>[UnityPlugin]>   -> Particles/Zen/ZenShieldVibrant.pkfx</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Scale"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "UseNoiseDerivatives"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=M>[Geometrics_MeshResource]> Loading Mesh "Assets/StreamingAssets/PackFx/Meshes/mandefault.pkmm"</div>
+<div class=W>[Geometrics_MeshResource]> Unsupported mesh resource chunk @0 (16 bytes, key = 7)</div>
+<div class=E>[Geometrics_MeshResource]> Name index out of bounds</div>
+<div class=E>[Geometrics_Shapes]> shape descriptor: failed loading mesh resource "Meshes/mandefault.pkmm"</div>
+<div class=E>[Geometrics_Shapes]> failed creating shape type=7</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> invalid object path: "Particles/Spark_Triggered.pkfx/Spawner" (raw link path = "Particles/Spark_Triggered.pkfx/Spawner")</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Scale"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=M>[Geometrics_MeshResource]> Loading Mesh "Assets/StreamingAssets/PackFx/Meshes/Telepod.pkmm"</div>
+<div class=W>[Geometrics_MeshResource]> Unsupported mesh resource chunk @0 (16 bytes, key = 7)</div>
+<div class=E>[Geometrics_MeshResource]> Name index out of bounds</div>
+<div class=E>[Geometrics_Shapes]> shape descriptor: failed loading mesh resource "Meshes/Telepod.pkmm"</div>
+<div class=E>[Geometrics_Shapes]> failed creating shape type=7</div>
+<div class=M>[Geometrics_MeshResource]> Loading Mesh "Assets/StreamingAssets/PackFx/Meshes/Telepod.pkmm"</div>
+<div class=W>[Geometrics_MeshResource]> Unsupported mesh resource chunk @0 (16 bytes, key = 7)</div>
+<div class=E>[Geometrics_MeshResource]> Name index out of bounds</div>
+<div class=E>[Geometrics_Shapes]> shape descriptor: failed loading mesh resource "Meshes/Telepod.pkmm"</div>
+<div class=E>[Geometrics_Shapes]> failed creating shape type=7</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=M>[???]> ##### PDF 2D BUILD ################</div>
+<div class=M>[???]> ## size              : 1024 x 512</div>
+<div class=M>[???]> ## min threshold     : 0.000e+000</div>
+<div class=M>[???]> ## remap discrepancy : 1.000e+000</div>
+<div class=M>[???]> ##### 6.497 ms ######################</div>
+<div class=M>[???]> ##### PDF 2D O(1) BUILD ################</div>
+<div class=M>[???]> ## size              : 1024 x 512</div>
+<div class=M>[???]> ##### 6.337 ms ######################</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=M>[???]> ##### PDF 2D BUILD ################</div>
+<div class=M>[???]> ## size              : 512 x 512</div>
+<div class=M>[???]> ## min threshold     : 0.000e+000</div>
+<div class=M>[???]> ## remap discrepancy : 1.000e+000</div>
+<div class=M>[???]> ##### 3.591 ms ######################</div>
+<div class=M>[???]> ##### PDF 2D O(1) BUILD ################</div>
+<div class=M>[???]> ## size              : 512 x 512</div>
+<div class=M>[???]> ##### 3.553 ms ######################</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Scale"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Scale"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "RandomTimeVariation"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "UseNoiseDerivatives"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "UseNoiseDerivatives"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Scale"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "UseNoiseDerivatives"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Scale"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "UseNoiseDerivatives"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "RandomTimeVariation"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "UseNoiseDerivatives"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Scale"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "UseNoiseDerivatives"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Scale"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "RandomTimeVariation"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "UseNoiseDerivatives"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "UseNoiseDerivatives"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> invalid object path: "Particles/Warfare/SD/Mod_PetrolThrow.pkfx/Layer_3" (raw link path = "$LOCAL$/Layer_3")</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Autostart"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Error parsing the HBO file : might have been corrupt</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Scale"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "UseVelocityOrientedSpawnMatrix"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Scale"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Scale"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Scale"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "UseNoiseDerivatives"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Scale"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "UseNoiseDerivatives"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Scale"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "CustomAttributes"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "Scale"...</div>
+<div class=E>[BaseObject]> Skipping unknown HBO field "UseVelocityOrientedSpawnMatrix"...</div>
+<div class=M>[Geometrics_MeshResource]> Loading Mesh "Assets/StreamingAssets/PackFx/Meshes/Staff_Blob.pkmm"</div>
+<div class=W>[Geometrics_MeshResource]> Unsupported mesh resource chunk @0 (16 bytes, key = 7)</div>
+<div class=E>[Geometrics_MeshResource]> Name index out of bounds</div>
+<div class=E>[Geometrics_Shapes]> shape descriptor: failed loading mesh resource "Meshes/Staff_Blob.pkmm"</div>
+<div class=E>[Geometrics_Shapes]> failed creating shape type=7</div>
+<div class=M>[Geometrics_MeshResource]> Loading Mesh "Assets/StreamingAssets/PackFx/Meshes/Staff_Blob.pkmm"</div>
+<div class=W>[Geometrics_MeshResource]> Unsupported mesh resource chunk @0 (16 bytes, key = 7)</div>
+<div class=E>[Geometrics_MeshResource]> Name index out of bounds</div>
+<div class=E>[Geometrics_Shapes]> shape descriptor: failed loading mesh resource "Meshes/Staff_Blob.pkmm"</div>
+<div class=E>[Geometrics_Shapes]> failed creating shape type=7</div>
+<div class=M>[???]> ##### PDF 2D BUILD ################</div>
+<div class=M>[???]> ## size              : 512 x 512</div>
+<div class=M>[???]> ## min threshold     : 0.000e+000</div>
+<div class=M>[???]> ## remap discrepancy : 1.000e+000</div>
+<div class=M>[???]> ##### 3.002 ms ######################</div>
+<div class=M>[???]> ##### PDF 2D O(1) BUILD ################</div>
+<div class=M>[???]> ## size              : 512 x 512</div>
+<div class=M>[???]> ##### 4.119 ms ######################</div>
+<div class=M>[UnityPlugin]> Preloading OK "Particles/Zen/ZenShieldVibrant.pkfx"</div>
+<div class=M>[Kernel_Profiler]> Loaded 2D Texture (Textures/Sprites/big_glow2.dds) : 20.771 ms</div>
+<div class=W>[UnityPlugin]> Performance warning: Texture has no mipmaps (Textures\tex_fx_atlasDistortion.png)</div>
+<div class=M>[Kernel_Profiler]> Loaded 2D Texture (Textures/tex_fx_atlasDistortion.png) : 31.953 ms</div>
+<div class=W>[UnityPlugin]> Performance warning: Texture has no mipmaps (Textures\Perso\02_Benchmark\Hit\simpleFlash.png)</div>
+<div class=M>[Kernel_Profiler]> Loaded 2D Texture (Textures/Perso/02_Benchmark/Hit/simpleFlash.png) : 1.293 ms</div>
+<div class=W>[UnityPlugin]> Performance warning: Texture has no mipmaps (Textures\Perso\02_Benchmark\Hit\thinRing.png)</div>
+<div class=M>[Kernel_Profiler]> Loaded 2D Texture (Textures/Perso/02_Benchmark/Hit/thinRing.png) : 2.423 ms</div>
+<div class=W>[UnityPlugin]> Performance warning: Texture has no mipmaps (Textures\Perso\02_Benchmark\Hit\falloffLightbeam.png)</div>
+<div class=M>[Kernel_Profiler]> Loaded 2D Texture (Textures/Perso/02_Benchmark/Hit/falloffLightbeam.png) : 0.928 ms</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B2F808 buffers from maxverts=0, maxind=0 to maxvert=140, maxind=146 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B2E4C8 buffers from maxverts=0, maxind=0 to maxvert=134, maxind=137 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B0A818 buffers from maxverts=0, maxind=0 to maxvert=278, maxind=353 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Preloading OK "Particles/Zen/HitEffectFlash.pkfx"</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B27148 buffers from maxverts=0, maxind=0 to maxvert=1382, maxind=2009 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B0D368 buffers from maxverts=0, maxind=0 to maxvert=152, maxind=164 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B27148 buffers from maxverts=1382, maxind=2009 to maxvert=4658, maxind=6923 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B27148 buffers from maxverts=4658, maxind=6923 to maxvert=10838, maxind=16193 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B0D368 buffers from maxverts=152, maxind=164 to maxvert=320, maxind=416 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B27148 buffers from maxverts=10838, maxind=16193 to maxvert=17930, maxind=26831 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B0D368 buffers from maxverts=320, maxind=416 to maxvert=602, maxind=839 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B27148 buffers from maxverts=17930, maxind=26831 to maxvert=33104, maxind=49592 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B0D368 buffers from maxverts=602, maxind=839 to maxvert=1022, maxind=1469 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=W>[UnityPlugin]> Pack "Assets/StreamingAssets/PackFx" already loaded.</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B2F808 buffers from maxverts=0, maxind=0 to maxvert=140, maxind=146 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B2E4C8 buffers from maxverts=0, maxind=0 to maxvert=134, maxind=137 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B0A818 buffers from maxverts=0, maxind=0 to maxvert=278, maxind=353 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B27148 buffers from maxverts=0, maxind=0 to maxvert=1976, maxind=2900 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B0D368 buffers from maxverts=0, maxind=0 to maxvert=164, maxind=182 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B27148 buffers from maxverts=1976, maxind=2900 to maxvert=3806, maxind=5645 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B27148 buffers from maxverts=3806, maxind=5645 to maxvert=6812, maxind=10154 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B0D368 buffers from maxverts=164, maxind=182 to maxvert=320, maxind=416 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B27148 buffers from maxverts=6812, maxind=10154 to maxvert=11330, maxind=16931 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B27148 buffers from maxverts=11330, maxind=16931 to maxvert=17396, maxind=26030 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B0D368 buffers from maxverts=320, maxind=416 to maxvert=560, maxind=776 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B27148 buffers from maxverts=17396, maxind=26030 to maxvert=26264, maxind=39332 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B27148 buffers from maxverts=26264, maxind=39332 to maxvert=39806, maxind=59645 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B0D368 buffers from maxverts=560, maxind=776 to maxvert=932, maxind=1334 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=W>[UnityPlugin]> Pack "Assets/StreamingAssets/PackFx" already loaded.</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B2F808 buffers from maxverts=0, maxind=0 to maxvert=140, maxind=146 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B2E4C8 buffers from maxverts=0, maxind=0 to maxvert=134, maxind=137 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B0A818 buffers from maxverts=0, maxind=0 to maxvert=278, maxind=353 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B27148 buffers from maxverts=0, maxind=0 to maxvert=2678, maxind=3953 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B0D368 buffers from maxverts=0, maxind=0 to maxvert=182, maxind=209 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B27148 buffers from maxverts=2678, maxind=3953 to maxvert=5000, maxind=7436 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B27148 buffers from maxverts=5000, maxind=7436 to maxvert=8648, maxind=12908 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B0D368 buffers from maxverts=182, maxind=209 to maxvert=338, maxind=443 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B27148 buffers from maxverts=8648, maxind=12908 to maxvert=13772, maxind=20594 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B27148 buffers from maxverts=13772, maxind=20594 to maxvert=21626, maxind=32375 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B0D368 buffers from maxverts=338, maxind=443 to maxvert=590, maxind=821 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B27148 buffers from maxverts=21626, maxind=32375 to maxvert=34154, maxind=51167 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=M>[UnityPlugin]> Growing FxMesh 0000000029B0D368 buffers from maxverts=590, maxind=821 to maxvert=962, maxind=1379 (IFORMAT=DXGI_FORMAT_R16_UINT) (COLORS=FLOAT4)</div>
+<div class=W>[UnityPlugin]> Pack "Assets/StreamingAssets/PackFx" already loaded.</div>
+<div class=W>[UnityPlugin]> Pack "Assets/StreamingAssets/PackFx" already loaded.</div>
+<div class=W>[UnityPlugin]> Pack "Assets/StreamingAssets/PackFx" already loaded.</div>
+<div class=W>[UnityPlugin]> Pack "Assets/StreamingAssets/PackFx" already loaded.</div>

@@ -1,0 +1,123 @@
+Version = 1.9.0.26281;
+CParticleEffect	$LOCAL$/Resource
+{
+	EditorInfosPosition = int2(73, 52);
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	EditorInfosPosition = int2(413, -144);
+	Position = float3(1.5000000e+000, 0.0000000e+000, 5.0000000e+000);
+	Backdrops = "$LOCAL$/_BackdropList";
+	IsLooping = true;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Layer_1
+{
+	EditorInfosPosition = int2(-288, -61);
+	Descriptor = "$LOCAL$/CParticleDescriptor_AE135B2A";
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCountMode = TotalParticleCount;
+	SpawnCount = 1.0000000e+003;
+	FirstSpawnDelay = 5.0000000e-001;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AE135B2A
+{
+	EditorInfosPosition = int2(-392, -44);
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_9136D2F4";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_C9CC8D32",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7";
+	States = 
+	{
+		"$LOCAL$/CParticleState_3AF8190E",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	EditorInfosPosition = int2(-162, -81);
+	ChildList = 
+	{
+		"$LOCAL$/Layer_1",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_9136D2F4
+{
+	EditorInfosPosition = int2(-508, -63);
+	Diffuse = "Textures/FX/TextAtlas.dds";
+	AtlasDefinition = "Textures/FX/TextAtlas.pkat";
+	AspectRatio = 5.0000000e-001;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7
+{
+	EditorInfosPosition = int2(-508, 22);
+	Expression = "function void	Eval()
+{
+	Size = 0.1;
+
+	int	particleId = int(spawner.LifeRatio * 1000);
+	int charCode = Text.charCode(particleId);
+
+	Life = select(1.0, 0.0, charCode <= 32);	// kill space particles
+
+	TextureID = max(0, min(charCode - 32, 126 - 32));
+
+	float2	charCoords = floor(float2(particleId % int(LineWrap), -2 * floor(float(particleId) / int(LineWrap))));
+	Position = float3(Size * charCoords, 0);
+	
+	// BUG !!!
+//	Position = float3((particleId % 32) * Size, -Size * 2 * floor(particleId / 32), 0);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_3AF8190E
+{
+	EditorInfosPosition = int2(-508, 65);
+	StateName = "State_0";
+}
+CParticleSamplerText	$LOCAL$/CParticleSamplerText_D7C694F3
+{
+	SamplerName = "Text";
+	InlineText = "Bacon ipsum dolor amet porchetta cupim strip steak pork loin, cow tongue pork bacon shankle tenderloin shoulder turducken meatloaf hamburger prosciutto.";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_C9CC8D32
+{
+	FieldName = "TextureID";
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+	EditorInfosPosition = int2(-599, -20);
+	AttributeList = 
+	{
+		"$LOCAL$/CParticleAttributeDeclaration_53E981F3",
+	};
+	SamplerList = 
+	{
+		"$LOCAL$/CParticleSamplerText_D7C694F3",
+	};
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(125, -433);
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Brush_9A913525",
+	};
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/CNEdEditorBackdrop_Brush_9A913525
+{
+	EditorInfosPosition = int2(-27, -485);
+	LayerName = "Layer_Brush";
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_53E981F3
+{
+	AttributeName = "LineWrap";
+	DefaultValueF4 = float4(3.2000000e+001, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	MinValueF4 = float4(1.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	MaxValueF4 = float4(1.2800000e+002, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}

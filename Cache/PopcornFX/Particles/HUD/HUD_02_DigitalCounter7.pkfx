@@ -1,0 +1,197 @@
+Version = 1.9.0.26281;
+CParticleEffect	$LOCAL$/Resource
+{
+	EditorInfosPosition = int2(73, 52);
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	EditorInfosPosition = int2(413, -144);
+	Position = float3(-4.3569848e-001, 2.9137313e-001, -3.0206755e-001);
+	EulerOrientation = float3(-3.0107016e+001, -1.3320979e+002, 0.0000000e+000);
+	Backdrops = "$LOCAL$/_BackdropList";
+	ShowGrid = true;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Integer
+{
+	EditorInfosPosition = int2(-288, -61);
+	Descriptor = "$LOCAL$/CParticleDescriptor_AE135B2A";
+	DurationInSeconds = 1.0000000e-003;
+	SpawnCountMode = TotalParticleCount;
+	SpawnCount = 4.0000000e+000;
+	FirstSpawnDelay = 5.0000000e-001;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AE135B2A
+{
+	EditorInfosPosition = int2(-392, -44);
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_6B12D2BB";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_7D272500",
+		"$LOCAL$/CParticleFieldDeclaration_94469E43",
+		"$LOCAL$/CParticleFieldDeclaration_763735AD",
+		"$LOCAL$/CParticleFieldDeclaration_C436FF74",
+		"$LOCAL$/CParticleFieldDeclaration_1A27EC0D",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7";
+	States = 
+	{
+		"$LOCAL$/CParticleState_3AF8190E",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	EditorInfosPosition = int2(-162, -81);
+	ChildList = 
+	{
+		"$LOCAL$/Integer",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_6B12D2BB
+{
+	Diffuse = "Textures/FX/TextAtlas.dds";
+	AtlasDefinition = "Textures/FX/TextAtlas.pkat";
+	AxisField = "AxisUp";
+	Axis2Field = "AxisNormal";
+	AxisScale = 5.0000000e-001;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7
+{
+	EditorInfosPosition = int2(-508, 22);
+	Expression = "function void	Eval()
+{
+	float	spawnCount = 4;	// must match the spawner\'s \'SpawnCount\' property
+	float	particleId = floor(spawner.LifeRatio * spawnCount);
+	float	digitId = particleId;
+
+	float4	digitsSelector = (digitId == float4(0,1,2,3));
+	DigitFactor = dot(1.0f / float4(9999.9, 999.99, 99.999, 9.9999), digitsSelector);
+	Digit = digitId;
+	TextureID = 0;
+
+	Life = infinity;
+	Size = 0.05 * float2(0.5, 1);
+	
+	HorizontalOffset = particleId * Size.x * 2;
+}
+
+function void	PostEval()
+{
+	PrevSide = ViewSide;
+	Position += PrevSide * HorizontalOffset;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_3AF8190E
+{
+	EditorInfosPosition = int2(-508, 65);
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/LocalSpace_1",
+		"$LOCAL$/Script_1",
+	};
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_F09B3042
+{
+	AttributeName = "ShowZeroes";
+	AttributeType = int;
+	HasMin = true;
+	HasMax = true;
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(1, 10, 10, 10);
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_19089209
+{
+	Expression = "function void	Eval()
+{
+	// extract digit in the [0, 9] range
+	float	digit = floor(-10 * frac(floor(Value) * DigitFactor));
+
+	// compute digit count to know if we need to display the digit or not
+	// (if it\'s one of the left digits equal to zero)
+	float4	digitCountSelector = (Value >= float4(-1, 10, 100, 1000));	// -1 : display zero
+	float	digitCount = dot(digitCountSelector, digitCountSelector);
+
+	// map digit to TextureID
+	int		isInNumber = (4 - Digit <= digitCount) || ShowZeroes;
+	TextureID = select(0, 16 + digit, isInNumber);
+	
+	// note: localspace evolver needs to run BEFORE this script !
+	Position = Position + (ViewSide - PrevSide) * HorizontalOffset;
+	PrevSide = ViewSide;
+}
+";
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+	EditorInfosPosition = int2(-599, -20);
+	AttributeList = 
+	{
+		"$LOCAL$/CParticleAttributeDeclaration_5C4C877F",
+		"$LOCAL$/CParticleAttributeDeclaration_F09B3042",
+		"$LOCAL$/CParticleAttributeDeclaration_79EDA8C2",
+	};
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(125, -433);
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Brush_9A913525",
+	};
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/CNEdEditorBackdrop_Brush_9A913525
+{
+	EditorInfosPosition = int2(-27, -485);
+	LayerName = "Layer_Brush";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_7D272500
+{
+	FieldName = "Digit";
+}
+CParticleEvolver_Script	$LOCAL$/Script_1
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_19089209";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_763735AD
+{
+	FieldName = "HorizontalOffset";
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_79EDA8C2
+{
+	AttributeName = "ViewSide";
+	AttributeType = float3;
+	AttributeDescription = "Auto-filled by the editor";
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_5C4C877F
+{
+	AttributeName = "Value";
+	DefaultValueF4 = float4(3.6289626e+003, 7.3939565e+003, 4.9917007e+003, 2.0278772e+002);
+	HasMin = true;
+	HasMax = true;
+	MaxValueF4 = float4(9.9990000e+003, 9.9990000e+003, 9.9990000e+003, 9.9990000e+003);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_94469E43
+{
+	FieldName = "PrevSide";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleEvolver_Localspace	$LOCAL$/LocalSpace_1
+{
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_C436FF74
+{
+	FieldName = "Size";
+	FieldType = float2;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_1A27EC0D
+{
+	FieldName = "DigitFactor";
+}

@@ -1,4 +1,4 @@
-﻿// /** 
+﻿// /**
 // * EcsEngineWrapper.cs
 // * Will Hart and Dylan Bailey
 // * 20161209
@@ -18,7 +18,7 @@ namespace Zenobit.Common.ZenECS
 	{
 		private EcsEngine _engine;
 
-		public EcsEngine engine
+		[Inspect]public EcsEngine engine
 		{
 			get { return _engine ?? (_engine = EcsEngine.Instance); }
 		}

@@ -28,9 +28,8 @@ namespace Zenobit.Systems
 
 		private void InitSystems()
 		{
-			engine.AddSystem(new PooledEntityInitSystem())
-				  .AddSystem(new PlayerInitSystem())
-				  .AddSystem(new SectorGenerationSystem())
+			engine.AddSystem(new PlayerInitSystem())
+				  //.AddSystem(new SectorGenerationSystem())
 				  .AddSystem(new ShipInitSystem())
 				  .AddSystem(new PlayerInputSystem())
 
@@ -40,11 +39,20 @@ namespace Zenobit.Systems
 				  .AddSystem(new TacticalAiMovementSystem())
 				  .AddSystem(new PositionUpdateSystem())
 				  .AddSystem(new CameraControlSystem())
-				  .AddSystem(new CollisionCleanupSystem())
 
 				  .AddSystem(new RangedCombatSystem())
-				  //Reactives
+				  
+				  .AddSystem(new MissileFlightSystem())
+				  .AddSystem(new MissileCollisionResolverSystem())
+				  .AddSystem(new MissileAreaDamageSystem())
+				  .AddSystem(new MissileExplosionSystem())
+				  .AddSystem(new ShipDamageSystem())
+				  .AddSystem(new DeathRemovalSystem())
+				  
 				  .AddSystem(new InertialDamperSystem())
+				  .AddSystem(new CollisionCleanupSystem())
+
+				  //Reactives
 				  ;
 
 			engine.InitAfterECS();

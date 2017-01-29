@@ -1,0 +1,522 @@
+Version = 1.10.2.31070;
+CHmlFactory	$LOCAL$/Resource
+{
+	MeshTree = "$LOCAL$/CHmlMeshTreeNode_LOD_0FC6A8A6";
+	Skins = 
+	{
+		"$LOCAL$/CHmlSkinDescriptor_8FC19B38",
+	};
+	PublishedAnims = 
+	{
+		"$LOCAL$/CBaseObjectStringPair_2AE43F8C",
+	};
+}
+CHmlMeshTreeNode_LOD	$LOCAL$/CHmlMeshTreeNode_LOD_0FC6A8A6
+{
+	LODs = 
+	{
+		"$LOCAL$/CHmlMeshTreeNode_ModelRef_63168161",
+	};
+}
+CHmlMeshTreeNode_ModelRef	$LOCAL$/CHmlMeshTreeNode_ModelRef_63168161
+{
+	MeshResourcePath = "Meshes/ZFScream.pkmm";
+}
+CHmlSkinDescriptor	$LOCAL$/CHmlSkinDescriptor_8FC19B38
+{
+	PublishedName = "Default";
+	Materials = 
+	{
+		"$LOCAL$/CHmlSkinMaterial_90D4CF3F",
+		"$LOCAL$/CHmlSkinMaterial_4A5AEF6E",
+		"$LOCAL$/CHmlSkinMaterial_C3B16BC9",
+	};
+}
+CBaseObjectStringPair	$LOCAL$/CBaseObjectStringPair_2AE43F8C
+{
+	String0 = "Take 001";
+	String1 = "Meshes/ZFScream.pksa/Resource";
+}
+CMaterialProxy	$LOCAL$/Material_0
+{
+	VirtualName = "ZombieGirl_Material";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+	Fields = 
+	{
+		"$LOCAL$/Material_0_Field_0",
+		"$LOCAL$/Material_0_Field_1",
+		"$LOCAL$/Material_0_Field_2",
+		"$LOCAL$/CMaterialProxyField_C7E328D6",
+		"$LOCAL$/CMaterialProxyField_B99FED51",
+		"$LOCAL$/CMaterialProxyField_76407DE8",
+		"$LOCAL$/CMaterialProxyField_FFD87ECB",
+		"$LOCAL$/CMaterialProxyField_08E54FEA",
+		"$LOCAL$/CMaterialProxyField_AC2ED7F5",
+		"$LOCAL$/CMaterialProxyField_ED82AB5C",
+		"$LOCAL$/CMaterialProxyField_98EABF4F",
+		"$LOCAL$/CMaterialProxyField_790098BE",
+		"$LOCAL$/CMaterialProxyField_3818A759",
+		"$LOCAL$/CMaterialProxyField_97D33C90",
+		"$LOCAL$/CMaterialProxyField_D1F54E93",
+		"$LOCAL$/CMaterialProxyField_90FEF752",
+		"$LOCAL$/CMaterialProxyField_E4345F7D",
+		"$LOCAL$/CMaterialProxyField_BD938584",
+		"$LOCAL$/CMaterialProxyField_C38A1097",
+		"$LOCAL$/CMaterialProxyField_BE261FA6",
+		"$LOCAL$/CMaterialProxyField_839FC461",
+		"$LOCAL$/CMaterialProxyField_F1929A38",
+		"$LOCAL$/CMaterialProxyField_065BA95B",
+	};
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_90D4CF3F
+{
+	VirtualName = "ZombieGirl_Material";
+	MaterialProxy = "$LOCAL$/Material_0";
+}
+CMaterialProxyField	$LOCAL$/Material_0_Field_0
+{
+	FieldName = "DiffuseTexture";
+	ValTexturePath = "Textures/zombie_diffuse.png";
+}
+CMaterialProxyField	$LOCAL$/Material_0_Field_1
+{
+	FieldName = "MetallicMap";
+	ValTexturePath = "Textures/zombie_specular.png";
+}
+CMaterialProxyField	$LOCAL$/Material_0_Field_2
+{
+	FieldName = "NormalTexture";
+	ValTexturePath = "Textures/zombie_normal.png";
+}
+CMaterialProxy	$LOCAL$/Material_1
+{
+	VirtualName = "ZombieGirl_Material";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+	Fields = 
+	{
+		"$LOCAL$/Material_1_Field_0",
+		"$LOCAL$/Material_1_Field_1",
+		"$LOCAL$/Material_1_Field_2",
+		"$LOCAL$/CMaterialProxyField_AC0B85BA",
+		"$LOCAL$/CMaterialProxyField_9A235A05",
+		"$LOCAL$/CMaterialProxyField_5B414EAC",
+		"$LOCAL$/CMaterialProxyField_EF817CDF",
+		"$LOCAL$/CMaterialProxyField_54285D8E",
+		"$LOCAL$/CMaterialProxyField_19566469",
+		"$LOCAL$/CMaterialProxyField_E8A636E0",
+		"$LOCAL$/CMaterialProxyField_EF7BAF23",
+		"$LOCAL$/CMaterialProxyField_872D9B22",
+		"$LOCAL$/CMaterialProxyField_3A82E78D",
+		"$LOCAL$/CMaterialProxyField_7C11A6D4",
+		"$LOCAL$/CMaterialProxyField_B7F72427",
+		"$LOCAL$/CMaterialProxyField_6417F276",
+		"$LOCAL$/CMaterialProxyField_F949A771",
+		"$LOCAL$/CMaterialProxyField_E991B288",
+		"$LOCAL$/CMaterialProxyField_8C517FEB",
+		"$LOCAL$/CMaterialProxyField_F103D78A",
+		"$LOCAL$/CMaterialProxyField_73062815",
+		"$LOCAL$/CMaterialProxyField_58262DFC",
+		"$LOCAL$/CMaterialProxyField_E0DD266F",
+	};
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_4A5AEF6E
+{
+	VirtualName = "ZombieGirl_Material";
+	MaterialProxy = "$LOCAL$/Material_1";
+}
+CMaterialProxyField	$LOCAL$/Material_1_Field_0
+{
+	FieldName = "DiffuseTexture";
+	ValTexturePath = "Textures/zombie_diffuse.png";
+}
+CMaterialProxyField	$LOCAL$/Material_1_Field_1
+{
+	FieldName = "MetallicMap";
+	ValTexturePath = "Textures/zombie_specular.png";
+}
+CMaterialProxyField	$LOCAL$/Material_1_Field_2
+{
+	FieldName = "NormalTexture";
+	ValTexturePath = "Textures/zombie_normal.png";
+}
+CMaterialProxy	$LOCAL$/Material_2
+{
+	VirtualName = "ZombieGirl_Material";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+	Fields = 
+	{
+		"$LOCAL$/Material_2_Field_0",
+		"$LOCAL$/Material_2_Field_1",
+		"$LOCAL$/Material_2_Field_2",
+		"$LOCAL$/CMaterialProxyField_C9C17E5E",
+		"$LOCAL$/CMaterialProxyField_2EF2AD79",
+		"$LOCAL$/CMaterialProxyField_5AB4AD30",
+		"$LOCAL$/CMaterialProxyField_2CE53BB3",
+		"$LOCAL$/CMaterialProxyField_9828DAF2",
+		"$LOCAL$/CMaterialProxyField_130C3B9D",
+		"$LOCAL$/CMaterialProxyField_D4BC8424",
+		"$LOCAL$/CMaterialProxyField_9371A3B7",
+		"$LOCAL$/CMaterialProxyField_CA2DA146",
+		"$LOCAL$/CMaterialProxyField_89B69681",
+		"$LOCAL$/CMaterialProxyField_7ECAC6D8",
+		"$LOCAL$/CMaterialProxyField_C6CB027B",
+		"$LOCAL$/CMaterialProxyField_B9B3455A",
+		"$LOCAL$/CMaterialProxyField_1C204225",
+		"$LOCAL$/CMaterialProxyField_9EAE494C",
+		"$LOCAL$/CMaterialProxyField_4ABEBBFF",
+		"$LOCAL$/CMaterialProxyField_3A20FB2E",
+		"$LOCAL$/CMaterialProxyField_85668289",
+		"$LOCAL$/CMaterialProxyField_476B9F80",
+		"$LOCAL$/CMaterialProxyField_F9A2F443",
+	};
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_C3B16BC9
+{
+	VirtualName = "ZombieGirl_Material";
+	MaterialProxy = "$LOCAL$/Material_2";
+}
+CMaterialProxyField	$LOCAL$/Material_2_Field_0
+{
+	FieldName = "DiffuseTexture";
+	ValTexturePath = "Textures/zombie_diffuse.png";
+}
+CMaterialProxyField	$LOCAL$/Material_2_Field_1
+{
+	FieldName = "MetallicMap";
+	ValTexturePath = "Textures/zombie_specular.png";
+}
+CMaterialProxyField	$LOCAL$/Material_2_Field_2
+{
+	FieldName = "NormalTexture";
+	ValTexturePath = "Textures/zombie_normal.png";
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_C7E328D6
+{
+	FieldName = "EmissionMap";
+	ValTexturePath = "Textures/_Engine/White.dds";
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_B99FED51
+{
+	FieldName = "EmissionColor";
+	FieldType = ColorRGB;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_76407DE8
+{
+	FieldName = "EnvironmentCube_AmbientBias";
+	FieldType = Float;
+	ValFloat = 7.0000000e+000;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_FFD87ECB
+{
+	FieldName = "RoughnessMap";
+	ValTexturePath = "Textures/_Engine/White.dds";
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_08E54FEA
+{
+	FieldName = "RoughnessScale";
+	FieldType = Float;
+	ValFloat = 5.0000000e-001;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_AC2ED7F5
+{
+	FieldName = "NormalScale";
+	FieldType = Float;
+	ValFloat = 1.0000000e+000;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_ED82AB5C
+{
+	FieldName = "EnvironmentCubemap";
+	ValTexturePath = "Textures/Cubemaps/DefaultEnvironment.dds";
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_98EABF4F
+{
+	FieldName = "MetallicScale";
+	FieldType = ColorRGB;
+	ValFloat3 = float3(1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_790098BE
+{
+	FieldName = "SpecularScale";
+	FieldType = Float;
+	ValFloat = 1.5000001e-001;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_3818A759
+{
+	FieldName = "ReflectionIntensity";
+	FieldType = Float;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_97D33C90
+{
+	FieldName = "FresnelIntensity";
+	FieldType = Float;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_D1F54E93
+{
+	FieldName = "FresnelPower";
+	FieldType = Float;
+	ValFloat = 5.0000000e+000;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_90FEF752
+{
+	FieldName = "Lightmap";
+	ValTexturePath = "Textures/_Engine/White.dds";
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_E4345F7D
+{
+	FieldName = "LightmapScale";
+	FieldType = ColorRGB;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_BD938584
+{
+	FieldName = "AmbientScale";
+	FieldType = ColorRGB;
+	ValFloat3 = float3(5.0000000e-001, 5.0000000e-001, 5.0000000e-001);
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_C38A1097
+{
+	FieldName = "DiffuseColor";
+	FieldType = ColorRGB;
+	ValFloat3 = float3(1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_BE261FA6
+{
+	FieldName = "NormalReflectanceFactor";
+	FieldType = Float;
+	ValFloat = 3.0000001e-001;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_839FC461
+{
+	FieldName = "FogThickness";
+	FieldType = Float;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_F1929A38
+{
+	FieldName = "FogMaxOpacity";
+	FieldType = Float;
+	ValFloat = 1.0000000e+000;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_065BA95B
+{
+	FieldName = "FogColor";
+	FieldType = ColorRGB;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_AC0B85BA
+{
+	FieldName = "EmissionMap";
+	ValTexturePath = "Textures/_Engine/White.dds";
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_9A235A05
+{
+	FieldName = "EmissionColor";
+	FieldType = ColorRGB;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_5B414EAC
+{
+	FieldName = "EnvironmentCube_AmbientBias";
+	FieldType = Float;
+	ValFloat = 7.0000000e+000;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_EF817CDF
+{
+	FieldName = "RoughnessMap";
+	ValTexturePath = "Textures/_Engine/White.dds";
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_54285D8E
+{
+	FieldName = "RoughnessScale";
+	FieldType = Float;
+	ValFloat = 5.0000000e-001;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_19566469
+{
+	FieldName = "NormalScale";
+	FieldType = Float;
+	ValFloat = 1.0000000e+000;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_E8A636E0
+{
+	FieldName = "EnvironmentCubemap";
+	ValTexturePath = "Textures/Cubemaps/DefaultEnvironment.dds";
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_EF7BAF23
+{
+	FieldName = "MetallicScale";
+	FieldType = ColorRGB;
+	ValFloat3 = float3(1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_872D9B22
+{
+	FieldName = "SpecularScale";
+	FieldType = Float;
+	ValFloat = 1.5000001e-001;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_3A82E78D
+{
+	FieldName = "ReflectionIntensity";
+	FieldType = Float;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_7C11A6D4
+{
+	FieldName = "FresnelIntensity";
+	FieldType = Float;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_B7F72427
+{
+	FieldName = "FresnelPower";
+	FieldType = Float;
+	ValFloat = 5.0000000e+000;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_6417F276
+{
+	FieldName = "Lightmap";
+	ValTexturePath = "Textures/_Engine/White.dds";
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_F949A771
+{
+	FieldName = "LightmapScale";
+	FieldType = ColorRGB;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_E991B288
+{
+	FieldName = "AmbientScale";
+	FieldType = ColorRGB;
+	ValFloat3 = float3(5.0000000e-001, 5.0000000e-001, 5.0000000e-001);
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_8C517FEB
+{
+	FieldName = "DiffuseColor";
+	FieldType = ColorRGB;
+	ValFloat3 = float3(1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_F103D78A
+{
+	FieldName = "NormalReflectanceFactor";
+	FieldType = Float;
+	ValFloat = 3.0000001e-001;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_73062815
+{
+	FieldName = "FogThickness";
+	FieldType = Float;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_58262DFC
+{
+	FieldName = "FogMaxOpacity";
+	FieldType = Float;
+	ValFloat = 1.0000000e+000;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_E0DD266F
+{
+	FieldName = "FogColor";
+	FieldType = ColorRGB;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_C9C17E5E
+{
+	FieldName = "EmissionMap";
+	ValTexturePath = "Textures/_Engine/White.dds";
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_2EF2AD79
+{
+	FieldName = "EmissionColor";
+	FieldType = ColorRGB;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_5AB4AD30
+{
+	FieldName = "EnvironmentCube_AmbientBias";
+	FieldType = Float;
+	ValFloat = 7.0000000e+000;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_2CE53BB3
+{
+	FieldName = "RoughnessMap";
+	ValTexturePath = "Textures/_Engine/White.dds";
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_9828DAF2
+{
+	FieldName = "RoughnessScale";
+	FieldType = Float;
+	ValFloat = 5.0000000e-001;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_130C3B9D
+{
+	FieldName = "NormalScale";
+	FieldType = Float;
+	ValFloat = 1.0000000e+000;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_D4BC8424
+{
+	FieldName = "EnvironmentCubemap";
+	ValTexturePath = "Textures/Cubemaps/DefaultEnvironment.dds";
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_9371A3B7
+{
+	FieldName = "MetallicScale";
+	FieldType = ColorRGB;
+	ValFloat3 = float3(1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_CA2DA146
+{
+	FieldName = "SpecularScale";
+	FieldType = Float;
+	ValFloat = 1.5000001e-001;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_89B69681
+{
+	FieldName = "ReflectionIntensity";
+	FieldType = Float;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_7ECAC6D8
+{
+	FieldName = "FresnelIntensity";
+	FieldType = Float;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_C6CB027B
+{
+	FieldName = "FresnelPower";
+	FieldType = Float;
+	ValFloat = 5.0000000e+000;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_B9B3455A
+{
+	FieldName = "Lightmap";
+	ValTexturePath = "Textures/_Engine/White.dds";
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_1C204225
+{
+	FieldName = "LightmapScale";
+	FieldType = ColorRGB;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_9EAE494C
+{
+	FieldName = "AmbientScale";
+	FieldType = ColorRGB;
+	ValFloat3 = float3(5.0000000e-001, 5.0000000e-001, 5.0000000e-001);
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_4ABEBBFF
+{
+	FieldName = "DiffuseColor";
+	FieldType = ColorRGB;
+	ValFloat3 = float3(1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_3A20FB2E
+{
+	FieldName = "NormalReflectanceFactor";
+	FieldType = Float;
+	ValFloat = 3.0000001e-001;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_85668289
+{
+	FieldName = "FogThickness";
+	FieldType = Float;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_476B9F80
+{
+	FieldName = "FogMaxOpacity";
+	FieldType = Float;
+	ValFloat = 1.0000000e+000;
+}
+CMaterialProxyField	$LOCAL$/CMaterialProxyField_F9A2F443
+{
+	FieldName = "FogColor";
+	FieldType = ColorRGB;
+}

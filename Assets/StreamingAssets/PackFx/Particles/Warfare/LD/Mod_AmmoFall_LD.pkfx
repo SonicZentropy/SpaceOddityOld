@@ -1,0 +1,190 @@
+Version = 1.8.3.26153;
+CParticleEffect	$LOCAL$/Resource
+{
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Ammo
+{
+	Descriptor = "$LOCAL$/CParticleDescriptor_AE135B2A";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AE135B2A
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_18CC5FB1";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_5AFA5CFF",
+		"$LOCAL$/CParticleFieldDeclaration_A4C26070",
+		"$LOCAL$/CParticleFieldDeclaration_F757F74D",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7";
+	States = 
+	{
+		"$LOCAL$/CParticleState_3AF8190E",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	ChildList = 
+	{
+		"$LOCAL$/Ammo",
+	};
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7
+{
+	Expression = "function void	Eval()
+{
+	Life = AmmoLife;
+	Size = float2(AmmoSize.x*2,AmmoSize.y)*0.035 * GlobalScale; // for be coherent with the SD and HD
+	Velocity = float3(0, rand(0.5,1), rand(0.5,1) ) * AmmoImpulse * GlobalScale;
+	
+	Color = float4(float3(AmmoColor), 1);
+	Accel = float3(0, -AmmoWeight, 0) * GlobalScale;
+	
+	TextureID = rand(0, 4);
+	
+	Rotation = rand(-pi, pi);
+	
+	ScalarRotationSpeed = rand(-2, 2);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_3AF8190E
+{
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Physics_36D6D4BD",
+		"$LOCAL$/Evolver_1",
+	};
+}
+CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_36D6D4BD
+{
+	WorldInteractionMode = TwoWay;
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+	AttributeList = 
+	{
+		"$LOCAL$/CParticleAttributeDeclaration_E92440D0",
+		"$LOCAL$/CParticleAttributeDeclaration_531F1338",
+		"$LOCAL$/CParticleAttributeDeclaration_2D35165B",
+		"$LOCAL$/CParticleAttributeDeclaration_8EFAF6BA",
+		"$LOCAL$/CParticleAttributeDeclaration_741F1F05",
+		"$LOCAL$/CParticleAttributeDeclaration_FC55F7AC",
+	};
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_5AFA5CFF
+{
+	FieldName = "Accel";
+	FieldType = float3;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_A4C26070
+{
+	FieldName = "Size";
+	FieldType = float2;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_F757F74D
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_531F1338
+{
+	AttributeName = "AmmoLife";
+	DefaultValueF4 = float4(5.0000000e-001, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_FC55F7AC
+{
+	AttributeName = "AmmoImpulse";
+	DefaultValueF4 = float4(3.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	MinValueF4 = float4(-1.0000000e+001, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	MaxValueF4 = float4(1.0000000e+001, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_2D35165B
+{
+	AttributeName = "AmmoSize";
+	AttributeType = float2;
+	DefaultValueF4 = float4(5.0000000e-001, 1.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_8EFAF6BA
+{
+	AttributeName = "AmmoColor";
+	AttributeType = float3;
+	DefaultValueF4 = float4(1.0000000e+000, 6.9999999e-001, 3.0000001e-001, 0.0000000e+000);
+	HasMin = true;
+	HasMax = true;
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_741F1F05
+{
+	AttributeName = "AmmoWeight";
+	DefaultValueF4 = float4(3.0000000e+001, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(1.0000000e+002, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_18CC5FB1
+{
+	BillboardingMaterial = AlphaBlend;
+	Diffuse = "textures/Fx/AmmoFall_01.png";
+	AtlasDefinition = "textures/Fx/AtlasX2.pkat";
+}
+CParticleEvolver_Rotation	$LOCAL$/Evolver_1
+{
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_E92440D0
+{
+	AttributeName = "GlobalScale";
+	DefaultValueF4 = float4(1.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(5.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	Position = float3(-1.1244006e+000, 1.1002042e+000, 8.2557386e-001);
+	EulerOrientation = float3(-4.5275963e+001, -1.2027423e+002, 0.0000000e+000);
+	Backdrops = "$LOCAL$/CNEdEditorBackdrop_List_0532DCE3";
+	IsLooping = true;
+	LoopDelay = 1.0000000e-001;
+}
+CNEdEditorBackdrop_Model3D	$LOCAL$/CNEdEditorBackdrop_Model3D_A1FA9969
+{
+	Position = float3(0.0000000e+000, -1.1608677e+000, 0.0000000e+000);
+	ResourceModel = "Meshes/TestArea.FBX";
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/CNEdEditorBackdrop_Brush_ACC01194
+{
+	IsVisible = false;
+	BackgroundColorTop = float4(0.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	BackgroundColorBottom = float4(0.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+}
+CNEdEditorBackdrop_List	$LOCAL$/CNEdEditorBackdrop_List_0532DCE3
+{
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Brush_ACC01194",
+	};
+	SceneLayers3D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Model3D_BE51EDC2",
+		"$LOCAL$/CNEdEditorBackdrop_Model3D_A1FA9969",
+	};
+}
+CNEdEditorBackdrop_Model3D	$LOCAL$/CNEdEditorBackdrop_Model3D_BE51EDC2
+{
+	UniformScale = 9.9983299e-001;
+	Position = float3(2.3372930e-001, -1.1629336e+000, -2.4021196e-001);
+	EulerOrientation = float3(0.0000000e+000, 8.9390259e+001, 0.0000000e+000);
+	ResourceModel = "meshes/popman_weapon.fbx";
+}

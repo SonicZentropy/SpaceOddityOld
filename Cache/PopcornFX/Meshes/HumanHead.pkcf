@@ -1,0 +1,43 @@
+Version = 1.10.2.31070;
+COvenBakeConfig_Mesh	$LOCAL$/Resource
+{
+	MD5 = "144237711d71225c0f6431a03e56e301";
+	TexturePath = "Textures/";
+	Scale = 1.0000000e+001;
+}
+COvenBakeConfig_Mesh	$LOCAL$/COvenBakeConfig_Mesh_14F59F1D
+{
+	TexturePath = "Textures/";
+}
+CNEdEditorMesh_Data	$LOCAL$/EDITOR
+{
+	Position = float3(3.1363101e+000, 2.3191118e+000, -5.4513731e+000);
+	EulerOrientation = float3(-1.3167019e+001, 1.4737798e+002, 0.0000000e+000);
+	HmlFactory = "PopcornFX/Cache/Meshes/HumanHead.pkml/Resource";
+}
+CNEdEditorBackdrop_List	$LOCAL$/CNEdEditorBackdrop_List_1BBD583F
+{
+	SceneLayers3D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Light_B8B9AC6E",
+	};
+}
+CNEdEditorBackdrop_Light	$LOCAL$/CNEdEditorBackdrop_Light_B8B9AC6E
+{
+	LightFactory = "$LOCAL$/CNEdEditorLightFactory_26E86CC9";
+}
+CNEdEditorLightFactory	$LOCAL$/CNEdEditorLightFactory_26E86CC9
+{
+	NearClipPlane = 1.0000000e+002;
+	Fov = 3.0000000e+001;
+	SpotFalloff = 9.9999998e-003;
+	Magnitude = 1.0000000e+003;
+}
+CNedEditorMesh_Data	$LOCAL$/_EDITOR
+{
+	MeshPath = "Meshes//Infinite_ZtlLD.pkmm";
+}
+CNedEditorMesh_Data	$LOCAL$/CNedEditorMesh_Data_68F9EE7F
+{
+	MeshPath = "Meshes//Infinite_ZtlLD.pkmm";
+}

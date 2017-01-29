@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -8,7 +8,7 @@ using UnityEditor;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace Assets.Plugins.Editor.JetBrains
+namespace Plugins.Editor.JetBrains
 {
   [InitializeOnLoad]
   public static class RiderPlugin
@@ -35,8 +35,6 @@ namespace Assets.Plugins.Editor.JetBrains
         return DefaultApp.ToLower().Contains("rider"); // seems like .app doesn't exist as file
       }
     }
-	  
-	  private static bool LogDebugs = false;
 
     static RiderPlugin()
     {
@@ -219,16 +217,17 @@ namespace Assets.Plugins.Editor.JetBrains
     /// </summary>
     private static void SyncSolution()
     {
-      System.Type T = System.Type.GetType("UnityEditor.SyncVS,UnityEditor");
+      Type T = Type.GetType("UnityEditor.SyncVS,UnityEditor");
       System.Reflection.MethodInfo SyncSolution = T.GetMethod("SyncSolution",
         System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
       SyncSolution.Invoke(null, null);
     }
 
     public static void Log(object message)
-	  {
-		  //if (LogDebugs)
-		  //Debug.Log("[Rider] " + message);
+    {
+        var str = message.ToString();
+        if (str.Contains("Post-processing") || str.Contains("rider64.exe")) return;
+        Debug.Log("[Rider] " + message);
     }
 
     /// <summary>

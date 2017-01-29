@@ -135,7 +135,7 @@ namespace Zenobit.Systems
 		[TextField(TextFieldType.Prefab)]
 		public string PrefabToGenerate = "Prefabs/None";
 
-		[Inspect("IsEntity")] [TextField(TextFieldType.JSON)] public string EntityToGenerate = "Entities/None";
+		[Inspect("IsEntity")] [TextField(TextFieldType.Entity)] public string EntityToGenerate = "Entities/None";
 
 		public int numberToSpawn;
 		public bool spawnEnabled;

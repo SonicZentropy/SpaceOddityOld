@@ -1,0 +1,38 @@
+Version = 1.10.2.31070;
+CHmlFactory	$LOCAL$/Resource
+{
+	MeshTree = "$LOCAL$/CHmlMeshTreeNode_LOD_F31DAFC2";
+	Skins = 
+	{
+		"$LOCAL$/CHmlSkinDescriptor_29800E74",
+	};
+}
+CHmlMeshTreeNode_LOD	$LOCAL$/CHmlMeshTreeNode_LOD_F31DAFC2
+{
+	LODs = 
+	{
+		"$LOCAL$/CHmlMeshTreeNode_ModelRef_2A9448AD",
+	};
+}
+CHmlMeshTreeNode_ModelRef	$LOCAL$/CHmlMeshTreeNode_ModelRef_2A9448AD
+{
+	MeshResourcePath = "Meshes/lowpolyhebe.pkmm";
+}
+CHmlSkinDescriptor	$LOCAL$/CHmlSkinDescriptor_29800E74
+{
+	PublishedName = "Default";
+	Materials = 
+	{
+		"$LOCAL$/CHmlSkinMaterial_646BD447",
+	};
+}
+CMaterialProxy	$LOCAL$/Material_0
+{
+	VirtualName = "lambert1";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_646BD447
+{
+	VirtualName = "lambert1";
+	MaterialProxy = "$LOCAL$/Material_0";
+}

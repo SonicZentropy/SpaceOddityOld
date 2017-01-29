@@ -1,0 +1,243 @@
+Version = 1.9.0.26281;
+CParticleEffect	$LOCAL$/Resource
+{
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	Position = float3(3.3877873e-001, 1.3546693e-001, 3.5884875e-001);
+	EulerOrientation = float3(-1.2936027e+001, 1.2766610e+002, 0.0000000e+000);
+	Backdrops = "$LOCAL$/_BackdropList";
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	ChildList = 
+	{
+		"$LOCAL$/trail",
+		"$LOCAL$/trail2",
+	};
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+	AttributeList = 
+	{
+		"$LOCAL$/CParticleAttributeDeclaration_9D4B42BF",
+		"$LOCAL$/CParticleAttributeDeclaration_A3127376",
+		"$LOCAL$/CParticleAttributeDeclaration_1F64EB88",
+		"$LOCAL$/CParticleAttributeDeclaration_2598ACEB",
+		"$LOCAL$/CParticleAttributeDeclaration_9C14088A",
+	};
+}
+CNEdEditorBackdrop_Audio2D	$LOCAL$/_Backdrop_Audio2D
+{
+	EditorInfosPosition = int2(-252, -460);
+	LayerName = "Layer_Audio2D";
+}
+CParticleState	$LOCAL$/CParticleState_31D2BCA7
+{
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/LocalSpace_1",
+		"$LOCAL$/Script_1",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_1A4A90B4
+{
+	BillboardingMaterial = Additive_Soft;
+	Diffuse = "textures/Fx/Gradient_02.dds";
+	BillboardMode = VelocityAxisAligned;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/trail
+{
+	Descriptor = "$LOCAL$/CParticleDescriptor_6AC31AEA";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_6AC31AEA
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_1A4A90B4";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_6E980859",
+		"$LOCAL$/CParticleFieldDeclaration_2FA129B8",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_E3C17605";
+	States = 
+	{
+		"$LOCAL$/CParticleState_31D2BCA7",
+	};
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_E3C17605
+{
+	Expression = "function void	Eval()
+{
+	Life = 0.01;
+	Size = RaySize * GlobalScale;
+	Axis = float3(-GlobalLength, 0, 0) * GlobalScale;
+	Position = float3(-GlobalLength * 0.5, 0, 0) * GlobalScale;
+	Color=float4(RayColor * RayPower, 1);
+}
+";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_6E980859
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_2FA129B8
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CNEdEditorBackdrop_Model3D	$LOCAL$/CNEdEditorBackdrop_Model3D_E0BB6C22
+{
+	Position = float3(0.0000000e+000, -5.0944227e-001, 0.0000000e+000);
+	ResourceModel = "Meshes/TestArea.FBX";
+}
+CParticleEvolver_Localspace	$LOCAL$/LocalSpace_1
+{
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/_Backdrop_Brush
+{
+	EditorInfosPosition = int2(-253, -417);
+	IsVisible = false;
+	LayerName = "Layer_Brush";
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(-100, -365);
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/_Backdrop_Brush",
+		"$LOCAL$/_Backdrop_Audio2D",
+	};
+	SceneLayers3D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Model3D_E0BB6C22",
+	};
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_A3127376
+{
+	AttributeName = "GlobalLength";
+	DefaultValueF4 = float4(1.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_1F64EB88
+{
+	AttributeName = "RaySize";
+	DefaultValueF4 = float4(4.9999999e-003, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	HasMax = true;
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_2598ACEB
+{
+	AttributeName = "RayColor";
+	AttributeType = float3;
+	DefaultValueF4 = float4(1.0000000e+000, 5.0000000e-001, 1.0000000e-001, 0.0000000e+000);
+	HasMin = true;
+	HasMax = true;
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_9C14088A
+{
+	AttributeName = "RayPower";
+	DefaultValueF4 = float4(1.0000000e+001, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_9D4B42BF
+{
+	AttributeName = "GlobalScale";
+	DefaultValueF4 = float4(1.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(5.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_8F65AE25
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_436A254C";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_59F9C7FF",
+		"$LOCAL$/CParticleFieldDeclaration_2932F72E",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_84A22E89";
+	States = 
+	{
+		"$LOCAL$/CParticleState_103ABB80",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_436A254C
+{
+	BillboardingMaterial = Additive_Soft;
+	Diffuse = "textures/Fx/Gradient_02.dds";
+	BillboardMode = VelocityAxisAligned;
+	AxisField = "Axis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_59F9C7FF
+{
+	FieldName = "Axis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_2932F72E
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_84A22E89
+{
+	Expression = "function void	Eval()
+{
+	Life = 0.05;
+	Size = RaySize * GlobalScale;
+	Axis = float3(-GlobalLength, 0, 0) * GlobalScale;
+	Position = float3(-GlobalLength * 0.5, 0, 0) * GlobalScale;
+	Color=float4(RayColor * RayPower, 1);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_103ABB80
+{
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Localspace_68D24043",
+	};
+}
+CParticleEvolver_Localspace	$LOCAL$/CParticleEvolver_Localspace_68D24043
+{
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/trail2
+{
+	Delay = 9.9999998e-003;
+	Descriptor = "$LOCAL$/CParticleDescriptor_8F65AE25";
+	Infinite = true;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 2.0000000e+001;
+}
+CParticleEvolver_Script	$LOCAL$/Script_1
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_AD4F7974";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_AD4F7974
+{
+	Expression = "function void	Eval()
+{
+	Size = RaySize * GlobalScale * LifeRatio;
+	Axis = float3(-GlobalLength, 0, 0) * GlobalScale * LifeRatio;
+	Position = float3(-GlobalLength * 0.5, 0, 0) * GlobalScale * LifeRatio;
+}
+";
+}

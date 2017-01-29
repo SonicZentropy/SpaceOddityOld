@@ -1,0 +1,38 @@
+Version = 1.10.2.31070;
+CHmlFactory	$LOCAL$/Resource
+{
+	MeshTree = "$LOCAL$/CHmlMeshTreeNode_LOD_FF3DE043";
+	Skins = 
+	{
+		"$LOCAL$/CHmlSkinDescriptor_F37DE7AD",
+	};
+}
+CHmlMeshTreeNode_LOD	$LOCAL$/CHmlMeshTreeNode_LOD_FF3DE043
+{
+	LODs = 
+	{
+		"$LOCAL$/CHmlMeshTreeNode_ModelRef_92B512C2",
+	};
+}
+CHmlMeshTreeNode_ModelRef	$LOCAL$/CHmlMeshTreeNode_ModelRef_92B512C2
+{
+	MeshResourcePath = "Meshes/DragonPart_01.pkmm";
+}
+CHmlSkinDescriptor	$LOCAL$/CHmlSkinDescriptor_F37DE7AD
+{
+	PublishedName = "Default";
+	Materials = 
+	{
+		"$LOCAL$/CHmlSkinMaterial_DCCA9974",
+	};
+}
+CMaterialProxy	$LOCAL$/Material_0
+{
+	VirtualName = "Default";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_DCCA9974
+{
+	VirtualName = "Default";
+	MaterialProxy = "$LOCAL$/Material_0";
+}

@@ -1,0 +1,38 @@
+Version = 1.10.2.31070;
+CHmlFactory	$LOCAL$/Resource
+{
+	MeshTree = "$LOCAL$/CHmlMeshTreeNode_LOD_81C867C7";
+	Skins = 
+	{
+		"$LOCAL$/CHmlSkinDescriptor_9BE70611",
+	};
+}
+CHmlMeshTreeNode_LOD	$LOCAL$/CHmlMeshTreeNode_LOD_81C867C7
+{
+	LODs = 
+	{
+		"$LOCAL$/CHmlMeshTreeNode_ModelRef_8CFAAE96",
+	};
+}
+CHmlMeshTreeNode_ModelRef	$LOCAL$/CHmlMeshTreeNode_ModelRef_8CFAAE96
+{
+	MeshResourcePath = "Meshes/Skull_01.pkmm";
+}
+CHmlSkinDescriptor	$LOCAL$/CHmlSkinDescriptor_9BE70611
+{
+	PublishedName = "Default";
+	Materials = 
+	{
+		"$LOCAL$/CHmlSkinMaterial_95D525A8",
+	};
+}
+CMaterialProxy	$LOCAL$/Material_0
+{
+	VirtualName = "01 - Default";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_95D525A8
+{
+	VirtualName = "01 - Default";
+	MaterialProxy = "$LOCAL$/Material_0";
+}

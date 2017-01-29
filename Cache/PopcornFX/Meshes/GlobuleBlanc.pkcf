@@ -1,0 +1,37 @@
+Version = 1.10.0.30144;
+COvenBakeConfig_Mesh	$LOCAL$/Resource
+{
+	MD5 = "81422ef09de858921e8f3de2e9625516";
+	TexturePath = "Textures/Autogen/";
+	ImportAnimation = true;
+	ImportSkeleton = true;
+}
+CNEdEditorMesh_Data	$LOCAL$/EDITOR
+{
+	Position = float3(0.0000000e+000, 0.0000000e+000, 1.0400000e+000);
+	Backdrops = "$LOCAL$/CNEdEditorBackdrop_List_2ED703D3";
+	HmlFactory = "Cache/Meshes/GlobuleBlanc.pkml/Resource";
+	EnableShadows = true;
+}
+CNEdEditorBackdrop_List	$LOCAL$/CNEdEditorBackdrop_List_2ED703D3
+{
+	SceneLayers3D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Model3D_0E3C3592",
+		"$LOCAL$/CNEdEditorBackdrop_Light_4348986D",
+	};
+}
+CNEdEditorBackdrop_Model3D	$LOCAL$/CNEdEditorBackdrop_Model3D_0E3C3592
+{
+}
+CNEdEditorBackdrop_Light	$LOCAL$/CNEdEditorBackdrop_Light_4348986D
+{
+	LightFactory = "$LOCAL$/CNEdEditorLightFactory_27DEB934";
+}
+CNEdEditorLightFactory	$LOCAL$/CNEdEditorLightFactory_27DEB934
+{
+	NearClipPlane = 1.0000000e+002;
+	Fov = 3.0000000e+001;
+	SpotFalloff = 9.9999998e-003;
+	Magnitude = 1.0000000e+003;
+}

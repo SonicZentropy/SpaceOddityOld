@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f71f53a04026443fabaf5778576e5896, type: 3}
+  m_Name: Recommendations
+  m_EditorClassIdentifier: 
+  recent:
+  - path: 4d61696e2043616d657261
+    pathLower: 6d61696e2063616d657261
+    name: 4d61696e2043616d657261
+    nameLower: 6d61696e2063616d657261
+    id: 0
+    source: 486965726172636879
+    boundariesLower: 6d63
+    bitset: 287275
+    extensionLower: 
+    userScore: 1
+  - path: 47616d654f626a6563742f43726561746520456d707479
+    pathLower: 67616d656f626a6563742f63726561746520656d707479
+    name: 43726561746520456d707479
+    nameLower: 63726561746520656d707479
+    id: 0
+    source: 4d656e75204974656d
+    boundariesLower: 676f6365
+    bitset: 34972847
+    extensionLower: 
+    userScore: 0.9

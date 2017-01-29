@@ -1,0 +1,306 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1615133219542284}
+  m_IsPrefabParent: 1
+--- !u!1 &1615133219542284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4558348339394738}
+  - component: {fileID: 114017217002444562}
+  - component: {fileID: 114018580222640610}
+  m_Layer: 20
+  m_Name: ShieldSmallShell
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4558348339394738
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1615133219542284}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114017217002444562
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1615133219542284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 325033367, guid: 097bb12263a8c413f87630c377349664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FxAttributesList:
+  - m_Descriptor:
+      Type: 28
+      MinMaxFlag: 3
+      Name: RotationSpeed
+      Description: 
+      DefaultValue0: 0
+      DefaultValue1: 0
+      DefaultValue2: 0
+      DefaultValue3: 0
+      MinValue0: 0
+      MinValue1: 0
+      MinValue2: 0
+      MinValue3: 0
+      MaxValue0: 2
+      MaxValue1: 0
+      MaxValue2: 0
+      MaxValue3: 0
+    m_Value0: 0
+    m_Value1: 0
+    m_Value2: 0
+    m_Value3: 0
+  - m_Descriptor:
+      Type: 28
+      MinMaxFlag: 3
+      Name: FocusDistance
+      Description: Distance from the focus plane to the camera
+      DefaultValue0: 1.5058824
+      DefaultValue1: 0
+      DefaultValue2: 0
+      DefaultValue3: 0
+      MinValue0: 0
+      MinValue1: 0
+      MinValue2: 0
+      MinValue3: 0
+      MaxValue0: 8
+      MaxValue1: 0
+      MaxValue2: 0
+      MaxValue3: 0
+    m_Value0: 1.5058824
+    m_Value1: 0
+    m_Value2: 0
+    m_Value3: 0
+  - m_Descriptor:
+      Type: 29
+      MinMaxFlag: 3
+      Name: FocusRange
+      Description: Distance from the in-focus to the out-of-focus plane in 'x'\nSize
+        of the fully-focused zone in 'y'
+      DefaultValue0: 0.617647
+      DefaultValue1: 0
+      DefaultValue2: 0
+      DefaultValue3: 0
+      MinValue0: 0
+      MinValue1: 0
+      MinValue2: 0
+      MinValue3: 0
+      MaxValue0: 10
+      MaxValue1: 10
+      MaxValue2: 0
+      MaxValue3: 0
+    m_Value0: 10
+    m_Value1: 10
+    m_Value2: 0
+    m_Value3: 0
+  - m_Descriptor:
+      Type: 28
+      MinMaxFlag: 3
+      Name: MaxCocRadius
+      Description: 'Radius of the Bokeh when fully out of focus.\n(Warning: larger
+        values can quickly become EXTREMELTY HEAVY on overdraw\nand can b)
+
+'
+      DefaultValue0: 0.017
+      DefaultValue1: 0
+      DefaultValue2: 0
+      DefaultValue3: 0
+      MinValue0: 0
+      MinValue1: 0
+      MinValue2: 0
+      MinValue3: 0
+      MaxValue0: 0.1
+      MaxValue1: 0
+      MaxValue2: 0
+      MaxValue3: 0
+    m_Value0: 0.017
+    m_Value1: 0
+    m_Value2: 0
+    m_Value3: 0
+  - m_Descriptor:
+      Type: 23
+      MinMaxFlag: 3
+      Name: Subdivisions
+      Description: 
+      DefaultValue0: 7e-43
+      DefaultValue1: 3.5e-43
+      DefaultValue2: 0
+      DefaultValue3: 0
+      MinValue0: 0
+      MinValue1: 0
+      MinValue2: 0
+      MinValue3: 0
+      MaxValue0: 1.401e-42
+      MaxValue1: 1.401e-42
+      MaxValue2: 0
+      MaxValue3: 0
+    m_Value0: 7e-43
+    m_Value1: 3.5e-43
+    m_Value2: 0
+    m_Value3: 0
+  - m_Descriptor:
+      Type: 30
+      MinMaxFlag: 0
+      Name: ViewPosition
+      Description: 
+      DefaultValue0: 0
+      DefaultValue1: 0
+      DefaultValue2: 0
+      DefaultValue3: 0
+      MinValue0: 0
+      MinValue1: 0
+      MinValue2: 0
+      MinValue3: 0
+      MaxValue0: 0
+      MaxValue1: 0
+      MaxValue2: 0
+      MaxValue3: 0
+    m_Value0: 0
+    m_Value1: 0
+    m_Value2: 0
+    m_Value3: 0
+  - m_Descriptor:
+      Type: 30
+      MinMaxFlag: 3
+      Name: ViewDirection
+      Description: 
+      DefaultValue0: 0
+      DefaultValue1: 0
+      DefaultValue2: 0
+      DefaultValue3: 0
+      MinValue0: -1
+      MinValue1: -1
+      MinValue2: -1
+      MinValue3: 0
+      MaxValue0: 1
+      MaxValue1: 1
+      MaxValue2: 1
+      MaxValue3: 0
+    m_Value0: 0
+    m_Value1: 0
+    m_Value2: 0
+    m_Value3: 0
+  m_FxSamplersList:
+  - m_Descriptor:
+      Type: 0
+      Name: Sphere
+      Description: 
+    m_ShapeType: -1
+    m_EditorShapeType: -1
+    m_MeshFilter: {fileID: 0}
+    m_Mesh: {fileID: 0}
+    m_SkinnedMeshRenderer: {fileID: 0}
+    m_MeshHashCode: 0
+    m_SamplingChannels: 0
+    m_ShapeCenter: {x: 0, y: 0, z: 0}
+    m_Dimensions: {x: 1, y: 1, z: 1}
+    m_EulerOrientation: {x: 0, y: 0, z: 0}
+    m_Texture: {fileID: 0}
+    m_TextureChanged: 0
+    m_TextureTexcoordMode: 0
+    m_CurvesArray: []
+    m_CurvesTimeKeys: []
+    m_Text: 
+    m_InSkinning: 0
+  - m_Descriptor:
+      Type: 1
+      Name: LandColor
+      Description: 
+    m_ShapeType: -1
+    m_EditorShapeType: -1
+    m_MeshFilter: {fileID: 0}
+    m_Mesh: {fileID: 0}
+    m_SkinnedMeshRenderer: {fileID: 0}
+    m_MeshHashCode: 0
+    m_SamplingChannels: 0
+    m_ShapeCenter: {x: 0, y: 0, z: 0}
+    m_Dimensions: {x: 1, y: 1, z: 1}
+    m_EulerOrientation: {x: 0, y: 0, z: 0}
+    m_Texture: {fileID: 0}
+    m_TextureChanged: 0
+    m_TextureTexcoordMode: 0
+    m_CurvesArray: []
+    m_CurvesTimeKeys: []
+    m_Text: 
+    m_InSkinning: 0
+  - m_Descriptor:
+      Type: 1
+      Name: BrightnessLookup
+      Description: 
+    m_ShapeType: -1
+    m_EditorShapeType: -1
+    m_MeshFilter: {fileID: 0}
+    m_Mesh: {fileID: 0}
+    m_SkinnedMeshRenderer: {fileID: 0}
+    m_MeshHashCode: 0
+    m_SamplingChannels: 0
+    m_ShapeCenter: {x: 0, y: 0, z: 0}
+    m_Dimensions: {x: 1, y: 1, z: 1}
+    m_EulerOrientation: {x: 0, y: 0, z: 0}
+    m_Texture: {fileID: 0}
+    m_TextureChanged: 0
+    m_TextureTexcoordMode: 0
+    m_CurvesArray: []
+    m_CurvesTimeKeys: []
+    m_Text: 
+    m_InSkinning: 0
+  - m_Descriptor:
+      Type: 2
+      Name: GlobeLookup
+      Description: 
+    m_ShapeType: -1
+    m_EditorShapeType: -1
+    m_MeshFilter: {fileID: 0}
+    m_Mesh: {fileID: 0}
+    m_SkinnedMeshRenderer: {fileID: 0}
+    m_MeshHashCode: 0
+    m_SamplingChannels: 0
+    m_ShapeCenter: {x: 0, y: 0, z: 0}
+    m_Dimensions: {x: 1, y: 1, z: 1}
+    m_EulerOrientation: {x: 0, y: 0, z: 0}
+    m_Texture: {fileID: 2800000, guid: 720ee37dded3c654391922eb9f95a404, type: 3}
+    m_TextureChanged: 0
+    m_TextureTexcoordMode: 0
+    m_CurvesArray: []
+    m_CurvesTimeKeys: []
+    m_Text: 
+    m_InSkinning: 0
+  m_PlayOnStart: 0
+  m_BoundFx: {fileID: 102900000, guid: 01f1f8e5e6ba19c48aa45f8196b41d5b, type: 3}
+  m_FxName: Particles/Zen/ZenShieldShell.pkfx
+--- !u!114 &114018580222640610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1615133219542284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 609a61e11f2d74e43968199fb22507f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShieldPfx: {fileID: 0}

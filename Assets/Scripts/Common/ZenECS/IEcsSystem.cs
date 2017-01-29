@@ -6,12 +6,6 @@
 
 namespace Zenobit.Systems
 {
-    #region Dependencies
-
-    using Zenobit.Common.ZenECS;
-
-    #endregion
-
     public interface IEcsSystem
     {
         bool Init();

@@ -1,5 +1,6 @@
 ﻿namespace Zenobit.Components
 {
+	using System;
 	using System.Collections.Generic;
 	using AdvancedInspector;
 	using Common.ZenECS;
@@ -7,12 +8,13 @@
 
 	public class ShipFittingsComp : ComponentEcs
 	{
-		[Inspect]public List<ShipFitting> fittingList = new List<ShipFitting>();
+		[Inspect]
+		public List<ShipFitting> fittingList = new List<ShipFitting>();
 
 		public override ComponentTypes ComponentType => ComponentTypes.ShipFittingsComp;
 	}
 
-
+	[Serializable]
 	public class ShipFitting
 	{
 		public ShipFitting()
@@ -21,7 +23,7 @@
 			RotationOffset = Quaternion.identity;
 		}
 
-		[Inspect]public WeaponComp FittedWeapon;
+		[Inspect, CreateDerived]public WeaponComp FittedWeapon;
 		[Inspect] public bool IsEnabled;
 		[Inspect]public Vector3 PositionOffset;
 		[Inspect]public Quaternion RotationOffset;
@@ -30,3 +32,6 @@
 		[Inspect]public WeaponTypes WeaponTypesAllowed;
 	}
 }
+
+//[CreateDerived]
+//public List<WeaponComp> AvailableWeapons = new List<WeaponComp>();

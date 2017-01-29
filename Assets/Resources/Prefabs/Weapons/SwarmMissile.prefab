@@ -39,8 +39,8 @@ GameObject:
   - component: {fileID: 33039918343205672}
   - component: {fileID: 23460010153254522}
   - component: {fileID: 136432385545230680}
-  - component: {fileID: 114491689971761400}
   - component: {fileID: 114415193904243322}
+  - component: {fileID: 54157478332610440}
   m_Layer: 13
   m_Name: SwarmMissile
   m_TagString: Untagged
@@ -145,6 +145,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1173536616073268}
   m_Mesh: {fileID: 4300000, guid: 7df725720d512f948a4e847795da83af, type: 3}
+--- !u!54 &54157478332610440
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1173536616073268}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &114415193904243322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,25 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3175524389c23543995eb1cd857f682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114491689971761400
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1173536616073268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3a62844761fac54aa13e3f663460aa0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transform: {fileID: 0}
-  gameObject: {fileID: 0}
-  ExplosionPrefab: {fileID: 1798856311505638, guid: 055e05bb5c3eeaf4084fef35ec40025b,
-    type: 2}
-  target: {fileID: 0}
-  rotationSpeed: 10
-  UseAdvancedMode: 1
-  navigationalConstant: 0
+  EnableLogging: 1
 --- !u!136 &136432385545230680
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -182,7 +179,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1173536616073268}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.34900516
   m_Height: 2.3749619

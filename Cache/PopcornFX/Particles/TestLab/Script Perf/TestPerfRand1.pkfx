@@ -1,0 +1,236 @@
+Version = 1.9.0.26281;
+CParticleEffect	$LOCAL$/Resource
+{
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	Position = float3(-8.3420935e+000, 7.2581267e+000, 8.6075115e+000);
+	EulerOrientation = float3(-3.1339020e+001, -4.5000000e+001, 0.0000000e+000);
+	Backdrops = "$LOCAL$/_BackdropList";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/F3
+{
+	EditorInfosIsBlockMinimized = 0;
+	Descriptor = "$LOCAL$/CParticleDescriptor_AE135B2A";
+	SpawnCountMode = TotalParticleCount;
+	SpawnCount = 1.0000000e+005;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AE135B2A
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_9136D2F4";
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7";
+	States = 
+	{
+		"$LOCAL$/CParticleState_3AF8190E",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	ChildList = 
+	{
+		"$LOCAL$/F1",
+		"$LOCAL$/F2",
+		"$LOCAL$/F3",
+		"$LOCAL$/F4",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_9136D2F4
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7
+{
+	Expression = "function void	Eval()
+{
+	Life = infinity;
+	Size = 0.05;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_3AF8190E
+{
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Script_C7D26F2C",
+	};
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_C7D26F2C
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_4760E75F";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_4760E75F
+{
+	Expression = "function void	Eval()
+{
+	Position = rand(float3(0), float3(1))*2-1 + float3(1,0,1) * 1.25;
+}
+";
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(-100, -365);
+	EditorInfosIsBlockMinimized = 0;
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/_Backdrop_Brush",
+	};
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/_Backdrop_Brush
+{
+	EditorInfosPosition = int2(-253, -417);
+	LayerName = "Layer_Brush";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_F25BF69A
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_F8F22C65";
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_56D5608C";
+	States = 
+	{
+		"$LOCAL$/CParticleState_F21C043F",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_F8F22C65
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_56D5608C
+{
+	Expression = "function void	Eval()
+{
+	Life = infinity;
+	Size = 0.05;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_F21C043F
+{
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Script_C5E7C86E",
+	};
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_C5E7C86E
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_F262B8C9";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_F262B8C9
+{
+	Expression = "function void	Eval()
+{
+	Position = (rand(float4(0), float4(1))*2-1).xyz + float3(1,0,1) * 3.75;
+}
+";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/F4
+{
+	EditorInfosIsBlockMinimized = 0;
+	Descriptor = "$LOCAL$/CParticleDescriptor_F25BF69A";
+	SpawnCountMode = TotalParticleCount;
+	SpawnCount = 1.0000000e+005;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_337FFD4B
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_564B706A";
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5B074275";
+	States = 
+	{
+		"$LOCAL$/CParticleState_C83627DC",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_564B706A
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5B074275
+{
+	Expression = "function void	Eval()
+{
+	Life = infinity;
+	Size = 0.05;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_C83627DC
+{
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Script_BA2DB5CF",
+	};
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_BA2DB5CF
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_45EB913E";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_45EB913E
+{
+	Expression = "function void	Eval()
+{
+	Position = (rand(float2(0), float2(1))*2-1).x0y + float3(1,0,1) * -1.25;
+}
+";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/F2
+{
+	EditorInfosIsBlockMinimized = 0;
+	Descriptor = "$LOCAL$/CParticleDescriptor_337FFD4B";
+	SpawnCountMode = TotalParticleCount;
+	SpawnCount = 1.0000000e+005;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_E8F0D6E1
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_9A57DEB8";
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_4AB007DB";
+	States = 
+	{
+		"$LOCAL$/CParticleState_2F30063A",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_9A57DEB8
+{
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_4AB007DB
+{
+	Expression = "function void	Eval()
+{
+	Life = infinity;
+	Size = 0.05;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_2F30063A
+{
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Script_9869A485",
+	};
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_9869A485
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_41082B2C";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_41082B2C
+{
+	Expression = "function void	Eval()
+{
+	Position = rand(0, 1)*2-1 + float3(1,0,1) * -3.75;
+}
+";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/F1
+{
+	EditorInfosIsBlockMinimized = 0;
+	Descriptor = "$LOCAL$/CParticleDescriptor_E8F0D6E1";
+	SpawnCountMode = TotalParticleCount;
+	SpawnCount = 1.0000000e+005;
+}

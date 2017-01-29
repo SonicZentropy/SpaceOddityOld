@@ -1,0 +1,181 @@
+Version = 1.9.0.26281;
+CParticleEffect	$LOCAL$/Resource
+{
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	Position = float3(5.7060766e+000, 5.3163624e+000, 1.4507509e+001);
+	EulerOrientation = float3(7.7001520e-002, 9.3170147e+000, 0.0000000e+000);
+	Backdrops = "$LOCAL$/_BackdropList";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Layer_1
+{
+	Descriptor = "$LOCAL$/CParticleDescriptor_AE135B2A";
+	Infinite = true;
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 1.5000000e+003;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AE135B2A
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_9136D2F4";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_29EDA23C",
+		"$LOCAL$/CParticleFieldDeclaration_8829A80F",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7";
+	States = 
+	{
+		"$LOCAL$/CParticleState_3AF8190E",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	ChildList = 
+	{
+		"$LOCAL$/Layer_1",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_9136D2F4
+{
+	BillboardMode = VelocitySpheroidalAlign;
+	Diffuse = "Textures/Sprites/big_glow2.dds";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7
+{
+	Expression = "function void     Eval()
+{
+	Life = 10.0;
+	Size = 0.05;
+	Velocity = rand(float3(-1,4,-1), float3(1,4.5,1)) + float3(0.5,0,0);
+	Mass = 0;
+	Color = float4(1);
+	Position = float3(0,5,0);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_3AF8190E
+{
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Physics_36D6D4BD",
+		"$LOCAL$/CParticleEvolver_Script_34273400",
+	};
+}
+CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_36D6D4BD
+{
+	ConstantAcceleration = float3(0.0000000e+000, -2.0000000e+000, 0.0000000e+000);
+	Drag = 5.0000000e+000;
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+	SamplerList = 
+	{
+		"$LOCAL$/CParticleSamplerShape_73099AE2",
+		"$LOCAL$/CParticleSamplerShape_02D57F99",
+	};
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_73099AE2
+{
+	EditorInfosIsBlockMinimized = 0;
+	SamplerName = "Box";
+	Shape = "$LOCAL$/CShapeDescriptor_D113C246";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_8829A80F
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_29EDA23C
+{
+	FieldName = "Mass";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_D559502D
+{
+	Position = float3(6.4520502e+000, 2.2724617e+000, 0.0000000e+000);
+	ShapeType = SPHERE;
+	Radius = 2.0000000e+000;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_D113C246
+{
+	Position = float3(3.3435745e+000, 6.5379381e+000, 9.5367432e-007);
+	EulerOrientation = float3(0.0000000e+000, -0.0000000e+000, 1.3514513e+002);
+	BoxDimensions = float3(3.6761479e+000, 5.2433996e+000, 9.3292656e+000);
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_34273400
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_698102C3";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_698102C3
+{
+	Expression = "function void	Eval()
+{
+	kill(Sphere.contains(Position));
+
+	int	isInBox = Box.contains(Position);
+	
+	Mass = select(0, 1.5, isInBox);	// higher friction in the sphere
+	
+	float3	boxAccel = -5.0f * (Box.axisSide() + Box.axisUp());
+	float3	accel = select(0, boxAccel, isInBox);
+	Velocity += accel * dt;
+	
+	version (none)
+	{
+		float	f = -float(isInBox);
+		Color = lerp(float4(1), float4(1,0,0,1), f);
+	} else {
+		Color = select(float4(0.8,1.0,1.5,1), float4(0,1,0,1), isInBox);
+	}
+}
+";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_02D57F99
+{
+	SamplerName = "Sphere";
+	Shape = "$LOCAL$/CShapeDescriptor_D559502D";
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(-100, -365);
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/_Backdrop_Brush",
+	};
+	SceneLayers3D = 
+	{
+		"$LOCAL$/_Backdrop_Model3D",
+		"$LOCAL$/_Backdrop_Light",
+	};
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/_Backdrop_Brush
+{
+	EditorInfosPosition = int2(-253, -417);
+	LayerName = "Layer_Brush";
+}
+CNEdEditorBackdrop_Model3D	$LOCAL$/_Backdrop_Model3D
+{
+	EditorInfosPosition = int2(-252, -371);
+	EditorInfosIsBlockMinimized = 2;
+	IsVisible = false;
+	LayerName = "Layer_Model";
+	ResourceModel = "Meshes/CubeRoom_Default.fbx";
+}
+CNEdEditorLightFactory	$LOCAL$/_Backdrop_Light_Factory
+{
+	NearClipPlane = 1.0000000e+002;
+	SpotFalloff = 8.8541701e-002;
+	Magnitude = 1.0000000e+005;
+}
+CNEdEditorBackdrop_Light	$LOCAL$/_Backdrop_Light
+{
+	LayerName = "GlobalLight";
+	Position = float3(1.1233553e+002, 2.8270447e+002, 2.2297581e+002);
+	EulerOrientation = float3(-4.8550171e+001, 2.6739031e+001, -9.5600376e-007);
+	LightDistance = 3.7717276e+002;
+	LightFactory = "$LOCAL$/_Backdrop_Light_Factory";
+}

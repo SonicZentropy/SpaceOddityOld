@@ -1,0 +1,435 @@
+Version = 1.9.0.26281;
+CParticleEffect	$LOCAL$/Resource
+{
+	EditorInfosPosition = int2(73, 52);
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	EditorInfosPosition = int2(413, -144);
+	Position = float3(-5.0323317e-003, 1.7279254e-001, 7.4288374e-001);
+	EulerOrientation = float3(4.7739897e+000, -1.0933983e+001, 0.0000000e+000);
+	Backdrops = "$LOCAL$/_BackdropList";
+	ShowGrid = true;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/LED
+{
+	EditorInfosPosition = int2(-288, -61);
+	Descriptor = "$LOCAL$/CParticleDescriptor_AE135B2A";
+	DurationInSeconds = 1.0000000e-003;
+	SpawnCountMode = TotalParticleCount;
+	SpawnCount = 2.7000000e+001;
+	FirstSpawnDelay = 5.0000000e-001;
+	FluxFactorExpression = "ElementCount.x";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AE135B2A
+{
+	EditorInfosPosition = int2(-392, -44);
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_9136D2F4";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_B5F66D14",
+		"$LOCAL$/CParticleFieldDeclaration_E2FC4767",
+		"$LOCAL$/CParticleFieldDeclaration_691720B1",
+		"$LOCAL$/CParticleFieldDeclaration_0D6D1F2B",
+		"$LOCAL$/CParticleFieldDeclaration_169081AF",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7";
+	States = 
+	{
+		"$LOCAL$/CParticleState_3AF8190E",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	EditorInfosPosition = int2(-162, -81);
+	ChildList = 
+	{
+		"$LOCAL$/LED",
+		"$LOCAL$/Ticks",
+		"$LOCAL$/TickValues",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_9136D2F4
+{
+	EditorInfosPosition = int2(-508, -63);
+	BillboardingMaterial = AlphaBlend;
+	Diffuse = "Textures/White.dds";
+	BillboardMode = PlanarAlignedQuad;
+	AxisField = "UpAxis";
+	Axis2Field = "NormalAxis";
+	AxisScale = 1.0000000e+000;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7
+{
+	EditorInfosPosition = int2(-508, 22);
+	Expression = "function void	Eval()
+{
+	float	blockCount = 27;
+	float	particlesPerBlock = ElementCount.x;
+	float	realSpawnCount = blockCount * particlesPerBlock;
+	float	rawParticleId = floor(spawner.LifeRatio * realSpawnCount);
+	float	blockId = floor(rawParticleId / particlesPerBlock);
+
+	float	spawnCount = particlesPerBlock;
+	float2	maxId = float2(spawnCount, blockCount) - 1;
+	float	particleId = rawParticleId - blockId * particlesPerBlock;
+	
+	float2	elementSize = ElementWidthFraction.xw;
+	float2	elementSpacing = GaugeSize.xy / maxId;
+
+	Size = elementSize * elementSpacing;
+	Position = float3(	GaugeSize.y*0.5 + (blockId - maxId.y * 0.5) * (elementSpacing.y - Size.y / maxId.y),
+						GaugeSize.x*0.5 + (particleId - maxId.x * 0.5) * (elementSpacing.x - Size.x / maxId.x),
+						0) + float3(0,0,0);
+	Level = particleId / particlesPerBlock;
+
+	Life = infinity;
+	UpAxis = scene.axisSide();
+	NormalAxis = scene.axisForward();
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_3AF8190E
+{
+	EditorInfosPosition = int2(-508, 65);
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/Script_1",
+	};
+}
+CParticleState	$LOCAL$/CParticleState_FA6A1FEF
+{
+	EditorInfosPosition = int2(-508, 65);
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Script_96ED35DE",
+	};
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_96ED35DE
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_7AA4FAF9";
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+	EditorInfosPosition = int2(-599, -20);
+	AttributeList = 
+	{
+		"$LOCAL$/CParticleAttributeDeclaration_856636B6",
+		"$LOCAL$/CParticleAttributeDeclaration_B3E33D55",
+		"$LOCAL$/CParticleAttributeDeclaration_CAAC47CA",
+		"$LOCAL$/CParticleAttributeDeclaration_2FBE5A9E",
+	};
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(125, -433);
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Brush_9A913525",
+	};
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/CNEdEditorBackdrop_Brush_9A913525
+{
+	EditorInfosPosition = int2(-27, -485);
+	LayerName = "Layer_Brush";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_7AA4FAF9
+{
+	Expression = "function void	Eval()
+{
+	Color = lerp(float4(1,0,0,1), float4(0,1,0,1), GaugeValue);
+}
+";
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_856636B6
+{
+	AttributeName = "GaugeValue";
+	DefaultValueF4 = float4(5.0000000e-001, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	HasMax = true;
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_B5F66D14
+{
+	FieldName = "UpAxis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_E2FC4767
+{
+	FieldName = "NormalAxis";
+	FieldType = float3;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_691720B1
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CParticleEvolver_Script	$LOCAL$/Script_1
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_2E8404C8";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_2E8404C8
+{
+	Expression = "function void	Eval()
+{
+	float	v = GaugeValue;
+	float4	lit = lerp(float4(1,0,0,1), float4(0,1,0,1), v);
+	Color = select(float4(0,0,0,1), lit, v >= Level);
+}
+";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_0D6D1F2B
+{
+	FieldName = "Level";
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_CAAC47CA
+{
+	AttributeName = "ElementCount";
+	AttributeType = int2;
+	DefaultValueI4 = int4(27, 3, 10, 0);
+	HasMin = true;
+	HasMax = true;
+	MinValueI4 = int4(1, 1, 1, 0);
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(100, 100, 100, 10);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_B3E33D55
+{
+	AttributeName = "GaugeSize";
+	AttributeType = float3;
+	DefaultValueF4 = float4(4.0000001e-001, 4.0000001e-001, 7.0000000e-002, 0.0000000e+000);
+	HasMin = true;
+	HasMax = true;
+	MaxValueF4 = float4(2.0000000e+000, 2.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Ticks
+{
+	EditorInfosPosition = int2(-288, -61);
+	Descriptor = "$LOCAL$/CParticleDescriptor_3BDC4765";
+	DurationInSeconds = 1.0000000e-003;
+	SpawnCountMode = TotalParticleCount;
+	FirstSpawnDelay = 5.0000000e-001;
+	FluxFactorExpression = "ElementCount.y";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_169081AF
+{
+	FieldName = "Size";
+	FieldType = float2;
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_2FBE5A9E
+{
+	AttributeName = "ElementWidthFraction";
+	AttributeType = float4;
+	DefaultValueF4 = float4(7.5000000e-001, 5.0000001e-002, 1.0000000e-001, 7.5000000e-001);
+	HasMin = true;
+	HasMax = true;
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_3BDC4765
+{
+	EditorInfosPosition = int2(-392, -44);
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_5FAC178C";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_F6CD873F",
+		"$LOCAL$/CParticleFieldDeclaration_8EE6076E",
+		"$LOCAL$/CParticleFieldDeclaration_070E63C9",
+		"$LOCAL$/CParticleFieldDeclaration_049479C0",
+		"$LOCAL$/CParticleFieldDeclaration_8C73BB83",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_0D266F02";
+	States = 
+	{
+		"$LOCAL$/CParticleState_8B2058ED",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_5FAC178C
+{
+	EditorInfosPosition = int2(-508, -63);
+	BillboardingMaterial = AlphaBlend;
+	Diffuse = "Textures/White.dds";
+	BillboardMode = PlanarAlignedQuad;
+	AxisField = "UpAxis";
+	Axis2Field = "NormalAxis";
+	AxisScale = 1.0000000e+000;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_F6CD873F
+{
+	FieldName = "UpAxis";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_8EE6076E
+{
+	FieldName = "NormalAxis";
+	FieldType = float3;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_070E63C9
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_049479C0
+{
+	FieldName = "Level";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_8C73BB83
+{
+	FieldName = "Size";
+	FieldType = float2;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_0D266F02
+{
+	EditorInfosPosition = int2(-508, 22);
+	Expression = "function void	Eval()
+{
+	float	spawnCount = ElementCount.y;
+	float	maxId = spawnCount - 1;
+	float	particleId = spawner.LifeRatio * spawnCount;
+	
+	float	elementSize = ElementWidthFraction.y;
+	float	elementSpacing = GaugeSize.x / maxId;
+
+	Size = float2(elementSize * elementSpacing, GaugeSize.z);
+	Position = float3(-GaugeSize.z*0.65, GaugeSize.x*0.5 + (particleId - spawnCount * 0.5) * (elementSpacing - Size.x / maxId), 0) + float3(0,0,0);
+	Level = spawner.LifeRatio;
+
+	Life = infinity;
+	UpAxis = scene.axisSide();
+	NormalAxis = scene.axisForward();
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_8B2058ED
+{
+	EditorInfosPosition = int2(-508, 65);
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Script_633943B4",
+	};
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_633943B4
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_8B969287";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_8B969287
+{
+	Expression = "function void	Eval()
+{
+	Color = lerp(float4(1,0,0,1), float4(0,1,0,1), GaugeValue);
+}
+";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_BCC6E17C
+{
+	EditorInfosPosition = int2(-508, 22);
+	Expression = "function void	Eval()
+{
+	float	textBlockCount = ElementCount.y;	// number of different texts we\'re going to display
+	float	particlesPerBlock = 4;				// same value as in the \'SpawnCount\' property of the layer: we\'re displaying 3-digit numbers + \'%\'
+	float	spawnCount = particlesPerBlock * textBlockCount;
+	
+	float	particleId = floor(spawner.LifeRatio * spawnCount);
+	float	block = floor(particleId / particlesPerBlock);
+	float	digitId = particleId - block * particlesPerBlock + 1;
+	float	maxId = textBlockCount - 1;
+	
+	Size = ElementWidthFraction.z;
+	
+	AxisUp = scene.axisUp();
+	AxisNormal = scene.axisForward();
+
+	// compute the same horizontal offset as the \'Ticks\' layer, bazed on the same element count
+	float	elementSize = ElementWidthFraction.z;
+	float	elementSpacing = GaugeSize.x / maxId;
+
+	Size = elementSize * GaugeSize.x;
+	Position = float3(-(GaugeSize.z*1.1 + Size*0.5),
+						GaugeSize.x*0.5 + (block - maxId * 0.5) * elementSpacing,
+						0);
+						
+	// add the local horizontal offset for each character
+	float	value = floor(100 * block / maxId);
+	
+	float4	digitsSelector = select(float4(0), float4(1), int4(digitId) == int4(0,1,2,3));
+	float4	digits = 10 * frac(floor(value) / float4(9999.9, 999.99, 99.999, 9.9999));
+	float	digit = floor(dot(digits, digitsSelector));
+
+	float4	digitCountSelector = select(float4(0), float4(1), value >= float4(-1, 10, 100, 1000));	// -1 : display zero
+	float	digitCount = dot(digitCountSelector, digitCountSelector);
+	// our texture atlas starts at ASCII character space \' \', therfore, subtract \' \' from the real
+	// ASCII character we want to get the index into our atlas:
+	float	charCode = select(select(\' \'-\' \', \'0\'-\' \' + digit, (4 - digitId <= digitCount)), \'%\'-\' \', digitId == 4);
+
+	TextureID = charCode;
+
+	float	atlasRectAspect = 0.5;	// the texture rects witchs are half the heights. (Matches the \'AxisScale\' property of the planar billboarder)
+	float	digitCountX = 4 - digitCount;
+	Position += float3((digitId - digitCountX - (digitCount)) * Size * atlasRectAspect, 0, 0);
+
+	Life = select(infinity, 0, charCode == 0);
+}
+";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/TickValues
+{
+	EditorInfosPosition = int2(-288, -61);
+	Descriptor = "$LOCAL$/CParticleDescriptor_E736E4F1";
+	DurationInSeconds = 1.0000000e-003;
+	SpawnCountMode = TotalParticleCount;
+	SpawnCount = 4.0000000e+000;
+	FirstSpawnDelay = 5.0000000e-001;
+	FluxFactorExpression = "ElementCount.y";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_51FB511D
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_E736E4F1
+{
+	EditorInfosPosition = int2(-392, -44);
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_6AC0FE08";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_57C4F16B",
+		"$LOCAL$/CParticleFieldDeclaration_E25B670A",
+		"$LOCAL$/CParticleFieldDeclaration_51FB511D",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_BCC6E17C";
+	States = 
+	{
+		"$LOCAL$/CParticleState_FA6A1FEF",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_6AC0FE08
+{
+	Diffuse = "Textures/FX/TextAtlas.dds";
+	AtlasDefinition = "Textures/FX/TextAtlas.pkat";
+	BillboardMode = PlanarAlignedQuad;
+	AxisField = "AxisUp";
+	Axis2Field = "AxisNormal";
+	AxisScale = 5.0000000e-001;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_57C4F16B
+{
+	FieldName = "AxisUp";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_E25B670A
+{
+	FieldName = "AxisNormal";
+	FieldType = float3;
+	TransformFilter = rotate;
+}

@@ -1,0 +1,435 @@
+Version = 1.9.0.27524;
+CParticleEffect	$LOCAL$/Resource
+{
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	Position = float3(4.9073091e+000, 3.7918434e+000, 2.2176788e+001);
+	EulerOrientation = float3(-4.5429101e+000, -3.4750162e+002, 0.0000000e+000);
+	Backdrops = "$LOCAL$/_BackdropList";
+	IsLooping = true;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Layer_1
+{
+	Descriptor = "$LOCAL$/CParticleDescriptor_AE135B2A";
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 5.0000000e+003;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AE135B2A
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_9136D2F4";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_79EA28E4",
+		"$LOCAL$/CParticleFieldDeclaration_3FF0B417",
+		"$LOCAL$/CParticleFieldDeclaration_587F50E8",
+		"$LOCAL$/CParticleFieldDeclaration_4F155570",
+		"$LOCAL$/CParticleFieldDeclaration_BDE85E73",
+		"$LOCAL$/CParticleFieldDeclaration_9ADD0F6A",
+		"$LOCAL$/CParticleFieldDeclaration_8878DD2F",
+		"$LOCAL$/CParticleFieldDeclaration_D6FC033C",
+		"$LOCAL$/CParticleFieldDeclaration_73D1B634",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_ABCB1D9A",
+		"$LOCAL$/CParticleSamplerProceduralTurbulence_BADE4C0B",
+		"$LOCAL$/CParticleSamplerCurve_EA2DBB87",
+		"$LOCAL$/CParticleSamplerShape_1C3ED4F8",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7";
+	States = 
+	{
+		"$LOCAL$/CParticleState_3AF8190E",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	ChildList = 
+	{
+		"$LOCAL$/Layer_1",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_9136D2F4
+{
+	BillboardingMaterial = AlphaBlend;
+	Diffuse = "Textures/FX/FeatherCompil_01.dds";
+	AtlasDefinition = "Textures/FX/FeatherCompil_01.pkat";
+	BillboardMode = PlanarAlignedQuad;
+	AxisField = "Side";
+	Axis2Field = "DisplayUp";
+	AxisScale = 4.0000001e-001;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7
+{
+	Expression = "function void     Eval()
+{
+	Life = 15.0;
+	Size = rand(0.08, 0.15);
+	TextureID = rand(0, 6);		// pick a random feather texture
+
+	version (all)
+	{
+		Position = Pillow.samplePosition();
+		Velocity = float3(0,-1,0) + rand(float3(-0.5), float3(0.5));
+	}
+	else
+	{
+		Velocity = Pillow.samplePosition() * 2;
+		Position = rand(float3(-0.1), float3(0.1)) + float3(0,2.5,0);
+	}
+	
+	Side = float3(1,0,0);
+	Up = normalize(float3(rand(-0.5,0.5),rand(-0.5, 0.5),rand(-0.5,0.5)));
+	
+//	Position = float3(0,1,0);
+//	Velocity = float3(-2,0,0);
+//	Up = normalize(float3(0.5,1,0));
+	
+	Color = float4(rand(0.6, 1.0));
+	FeatherRandomTwist = rand(float4(0.2), float4(0.6));
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_3AF8190E
+{
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Script_4C6F9E7E",
+		"$LOCAL$/CParticleEvolver_Physics_36D6D4BD",
+		"$LOCAL$/CParticleEvolver_Collisions_75C2850F",
+		"$LOCAL$/CParticleEvolver_Script_FF01CB32",
+	};
+}
+CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_36D6D4BD
+{
+	ConstantAcceleration = float3(0.0000000e+000, -5.0000000e+000, 0.0000000e+000);
+	BounceRestitution = 2.2352940e-001;
+	BouncesBeforeDeath = 0;
+}
+CNEdEditorLightFactory	$LOCAL$/_Backdrop_Light_Factory
+{
+	NearClipPlane = 1.0000000e+002;
+	SpotFalloff = 8.8541701e-002;
+	Magnitude = 1.0000000e+005;
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_ABCB1D9A
+{
+	SamplerName = "Pillow";
+	Shape = "$LOCAL$/CShapeDescriptor_49702DF5";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_49702DF5
+{
+	Position = float3(1.5149333e+001, 1.1797081e+001, 0.0000000e+000);
+	BoxDimensions = float3(1.8000000e+001, 1.0000000e-001, 1.8000000e+001);
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_79EA28E4
+{
+	FieldName = "Up";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_3FF0B417
+{
+	FieldName = "Side";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_4C6F9E7E
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_9C6B3B49";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_9C6B3B49
+{
+	Expression = "function void	Eval()
+{
+	// WARNING : This is totally overkill. For feathers.
+	float3	fwd = cross(Up, Side);
+	
+	// extents of the 4 corners of the feather quad (vector from center to vertex)
+	// 
+	// r2---------r0
+	// |     c     |
+	// r3---------r1
+	
+	float	ar = 0.4;	// aspect-ratio
+	float3	r0 = 0.5 * (fwd + Side * ar * FeatherRandomTwist.z);
+	float3	r1 = 0.5 * (fwd - Side * ar * FeatherRandomTwist.w);
+	float3	r2 = -r0;
+	float3	r3 = -r1;
+	
+	// normals of the 4 corners of the feather quad
+	float3	n0 = normalize(Up + r0 * FeatherRandomTwist.x);
+	float3	n1 = normalize(Up + r1 * FeatherRandomTwist.x);
+	float3	n2 = normalize(Up + r2 * FeatherRandomTwist.y);
+	float3	n3 = normalize(Up + r3 * FeatherRandomTwist.y);
+
+	// positions of the 4 corners of the feather quad
+	float3	p0 = Position + r0;
+	float3	p1 = Position + r1;
+	float3	p2 = Position + r2;
+	float3	p3 = Position + r3;
+	
+	// global velocity relative to the medium\'s velocity (wind)
+	float3	globalRelVel = Velocity - float3(-2,0,0);	// Velocity + global wind (manual wind in-script)
+
+	// relative velocities of the 4 corners of the feather quad
+	float	kHackAMResist = 0.2f;	// hackish inertia-tensor replacement (don\'t care)
+	float3	vel0 = globalRelVel - Wind.sample(p0) + kHackAMResist * cross(AngularMomentum, r0);
+	float3	vel1 = globalRelVel - Wind.sample(p1) + kHackAMResist * cross(AngularMomentum, r1);
+	float3	vel2 = globalRelVel - Wind.sample(p2) + kHackAMResist * cross(AngularMomentum, r2);
+	float3	vel3 = globalRelVel - Wind.sample(p3) + kHackAMResist * cross(AngularMomentum, r3);
+	
+	// aerodynamic friction constants / cross-section stuff
+	float	surface = 1.0f;
+	float	aeroElem = surface / 4;
+	
+	// sample lift/drag curves based on the relative velocity\'s angle with the surface element normal
+	// [-1,1] remapped to => [0,1]
+	float2	aeroK0 = LiftDrag.sample(dot(normalize(vel0), n0) * 0.5 + 0.5);
+	float2	aeroK1 = LiftDrag.sample(dot(normalize(vel1), n1) * 0.5 + 0.5);
+	float2	aeroK2 = LiftDrag.sample(dot(normalize(vel2), n2) * 0.5 + 0.5);
+	float2	aeroK3 = LiftDrag.sample(dot(normalize(vel3), n3) * 0.5 + 0.5);
+	
+	// drag vector of the 4 corners of the feather quad
+	float3	drag0 = -vel0 * length(vel0) * aeroK0.y * 2;
+	float3	drag1 = -vel1 * length(vel1) * aeroK1.y * 2;
+	float3	drag2 = -vel2 * length(vel2) * aeroK2.y * 2;
+	float3	drag3 = -vel3 * length(vel3) * aeroK3.y * 2;
+
+	// lift vector of the 4 corners of the feather quad
+	float3	lift0 = cross(cross(n0, vel0), vel0) * aeroK0.x;
+	float3	lift1 = cross(cross(n1, vel1), vel1) * aeroK1.x;
+	float3	lift2 = cross(cross(n2, vel2), vel2) * aeroK2.x;
+	float3	lift3 = cross(cross(n3, vel3), vel3) * aeroK3.x;
+	
+	// these \'Lift\' and \'Drag\' are cumulated for the whole particle and used for Debug-display only
+	DEBUGDRAW_Lift = (lift0 + lift1 + lift2 + lift3) * aeroElem;
+	DEBUGDRAW_Drag = (drag0 + drag1 + drag2 + drag3) * aeroElem;
+
+	// Force
+	float3	f0 = (drag0 + lift0) * aeroElem;
+	float3	f1 = (drag1 + lift1) * aeroElem;
+	float3	f2 = (drag2 + lift2) * aeroElem;
+	float3	f3 = (drag3 + lift3) * aeroElem;
+	float3	force = f0 + f1 + f2 + f3;
+	
+	// Temp : clamp maximum force to avoid sim blow-up in some cases
+	force = max(min(force, 100), -100);
+
+	// Torque
+	float3	t0 = cross(-f0, r0);
+	float3	t1 = cross(-f1, r1);
+	float3	t2 = cross(-f2, r2);
+	float3	t3 = cross(-f3, r3);
+	float3	torque = t0 + t1 + t2 + t3;
+	
+	float	mass = 0.3f;
+
+	// integrate angular momentum
+	AngularMomentum += dt * torque / mass;
+
+	// compute incremental rotation matrix of the feather for this frame:
+	{
+		float	angle = length(AngularMomentum) * dt;
+		float3	axis = select(float3(1,0,0), normalize(AngularMomentum), angle > 1.0e-8f);
+	
+		// build a quaternion from the axis-angle incremental rotation:
+		float4	q = float4(axis * sin(angle * 0.5), cos(angle * 0.5));
+		
+		// build the matrix from the quaternion: (ouch...)
+		float3	m0 = float3(1 - 2 * (q.y() * q.y() + q.z() * q.z()),
+								2 * (q.y() * q.x() + q.z() * q.w()),
+								2 * (q.z() * q.x() - q.y() * q.w()));
+		float3	m1 = float3(	2 * (q.x() * q.y() - q.z() * q.w()),
+							1 - 2 * (q.z() * q.z() + q.x() * q.x()),
+								2 * (q.z() * q.y() + q.x() * q.w()));
+		float3	m2 = float3(	2 * (q.x() * q.z() + q.y() * q.w()),
+								2 * (q.y() * q.z() - q.x() * q.w()),
+							1 - 2 * (q.y() * q.y() + q.x() * q.x()));
+
+		// transform the up and side vector by the matrix:
+		Up = normalize(m0 * Up.x + m1 * Up.y + m2 * Up.z);			// re-normalize to avoid degenerescence after a while
+		
+//		Side = normalize(m0 * Side.x + m1 * Side.y + m2 * Side.z);	// renormalize to avoid degenerescence after a while
+		float3	newSide = m0 * Side.x + m1 * Side.y + m2 * Side.z;
+		Side = normalize(cross(cross(Up, newSide), Up));			// re-orthonormalize to avoid degenerescence after a while
+	}
+	
+	// compute the acceleration that will be used by the physics evolver to integrate the particle\'s motion.
+	Accel = force / mass;
+
+//	DisplayUp = Up;
+}
+";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_587F50E8
+{
+	FieldName = "Accel";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleSamplerProceduralTurbulence	$LOCAL$/CParticleSamplerProceduralTurbulence_BADE4C0B
+{
+	SamplerName = "Wind";
+	TimeScale = 5.0000000e-001;
+	Wavelength = 3.0000000e+000;
+	Strength = 6.3639611e-001;
+	Lacunarity = 5.0000000e-001;
+	Gain = 5.0000000e-001;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_4F155570
+{
+	FieldName = "DEBUGDRAW_Drag";
+	FieldType = float3;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_BDE85E73
+{
+	FieldName = "DEBUGDRAW_Lift";
+	FieldType = float3;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_9ADD0F6A
+{
+	FieldName = "AngularMomentum";
+	FieldType = float3;
+}
+CParticleSamplerCurve	$LOCAL$/CParticleSamplerCurve_EA2DBB87
+{
+	SamplerName = "LiftDrag";
+	ValueType = Float2;
+	Times = 
+	{
+		0.0000000e+000,
+		3.0000001e-001,
+		5.0000000e-001,
+		6.9999999e-001,
+		1.0000000e+000,
+	};
+	FloatValues = 
+	{
+		-5.0000001e-002,
+		1.0000000e+000,
+		-8.0000001e-001,
+		4.1999999e-001,
+		9.9999998e-003,
+		9.4546735e-002,
+		8.5000002e-001,
+		4.1999999e-001,
+		5.0000001e-002,
+		1.0000000e+000,
+	};
+	FloatTangents = 
+	{
+		0.0000000e+000,
+		0.0000000e+000,
+		-3.3403166e-002,
+		0.0000000e+000,
+		0.0000000e+000,
+		-7.7043706e-001,
+		0.0000000e+000,
+		-5.1362461e-001,
+		1.0546502e+000,
+		0.0000000e+000,
+		1.0546502e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+		5.4144734e-001,
+		0.0000000e+000,
+		8.1217116e-001,
+		-3.6084782e-002,
+		0.0000000e+000,
+		0.0000000e+000,
+		0.0000000e+000,
+	};
+}
+CNEdEditorBackdrop_Light	$LOCAL$/_Backdrop_Light
+{
+	LayerName = "GlobalLight";
+	Position = float3(1.1233553e+002, 2.8270447e+002, 2.2297581e+002);
+	EulerOrientation = float3(-4.8550171e+001, 2.6739031e+001, -9.5600376e-007);
+	LightDistance = 3.7717276e+002;
+	LightFactory = "$LOCAL$/_Backdrop_Light_Factory";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_8878DD2F
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_1C3ED4F8
+{
+	SamplerName = "GroundEffect";
+	Shape = "$LOCAL$/CShapeDescriptor_DAE3FFDB";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_DAE3FFDB
+{
+	BoxDimensions = float3(1.5000000e+002, 1.0000000e-001, 1.5000000e+002);
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_FF01CB32
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_DEB0852D";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_DEB0852D
+{
+	Expression = "function void	Eval()
+{
+	// when the feather comes close to the ground, fake a ground-effect & quad-collide by
+	// smoothly aligning its up vector to the up vector of the ground, based on its distance:
+	
+	float	groundEffectCursor = max(0, min(1, 4*GroundEffect.sampleDistanceField(Position)));
+
+	// \'groundEffectCursor\' is in the [0,1] range, 0 meaning on the ground, 1 meaning in the air.
+
+	DisplayUp = normalize(lerp(float3(0,1,0), Up, groundEffectCursor));
+}
+";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_D6FC033C
+{
+	FieldName = "DisplayUp";
+	FieldType = float3;
+}
+CParticleEvolver_Collisions	$LOCAL$/CParticleEvolver_Collisions_75C2850F
+{
+	Collider = "$LOCAL$/CParticleSamplerShape_1C3ED4F8";
+	BounceRestitution = 2.2000000e-001;
+	BouncesBeforeDeath = 0;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_73D1B634
+{
+	FieldName = "FeatherRandomTwist";
+	FieldType = float4;
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(-100, -365);
+	EditorInfosIsBlockMinimized = 0;
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/_Backdrop_Brush",
+	};
+	SceneLayers3D = 
+	{
+		"$LOCAL$/_Backdrop_Model3D",
+		"$LOCAL$/_Backdrop_Light",
+	};
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/_Backdrop_Brush
+{
+	EditorInfosPosition = int2(-253, -417);
+	LayerName = "Layer_Brush";
+}
+CNEdEditorBackdrop_Model3D	$LOCAL$/_Backdrop_Model3D
+{
+	EditorInfosPosition = int2(-252, -371);
+	EditorInfosIsBlockMinimized = 2;
+	LayerName = "Layer_Model";
+	ResourceModel = "meshes/cuberoom_dark.fbx";
+}

@@ -1,6 +1,6 @@
 ﻿// /** 
 //  * RangedCombatSystems.cs
-//  * Will Hart and Dylan Bailey
+//  * Dylan Bailey
 //  * 20161104
 // */
 
@@ -11,26 +11,21 @@ namespace Zenobit.Systems
 	using Common.ZenECS;
 	using Components;
 	using System.Collections.Generic;
+	using System.Linq;
 	using Common;
 	using UnityEngine;
+	using Zenobit.Common.Extensions;
 
 	#endregion
 
 	public class RangedCombatSystem : AbstractEcsSystem
 	{
-		private readonly Matcher playerShipMatcher = new Matcher(new List<ComponentTypes>
-		                                                         {
-			                                                         ComponentTypes.CombatComp,
-			                                                         ComponentTypes.PlayerShipComp
-		                                                         });
+		private readonly Matcher playerShipMatcher = new Matcher()
+			.AllOf(ComponentTypes.CombatComp, ComponentTypes.PlayerComp);
 
-		private readonly Matcher enemyShipMatcher = new Matcher(new List<ComponentTypes>
-		                                                        {
-			                                                        ComponentTypes.CombatComp
-		                                                        }, new List<ComponentTypes>
-		                                                           {
-			                                                           ComponentTypes.PlayerShipComp
-		                                                           });
+		private readonly Matcher enemyShipMatcher = new Matcher()
+			.AllOf(ComponentTypes.CombatComp)
+			.NoneOf(ComponentTypes.PlayerComp);
 
 		private CommandComp playerCommand;
 
@@ -81,11 +76,10 @@ namespace Zenobit.Systems
 
 			var weaponsToShoot = combat.GetComponent<ShipFittingsComp>().fittingList;
 
-			foreach (var fitting in weaponsToShoot)
+			foreach (var fitting in weaponsToShoot.Where(x => x.IsEnabled))
 			{
 				WeaponComp selectedWeapon = fitting.FittedWeapon;
-				if (selectedWeapon == null || selectedWeapon.IsFitted == false ||
-				    !UnitCanAttack(combat, selectedWeapon)) return;
+				if (selectedWeapon == null || !UnitCanAttack(combat, selectedWeapon)) return;
 
 				bool attacked = FireProjectile(selectedWeapon, entity.Wrapper.transform.forward);
 
@@ -98,7 +92,7 @@ namespace Zenobit.Systems
 
 		private static bool FireProjectile(WeaponComp selectedWeapon, Vector3 direction)
 		{
-			var pc = selectedWeapon.GetComponent<ShipComp>().OwningActor.GetComponent<PositionComp>();
+			var pc = selectedWeapon.GetComponent<PositionComp>();
 			if (selectedWeapon.WeaponType == WeaponTypes.Laser)
 			{
 				//need to set weapon comp owner properly i think?
@@ -120,27 +114,38 @@ namespace Zenobit.Systems
 		private static void CreateMissileInfoPacket(WeaponComp selectedWeapon, PositionComp pc, Vector3 direction)
 		{
 			MissileComp mc = (MissileComp) selectedWeapon;
-			mc.missileInfoPacket.TimeToLive = selectedWeapon.AttackRange / selectedWeapon.ProjectileSpeed;
+			if (mc.missileInfoPacket.TimeToLive.IsAlmost( -1f))
+				mc.missileInfoPacket.TimeToLive = selectedWeapon.AttackRange / selectedWeapon.ProjectileSpeed;
 			mc.missileInfoPacket.fireDirection = direction;
 			mc.missileInfoPacket.StartPosition = pc.transform.TransformPoint(selectedWeapon.fittingAttached.PositionOffset);
 			mc.missileInfoPacket.OwningActorPos = pc;
 			mc.missileInfoPacket.FiringWeaponComp = selectedWeapon;
+			mc.missileInfoPacket.FlightSpeed = mc.ProjectileSpeed;
 			mc.missileInfoPacket.target = mc.GetComponent<TargetComp>().target;
 		}
 
 		private static void CreateLaserInfoPacket(WeaponComp selectedWeapon, PositionComp pc, Vector3 direction)
 		{
+			//laser info packet laser fire type wrong
 			LaserComp lc = (LaserComp) selectedWeapon;
 			lc.laserInfoPacket.TimeToLive = selectedWeapon.AttackRange / selectedWeapon.ProjectileSpeed;
 			lc.laserInfoPacket.fireDirection = direction;
 			lc.laserInfoPacket.StartPosition = pc.transform.TransformPoint(selectedWeapon.fittingAttached.PositionOffset);
 			lc.laserInfoPacket.OwningActorPos = pc;
 			lc.laserInfoPacket.FiringWeaponComp = selectedWeapon;
+			lc.laserInfoPacket.ProjectileSpeed = selectedWeapon.ProjectileSpeed;
+			lc.laserInfoPacket.laserFireType = LaserFireType.ProjectileGO;
 		}
 
-		private static void SetNextAttackTime(CombatComp combat, WeaponComp selectedWeapon) { selectedWeapon.NextAttackTime = Time.time + selectedWeapon.AttackRate; }
+		private static void SetNextAttackTime(CombatComp combat, WeaponComp selectedWeapon)
+		{
+			selectedWeapon.NextAttackTime = Time.time + selectedWeapon.AttackRate;
+		}
 
-		private static bool UnitCanAttack(CombatComp combat, WeaponComp selectedWeapon) { return selectedWeapon.NextAttackTime < Time.time; }
+		private static bool UnitCanAttack(CombatComp combat, WeaponComp selectedWeapon)
+		{
+			return selectedWeapon.NextAttackTime < Time.time;
+		}
 
 		private static void PlayAttackNoise(CombatComp attacker, WeaponComp weapon)
 		{

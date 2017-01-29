@@ -1,4 +1,4 @@
-﻿// /** 
+﻿// /**
 //  * ComponentFactoryGenerator.cs
 //  * Will Hart and Dylan Bailey
 //  * 2017
@@ -37,12 +37,12 @@ namespace Zenobit.Common.Automation
 			CompFactoryFilePath = Application.dataPath + "/Scripts/Common/ZenECS/ComponentFactory.cs";
 		}
 
-		public const string HEADER_FORMAT = @"// /** 
+		public const string HEADER_FORMAT = @"// /**
 //  * ComponentFactory.cs
 //  * Will Hart and Dylan Bailey
 //  * 20161210
 // */
- 
+
 namespace Zenobit.Common.ZenECS
 {
     #region Dependencies
@@ -52,7 +52,7 @@ namespace Zenobit.Common.ZenECS
     using Zenobit.Components;
 
     #endregion
- 
+
     public static class ComponentFactory
     {
         public static readonly Dictionary<ComponentTypes, Type> ComponentLookup = new Dictionary<ComponentTypes, Type>(new FastEnumIntEqualityComparer<ComponentTypes>())
@@ -113,14 +113,19 @@ namespace Zenobit.Common.ZenECS
 
 			ComponentListFormatted += @"
 		};
- 
+
         public static ComponentEcs Create(ComponentTypes type)
         {
             if (!ComponentLookup.ContainsKey(type)) return null;
-            return (ComponentEcs) Activator.CreateInstance(ComponentLookup[type]);
+	        return ComponentCache.Instance.Get(type);
         }
+
+	    public static ComponentEcs Instantiate(ComponentTypes type)
+	    {
+		    return (ComponentEcs) Activator.CreateInstance(ComponentLookup[type]);
+	    }
     }
- 
+
     public enum ComponentTypes
     {";
 

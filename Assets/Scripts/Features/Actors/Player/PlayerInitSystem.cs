@@ -11,6 +11,7 @@ namespace Zenobit.Systems
 	using Common;
 	using Common.ZenECS;
 	using Components;
+	using UnityEngine;
 
 	#endregion
 
@@ -23,8 +24,8 @@ namespace Zenobit.Systems
 			player = engine.FindEntity(Res.Entities.Player);
 			cc = engine.GetSingle<CameraComp>(ComponentTypes.CameraComp);
 			cc.TargetToFollow = player.GetComponent<PositionComp>().transform;
-			
-			CreateShipEntity();
+			cc.StartingPositionOffset = player.GetComponent<ShipPrefabComp>().FirstPersonCameraOffset;
+			//CreateShipEntity();
 
 			return false;
 		}
@@ -33,13 +34,17 @@ namespace Zenobit.Systems
 		{
 			var shipToCreate = player.GetComponent<PlayerComp>().CurrentShip;
 
-			Entity ship = engine.CreateEntity(shipToCreate);
-			player.GetComponent<ShipConnectionComp>().Ship = ship.GetComponent<ShipComp>();
-			ship.Wrapper.transform.SetParent(player.Wrapper.transform, false);
-			ship.GetComponent<ShipComp>().OwningActor = player.GetComponent<PlayerComp>();
-			ship.AddComponent(ComponentTypes.PlayerShipComp);
+			GameObject ship = Object.Instantiate(Resources.Load<GameObject>(shipToCreate));
+			ship.transform.SetParent(player.Wrapper.transform);
+			cc.StartingPositionOffset = player.GetComponent<ShipPrefabComp>().FirstPersonCameraOffset;
 
-			cc.StartingPositionOffset = ship.GetComponent<ShipPrefabComp>().FirstPersonCameraOffset;
+
+			//Entity ship = engine.CreateEntity(shipToCreate);
+			//player.GetComponent<ShipConnectionComp>().Ship = ship.GetComponent<ShipComp>();
+			//ship.Wrapper.transform.SetParent(player.Wrapper.transform, false);
+			//ship.GetComponent<ShipComp>().OwningActor = player.GetComponent<PlayerComp>();
+			//ship.AddComponent(ComponentTypes.PlayerShipComp);
+
 		}
 	}
 }

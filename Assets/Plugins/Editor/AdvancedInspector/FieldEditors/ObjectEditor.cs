@@ -37,6 +37,8 @@ namespace AdvancedInspector
         private static Type validator = null;
         private static MethodInfo doObjectField = null;
 
+        private static GUIStyle previewIconStyle;
+
         public override bool EditDerived
         {
             get { return true; }
@@ -87,6 +89,45 @@ namespace AdvancedInspector
                 
             Type type = field.Type;
 
+            if (value != null && AdvancedInspectorControl.ShowIconPreview)
+            {
+                if (previewIconStyle == null)
+                {
+                    previewIconStyle = new GUIStyle();
+                    previewIconStyle.margin = new RectOffset(4, 2, 2, 2);
+                    previewIconStyle.padding = new RectOffset(0, 0, 0, 0);
+                }
+
+                Texture2D preview = AssetPreview.GetAssetPreview(value);
+                if (preview != null)
+                {
+                    int previewSize;
+                    switch (AdvancedInspectorControl.IconPreviewSize)
+                    {
+                        case IconPreviewSize.Smallest:
+                            previewSize = 16;
+                            break;
+                        case IconPreviewSize.Small:
+                            previewSize = 24;
+                            break;
+                        case IconPreviewSize.Normal:
+                            previewSize = 32;
+                            break;
+                        case IconPreviewSize.Large:
+                            previewSize = 48;
+                            break;
+                        case IconPreviewSize.Largest:
+                            previewSize = 64;
+                            break;
+                        default:
+                            previewSize = 16;
+                            break;
+                    }
+
+                    GUILayout.Label(preview, previewIconStyle, GUILayout.Width(previewSize), GUILayout.Height(previewSize));
+                }
+            }
+
             UnityEngine.Object result = null;
 
             if (type.IsInterface)
@@ -104,7 +145,7 @@ namespace AdvancedInspector
                 field.SetValue(result);
 
             if (dontAllow == null && (field.Type == typeof(GameObject) || 
-                typeof(UnityEngine.Component).IsAssignableFrom(field.Type) || field.Type.IsAssignableFrom(typeof(UnityEngine.Component))))
+                typeof(Component).IsAssignableFrom(field.Type) || field.Type.IsAssignableFrom(typeof(Component))))
                 if (GUILayout.Button(Picker, GUIStyle.none, GUILayout.Width(18), GUILayout.Height(18)))
                     InspectorEditor.StartPicking(Picked, field);
 
@@ -119,7 +160,7 @@ namespace AdvancedInspector
             {
                 if (((references[0] != null) && (references[0].GetType() == typeof(GameObject))))
                 {
-                    foreach (UnityEngine.Object obj in ((GameObject)references[0]).GetComponents(typeof(UnityEngine.Component)))
+                    foreach (UnityEngine.Object obj in ((GameObject)references[0]).GetComponents(typeof(Component)))
                     {
                         if ((obj != null) && objType.IsAssignableFrom(obj.GetType()))
                         {
@@ -140,7 +181,7 @@ namespace AdvancedInspector
 
             if (field.Type == typeof(GameObject))
                 field.SetValue(go);
-            else if (typeof(UnityEngine.Component).IsAssignableFrom(field.Type))
+            else if (typeof(Component).IsAssignableFrom(field.Type))
                 field.SetValue(go.GetComponent(field.Type));
 
             for (int i = 0; i < field.SerializedInstances.Length; i++)
@@ -163,8 +204,8 @@ namespace AdvancedInspector
 
                 if (target is GameObject)
                     SceneView.lastActiveSceneView.LookAt(((GameObject)target).transform.position, rotation, 10);
-                else if (target is UnityEngine.Component)
-                    SceneView.lastActiveSceneView.LookAt(((UnityEngine.Component)target).transform.position, rotation, 10);
+                else if (target is Component)
+                    SceneView.lastActiveSceneView.LookAt(((Component)target).transform.position, rotation, 10);
             }
         }
 
@@ -174,7 +215,7 @@ namespace AdvancedInspector
             if (behaviour == null)
                 return;
 
-            List<UnityEngine.Component> components = new List<UnityEngine.Component>(behaviour.gameObject.GetComponents(field.BaseType));
+            List<Component> components = new List<Component>(behaviour.gameObject.GetComponents(field.BaseType));
             if (components.Count == 1)
                 return;
 

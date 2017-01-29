@@ -1,0 +1,30 @@
+Version = 1.10.2.31068;
+COvenBakeConfig_Mesh	$LOCAL$/Resource
+{
+	MD5 = "a6bbbe9ff89cca36f228286cac5d8a66";
+	TexturePath = "Textures/";
+}
+CNEdEditorMesh_Data	$LOCAL$/EDITOR
+{
+	Position = float3(0.0000000e+000, 1.2000000e+001, 3.6000000e+001);
+	HmlFactory = "Cache/Meshes/LordGausspic.pkml/Resource";
+	ShowGrid = false;
+}
+CNEdEditorBackdrop_List	$LOCAL$/CNEdEditorBackdrop_List_6D502911
+{
+	SceneLayers3D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Light_681384A8",
+	};
+}
+CNEdEditorBackdrop_Light	$LOCAL$/CNEdEditorBackdrop_Light_681384A8
+{
+	LightFactory = "$LOCAL$/CNEdEditorLightFactory_74D0AC8B";
+}
+CNEdEditorLightFactory	$LOCAL$/CNEdEditorLightFactory_74D0AC8B
+{
+	NearClipPlane = 1.0000000e+002;
+	Fov = 3.0000000e+001;
+	SpotFalloff = 9.9999998e-003;
+	Magnitude = 1.0000000e+003;
+}

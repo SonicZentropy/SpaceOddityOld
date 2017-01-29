@@ -1,0 +1,124 @@
+Version = 1.9.0.26281;
+CParticleEffect	$LOCAL$/Resource
+{
+	EditorInfosPosition = int2(73, 52);
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	EditorInfosPosition = int2(413, -144);
+	Position = float3(-3.3928019e-001, 6.2631559e-001, 8.6563432e-001);
+	EulerOrientation = float3(-2.3099976e+001, -3.4495983e+001, 0.0000000e+000);
+	Backdrops = "$LOCAL$/_BackdropList";
+	ShowGrid = true;
+	IsLooping = true;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Text
+{
+	EditorInfosPosition = int2(-288, -61);
+	Descriptor = "$LOCAL$/CParticleDescriptor_AE135B2A";
+	SpawnCountMode = TotalParticleCount;
+	SpawnCount = 1.0000000e+002;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AE135B2A
+{
+	EditorInfosPosition = int2(-392, -44);
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_6B12D2BB";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_D2F8C065",
+		"$LOCAL$/CParticleFieldDeclaration_2355848C",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerText_B25348C1",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7";
+	States = 
+	{
+		"$LOCAL$/CParticleState_3AF8190E",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	EditorInfosPosition = int2(-162, -81);
+	ChildList = 
+	{
+		"$LOCAL$/Text",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_6B12D2BB
+{
+	Diffuse = "Textures/FX/TextAtlas.dds";
+	AtlasDefinition = "Textures/FX/TextAtlas.pkat";
+	BillboardMode = PlanarAlignedQuad;
+	AxisField = "AxisUp";
+	Axis2Field = "AxisNormal";
+	AxisScale = 5.0000000e-001;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7
+{
+	EditorInfosPosition = int2(-508, 22);
+	Expression = "function void	Eval()
+{
+	int		lineCount = TextList.lineCount();
+	// round so that we don\'t have more than \'lineCount\' lines when recomputing lineID later:
+	int		particlesPerLine = (int(spawner.BaseSpawnCount) + lineCount - 1) / lineCount;
+	int		particleId = spawner.EmittedCount;
+	int		lineId = particleId / particlesPerLine;
+	int		charId = particleId - lineId * particlesPerLine;
+	int		charCode = TextList.charCode(float2(lineId, charId));
+
+	TextureID = clamp(charCode - \' \', 0, 94);
+	
+	Life = select(1.0, 0, charCode <= 32);
+	Size = 0.1;
+	
+	AxisUp = scene.axisUp();
+	AxisNormal = scene.axisForward();
+	
+	Position = float3(charId * Size * 0.5, lineId * Size, 0);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_3AF8190E
+{
+	EditorInfosPosition = int2(-508, 65);
+	StateName = "State_0";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_2355848C
+{
+	FieldName = "AxisNormal";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleSamplerText	$LOCAL$/CParticleSamplerText_B25348C1
+{
+	SamplerName = "TextList";
+	InlineText = "Bacon\\nBeer\\nPopcorn\\nPancakes\\nMaple syrup \\\\o/";
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+	EditorInfosPosition = int2(-599, -20);
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(125, -433);
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Brush_9A913525",
+	};
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/CNEdEditorBackdrop_Brush_9A913525
+{
+	EditorInfosPosition = int2(-27, -485);
+	LayerName = "Layer_Brush";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_D2F8C065
+{
+	FieldName = "AxisUp";
+	FieldType = float3;
+	TransformFilter = rotate;
+}

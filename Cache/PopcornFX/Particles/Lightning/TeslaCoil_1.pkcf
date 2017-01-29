@@ -1,0 +1,9 @@
+COvenBakeConfig_Particle	$LOCAL$/Particle
+{
+	BakeMode = Binary;
+}
+COvenBakeConfig_Particle	$LOCAL$/Particle
+{
+	BakeTarget = "x32";
+	BakeMode = Text;
+}

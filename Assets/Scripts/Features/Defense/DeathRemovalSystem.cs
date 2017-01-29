@@ -7,10 +7,9 @@
 namespace Zenobit.Systems
 {
     #region Dependencies
-    
-    using System.Collections.Generic;
-    using System.Linq;
-    using UnityEngine;
+
+	using Features.Explosions;
+	using Zenobit.Common;
     using Zenobit.Common.ZenECS;
     using Zenobit.Components;
 
@@ -21,40 +20,22 @@ namespace Zenobit.Systems
     /// </summary>
     public class DeathRemovalSystem : AbstractEcsSystem
     {
-		private static EcsEngine _staticEngine;
+	    public override bool Init()
+	    {
+		    return true;
+	    }
 
-		protected static EcsEngine staticEngine
-		{
-			get
-			{
-				if (_staticEngine == null)
-					_staticEngine = EcsEngine.Instance;
-				return _staticEngine;
-			}
-		}
-
-		public override void Update()
-        {
-            var casualties = new List<Entity>(
-                engine.Get(ComponentTypes.HealthComp)
-                    .Where(h => ((HealthComp)h).IsDead)
-                    .Select(h => h.Owner));
-
-            foreach (var destroyMe in casualties)
-            {
-                DestroyEntity(destroyMe);
-            }
-        }
-        
-        private static void DestroyEntity(Entity entity)
-        {
-            // destroy the entity
-            foreach (var comp in entity.Components)
-            {
-                staticEngine.DestroyComponent(comp);
-            }
-			
-            Object.Destroy(entity.Wrapper.gameObject);
-        }
+	    public override void Update()
+	    {
+		    var hcs = engine.Get(ComponentTypes.HullComp);
+		    for (int i = hcs.Count -1; i >= 0 ; i--)
+		    {
+			    if (((HullComp) hcs[i]).CurrentHull <= 0)
+			    {
+				    Explosions.Create(Res.Prefabs.Explosion_01, hcs[i].GetComponent<PositionComp>().Position);
+				    engine.DestroyEntity(hcs[i].Owner);
+			    }
+		    }
+	    }
     }
 }

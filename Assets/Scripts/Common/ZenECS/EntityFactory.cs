@@ -32,7 +32,7 @@
 
 		private void PreparseJson()
 		{
-			var resourcePaths = UnityDrawerStatics.EntityList.Select(s => "JSON/" + s).ToArray();
+			var resourcePaths = UnityDrawerStatics.EntityList.Select(s => "Entities/" + s).ToArray();
 
 			foreach (var filePath in resourcePaths)
 			{
@@ -84,9 +84,7 @@
 		{
 			foreach (var cmp in ent.Components)
 			{
-				cmp.SetOwner(ent);
-				cmp.Initialise(engine);
-                if (cmp.Id == Guid.Empty) cmp.SetId(Guid.NewGuid());
+				cmp.Initialise(engine, ent);
                 engine.AddComponent(cmp);
 			}
 

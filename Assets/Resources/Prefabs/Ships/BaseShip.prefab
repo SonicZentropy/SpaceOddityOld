@@ -37,7 +37,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4805694118888664}
-  - component: {fileID: 114213925747896938}
   m_Layer: 12
   m_Name: BaseShip
   m_TagString: Player
@@ -125,15 +124,3 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: bacc1aeb0f3db7444a1e31bcbc309528, type: 3}
---- !u!114 &114213925747896938
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1977880699998676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 956fa3e6ed2d84da48cccbdf5f5461d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  seeThrough: 1

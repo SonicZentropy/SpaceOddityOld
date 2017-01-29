@@ -1,0 +1,310 @@
+Version = 1.9.0.26281;
+CParticleEffect	$LOCAL$/Resource
+{
+	EditorInfosPosition = int2(73, 52);
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	EditorInfosPosition = int2(413, -144);
+	Position = float3(4.5155931e+000, 1.1004466e+000, 4.2676826e+000);
+	EulerOrientation = float3(-1.2089139e+001, 7.1994644e+001, 0.0000000e+000);
+	Backdrops = "$LOCAL$/_BackdropList";
+	IsLooping = true;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Layer_1
+{
+	EditorInfosPosition = int2(-288, -61);
+	Descriptor = "$LOCAL$/CParticleDescriptor_AE135B2A";
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 6.0000000e+000;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AE135B2A
+{
+	EditorInfosPosition = int2(-392, -44);
+	Renderer = "$LOCAL$/CParticleRenderer_List_BCB26D33";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_C30A4FEF",
+		"$LOCAL$/CParticleFieldDeclaration_5FC7011D",
+		"$LOCAL$/CParticleFieldDeclaration_7683F7A4",
+		"$LOCAL$/CParticleFieldDeclaration_49CC5D37",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_A95A18C6",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7";
+	States = 
+	{
+		"$LOCAL$/CParticleState_3AF8190E",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	EditorInfosPosition = int2(-162, -81);
+	ChildList = 
+	{
+		"$LOCAL$/Layer_1",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_9136D2F4
+{
+	EditorInfosPosition = int2(-508, -63);
+	Diffuse = "Textures/FX/BB_Glow_02_64.dds";
+	RotationField = "";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7
+{
+	EditorInfosPosition = int2(-508, 22);
+	Expression = "function void	Eval()
+{
+	float	timeScale = 0.2;
+	Life = 3.5 / timeScale;
+	Size = 0.08;
+	Position = scene.axisUp() * 1.0;
+//	Velocity = 0.2 * (2.0 * scene.axisUp() + 10 * scene.axisSide() + rand(-1,1) * scene.axisForward());
+	Velocity = InitialVel.samplePosition();
+
+	Rotation = float3(0,0,1);
+	RotationSpeed = float3(1,0,0)/*vrand()*/ * rand(0,InitialSpinFactor*50);
+//	RotationSpeed = float3(InitialSpinFactor*50,0,0);
+//	RotationSpeed = float3(0,InitialSpinFactor*50,0);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_3AF8190E
+{
+	EditorInfosPosition = int2(-508, 65);
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/Script_2",
+		"$LOCAL$/CParticleEvolver_Physics_36D6D4BD",
+		"$LOCAL$/Script_1",
+	};
+}
+CNEdEditorBackdrop_Model3D	$LOCAL$/CNEdEditorBackdrop_Model3D_1A6DCD8B
+{
+	LayerName = "Statue";
+	UniformScale = 9.9948186e-001;
+	Position = float3(-2.5921211e-001, -1.6689301e-006, 8.4951323e-001);
+	EulerOrientation = float3(1.8000006e+002, 3.4479617e+002, 1.8000005e+002);
+	ResourceModel = "Meshes/VenusHigh.fbx";
+}
+CNEdEditorLightFactory	$LOCAL$/_Backdrop_Light_Factory
+{
+	NearClipPlane = 1.0000000e+002;
+	Fov = 1.9000000e+000;
+	SpotFalloff = 8.8541701e-002;
+	Magnitude = 1.0000000e+005;
+	CastsShadows = true;
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+	EditorInfosPosition = int2(-599, -20);
+	AttributeList = 
+	{
+		"$LOCAL$/CParticleAttributeDeclaration_83D5C0B5",
+	};
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(125, -433);
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Brush_9A913525",
+	};
+	SceneLayers3D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Model3D_578F322E",
+		"$LOCAL$/CNEdEditorBackdrop_Model3D_1A6DCD8B",
+		"$LOCAL$/_Backdrop_Light",
+	};
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/CNEdEditorBackdrop_Brush_9A913525
+{
+	EditorInfosPosition = int2(-27, -485);
+	LayerName = "Layer_Brush";
+}
+CNEdEditorBackdrop_Model3D	$LOCAL$/CNEdEditorBackdrop_Model3D_578F322E
+{
+	EditorInfosPosition = int2(-17, -380);
+	LayerName = "Model";
+	ResourceModel = "Meshes/CubeRoom_Default.fbx";
+}
+CNEdEditorBackdrop_Light	$LOCAL$/_Backdrop_Light
+{
+	LayerName = "GlobalLight";
+	Position = float3(1.1233553e+002, 2.8270447e+002, 2.2297581e+002);
+	EulerOrientation = float3(-4.8550171e+001, 2.6739031e+001, -9.5600376e-007);
+	LightDistance = 3.7717276e+002;
+	LightFactory = "$LOCAL$/_Backdrop_Light_Factory";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_C30A4FEF
+{
+	FieldName = "PrevPosition";
+	FieldType = float3;
+	TransformFilter = rotate;
+}
+CParticleEvolver_Script	$LOCAL$/Script_1
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_2EF925DE";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_2EF925DE
+{
+	Expression = "function void	Eval()
+{
+	float	approxMeshRadius = 0.077;
+	float	contactFriction = 0.8f;
+	float	angularFriction = 0.2f;
+
+	float3	moveVec = Position - PrevPosition;
+	float3	moveVecN = normalize(moveVec);
+	float	moveLength = length(moveVec);
+	
+	float3	objSide = cross(moveVecN, scene.axisUp());
+	float3	objUp = cross(moveVecN, objSide);
+	
+	float3	p0 = PrevPosition + approxMeshRadius*objSide;
+	float3	p1 = PrevPosition - approxMeshRadius*objSide;
+	float3	p2 = PrevPosition + approxMeshRadius*objUp;
+	float3	p3 = PrevPosition - approxMeshRadius*objUp;
+	float3	p4 = PrevPosition + approxMeshRadius*moveVecN;
+	float3	p5 = PrevPosition + approxMeshRadius*scene.axisUp();
+	float3	p6 = PrevPosition - approxMeshRadius*scene.axisUp();
+	float3	p7 = PrevPosition + approxMeshRadius*moveVecN;
+	
+	float4	c0 = scene.intersect(p0, moveVecN, moveLength);
+	float4	c1 = scene.intersect(p1, moveVecN, moveLength);
+	float4	c2 = scene.intersect(p2, moveVecN, moveLength);
+	float4	c3 = scene.intersect(p3, moveVecN, moveLength);
+	float4	c4 = scene.intersect(p4, moveVecN, moveLength);
+	float4	c5 = scene.intersect(p5, moveVecN, moveLength);
+	float4	c6 = scene.intersect(p6, moveVecN, moveLength);
+	float4	c7 = scene.intersect(p7, moveVecN, moveLength);
+	
+	float4	coll01 = select(c0, c1, c1.w < c0.w);
+	float4	coll23 = select(c2, c3, c3.w < c2.w);
+	float4	coll45 = select(c4, c5, c5.w < c4.w);
+	float4	coll67 = select(c6, c7, c7.w < c6.w);
+	float4	coll0123 = select(coll01, coll23, coll23.w < coll01.w);
+	float4	coll4567 = select(coll45, coll67, coll67.w < coll45.w);
+	float4	coll = select(coll0123, coll4567, coll4567.w < coll0123.w);
+	
+	float3	collPos01 = select(p0, p1, c1.w < c0.w);
+	float3	collPos23 = select(p2, p3, c3.w < c2.w);
+	float3	collPos45 = select(p4, p5, c5.w < c4.w);
+	float3	collPos67 = select(p6, p7, c7.w < c6.w);
+	float3	collPos0123 = select(collPos01, collPos23, coll23.w < coll01.w);
+	float3	collPos4567 = select(collPos45, collPos67, coll67.w < coll45.w);
+	float3	collPos = select(collPos0123, collPos4567, coll4567.w < coll0123.w);
+	
+	float3	collisionNormal = coll.xyz;
+	int		hasCollided = coll.w != infinity;
+
+	float3	postContactVelocity = 0.75 * (Velocity - collisionNormal * 2 * dot(Velocity, collisionNormal));
+	Velocity = select(Velocity, postContactVelocity, hasCollided);
+	Position = select(Position, Position + collisionNormal*0.001, hasCollided);
+	
+	Size = approxMeshRadius;
+	
+	float	circumference = (2*pi*approxMeshRadius);
+	float3	tangentLinVel = Velocity - collisionNormal * dot(Velocity, collisionNormal);
+//	float3
+	float3	rotationalImpulse = cross(collisionNormal, Velocity) / circumference - RotationSpeed;
+	float3	contactPointVelocity = cross(RotationSpeed, Position - collPos);
+//	float3	angularChangeVel = rotate(Velocity, collisionNormal, angularFriction * 0.1 * length(RotationSpeed) * sign(dot(RotationSpeed, collisionNormal)));
+	
+	Velocity += select(float3(0), contactPointVelocity * contactFriction, hasCollided);
+//	Velocity = select(Velocity, angularChangeVel, hasCollided);
+
+	RotationSpeed += select(float3(0), rotationalImpulse * contactFriction, hasCollided);
+
+
+	RotationSpeed *= exp(-0.1*dt);	// add a bit of friction on the rotation speed
+	
+	Rotation = Rotation * RotationAngle + RotationSpeed * dt;
+	RotationAngle = length(Rotation);
+	Rotation = safe_normalize(Rotation, float3(0,0,1));
+}
+";
+}
+CParticleRenderer_Mesh	$LOCAL$/CParticleRenderer_Mesh_DCA7AAF9
+{
+	Meshes = 
+	{
+		"$LOCAL$/CParticleRenderer_Mesh_Descriptor_EF66B8B0",
+	};
+	Scale = float3(3.0000001e-001, 3.0000001e-001, 3.0000001e-001);
+	RotationAxisField = "Rotation";
+	RotationAxisAngleField = "RotationAngle";
+}
+CParticleRenderer_Mesh_Descriptor	$LOCAL$/CParticleRenderer_Mesh_Descriptor_EF66B8B0
+{
+	Mesh = "Meshes/GlobuleBlanc.pkmm";
+}
+CParticleRenderer_List	$LOCAL$/CParticleRenderer_List_BCB26D33
+{
+	Renderers = 
+	{
+		"$LOCAL$/CParticleRenderer_Billboard_9136D2F4",
+		"$LOCAL$/CParticleRenderer_Mesh_DCA7AAF9",
+	};
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_5FC7011D
+{
+	FieldName = "RotationSpeed";
+	FieldType = float3;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_7683F7A4
+{
+	FieldName = "Rotation";
+	FieldType = float3;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_49CC5D37
+{
+	FieldName = "RotationAngle";
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_A95A18C6
+{
+	SamplerName = "InitialVel";
+	Shape = "$LOCAL$/CShapeDescriptor_1B18A401";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_1B18A401
+{
+	Position = float3(0.0000000e+000, 0.0000000e+000, 1.5000000e+000);
+	EulerOrientation = float3(9.0000000e+001, 0.0000000e+000, 0.0000000e+000);
+	ShapeType = CYLINDER;
+	Radius = 2.0000000e-001;
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_83D5C0B5
+{
+	AttributeName = "InitialSpinFactor";
+	HasMin = true;
+	HasMax = true;
+	MinValueF4 = float4(-1.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_36D6D4BD
+{
+	EditorInfosPosition = int2(-590, 86);
+	ConstantAcceleration = float3(0.0000000e+000, -3.9240000e-001, 0.0000000e+000);
+	BounceRestitution = 6.0000002e-001;
+	BouncesBeforeDeath = 127;
+}
+CParticleEvolver_Script	$LOCAL$/Script_2
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_412965AA";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_412965AA
+{
+	Expression = "function void	Eval()
+{
+	PrevPosition = Position;
+}
+";
+}

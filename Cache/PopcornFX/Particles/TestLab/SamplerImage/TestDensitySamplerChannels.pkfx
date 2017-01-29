@@ -1,0 +1,380 @@
+Version = 1.9.0.26281;
+CParticleEffect	$LOCAL$/Resource
+{
+	EditorInfosPosition = int2(73, 52);
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	EditorInfosPosition = int2(413, -144);
+	Position = float3(5.2593976e-001, 3.0149708e+000, 4.5462558e-001);
+	EulerOrientation = float3(-8.2775024e+001, -1.5400437e-001, 0.0000000e+000);
+	Backdrops = "$LOCAL$/_BackdropList";
+	ShowGrid = true;
+	IsLooping = true;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Layer_R
+{
+	EditorInfosPosition = int2(-288, -61);
+	EditorInfosIsBlockMinimized = 0;
+	Descriptor = "$LOCAL$/CParticleDescriptor_AE135B2A";
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 5.0000000e+003;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AE135B2A
+{
+	EditorInfosPosition = int2(-392, -44);
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_9136D2F4";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerTexture_24A7577B",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7";
+	States = 
+	{
+		"$LOCAL$/CParticleState_3AF8190E",
+	};
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	EditorInfosPosition = int2(-162, -81);
+	ChildList = 
+	{
+		"$LOCAL$/Layer_R",
+		"$LOCAL$/Layer_G",
+		"$LOCAL$/Layer_B",
+		"$LOCAL$/Layer_A",
+		"$LOCAL$/Layer_RGB_Avg",
+		"$LOCAL$/Layer_RGB_Lum",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_9136D2F4
+{
+	EditorInfosPosition = int2(-508, -63);
+	Diffuse = "Textures/FX/BB_Glow_02_64.dds";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7
+{
+	EditorInfosPosition = int2(-508, 22);
+	Expression = "function void	Eval()
+{
+	Life = 1.0;
+	Size = 0.01;
+	
+	float2	uv = Image.remapDensity(rand(0..xx, 1..xx));
+	Position = uv.x0y - float3(1,0,1);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_3AF8190E
+{
+	EditorInfosPosition = int2(-508, 65);
+	StateName = "State_0";
+}
+CNEdEditorBackdrop_Light	$LOCAL$/_Backdrop_Light
+{
+	LayerName = "GlobalLight";
+	Position = float3(1.1233553e+002, 2.8270447e+002, 2.2297581e+002);
+	EulerOrientation = float3(-4.8550171e+001, 2.6739031e+001, -9.5600376e-007);
+	LightDistance = 3.7717276e+002;
+	LightFactory = "$LOCAL$/_Backdrop_Light_Factory";
+}
+CNEdEditorLightFactory	$LOCAL$/_Backdrop_Light_Factory
+{
+	NearClipPlane = 1.0000000e+002;
+	SpotFalloff = 8.8541701e-002;
+	Magnitude = 1.0000000e+005;
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+	EditorInfosPosition = int2(-599, -20);
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(125, -433);
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Brush_9A913525",
+	};
+	SceneLayers3D = 
+	{
+		"$LOCAL$/_Backdrop_Light",
+	};
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/CNEdEditorBackdrop_Brush_9A913525
+{
+	EditorInfosPosition = int2(-27, -485);
+	LayerName = "Layer_Brush";
+}
+CParticleSamplerTexture	$LOCAL$/CParticleSamplerTexture_24A7577B
+{
+	SamplerName = "Image";
+	SampleRawValues = false;
+	TextureResource = "Textures/Anneau_Masks.dds";
+	Sampler = Density;
+	DensitySrc = Red;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_1791C080
+{
+	EditorInfosPosition = int2(-392, -44);
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_08C32943";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerTexture_A18F8FC2",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_BEFBA8AD";
+	States = 
+	{
+		"$LOCAL$/CParticleState_784AEE74",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_08C32943
+{
+	EditorInfosPosition = int2(-508, -63);
+	Diffuse = "Textures/FX/BB_Glow_02_64.dds";
+}
+CParticleSamplerTexture	$LOCAL$/CParticleSamplerTexture_A18F8FC2
+{
+	SamplerName = "Image";
+	SampleRawValues = false;
+	TextureResource = "Textures/Anneau_Masks.dds";
+	Sampler = Density;
+	DensitySrc = Green;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_BEFBA8AD
+{
+	EditorInfosPosition = int2(-508, 22);
+	Expression = "function void	Eval()
+{
+	Life = 1.0;
+	Size = 0.01;
+	
+	float2	uv = Image.remapDensity(rand(0..xx, 1..xx));
+	Position = uv.x0y - float3(0,0,1);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_784AEE74
+{
+	EditorInfosPosition = int2(-508, 65);
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Layer_G
+{
+	EditorInfosPosition = int2(-288, -61);
+	EditorInfosIsBlockMinimized = 0;
+	Descriptor = "$LOCAL$/CParticleDescriptor_1791C080";
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 5.0000000e+003;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_A7103516
+{
+	EditorInfosPosition = int2(-392, -44);
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_E1CFCE91";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerTexture_18915828",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_4AF1460B";
+	States = 
+	{
+		"$LOCAL$/CParticleState_503E082A",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_E1CFCE91
+{
+	EditorInfosPosition = int2(-508, -63);
+	Diffuse = "Textures/FX/BB_Glow_02_64.dds";
+}
+CParticleSamplerTexture	$LOCAL$/CParticleSamplerTexture_18915828
+{
+	SamplerName = "Image";
+	SampleRawValues = false;
+	TextureResource = "Textures/Anneau_Masks.dds";
+	Sampler = Density;
+	DensitySrc = Blue;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_4AF1460B
+{
+	EditorInfosPosition = int2(-508, 22);
+	Expression = "function void	Eval()
+{
+	Life = 1.0;
+	Size = 0.01;
+	
+	float2	uv = Image.remapDensity(rand(0..xx, 1..xx));
+	Position = uv.x0y - float3(1,0,0);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_503E082A
+{
+	EditorInfosPosition = int2(-508, 65);
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Layer_B
+{
+	EditorInfosPosition = int2(-288, -61);
+	EditorInfosIsBlockMinimized = 0;
+	Descriptor = "$LOCAL$/CParticleDescriptor_A7103516";
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 5.0000000e+003;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_1472D19C
+{
+	EditorInfosPosition = int2(-392, -44);
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_462EC28F";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerTexture_78073CFE",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_61D60099";
+	States = 
+	{
+		"$LOCAL$/CParticleState_8382EED0",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_462EC28F
+{
+	EditorInfosPosition = int2(-508, -63);
+	Diffuse = "Textures/FX/BB_Glow_02_64.dds";
+}
+CParticleSamplerTexture	$LOCAL$/CParticleSamplerTexture_78073CFE
+{
+	SamplerName = "Image";
+	SampleRawValues = false;
+	TextureResource = "Textures/Anneau_Masks.dds";
+	Sampler = Density;
+	DensitySrc = Alpha;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_61D60099
+{
+	EditorInfosPosition = int2(-508, 22);
+	Expression = "function void	Eval()
+{
+	Life = 1.0;
+	Size = 0.01;
+	
+	float2	uv = Image.remapDensity(rand(0..xx, 1..xx));
+	Position = uv.x0y - float3(0,0,0);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_8382EED0
+{
+	EditorInfosPosition = int2(-508, 65);
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Layer_A
+{
+	EditorInfosPosition = int2(-288, -61);
+	EditorInfosIsBlockMinimized = 0;
+	Descriptor = "$LOCAL$/CParticleDescriptor_1472D19C";
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 5.0000000e+003;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AA567291
+{
+	EditorInfosPosition = int2(-392, -44);
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_068ACC28";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerTexture_4EEDCA0B",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_21F2DC2A";
+	States = 
+	{
+		"$LOCAL$/CParticleState_2B893935",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_068ACC28
+{
+	EditorInfosPosition = int2(-508, -63);
+	Diffuse = "Textures/FX/BB_Glow_02_64.dds";
+}
+CParticleSamplerTexture	$LOCAL$/CParticleSamplerTexture_4EEDCA0B
+{
+	SamplerName = "Image";
+	SampleRawValues = false;
+	TextureResource = "Textures/Anneau_Masks.dds";
+	Sampler = Density;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_21F2DC2A
+{
+	EditorInfosPosition = int2(-508, 22);
+	Expression = "function void	Eval()
+{
+	Life = 1.0;
+	Size = 0.01;
+	
+	float2	uv = Image.remapDensity(rand(0..xx, 1..xx));
+	Position = uv.x0y + float3(1,0,-1);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_2B893935
+{
+	EditorInfosPosition = int2(-508, 65);
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Layer_RGB_Avg
+{
+	EditorInfosPosition = int2(-288, -61);
+	Descriptor = "$LOCAL$/CParticleDescriptor_AA567291";
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 5.0000000e+003;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_670C38BD
+{
+	EditorInfosPosition = int2(-392, -44);
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_932FB7C4";
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerTexture_CBA50FD7",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_01116FE6";
+	States = 
+	{
+		"$LOCAL$/CParticleState_538939A1",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_932FB7C4
+{
+	EditorInfosPosition = int2(-508, -63);
+	Diffuse = "Textures/FX/BB_Glow_02_64.dds";
+}
+CParticleSamplerTexture	$LOCAL$/CParticleSamplerTexture_CBA50FD7
+{
+	SamplerName = "Image";
+	SampleRawValues = false;
+	TextureResource = "Textures/Anneau_Masks.dds";
+	Sampler = Density;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_01116FE6
+{
+	EditorInfosPosition = int2(-508, 22);
+	Expression = "function void	Eval()
+{
+	Life = 1.0;
+	Size = 0.01;
+	
+	float2	uv = Image.remapDensity(rand(0..xx, 1..xx));
+	Position = uv.x0y + float3(1,0,0);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_538939A1
+{
+	EditorInfosPosition = int2(-508, 65);
+	StateName = "State_0";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Layer_RGB_Lum
+{
+	EditorInfosPosition = int2(-288, -61);
+	EditorInfosIsBlockMinimized = 0;
+	Descriptor = "$LOCAL$/CParticleDescriptor_670C38BD";
+	DurationInSeconds = 2.0000000e+000;
+	SpawnCount = 5.0000000e+003;
+}

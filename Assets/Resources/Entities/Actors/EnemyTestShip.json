@@ -1,0 +1,104 @@
+{
+    "EntityName": "EnemyTestShip",
+    "Wrapper": null,
+    "_components": {
+        "Zenobit.Components.UnityPrefabComp": {
+            "IsPooled": false,
+            "PrefabLink": "Prefabs/Ships/BaseShip",
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.UnityPrefabComp"
+        },
+        "Zenobit.Components.RigidbodyComp": {
+            "Rigidbody": null,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.RigidbodyComp"
+        },
+        "Zenobit.Components.PositionComp": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "UseLateUpdate": false,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.PositionComp"
+        },
+        "Zenobit.Components.CommandComp": {
+            "PitchVertical": 0.0,
+            "RotateHorizontal": 0.0,
+            "MousePitchVertical": 0.0,
+            "MouseRotateHorizontal": 0.0,
+            "RollMovement": 0.0,
+            "StrafeVertical": 0.0,
+            "StrafeHorizontal": 0.0,
+            "AttackPressed": false,
+            "InertialDampersOn": false,
+            "Acceleration": 0.0,
+            "FullHalt": false,
+            "MouseLookOn": false,
+            "SelectTarget": {
+                "value": false
+            },
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.CommandComp"
+        },
+        "Zenobit.Components.CollisionEnterComp": {
+            "Other": [],
+            "CollisionHandlingEnabled": true,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.CollisionEnterComp"
+        },
+        "Zenobit.Components.ShipComp": {
+            "CurrentShields": {
+                "_value": 0.0
+            },
+            "CurrentHull": {
+                "_value": 0.0
+            },
+            "CameraOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "DefaultShields": 100.0,
+            "DefaultHull": 100.0,
+            "DefaultRotationSpeed": 10.0,
+            "DefaultMaxRotationVelocity": 30.0,
+            "DefaultMaxSpeed": 100.0,
+            "DefaultAcceleration": 10.0,
+            "DefaultReverseAcceleration": 8.0,
+            "DefaultCargoSize": 250.0,
+            "DefaultShieldRecharge": 10.0,
+            "DefaultEnergy": 100.0,
+            "DefaultEnergyRecharge": 10.0,
+            "HasInertialDampers": false,
+            "CurrentRotationSpeed": 0.0,
+            "CurrentMaxRotationVelocity": 0.0,
+            "CurrentMaxSpeed": 0.0,
+            "CurrentAcceleration": 0.0,
+            "CurrentReverseAcceleration": 0.0,
+            "CurrentCargoSize": 0.0,
+            "CurrentShieldRecharge": 0.0,
+            "CurrentEnergy": 0.0,
+            "CurrentEnergyRecharge": 0.0,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.ShipComp"
+        },
+        "Zenobit.Components.ShipFittingsComp": {
+            "fittingList": [],
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.ShipFittingsComp"
+        },
+        "Zenobit.Components.AvailableWeaponsComp": {
+            "AvailableWeapons": [],
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.AvailableWeaponsComp"
+        }
+    }
+}

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 81628048096058194}
   - component: {fileID: 114073237274830752}
   - component: {fileID: 114230736189596348}
+  - component: {fileID: 114572757612884526}
   m_Layer: 0
   m_Name: CameraMain
   m_TagString: MainCamera
@@ -190,3 +191,28 @@ MonoBehaviour:
   m_colorGradingTex2: {fileID: 0}
   m_colorGradingBlendFactor: 0
   forceFillParams: 0
+--- !u!114 &114572757612884526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1735792418700372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1877048246, guid: 097bb12263a8c413f87630c377349664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HasPostFx: 1
+  m_TimeMultiplier: 1
+  m_TextureLODBias: -0.5
+  m_DepthRT: {fileID: 0}
+  m_EnableSoftParticles: 1
+  m_EnableDistortion: 1
+  m_UseDepthGrabToZTest: 0
+  m_DepthGrabFormat: 16
+  m_EnableBlur: 0
+  m_BlurFactor: 0.2
+  m_ShowAdvancedSettings: 1
+  m_UseSceneMesh: 0
+  m_SceneMeshPkmmPath: Meshes/UnityScene.pkmm
+  m_BoundShaders: []

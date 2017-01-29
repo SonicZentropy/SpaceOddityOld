@@ -1,4 +1,4 @@
-﻿// /** 
+﻿// /**
 //  * EcsEngine.cs
 //  * Will Hart and Dylan Bailey
 //  * 20161205
@@ -18,17 +18,16 @@ namespace Zenobit.Common.ZenECS
     using AdvancedInspector;
     using Common.ObjectPool;
     using Editor.Utils;
-    using Extensions;
     using Zenobit.Systems;
     using UnityEngine;
 
     #endregion
 
-    public class EcsEngine 
+    public class EcsEngine
 	{
 		private readonly Dictionary<Guid, ComponentEcs> _componentsById = new Dictionary<Guid, ComponentEcs>();
 
-	    public List<Entity> EntityList { get; set; } = new List<Entity>();
+	    [Inspect]public List<Entity> EntityList { get; set; } = new List<Entity>();
 
 	    [Descriptor("Comps:", "Components On Entity")]
 		[SerializeField] private readonly Dictionary<ComponentTypes, List<ComponentEcs>> _componentPools =
@@ -143,7 +142,9 @@ namespace Zenobit.Common.ZenECS
 
 		public Entity CreateEntity(string entityName)
 		{
-			return Factory.CreateEntityFromTemplate(entityName);
+			Entity newEnt =  Factory.CreateEntityFromTemplate(entityName);
+			OnEntityAdded?.Invoke(newEnt);
+			return newEnt;
 		}
 
 		public void DestroyEntity(Entity entity)
@@ -168,6 +169,7 @@ namespace Zenobit.Common.ZenECS
 
                 DestroyComponent(comp);
             }
+	        EntityList.Remove(entity);
         }
 
 		/// <summary>
@@ -188,6 +190,7 @@ namespace Zenobit.Common.ZenECS
 			OnComponentRemoved?.Invoke(component);
 			_componentPools[component.ComponentType].Remove(component);
 			_componentsById.Remove(component.Id);
+			ComponentCache.Instance.Release(component);
 
 			CurrentHash = Guid.NewGuid();
 		}

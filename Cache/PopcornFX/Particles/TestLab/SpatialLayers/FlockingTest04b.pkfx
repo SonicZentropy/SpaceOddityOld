@@ -1,0 +1,237 @@
+Version = 1.9.0.26281;
+CParticleEffect	$LOCAL$/Resource
+{
+	EditorInfosPosition = int2(504, 93);
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/Flock
+{
+	EditorInfosPosition = int2(235, 96);
+	Descriptor = "$LOCAL$/CParticleDescriptor_9D8F3370";
+	SpawnCount = 4.0000000e+004;
+	FluxFunctionTiledRelativeDuration = 2.9000001e+000;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_9D8F3370
+{
+	EditorInfosPosition = int2(93, 96);
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_6755DD6A";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_53E90703",
+	};
+	Samplers = 
+	{
+		"$LOCAL$/CParticleSamplerShape_B9688D35",
+		"$LOCAL$/CParticleSamplerCurve_2311D046",
+		"$LOCAL$/CParticleSamplerShape_41FACE50",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_90776734";
+	States = 
+	{
+		"$LOCAL$/State1",
+	};
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	EditorInfosPosition = int2(-228, -79);
+	Position = float3(-5.3444447e+001, 1.0998322e+001, 5.1453114e+001);
+	EulerOrientation = float3(-1.0917063e+003, -1.1147279e+003, 0.0000000e+000);
+	Backdrops = "$LOCAL$/_BackdropList";
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_6755DD6A
+{
+	EditorInfosPosition = int2(-31, 80);
+	BillboardingMaterial = AlphaBlend_Additive_Soft;
+	Diffuse = "Textures/falloff.dds";
+	BillboardMode = VelocityCapsuleAlign;
+	AxisScale = 4.0000001e-001;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_90776734
+{
+	EditorInfosPosition = int2(-31, 150);
+	EditorInfosIsBlockMinimized = 0;
+	Expression = "function void     Eval()
+{
+	Life = 30000.0;
+	Size = (pow(rand(0,1), 7) * 0.4 + 0.2);
+//	Color = float4(1,1,1,1);
+	Position = StartPositionSampler.samplePosition();
+//	Velocity = normalize(rand(float3(-1), float3(1)));
+	Velocity = float3(1,0,0);
+}
+";
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_E70C019D
+{
+	EditorInfosPosition = int2(-185, 340);
+	EditorInfosIsBlockMinimized = 0;
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_E70C019D";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_E70C019D
+{
+	EditorInfosPosition = int2(-286, 340);
+	EditorInfosIsBlockMinimized = 0;
+	Expression = "function void     Eval()
+{
+	float3	toLight = -normalize(float3(0.5,0.5,0.5));
+	float	neighborCount = 1.0f / MeanNeighborDirection.w;
+	
+	// the particle normal is a weighted average between its blob normal
+	// and the vector to the light.
+	// incorporating the light vector allows to fake transluency when the number of neighbors is low
+
+	float3	normal = normalize(0.5*safe_normalize(MeanNeighborDirection.xyz) + 0.1*toLight);
+
+	// compute diffuse lighting (simple NdotL diffuse lighting)
+	float	diffuse = dot(normal, toLight)*0.5 + 0.5; // no need to call saturate() to keep in the [0,1] range, the curve sampler will clamp this itself
+	float	occlusion = LightingCurve.sample(diffuse);
+
+	// generate RGB based on worldspace position and velocity
+	float	h = min(1, (Position.y + 20) / 30);
+	float3	rgb = (max(min(Velocity, 2.0), -2.0) + 2.0) * (float3(1.0, 0.8, 0.1) / 4.0) * (h + 1.0) * 0.5 + 0.5 + float3(0.4, 0.3, 0.2) + 0.2 + h * (float3(0.4, -0.3, -0.2) - 0.2);
+	
+	// smooth color transitions to avoid flickering. (the exp expression makes it stable no matter the fps)
+	Color = lerp(Color, (rgb * occlusion).xyz1, 1-exp(-dt*05));
+}";
+}
+CParticleState	$LOCAL$/State1
+{
+	EditorInfosPosition = int2(-64, 279);
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Flocking_EA9A69D1",
+		"$LOCAL$/CParticleEvolver_Script_F2BC4B12",
+		"$LOCAL$/CParticleEvolver_Physics_EA9A69D1",
+		"$LOCAL$/CParticleEvolver_Containment_EA9A69D1",
+		"$LOCAL$/CParticleEvolver_Script_E70C019D",
+	};
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_B9688D35
+{
+	EditorInfosPosition = int2(-30, 186);
+	SamplerName = "StartPositionSampler";
+	Shape = "$LOCAL$/CShapeDescriptor_C0BB68D9";
+	SampleDimensionality = Volume;
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_C0BB68D9
+{
+	EditorInfosPosition = int2(-126, 185);
+	EditorInfosIsBlockMinimized = 0;
+	ShapeType = SPHERE;
+	Radius = 4.0000000e+001;
+}
+CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_EA9A69D1
+{
+	EditorInfosPosition = int2(-185, 270);
+	EditorInfosIsBlockMinimized = 0;
+}
+CParticleEvolver_Flocking	$LOCAL$/CParticleEvolver_Flocking_EA9A69D1
+{
+	EditorInfosPosition = int2(-185, 235);
+	EditorInfosIsBlockMinimized = 0;
+	MinSpeed = 1.0000000e-001;
+	MaxSpeed = 3.0000000e+000;
+	SeparationFactor = 6.2650597e-001;
+	AlignmentFactor = 9.1566271e-001;
+	AlignmentSearchRadius = 2.0000000e+000;
+	CohesionFactor = 3.2999998e-001;
+	CohesionSearchRadius = 2.0000000e+000;
+	CohesionSearchAngle = 9.0000000e+001;
+}
+CParticleEvolver_Containment	$LOCAL$/CParticleEvolver_Containment_EA9A69D1
+{
+	EditorInfosPosition = int2(-185, 305);
+	EditorInfosIsBlockMinimized = 0;
+	WorldRadius = 4.0000000e+001;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_53E90703
+{
+	EditorInfosPosition = int2(-31, 115);
+	EditorInfosIsBlockMinimized = 0;
+	FieldName = "Color";
+	FieldType = float4;
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	EditorInfosPosition = int2(346, 95);
+	ChildList = 
+	{
+		"$LOCAL$/Flock",
+	};
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_200E5E3D
+{
+	Expression = "function void	Eval()
+{
+	float4	hit = Obstacles.intersect(Position, safe_normalize(Velocity), 5.0f);
+	float3	n = normalize(hit.xyz);
+	float3	reproj = n * dot(Velocity, n);
+	float3	targetVel = safe_normalize(select(Velocity, Velocity - reproj, hit.w != infinity)) * length(Velocity);
+	float3	impulse = 0;
+//	Axis = targetVel * 5;
+	Velocity += (targetVel - Velocity) * (1 - exp(-dt*1.5));
+}
+";
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(-100, -365);
+	EditorInfosIsBlockMinimized = 0;
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/_Backdrop_Brush",
+	};
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/_Backdrop_Brush
+{
+	EditorInfosPosition = int2(-253, -417);
+	LayerName = "Layer_Brush";
+}
+CParticleSamplerCurve	$LOCAL$/CParticleSamplerCurve_2311D046
+{
+	SamplerName = "LightingCurve";
+	Times = 
+	{
+		0.0000000e+000,
+		5.6159699e-001,
+		1.0000000e+000,
+	};
+	FloatValues = 
+	{
+		5.3941905e-002,
+		2.7074686e-001,
+		1.0000000e+000,
+	};
+	FloatTangents = 
+	{
+		0.0000000e+000,
+		0.0000000e+000,
+		5.8582503e-001,
+		4.5731631e-001,
+		0.0000000e+000,
+		0.0000000e+000,
+	};
+	MinLimits = float4(0.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+}
+CParticleSamplerShape	$LOCAL$/CParticleSamplerShape_41FACE50
+{
+	SamplerName = "Obstacles";
+	Shape = "$LOCAL$/CShapeDescriptor_93476353";
+}
+CShapeDescriptor	$LOCAL$/CShapeDescriptor_93476353
+{
+	Position = float3(0.0000000e+000, -5.0722332e+001, 0.0000000e+000);
+	ShapeType = MESH;
+	MeshResource = "Meshes/Emperor.pkmm";
+	MeshScale = float3(6.0000000e+001, 6.0000000e+001, 6.0000000e+001);
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_F2BC4B12
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_200E5E3D";
+}

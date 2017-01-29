@@ -45,19 +45,30 @@ namespace Zenobit.Components
 
 		[TextField(TextFieldType.Prefab)] public string WeaponPrefab = "None";
 
-		public GameObject WeaponGameObject;
+		[HideInInspector]public GameObject WeaponGameObject;
 
 		// Projectile Information
 		[Inspect]
 		public float ProjectileSpeed { get; set; }
 
-		[Inspect]
-		public bool ProjectileIsEntity { get; set; }
+		private bool ProjIsNotMissile()
+		{
+			return WeaponType != WeaponTypes.Missile;
+		}
+
+		private bool projectileIsEntity;
+
+		[Inspect("ProjIsNotMissile")]
+		public bool ProjectileIsEntity
+		{
+			get { return (projectileIsEntity || WeaponType == WeaponTypes.Missile); }
+			set { projectileIsEntity = value; }
+		}
 
 		private bool ProjectileUsesPrefab() { return !ProjectileIsEntity; }
 
 		[Inspect("ProjectileIsEntity")]
-		[TextField(TextFieldType.JSON)]
+		[TextField(TextFieldType.Entity)]
 		public string ProjectileEntity { get; set; }
 
 		[Inspect("ProjectileUsesPrefab")] [TextField(TextFieldType.Prefab)] public string ProjectilePrefab = "None";
@@ -65,10 +76,19 @@ namespace Zenobit.Components
 		[HideInInspector]
 		public bool IsFitted { get; set; }
 
+		private float _nextAttackTime;
 		[HideInInspector]
-		public float NextAttackTime { get; set; }
+		public float NextAttackTime
+		{
+			get { return _nextAttackTime; }
+			set
+			{
+				//Debug.Log("Setting next atk time to " + value);
+				_nextAttackTime = value;
+			}
+		}
 
-		[Inspect]
+		[Inspect(500)]
 		public ShipFitting fittingAttached { get; set; }
 
 		public override ComponentTypes ComponentType => ComponentTypes.WeaponComp;

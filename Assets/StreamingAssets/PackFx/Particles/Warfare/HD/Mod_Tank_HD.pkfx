@@ -1,0 +1,715 @@
+Version = 1.8.3.26153;
+CParticleEffect	$LOCAL$/Resource
+{
+	EditorInfosPosition = int2(73, 52);
+	OnSpawn = "$LOCAL$/Spawner";
+	CustomAttributes = "$LOCAL$/_GlobalAttributes";
+	Autostart = true;
+}
+CActionFactoryWithChilds	$LOCAL$/Spawner
+{
+	EditorInfosPosition = int2(-162, -81);
+	ChildList = 
+	{
+		"$LOCAL$/smoke",
+		"$LOCAL$/flame",
+		"$LOCAL$/flash",
+		"$LOCAL$/spark",
+		"$LOCAL$/distortion",
+		"$LOCAL$/littlespark",
+	};
+}
+CParticleAttributeList	$LOCAL$/_GlobalAttributes
+{
+	EditorInfosPosition = int2(-599, -20);
+	AttributeList = 
+	{
+		"$LOCAL$/CParticleAttributeDeclaration_D5CDDBE5",
+		"$LOCAL$/CParticleAttributeDeclaration_BCCBE040",
+		"$LOCAL$/CParticleAttributeDeclaration_3833E403",
+		"$LOCAL$/CParticleAttributeDeclaration_68BEBE8B",
+		"$LOCAL$/CParticleAttributeDeclaration_54DD8182",
+		"$LOCAL$/CParticleAttributeDeclaration_75889049",
+		"$LOCAL$/CParticleAttributeDeclaration_AB7B060C",
+		"$LOCAL$/CParticleAttributeDeclaration_8B43A234",
+		"$LOCAL$/CParticleAttributeDeclaration_5CB3D551",
+	};
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_D5CDDBE5
+{
+	AttributeName = "GlobalScale";
+	DefaultValueF4 = float4(1.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(2.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_AB7B060C
+{
+	AttributeName = "FlameFlux";
+	DefaultValueF4 = float4(1.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(1.0000000e+003, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_75889049
+{
+	AttributeName = "DistortionDensity";
+	DefaultValueF4 = float4(1.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_BCCBE040
+{
+	AttributeName = "FireColor";
+	AttributeType = float3;
+	DefaultValueF4 = float4(1.0000000e+000, 3.0000001e-001, 1.0000000e-001, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_3833E403
+{
+	AttributeName = "SmokeColor";
+	AttributeType = float3;
+	DefaultValueF4 = float4(2.5000000e-001, 2.2000000e-001, 2.0000000e-001, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_54DD8182
+{
+	AttributeName = "Power";
+	DefaultValueF4 = float4(2.0000000e+001, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(1.0000000e+002, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_8B43A234
+{
+	AttributeName = "SparkFlux";
+	DefaultValueF4 = float4(1.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(1.0000000e+003, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_68BEBE8B
+{
+	AttributeName = "SmokeOpacity";
+	DefaultValueF4 = float4(7.5000000e-001, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/smoke
+{
+	EditorInfosIsBlockMinimized = 0;
+	Descriptor = "$LOCAL$/CParticleDescriptor_FB004DF6";
+	SpawnCount = 1.6000000e+001;
+	FluxFactorExpression = "GlobalFlux";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_FB004DF6
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_4665D208";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_A6A07195",
+		"$LOCAL$/CParticleFieldDeclaration_DBEE43EF",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_116368F1";
+	States = 
+	{
+		"$LOCAL$/CParticleState_9B20556B",
+	};
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_116368F1
+{
+	Expression = "function void	Eval()
+{
+	float ID=spawner.LifeRatio;
+	Life = 0.25+pow(ID,4)*1.5;
+	Size = lerp(GlobalScale * 0.5, GlobalScale * 1.75, ID);
+	Rotation = rand(-pi, pi);
+	Position = vrand() * ID * 0.5;
+	Velocity = vrand() * 0.1;
+	ScalarRotationSpeed = rand(-0.5, 0.5);
+	Color = float4(select(lerp(FireColor * Power, SmokeColor, pow(ID, 0.5)), SmokeColor, ID > 0.4), SmokeOpacity);
+}
+";
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_4665D208
+{
+	BillboardingMaterial = AlphaBlend_Soft;
+	Diffuse = "textures/Fx/Smoke_04.png";
+	AtlasDefinition = "textures/Fx/Smoke_04.pkat";
+	SoftAnimationBlending = true;
+}
+CParticleState	$LOCAL$/CParticleState_9B20556B
+{
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Physics_85689B0A",
+		"$LOCAL$/Evolver_1",
+		"$LOCAL$/Script_4",
+	};
+}
+CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_85689B0A
+{
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_A6A07195
+{
+	FieldName = "Rotation";
+}
+CParticleEvolver_Script	$LOCAL$/Script_4
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_26C1757C";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_26C1757C
+{
+	Expression = "function void	Eval()
+{
+	TextureID = pow(LifeRatio, 0.75) * 32;
+
+}
+";
+}
+CParticleEvolver_Rotation	$LOCAL$/Evolver_1
+{
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_DBEE43EF
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_B1B42ED2
+{
+	EditorInfosPosition = int2(-392, -44);
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_5D6E2CFD",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_1EC2A104";
+	States = 
+	{
+		"$LOCAL$/CParticleState_7C119217",
+	};
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_5D6E2CFD
+{
+	FieldName = "Fx";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_1EC2A104
+{
+	EditorInfosPosition = int2(-508, 22);
+	Expression = "function void	Eval()
+{
+	Life = 0.1;
+	Fx = FlameFlux;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_7C119217
+{
+	EditorInfosPosition = int2(-508, 65);
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Localspace_A91AFF26",
+		"$LOCAL$/fire",
+	};
+}
+CParticleEvolver_Localspace	$LOCAL$/CParticleEvolver_Localspace_A91AFF26
+{
+	ChildList = 
+	{
+		"$LOCAL$/CParticleEvolver_Script_F6BE59E1",
+	};
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_F6BE59E1
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_54A21DB8";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_54A21DB8
+{
+	Expression = "function void	Eval()
+{
+	Position = float3(LifeRatio * 2, 0, 0) * GlobalScale;
+}
+";
+}
+CParticleEvolver_Spawner	$LOCAL$/fire
+{
+	SpawnMetric = Time;
+	SpawnInterval = 2.0000001e-003;
+	Descriptor = "$LOCAL$/CParticleDescriptor_E50B8D3A";
+	FluxFunction = "$LOCAL$/CParticleSamplerCurve_618E71F6";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_E50B8D3A
+{
+	Renderer = "$LOCAL$/CParticleRenderer_List_29183785";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_ACF78E5F",
+		"$LOCAL$/CParticleFieldDeclaration_68670D0E",
+		"$LOCAL$/CParticleFieldDeclaration_779B09E9",
+		"$LOCAL$/CParticleFieldDeclaration_33CD0A60",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_B0F948A3";
+	States = 
+	{
+		"$LOCAL$/CParticleState_4CC672A2",
+	};
+}
+CParticleRenderer_List	$LOCAL$/CParticleRenderer_List_29183785
+{
+	Renderers = 
+	{
+		"$LOCAL$/CParticleRenderer_Billboard_2840BA2C",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_2840BA2C
+{
+	BillboardingMaterial = AlphaBlend_Soft;
+	Diffuse = "textures/Fx/Smoke_04.png";
+	AtlasDefinition = "textures/Fx/Smoke_04.pkat";
+	SoftAnimationBlending = true;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_ACF78E5F
+{
+	FieldName = "TID";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_68670D0E
+{
+	FieldName = "SLR";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_779B09E9
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_33CD0A60
+{
+	FieldName = "Rotation";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_B0F948A3
+{
+	Expression = "function void	Eval()
+{
+	SLR = spawner.LifeRatio;
+	Rotation = rand(-pi,pi);
+	Life = ninja+SLR;
+	Size = (0.05+sin(SLR*2.5)*0.6)*GlobalScale;
+	Velocity = GlobalScale * (float3(rand(0, 2), rand(-1, 1), rand(-1, 1)) * SLR * 0.5);
+	TID = pow(SLR, 2) * 32;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_4CC672A2
+{
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Physics_2298D50D",
+		"$LOCAL$/CParticleEvolver_Script_E93F6254",
+	};
+}
+CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_2298D50D
+{
+	Mass = 2.0000000e+000;
+	Drag = 1.0000000e+000;
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_E93F6254
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_7711C5A7";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_7711C5A7
+{
+	Expression = "function void	Eval()
+{
+	TextureID=TID+pow(LifeRatio,2)*4;
+	Color=float4(lerp(lerp(FireColor*Power,SmokeColor,saturate(LifeRatio*4)),SmokeColor*0.75,saturate(SLR*2)),(1-LifeRatio)*SmokeOpacity*0.5);
+}
+";
+}
+CParticleSamplerCurve	$LOCAL$/CParticleSamplerCurve_618E71F6
+{
+	Times = 
+	{
+		0.0000000e+000,
+		1.0000000e+000,
+	};
+	FloatValues = 
+	{
+		1.0000000e+000,
+		0.0000000e+000,
+	};
+	FloatTangents = 
+	{
+		0.0000000e+000,
+		0.0000000e+000,
+		-2.3864701e+000,
+		0.0000000e+000,
+	};
+	MinLimits = float4(0.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/flame
+{
+	EditorInfosPosition = int2(-288, -61);
+	EditorInfosIsBlockMinimized = 0;
+	Descriptor = "$LOCAL$/CParticleDescriptor_B1B42ED2";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AF228122
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_8386C58D";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_7B53DCD4",
+		"$LOCAL$/CParticleFieldDeclaration_E8AA9227",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_D5F8F876";
+	States = 
+	{
+		"$LOCAL$/CParticleState_BE9C2571",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_8386C58D
+{
+	BillboardingMaterial = AlphaBlend_Soft;
+	Diffuse = "Textures/Fx/Fire_03.png";
+	AtlasDefinition = "Textures/Fx/AtlasX2.pkat";
+	SoftAnimationBlending = true;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_7B53DCD4
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_E8AA9227
+{
+	FieldName = "Rotation";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_D5F8F876
+{
+	Expression = "function void	Eval()
+{
+	Life = 0.1;
+	Rotation = rand(-pi, pi);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_BE9C2571
+{
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Physics_FDF70888",
+		"$LOCAL$/CParticleEvolver_Script_B9568DEB",
+	};
+}
+CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_FDF70888
+{
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_B9568DEB
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_26C6FD8A";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_26C6FD8A
+{
+	Expression = "function void	Eval()
+{
+	Size = LifeRatio * 3 * GlobalScale;
+	TextureID = LifeRatio * 4;
+	Color = DistortionDensity * float4(lerp(FireColor * Power * 0.25, SmokeColor, LifeRatio), 1 - LifeRatio);
+}
+";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/flash
+{
+	EditorInfosIsBlockMinimized = 0;
+	Descriptor = "$LOCAL$/CParticleDescriptor_AF228122";
+	SpawnCount = 1.0000000e+001;
+	FluxFactorExpression = "GlobalFlux";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_AC74A3FC
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_8971D46F";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_747CC45E",
+		"$LOCAL$/CParticleFieldDeclaration_150C6B79",
+		"$LOCAL$/CParticleFieldDeclaration_6FD24330",
+		"$LOCAL$/CParticleFieldDeclaration_D0E789B3",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_261240F2";
+	States = 
+	{
+		"$LOCAL$/CParticleState_86DE999D",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_8971D46F
+{
+	BillboardingMaterial = AlphaBlend_Soft;
+	Diffuse = "Textures/Fx/Fire_03.png";
+	AtlasDefinition = "Textures/Fx/AtlasX2.pkat";
+	SoftAnimationBlending = true;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_747CC45E
+{
+	FieldName = "Accel";
+	FieldType = float3;
+	TransformFilter = full;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_150C6B79
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_6FD24330
+{
+	FieldName = "Rotation";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_D0E789B3
+{
+	FieldName = "Mass";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_261240F2
+{
+	Expression = "function void	Eval()
+{
+	Life = rand(0.125, 0.75);
+	Size = rand(0.01, 0.04) * GlobalScale;
+	
+	Rotation = rand(-pi, pi);
+	TextureID = rand(0, 4);
+	
+	Velocity = (float3(spawner.LifeRatio * 20, 0, 0) + vrand()) * GlobalScale * 1.5;
+	Accel = float3(0, rand(-1, -8), 0) * GlobalScale;
+	Mass = rand(4, 8);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_86DE999D
+{
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Physics_57AF3A24",
+		"$LOCAL$/CParticleEvolver_Script_415F91B7",
+	};
+}
+CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_57AF3A24
+{
+	Drag = 1.0000000e+000;
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_415F91B7
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_0C9B2746";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_0C9B2746
+{
+	Expression = "function void	Eval()
+{
+	Color = float4(FireColor * Power * 2, (1 - LifeRatio));
+}
+";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/spark
+{
+	EditorInfosIsBlockMinimized = 0;
+	Descriptor = "$LOCAL$/CParticleDescriptor_AC74A3FC";
+	SpawnCount = 4.0000000e+001;
+	FluxFactorExpression = "SparkFlux";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_3EB89CD8
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_49C2907B";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_AB1AEB5A",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_1E2DE025";
+	States = 
+	{
+		"$LOCAL$/CParticleState_A2DD3F4C",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_49C2907B
+{
+	BillboardingMaterial = AlphaBlend_Distortion;
+	Diffuse = "Textures/Fx/DistortionRing_01.png";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_AB1AEB5A
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_1E2DE025
+{
+	Expression = "function void	Eval()
+{
+	Life = 0.1;
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_A2DD3F4C
+{
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Physics_F87DE9FF",
+		"$LOCAL$/CParticleEvolver_Script_E418C12E",
+	};
+}
+CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_F87DE9FF
+{
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_E418C12E
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_0536C089";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_0536C089
+{
+	Expression = "function void	Eval()
+{
+	Size = LifeRatio * 3 * GlobalScale;
+	Color = (1 - LifeRatio) * DistortionDensity;
+}
+";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/distortion
+{
+	EditorInfosIsBlockMinimized = 0;
+	Descriptor = "$LOCAL$/CParticleDescriptor_3EB89CD8";
+}
+CParticleDescriptor	$LOCAL$/CParticleDescriptor_2087C243
+{
+	Renderer = "$LOCAL$/CParticleRenderer_Billboard_C0F39CC2";
+	CustomFields = 
+	{
+		"$LOCAL$/CParticleFieldDeclaration_89FA39AD",
+		"$LOCAL$/CParticleFieldDeclaration_E5F45374",
+		"$LOCAL$/CParticleFieldDeclaration_6522FD47",
+		"$LOCAL$/CParticleFieldDeclaration_C6F63216",
+	};
+	SpawnEvaluator = "$LOCAL$/CCompilerSyntaxNodeExpression_C57F0F91";
+	States = 
+	{
+		"$LOCAL$/CParticleState_2F612D28",
+	};
+}
+CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_C0F39CC2
+{
+	BillboardingMaterial = AlphaBlend_Soft;
+	Diffuse = "Textures/Fx/Fire_03.png";
+	AtlasDefinition = "Textures/Fx/AtlasX2.pkat";
+	SoftAnimationBlending = true;
+	BillboardMode = VelocityAxisAligned;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_89FA39AD
+{
+	FieldName = "Accel";
+	FieldType = float3;
+	TransformFilter = full;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_E5F45374
+{
+	FieldName = "Color";
+	FieldType = float4;
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_6522FD47
+{
+	FieldName = "Rotation";
+}
+CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_C6F63216
+{
+	FieldName = "Mass";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_C57F0F91
+{
+	Expression = "function void	Eval()
+{
+	Life = rand(0.125, 1);
+	Size = rand(0.005, 0.01) * GlobalScale;
+	
+	Rotation  =rand(-pi, pi);
+	TextureID = ninja * 4;
+	
+	Velocity = vrand().1yz * 10 * GlobalScale;
+	Accel = float3(0, rand(-1, -2), 0) * GlobalScale;
+	Mass = rand(2, 8);
+}
+";
+}
+CParticleState	$LOCAL$/CParticleState_2F612D28
+{
+	StateName = "State_0";
+	Evolvers = 
+	{
+		"$LOCAL$/CParticleEvolver_Physics_90633F0B",
+		"$LOCAL$/CParticleEvolver_Script_0E2AF52A",
+	};
+}
+CParticleEvolver_Physics	$LOCAL$/CParticleEvolver_Physics_90633F0B
+{
+	Drag = 1.0000000e+000;
+}
+CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_0E2AF52A
+{
+	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_36A6C635";
+}
+CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_36A6C635
+{
+	Expression = "function void	Eval()
+{
+	Color = float4(FireColor * Power * 2, (1 - LifeRatio));
+}
+";
+}
+CActionFactoryParticleSpawnerBase	$LOCAL$/littlespark
+{
+	EditorInfosIsBlockMinimized = 0;
+	Descriptor = "$LOCAL$/CParticleDescriptor_2087C243";
+	SpawnCount = 1.2000000e+001;
+	FluxFactorExpression = "SparkFlux";
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_5CB3D551
+{
+	AttributeName = "GlobalFlux";
+	DefaultValueF4 = float4(1.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CNEdEditorParticle_Data	$LOCAL$/EDITOR
+{
+	EditorInfosPosition = int2(413, -144);
+	Position = float3(2.8057547e+000, 2.9437703e-001, -4.6497455e+000);
+	EulerOrientation = float3(-3.5419967e+000, 2.3870018e+001, 0.0000000e+000);
+	Backdrops = "$LOCAL$/_BackdropList";
+	IsLooping = true;
+}
+CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
+{
+	EditorInfosPosition = int2(125, -433);
+	BackgroundLayers2D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Brush_9A913525",
+	};
+	SceneLayers3D = 
+	{
+		"$LOCAL$/CNEdEditorBackdrop_Model3D_578F322E",
+	};
+}
+CNEdEditorBackdrop_Brush	$LOCAL$/CNEdEditorBackdrop_Brush_9A913525
+{
+	EditorInfosPosition = int2(-27, -485);
+	LayerName = "Layer_Brush";
+}
+CNEdEditorBackdrop_Model3D	$LOCAL$/CNEdEditorBackdrop_Model3D_578F322E
+{
+	EditorInfosPosition = int2(-17, -380);
+	LayerName = "Model";
+	Position = float3(2.2134044e+000, -2.1454737e+000, 0.0000000e+000);
+	ResourceModel = "Meshes/TestArea.FBX";
+}

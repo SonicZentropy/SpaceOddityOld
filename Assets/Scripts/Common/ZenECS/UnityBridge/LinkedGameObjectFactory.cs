@@ -1,4 +1,4 @@
-﻿// /** 
+﻿// /**
 //  * LinkedGameObjectFactory.cs
 //  * Dylan Bailey
 //  * 20161209
@@ -43,17 +43,24 @@ namespace Zenobit.Common.ZenECS
         // Inject all unity components from the GO prefab into the associated entity components
         private static void InjectGameObjectReferences(Entity e, GameObject go)
         {
+	        //Spawn ship first if we're creating an actor
+	        if (IsActor(e))
+		        InitProperShip(e);
             if (e.HasComponent(ComponentTypes.AudioSourceComp))
                 e.GetComponent<AudioSourceComp>().AudioSource = go.GetComponentInChildren<AudioSource>();
             if (e.HasComponent(ComponentTypes.CameraComp))
                 e.GetComponent<CameraComp>().MainCamera = go.GetComponentInChildren<Camera>();
             if (e.HasComponent(ComponentTypes.ColliderComp))
-                e.GetComponent<ColliderComp>().collider = go.GetComponentInChildren<Collider>();
+                //e.GetComponent<ColliderComp>().collider = go.GetComponentInChildren<Collider>();
+	            InitProperCollider(e, go);
             if (e.HasComponent(ComponentTypes.LightComp))
                 e.GetComponent<LightComp>().Light = go.GetComponentInChildren<Light>();
             if (e.HasComponent(ComponentTypes.LineRendererComp))
                 e.GetComponent<LineRendererComp>().LineRenderer = go.GetComponentInChildren<LineRenderer>();
-            if (e.HasComponent(ComponentTypes.MeshComp))
+	        if (e.HasComponent(ComponentTypes.RendererComp))
+		        e.GetComponent<RendererComp>().renderer = go.GetComponentInChildren<Renderer>();
+
+	        if (e.HasComponent(ComponentTypes.MeshComp))
             {
                 e.GetComponent<MeshComp>().MeshFilter = go.GetComponentInChildren<MeshFilter>();
                 e.GetComponent<MeshComp>().MeshRenderer = go.GetComponentInChildren<MeshRenderer>();
@@ -78,6 +85,43 @@ namespace Zenobit.Common.ZenECS
                 e.GetComponent<UIWidgetComp>().UIWidget = go.GetComponentInChildren<UIWidget>();
         }
 
+	    private static bool IsActor(Entity e)
+	    {
+		    return e.HasComponent(ComponentTypes.AIActorComp)
+		           || e.HasComponent(ComponentTypes.PlayerComp);
+	    }
+
+	    private static void InitProperShip(Entity e)
+	    {
+		    AbstractActorComp aacomp;
+			if (e.HasComponent(ComponentTypes.AIActorComp))
+		    	aacomp = e.GetComponent<AIActorComp>();
+		    else
+				aacomp = e.GetComponent<PlayerComp>();
+		    var shipToCreate = aacomp?.CurrentShip;
+
+		    GameObject ship = Instantiate(Resources.Load<GameObject>(shipToCreate));
+		    ship.transform.SetParent(e.Wrapper.transform);
+
+		    //if (e.HasComponent(ComponentTypes.CameraComp))
+		    //	e.GetComponent<CameraComp>().StartingPositionOffset = e.GetComponent<ShipPrefabComp>().FirstPersonCameraOffset;
+	    }
+
+	    private static void InitProperCollider(Entity e, GameObject go)
+	    {
+		    foreach (var coll in go.GetComponentsInChildren<Collider>())
+		    {
+			    int lay = coll.gameObject.layer;
+			    if (lay == SRLayers.rangetriggerplayer.index || lay == SRLayers.rangetriggerdisable.index)
+			    {
+				    //ZenLogger.Log($"Found collider to be skipped: {coll.gameObject.name}");
+				    continue;
+			    }
+				e.GetComponent<ColliderComp>().collider = coll;
+			    break;
+		    }
+	    }
+
         //Allows custom monobehaviors to initialize desired things via interface
         private static void PerformCustomInitializations(Entity e, GameObject go)
         {
@@ -97,8 +141,8 @@ namespace Zenobit.Common.ZenECS
 
             var pc = e.GetComponent<UnityPrefabComp>();
 			//string prefabString
-            var go = pc.IsPooled
-                ? Resources.Load<GameObject>(pc.PrefabLink).InstantiateFromPool()
+            GameObject go = pc.IsPooled
+                ? Res.CreateFromPool(pc.PrefabLink)//Resources.Load<GameObject>(pc.PrefabLink).InstantiateFromPool()
                 : Instantiate(Resources.Load<GameObject>(pc.PrefabLink));
 
             var ew = go.GetComponent<EntityWrapper>();
@@ -119,7 +163,22 @@ namespace Zenobit.Common.ZenECS
             InitializeGameObject(go);
             InjectGameObjectReferences(e, go);
             PerformCustomInitializations(e, go);
+	        AddEntityFlag(e, go); //Add entity flag to game object
+	        SetGameObjectLayer(e, go);
             return go;
         }
+
+	    private void SetGameObjectLayer(Entity entity, GameObject go)
+	    {
+		    UnityPrefabComp upc = entity.GetComponent<UnityPrefabComp>();
+		    //ZenLogger.Log($"Setting {entity.EntityName} layer to {upc.layer.GetLayerIndex()} which is {LayerMask.LayerToName(upc.layer.GetLayerIndex())}");
+		    go.layer = upc.layer.GetLayerIndex();
+
+	    }
+
+	    private void AddEntityFlag(Entity e, GameObject go)
+	    {
+		    go.AddEntityTags(EntityTags.IsEntity);
+	    }
     }
 }

@@ -1,0 +1,346 @@
+Version = 1.10.2.31070;
+CHmlFactory	$LOCAL$/Resource
+{
+	MeshTree = "$LOCAL$/CHmlMeshTreeNode_LOD_9BF2618B";
+	Skins = 
+	{
+		"$LOCAL$/CHmlSkinDescriptor_5294B4B5",
+	};
+}
+CHmlMeshTreeNode_LOD	$LOCAL$/CHmlMeshTreeNode_LOD_9BF2618B
+{
+	LODs = 
+	{
+		"$LOCAL$/CHmlMeshTreeNode_ModelRef_EBFF89AA",
+	};
+}
+CHmlMeshTreeNode_ModelRef	$LOCAL$/CHmlMeshTreeNode_ModelRef_EBFF89AA
+{
+	MeshResourcePath = "Meshes/RockV02_LowPoly_break.pkmm";
+}
+CHmlSkinDescriptor	$LOCAL$/CHmlSkinDescriptor_5294B4B5
+{
+	PublishedName = "Default";
+	Materials = 
+	{
+		"$LOCAL$/CHmlSkinMaterial_F47B671C",
+		"$LOCAL$/CHmlSkinMaterial_C370460F",
+		"$LOCAL$/CHmlSkinMaterial_E35D467E",
+		"$LOCAL$/CHmlSkinMaterial_60F80819",
+		"$LOCAL$/CHmlSkinMaterial_6241CC50",
+		"$LOCAL$/CHmlSkinMaterial_6B7B3953",
+		"$LOCAL$/CHmlSkinMaterial_B071D912",
+		"$LOCAL$/CHmlSkinMaterial_640C043D",
+		"$LOCAL$/CHmlSkinMaterial_267DA944",
+		"$LOCAL$/CHmlSkinMaterial_5CA91F57",
+		"$LOCAL$/CHmlSkinMaterial_6ED6F566",
+		"$LOCAL$/CHmlSkinMaterial_91D26D21",
+		"$LOCAL$/CHmlSkinMaterial_BEB211F8",
+		"$LOCAL$/CHmlSkinMaterial_56709C1B",
+		"$LOCAL$/CHmlSkinMaterial_D6360F7A",
+		"$LOCAL$/CHmlSkinMaterial_A1B7C6C5",
+		"$LOCAL$/CHmlSkinMaterial_FCC3DA6C",
+		"$LOCAL$/CHmlSkinMaterial_AF6D139F",
+		"$LOCAL$/CHmlSkinMaterial_7DDC5B4E",
+		"$LOCAL$/CHmlSkinMaterial_CDB75529",
+		"$LOCAL$/CHmlSkinMaterial_CCED96A0",
+		"$LOCAL$/CHmlSkinMaterial_D862A9E3",
+		"$LOCAL$/CHmlSkinMaterial_5A0ECCE2",
+		"$LOCAL$/CHmlSkinMaterial_B03F1C4D",
+		"$LOCAL$/CHmlSkinMaterial_B7739A94",
+		"$LOCAL$/CHmlSkinMaterial_660242E7",
+		"$LOCAL$/CHmlSkinMaterial_E71E1836",
+		"$LOCAL$/CHmlSkinMaterial_82D3E031",
+		"$LOCAL$/CHmlSkinMaterial_F217FA48",
+	};
+}
+CMaterialProxy	$LOCAL$/Material_0
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_F47B671C
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_0";
+}
+CMaterialProxy	$LOCAL$/Material_1
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_C370460F
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_1";
+}
+CMaterialProxy	$LOCAL$/Material_2
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_E35D467E
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_2";
+}
+CMaterialProxy	$LOCAL$/Material_3
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_60F80819
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_3";
+}
+CMaterialProxy	$LOCAL$/Material_4
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_6241CC50
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_4";
+}
+CMaterialProxy	$LOCAL$/Material_5
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_6B7B3953
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_5";
+}
+CMaterialProxy	$LOCAL$/Material_6
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_B071D912
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_6";
+}
+CMaterialProxy	$LOCAL$/Material_7
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_640C043D
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_7";
+}
+CMaterialProxy	$LOCAL$/Material_8
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_267DA944
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_8";
+}
+CMaterialProxy	$LOCAL$/Material_9
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_5CA91F57
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_9";
+}
+CMaterialProxy	$LOCAL$/Material_10
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_6ED6F566
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_10";
+}
+CMaterialProxy	$LOCAL$/Material_11
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_91D26D21
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_11";
+}
+CMaterialProxy	$LOCAL$/Material_12
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_BEB211F8
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_12";
+}
+CMaterialProxy	$LOCAL$/Material_13
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_56709C1B
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_13";
+}
+CMaterialProxy	$LOCAL$/Material_14
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_D6360F7A
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_14";
+}
+CMaterialProxy	$LOCAL$/Material_15
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_A1B7C6C5
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_15";
+}
+CMaterialProxy	$LOCAL$/Material_16
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_FCC3DA6C
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_16";
+}
+CMaterialProxy	$LOCAL$/Material_17
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_AF6D139F
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_17";
+}
+CMaterialProxy	$LOCAL$/Material_18
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_7DDC5B4E
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_18";
+}
+CMaterialProxy	$LOCAL$/Material_19
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_CDB75529
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_19";
+}
+CMaterialProxy	$LOCAL$/Material_20
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_CCED96A0
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_20";
+}
+CMaterialProxy	$LOCAL$/Material_21
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_D862A9E3
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_21";
+}
+CMaterialProxy	$LOCAL$/Material_22
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_5A0ECCE2
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_22";
+}
+CMaterialProxy	$LOCAL$/Material_23
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_B03F1C4D
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_23";
+}
+CMaterialProxy	$LOCAL$/Material_24
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_B7739A94
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_24";
+}
+CMaterialProxy	$LOCAL$/Material_25
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_660242E7
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_25";
+}
+CMaterialProxy	$LOCAL$/Material_26
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_E71E1836
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_26";
+}
+CMaterialProxy	$LOCAL$/Material_27
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_82D3E031
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_27";
+}
+CMaterialProxy	$LOCAL$/Material_28
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	BaseMaterial = "Materials/Library/Models.hbo/Opaque";
+}
+CHmlSkinMaterial	$LOCAL$/CHmlSkinMaterial_F217FA48
+{
+	VirtualName = "_Rock_LowPoly_UV_Positiondefault";
+	MaterialProxy = "$LOCAL$/Material_28";
+}

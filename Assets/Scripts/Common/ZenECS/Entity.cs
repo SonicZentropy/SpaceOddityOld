@@ -1,8 +1,9 @@
-﻿// /** 
+﻿// /**
 //  * Entity.cs
 //  * Dylan Bailey
 //  * 20161210
 // */
+
 
 namespace Zenobit.Common.ZenECS
 {
@@ -10,32 +11,55 @@ namespace Zenobit.Common.ZenECS
 
     using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using AdvancedInspector;
+    using UnityEngine;
 
-    #endregion
+	#endregion
 
-    public class Entity
+	[Serializable]
+	public class Entity
     {
         //[ShowInInspector]
-        public Dictionary<Type, ComponentEcs> _components; // = new Dictionary<Type, ComponentECS>();
+
+	    [HideInInspector]public Dictionary<Type, ComponentEcs> _components = new Dictionary<Type, ComponentEcs>();
+
+	    [Inspect]public List<ComponentEcs> ComponentsList
+	    {
+		    get { return _components.Select(x => x.Value).ToList(); }
+	    }
 
         public Entity()
         {
             //debug purposes
-            _components = new Dictionary<Type, ComponentEcs>();
+            //_components = new Dictionary<Type, ComponentEcs>();
         }
 
         public Entity(string entityName)
         {
             //debug purposes
-            _components = new Dictionary<Type, ComponentEcs>();
+            //_components = new Dictionary<Type, ComponentEcs>();
             EntityName = entityName;
         }
 
-        public string EntityName { get; set; }
+	    [Inspect]public string EntityName { get; set; } = "DefaultName";
 
-        public EntityWrapper Wrapper { get; set; }
+	    [HideInInspector]public EntityWrapper Wrapper { get; set; }
 
-        public IEnumerable<ComponentEcs> Components => _components.Values;
+	    [HideInInspector]public IEnumerable<ComponentEcs> Components => _components.Values;
+
+		private EcsEngine _engine;
+
+		public EcsEngine engine
+		{
+			set { _engine = value; }
+			get
+			{
+				if (_engine == null)
+					_engine = EcsEngine.Instance;
+				return _engine;
+			}
+		}
 
         public void InitializeComponents(List<ComponentTypes> componentTypes)
         {
@@ -50,6 +74,17 @@ namespace Zenobit.Common.ZenECS
             return ComponentFactory.ComponentLookup.ContainsKey(type) &&
                    _components.ContainsKey(ComponentFactory.ComponentLookup[type]);
         }
+
+		public bool TryGetComponent<T>(ComponentTypes type, out T component) where T : ComponentEcs
+		{
+			if (!HasComponent(type))
+			{
+				component = null;
+				return false;
+			}
+			component = GetComponent<T>();
+			return true;
+		}
 
         public T GetComponent<T>() where T : ComponentEcs => (T) _components[typeof(T)];
 
@@ -73,29 +108,50 @@ namespace Zenobit.Common.ZenECS
 					}
 				}
 		    }
-		    ZenLogger.Log($"GetComponentDownward failed!");
+		    //ZenLogger.Log($"GetComponentDownward failed!");
 		    return null;
 	    }
+
+		public T GetOrAddComponent<T>(ComponentTypes ctypes) where T : ComponentEcs
+		{
+			if (!HasComponent(ctypes))
+				AddComponent(ctypes);
+			return GetComponent<T>();
+		}
 
         public void AddComponent(ComponentTypes componentType)
         {
             var comp = ComponentFactory.Create(componentType);
+	        //var comp = ComponentCache.Instance.Get(componentType);
             AddComponent(comp);
         }
 
         public T AddComponent<T>(ComponentTypes componentType) where T : ComponentEcs
         {
             var comp = ComponentFactory.Create(componentType);
-            AddComponent(comp);
+	        //var comp = ComponentCache.Instance.Get(componentType);
+	        AddComponent(comp);
             return (T) comp;
         }
 
 
         public void AddComponent(ComponentEcs component)
         {
-            _components.Add(component.ObjectType, component);
-            if (EcsEngine.Instance != null)
-                EcsEngine.Instance.AddComponent(component);
+			component.Initialise(engine, this);
+
+			_components.Add(component.ObjectType, component);
+	        engine?.AddComponent(component);
         }
+
+	    public void RemoveComponent(ComponentEcs component)
+	    {
+		    _components.Remove(component.ObjectType);
+			engine.DestroyComponent(component);
+	    }
+
+	    public override string ToString()
+	    {
+		    return EntityName;
+	    }
     }
 }

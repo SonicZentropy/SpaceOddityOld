@@ -735,6 +735,7 @@ namespace ParticlePlaygroundLanguage {
 					i++;
 			}
 			AssetDatabase.CreateAsset(newLanguage, "Assets/"+PlaygroundSettingsC.reference.playgroundPath+PlaygroundSettingsC.reference.languagePath+newName+" "+i.ToString()+".asset");
+			//AssetDatabase.CreateAsset(newLanguage, PlaygroundSettingsC.reference.playgroundPath+PlaygroundSettingsC.reference.languagePath+newName+" "+i.ToString()+".asset");
 			AssetDatabase.SaveAssets();
 			return (PlaygroundLanguageC)AssetDatabase.LoadAssetAtPath ("Assets/"+PlaygroundSettingsC.reference.playgroundPath+PlaygroundSettingsC.reference.languagePath+newName+" "+i.ToString()+".asset", typeof(PlaygroundLanguageC));
 		}

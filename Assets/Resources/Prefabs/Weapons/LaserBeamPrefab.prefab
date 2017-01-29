@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 4744075234354378}
   - component: {fileID: 114041866975634402}
   - component: {fileID: 136104322162222582}
+  - component: {fileID: 114518357187174826}
   m_Layer: 13
   m_Name: LaserBeamPrefab
   m_TagString: Untagged
@@ -177,6 +178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c6e6ee694c9ec48b10c0efdd00d732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transform: {fileID: 0}
+  gameObject: {fileID: 0}
 --- !u!114 &114246188406143284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -190,6 +193,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ParticleScale: 2
   ScaleGameobject: 1
+--- !u!114 &114518357187174826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1894545003372652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b33437b34b28f947b3127559a8b97e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityTags: 32
+  tags: 128
 --- !u!136 &136104322162222582
 CapsuleCollider:
   m_ObjectHideFlags: 1
