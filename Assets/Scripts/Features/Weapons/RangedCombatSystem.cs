@@ -1,6 +1,6 @@
 ﻿// /** 
 //  * RangedCombatSystems.cs
-//  * Will Hart and Dylan Bailey
+//  * Dylan Bailey
 //  * 20161104
 // */
 
@@ -11,6 +11,7 @@ namespace Zenobit.Systems
 	using Common.ZenECS;
 	using Components;
 	using System.Collections.Generic;
+	using System.Linq;
 	using Common;
 	using UnityEngine;
 	using Zenobit.Common.Extensions;
@@ -75,11 +76,10 @@ namespace Zenobit.Systems
 
 			var weaponsToShoot = combat.GetComponent<ShipFittingsComp>().fittingList;
 
-			foreach (var fitting in weaponsToShoot)
+			foreach (var fitting in weaponsToShoot.Where(x => x.IsEnabled))
 			{
 				WeaponComp selectedWeapon = fitting.FittedWeapon;
-				if (selectedWeapon == null || selectedWeapon.IsFitted == false ||
-				    !UnitCanAttack(combat, selectedWeapon)) return;
+				if (selectedWeapon == null || !UnitCanAttack(combat, selectedWeapon)) return;
 
 				bool attacked = FireProjectile(selectedWeapon, entity.Wrapper.transform.forward);
 

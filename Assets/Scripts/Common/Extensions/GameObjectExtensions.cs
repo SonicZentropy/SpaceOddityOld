@@ -44,6 +44,11 @@ namespace Zenobit.Common.Extensions
 			return ((go.Tags & (long) tagToCheck) != 0);
 		}
 
+		public static bool HasNoTag(this GameObject go, Tags tagToCheck)
+		{
+			return ((go.Tags & (long) tagToCheck) == 0);
+		}
+
 		public static bool HasTagUpward(this GameObject go, Tags tagToCheck)
 		{
 			for (Transform g = go.transform; g != null; g = g.transform.parent)
@@ -80,6 +85,11 @@ namespace Zenobit.Common.Extensions
 		public static bool HasEntityTag(this GameObject go, EntityTags tagToCheck)
 		{
 			return ((go.EntityTags & (long) tagToCheck) != 0);
+		}
+
+		public static bool HasNoEntityTag(this GameObject go, EntityTags tagToCheck)
+		{
+			return ((go.EntityTags & (long) tagToCheck) == 0);
 		}
 
 		public static bool HasEntityTagUpward(this GameObject go, EntityTags tagToCheck)
@@ -144,22 +154,7 @@ namespace Zenobit.Common.Extensions
 	public enum Tags
 	{
 		//None = 0,
-		Player = 1 << 0,
-		NPC = 1 << 1,
-		Eclipse = 1 << 2,
-		Foreground = 1 << 3,
-		Middleground = 1 << 4,
-		Background = 1 << 5,
-		Lighting = 1 << 7,
-		Laser = 1 << 8,
-		Missile = 1 << 9,
-		Enemy = 1 << 10,
-		Ally = 1 << 11,
-		Station = 1 << 12,
-		Planet = 1 << 13,
-		Star = 1 << 14,
-		PlayerRangeTrigger = 1 << 15,
-		DisableDistanceTrigger = 1 << 16
+		Disabled = 1 << 0
 	}
 
 	public enum ECustomGOMapTypes

@@ -52,26 +52,6 @@ namespace Zenobit.Systems
 			if (!go.HasEntityTag(EntityTags.Ship))
 				ZenLogger.Log($"Working");
 			else ZenLogger.LogError($"FAIL");
-
-			if (go.HasTag(Tags.NPC))
-				ZenLogger.Log($"Working");
-			else ZenLogger.LogError($"FAIL");
-			if (go.HasTag(Tags.Station))
-				ZenLogger.Log($"Working");
-			else ZenLogger.LogError($"FAIL");
-			if (go.HasTag(Tags.DisableDistanceTrigger))
-				ZenLogger.Log($"Working");
-			else ZenLogger.LogError($"FAIL");
-
-			if (!go.HasTag(Tags.Player))
-				ZenLogger.Log($"Working");
-			else ZenLogger.LogError($"FAIL");
-			if (!go.HasTag(Tags.Ally))
-				ZenLogger.Log($"Working");
-			else ZenLogger.LogError($"FAIL");
-			if (!go.HasTag(Tags.Eclipse))
-				ZenLogger.Log($"Working");
-			else ZenLogger.LogError($"FAIL");
 		}
 	}
 }

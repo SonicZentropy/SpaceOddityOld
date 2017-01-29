@@ -1,10 +1,9 @@
-Version = 1.9.0.26281;
+Version = 1.11.0.32777;
 CParticleEffect	$LOCAL$/Resource
 {
 	EditorInfosPosition = int2(73, 52);
 	OnSpawn = "$LOCAL$/Spawner";
 	CustomAttributes = "$LOCAL$/_GlobalAttributes";
-	Autostart = true;
 }
 CNEdEditorParticle_Data	$LOCAL$/EDITOR
 {
@@ -17,7 +16,6 @@ CNEdEditorParticle_Data	$LOCAL$/EDITOR
 CActionFactoryParticleSpawnerBase	$LOCAL$/HitEffect1Flash
 {
 	EditorInfosPosition = int2(-288, -61);
-	EditorInfosIsBlockMinimized = 0;
 	Descriptor = "$LOCAL$/CParticleDescriptor_AE135B2A";
 }
 CParticleDescriptor	$LOCAL$/CParticleDescriptor_AE135B2A
@@ -49,6 +47,7 @@ CActionFactoryWithChilds	$LOCAL$/Spawner
 CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_9136D2F4
 {
 	EditorInfosPosition = int2(-508, -63);
+	CustomName = "Billboard";
 	Diffuse = "Textures/Perso/02_Benchmark/Hit/simpleFlash.png";
 }
 CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_5566F5E7
@@ -72,11 +71,13 @@ CParticleState	$LOCAL$/CParticleState_3AF8190E
 }
 CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_738DF981
 {
+	CustomName = "Billboard";
 	Diffuse = "Textures/Perso/02_Benchmark/Hit/thinRing.png";
 }
 CNEdEditorLightFactory	$LOCAL$/_Backdrop_Light_Factory
 {
 	NearClipPlane = 1.0000000e+002;
+	LightSize = 9.9999998e-003;
 	SpotFalloff = 8.8541701e-002;
 	Magnitude = 1.0000000e+005;
 }
@@ -86,6 +87,7 @@ CParticleAttributeList	$LOCAL$/_GlobalAttributes
 	AttributeList = 
 	{
 		"$LOCAL$/CParticleAttributeDeclaration_EBB9DC9F",
+		"$LOCAL$/CParticleAttributeDeclaration_0E965153",
 	};
 }
 CNEdEditorBackdrop_List	$LOCAL$/_BackdropList
@@ -110,8 +112,8 @@ CNEdEditorBackdrop_Light	$LOCAL$/_Backdrop_Light
 	LayerName = "GlobalLight";
 	Position = float3(1.1233553e+002, 2.8270447e+002, 2.2297581e+002);
 	EulerOrientation = float3(-4.8550171e+001, 2.6739031e+001, -9.5600376e-007);
-	LightDistance = 3.7717276e+002;
 	LightFactory = "$LOCAL$/_Backdrop_Light_Factory";
+	LightDistance = 3.7717276e+002;
 }
 CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_93AA17DF
 {
@@ -120,14 +122,15 @@ CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_93AA17DF
 }
 CParticleEvolver_Script	$LOCAL$/Script_1
 {
+	CustomName = "Script";
 	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_32326769";
 }
 CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_32326769
 {
 	Expression = "function void	Eval()
 {
-	Color = lerp(float3(1),float3(1,0.764,0.329),LifeRatio).xyz1 * float4(1-LifeRatio).111w;
-	
+	//Color = lerp(float3(1),float3(1,0.764,0.329),LifeRatio).xyz1 * float4(1-LifeRatio).111w;
+	Color = HitColor * float4(1 - LifeRatio).111w;
 }
 ";
 }
@@ -154,6 +157,7 @@ CParticleDescriptor	$LOCAL$/CParticleDescriptor_5E9E5B15
 CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_F9B8DCFC
 {
 	EditorInfosPosition = int2(-508, -63);
+	CustomName = "Billboard";
 	Diffuse = "Textures/Perso/02_Benchmark/Hit/simpleFlash.png";
 }
 CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_667E016F
@@ -195,26 +199,25 @@ CParticleState	$LOCAL$/CParticleState_3EF465D8
 }
 CParticleEvolver_Script	$LOCAL$/CParticleEvolver_Script_D2EA21F2
 {
+	CustomName = "Script";
 	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_33B38E9D";
 }
 CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_33B38E9D
 {
 	Expression = "function void	Eval()
 {
-	Color = lerp(float3(1),float3(1,0.764,0.329),LifeRatio).xyz1 * float4(1-LifeRatio).111w;
-	
+	//Color = lerp(float3(1),float3(1,0.764,0.329),LifeRatio).xyz1 * float4(1-LifeRatio).111w;
+	Color = HitColor * float4(1 - LifeRatio).111w;
 }
 ";
 }
 CActionFactoryParticleSpawnerBase	$LOCAL$/HitEffect1AfterFlash
 {
 	EditorInfosPosition = int2(-288, -61);
-	EditorInfosIsBlockMinimized = 0;
 	Descriptor = "$LOCAL$/CParticleDescriptor_5E9E5B15";
 }
 CActionFactoryParticleSpawnerBase	$LOCAL$/HitEffect1Ring
 {
-	EditorInfosIsBlockMinimized = 0;
 	Descriptor = "$LOCAL$/CParticleDescriptor_FE809EB7";
 }
 CParticleDescriptor	$LOCAL$/CParticleDescriptor_FE809EB7
@@ -245,13 +248,15 @@ CParticleFieldDeclaration	$LOCAL$/CParticleFieldDeclaration_2E7B2C5A
 }
 CParticleEvolver_Script	$LOCAL$/Script_2
 {
+	CustomName = "Script";
 	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_8602B525";
 }
 CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_8602B525
 {
 	Expression = "function void	Eval()
 {
-	Color = lerp(float3(1),float3(1,0.274,0),LifeRatio).xyz1 * float4(1-LifeRatio).111w;
+	//Color = lerp(float3(1),float3(1,0.274,0),LifeRatio).xyz1 * float4(1-LifeRatio).111w;
+	Color = HitColor * float4(1 - LifeRatio).111w;
 	Size = 1.5*pow(LifeRatio,0.5)*HitScale;
 }
 ";
@@ -289,12 +294,13 @@ CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_3F07D6FF
 	Velocity = vrand()*0.1*HitScale;
 	Axis = Velocity*float3(1,1,1*pi);
 	Position = vrand()*Axis*0.5*HitScale;
-	
+	Color = HitColor;
 }
 ";
 }
 CParticleRenderer_Billboard	$LOCAL$/CParticleRenderer_Billboard_1042B22E
 {
+	CustomName = "Billboard";
 	Diffuse = "Textures/Perso/02_Benchmark/Hit/falloffLightbeam.png";
 	BillboardMode = VelocityAxisAligned;
 	VFlipUVs = true;
@@ -311,9 +317,11 @@ CParticleState	$LOCAL$/CParticleState_6BBF0589
 }
 CParticleEvolver_Physics	$LOCAL$/Evolver_1
 {
+	CustomName = "Physics";
 }
 CParticleEvolver_Script	$LOCAL$/Script_3
 {
+	CustomName = "Script";
 	Expression = "$LOCAL$/CCompilerSyntaxNodeExpression_33FD9F43";
 }
 CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_33FD9F43
@@ -321,7 +329,8 @@ CCompilerSyntaxNodeExpression	$LOCAL$/CCompilerSyntaxNodeExpression_33FD9F43
 	Expression = "function void	Eval()
 {
 	Size = SizeInit*pow(LifeRatio,0.5);
-	Color = lerp(float3(1,0.972,0.478),float3(1,0.274,0),LifeRatio).xyz1 * float4(AlphaCurve.sample(LifeRatio)).111w;
+	//Color = lerp(float3(1,0.972,0.478),float3(1,0.274,0),LifeRatio).xyz1 * float4(AlphaCurve.sample(LifeRatio)).111w;
+	Color = HitColor * float4(AlphaCurve.sample(LifeRatio)).111w;
 }
 ";
 }
@@ -369,6 +378,16 @@ CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_EBB9DC9F
 {
 	AttributeName = "HitScale";
 	DefaultValueF4 = float4(1.0000000e+000, 0.0000000e+000, 0.0000000e+000, 0.0000000e+000);
+	HasMin = true;
+	HasMax = true;
+	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
+	MaxValueI4 = int4(10, 10, 10, 10);
+}
+CParticleAttributeDeclaration	$LOCAL$/CParticleAttributeDeclaration_0E965153
+{
+	AttributeName = "HitColor";
+	AttributeType = float4;
+	DefaultValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);
 	HasMin = true;
 	HasMax = true;
 	MaxValueF4 = float4(1.0000000e+000, 1.0000000e+000, 1.0000000e+000, 1.0000000e+000);

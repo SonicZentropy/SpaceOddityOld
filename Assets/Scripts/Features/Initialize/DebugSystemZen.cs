@@ -47,6 +47,7 @@ namespace Zenobit.Systems
 				  .AddSystem(new MissileAreaDamageSystem())
 				  .AddSystem(new MissileExplosionSystem())
 				  .AddSystem(new ShipDamageSystem())
+				  .AddSystem(new DeathRemovalSystem())
 				  
 				  .AddSystem(new InertialDamperSystem())
 				  .AddSystem(new CollisionCleanupSystem())

@@ -142,7 +142,7 @@ namespace Zenobit.Common.ZenECS
             var pc = e.GetComponent<UnityPrefabComp>();
 			//string prefabString
             GameObject go = pc.IsPooled
-                ? Resources.Load<GameObject>(pc.PrefabLink).InstantiateFromPool()
+                ? Res.CreateFromPool(pc.PrefabLink)//Resources.Load<GameObject>(pc.PrefabLink).InstantiateFromPool()
                 : Instantiate(Resources.Load<GameObject>(pc.PrefabLink));
 
             var ew = go.GetComponent<EntityWrapper>();

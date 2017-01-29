@@ -138,6 +138,16 @@ namespace Zenobit.Common.Extensions
 			return Mathf.Approximately(a, b);
 		}
 
+		public static bool IsNotAlmost(this float a, float b)
+		{
+			return !Mathf.Approximately(a, b);
+		}
+
+		public static bool IsNotAlmost(this float a, int b)
+		{
+			return !Mathf.Approximately(a, b);
+		}
+
 		public static string StripNonAlphanumeric(this string inString)
 		{
 			return new string(inString.Where(c => char.IsLetterOrDigit(c) || c == '_').ToArray());

@@ -59,47 +59,6 @@
             "Id": "00000000-0000-0000-0000-000000000000",
             "$type": "Zenobit.Components.CommandComp"
         },
-        "Zenobit.Components.AvailableWeaponsComp": {
-            "AvailableWeapons": [
-                {
-                    "laserInfoPacket": {
-                        "TimeToLive": 0.0,
-                        "ProjectileSpeed": 0.0,
-                        "StartPosition": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "fireDirection": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "OwningActorPos": null,
-                        "FiringWeaponComp": null,
-                        "laserFireType": "None"
-                    },
-                    "ShieldDamage": 10,
-                    "HullDamage": 10,
-                    "AttackRange": 50.0,
-                    "AttackRate": 0.5,
-                    "WeaponType": "Laser",
-                    "ResolutionType": "Raycast",
-                    "FiringSoundEffect": "Explosion",
-                    "ProjectileSpeed": 10.0,
-                    "ProjectileEntity": null,
-                    "IsFitted": false,
-                    "fittingAttached": null,
-                    "WeaponPrefab": "Prefabs/Player",
-                    "WeaponGameObject": null,
-                    "ProjectilePrefab": "Prefabs/Weapons/LaserBeamPrefab",
-                    "Id": "b92018a3-0ea2-4521-ad50-a4caf1130b17",
-                    "$type": "Zenobit.Components.LaserComp"
-                }
-            ],
-            "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.AvailableWeaponsComp"
-        },
         "Zenobit.Components.MeshComp": {
             "MeshFilter": null,
             "MeshRenderer": null,
@@ -174,8 +133,42 @@
         "Zenobit.Components.ShipFittingsComp": {
             "fittingList": [
                 {
-                    "FittedWeapon": null,
-                    "IsEnabled": false,
+                    "FittedWeapon": {
+                        "laserInfoPacket": {
+                            "TimeToLive": 0.0,
+                            "ProjectileSpeed": 0.0,
+                            "StartPosition": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "z": 0.0
+                            },
+                            "fireDirection": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "z": 0.0
+                            },
+                            "OwningActorPos": null,
+                            "FiringWeaponComp": null,
+                            "laserFireType": "None"
+                        },
+                        "ShieldDamage": 7,
+                        "HullDamage": 6,
+                        "AttackRange": 10.0,
+                        "AttackRate": 0.5,
+                        "WeaponType": "Laser",
+                        "ResolutionType": "Projectile",
+                        "FiringSoundEffect": "GunFire",
+                        "ProjectileSpeed": 10.0,
+                        "ProjectileEntity": null,
+                        "IsFitted": false,
+                        "fittingAttached": null,
+                        "WeaponPrefab": "None",
+                        "WeaponGameObject": null,
+                        "ProjectilePrefab": "Prefabs/Weapons/LaserBeamPrefab",
+                        "Id": "ab3e4e2d-2193-4b84-93ed-6acd2558c3f9",
+                        "$type": "Zenobit.Components.LaserComp"
+                    },
+                    "IsEnabled": true,
                     "PositionOffset": {
                         "x": 0.0,
                         "y": -0.116,
@@ -203,6 +196,20 @@
             "damagePackets": [],
             "Id": "00000000-0000-0000-0000-000000000000",
             "$type": "Zenobit.Components.DamageComp"
+        },
+        "Zenobit.Components.ShieldComp": {
+            "shieldTrigger": null,
+            "CurrentShieldEnergy": 50.0,
+            "MaxShieldEnergy": 50.0,
+            "ShieldRechargeRate": 5.0,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.ShieldComp"
+        },
+        "Zenobit.Components.HullComp": {
+            "MaxHull": 100.0,
+            "CurrentHull": 100.0,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zenobit.Components.HullComp"
         }
     }
 }

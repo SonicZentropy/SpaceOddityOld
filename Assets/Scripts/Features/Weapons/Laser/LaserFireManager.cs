@@ -26,9 +26,10 @@ public class LaserFireManager : Singleton<LaserFireManager>
 	private void FireProjectileLaser(LaserComp wc)
 	{
 		//var lpc = Resources.Load<GameObject>(wc.ProjectilePrefab);
-		var lpc = Res.Load(wc.ProjectilePrefab);
-		var lpcinst = lpc.InstantiateFromPool();
-		var laser = lpcinst.GetComponent<LaserProjectileController>();
+		//var lpc = Res.Load(wc.ProjectilePrefab);
+		//var lpcinst = lpc.InstantiateFromPool();
+		var ll = Res.CreateFromPool(wc.ProjectilePrefab);
+		var laser = ll.GetComponent<LaserProjectileController>();
 		laser.InitFromLaserInfo(wc.laserInfoPacket);
 		
 	}

@@ -15,8 +15,8 @@
 
 			exp.transform.position = position;
 
-			var ps = (ParticleSystem) exp.GetComponent(typeof(ParticleSystem));
-			exp.ReleaseDelayed(ps.duration + ps.startLifetime);
+			//var ps = (ParticleSystem) exp.GetComponent(typeof(ParticleSystem));
+			//exp.ReleaseDelayed(ps.duration + ps.startLifetime);
 		}
 
 		//public static GameObject Create(string explosionToCreate)

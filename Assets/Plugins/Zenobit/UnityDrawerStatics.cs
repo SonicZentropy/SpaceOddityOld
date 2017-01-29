@@ -25,7 +25,7 @@ public static class UnityDrawerStatics
 		PrefabList = FindAllFilesRecursively(Application.dataPath + "/Resources/Prefabs/", ".prefab")
 			.Select(
 				f => f.FullName.Replace(@"\", @"/")
-					.Replace(Application.dataPath.Replace(@"\", @"/") + "/Resources/Prefabs/", "")
+					.Replace(Application.dataPath.Replace(@"\", @"/") + "/Resources/", "")
 					.Replace(".prefab", ""))
 			.ToArray();
 	}

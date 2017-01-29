@@ -5,6 +5,7 @@ using System;
 namespace AdvancedInspector
 {
 	using System.Collections.Generic;
+	using System.Linq;
 
 	public class StringEditor : FieldEditor
     {
@@ -85,9 +86,17 @@ namespace AdvancedInspector
 				if (String.IsNullOrEmpty(text.Path))
 				{
 					string prefabRemoved = field.GetValue<string>().Replace("Prefabs/", "");
-					int sel = Math.Max(Array.IndexOf(UnityDrawerStatics.PrefabList, prefabRemoved), 0);
-					int idx = EditorGUILayout.Popup(sel, UnityDrawerStatics.PrefabList);
-					result = "Prefabs/" + UnityDrawerStatics.PrefabList[idx];
+					//string prefabRemoved = field.GetValue<string>();
+					string[] PrefabListNoPrefix = UnityDrawerStatics.PrefabList
+					                                                .Select(x => x.Replace("Prefabs/", ""))
+					                                                .ToArray();
+
+					//int sel = Math.Max(Array.IndexOf(UnityDrawerStatics.PrefabList, prefabRemoved), 0);
+					int sel = Math.Max(Array.IndexOf(PrefabListNoPrefix, prefabRemoved), 0);
+					int idx = EditorGUILayout.Popup(sel, PrefabListNoPrefix);
+					//result = "Prefabs/" + UnityDrawerStatics.PrefabList[idx];
+					//result = UnityDrawerStatics.PrefabList[idx];
+					result = "Prefabs/" + PrefabListNoPrefix[idx];
 				}
 				else
 				{

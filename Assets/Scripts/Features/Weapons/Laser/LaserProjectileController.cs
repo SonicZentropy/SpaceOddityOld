@@ -74,7 +74,7 @@ public class LaserProjectileController : ZenBehaviour, IOnUpdate
 			ZenLogger.Log($"Adding dmg component to ship");
 			go.GetEntity().GetComponent<DamageComp>().damagePackets.Push(new DamagePacket(10, 10));
 		}
-		Explosions.Create(Res.Prefabs.Explosion_01, transform.position);
+		Explosions.Create(Res.Prefabs.ExplosionPFX_Blue, transform.position);
 		gameObject.Release();
 	}
 

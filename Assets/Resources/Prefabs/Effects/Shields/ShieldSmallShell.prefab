@@ -122,7 +122,9 @@ MonoBehaviour:
       MinMaxFlag: 3
       Name: MaxCocRadius
       Description: 'Radius of the Bokeh when fully out of focus.\n(Warning: larger
-        values can quickly become EXTREMELTY HEAVY on overdraw\nand can b'
+        values can quickly become EXTREMELTY HEAVY on overdraw\nand can b)
+
+'
       DefaultValue0: 0.017
       DefaultValue1: 0
       DefaultValue2: 0

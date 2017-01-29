@@ -16,7 +16,7 @@ namespace Zenobit.Common.Automation
 	public static class ResCodeGenerator
 	{
 		public static readonly string ResFilePath;
-		public static bool AutoGenerate = false;
+		public static bool AutoGenerate = true;
 
 		//[MenuItem("Zenobit/Enable Res File Auto Generation")]
 		public static void EnableGenerateCode()

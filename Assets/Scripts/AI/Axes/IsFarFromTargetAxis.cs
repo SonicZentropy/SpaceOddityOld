@@ -27,7 +27,7 @@ namespace Zenobit.AI.Axes
 
         public float Score(AiContext context)
         {
-            var target = EcsEngine.Instance.GetById<HealthComp>(context.State.AttackTargetHealth);
+            var target = EcsEngine.Instance.GetById<HullComp>(context.State.AttackTargetHealth);
 
             if (target?.Owner == null) return 1;
 

@@ -12,12 +12,12 @@
 
 	public struct DamagePacket
 	{
-		public float HealthDamage;
+		public float HullDamage;
 		public float ShieldDamage;
 
-		public DamagePacket(float _healthDamage, float _shieldDamage)
+		public DamagePacket(float hullDamage, float _shieldDamage)
 		{
-			HealthDamage = _healthDamage;
+			HullDamage = hullDamage;
 			ShieldDamage = _shieldDamage;
 		}
 	}

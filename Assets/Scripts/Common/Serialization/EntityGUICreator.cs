@@ -102,7 +102,18 @@ namespace Zenobit.Serialization
 			{
 				Reset();
 				_entityLoad = Application.dataPath + "/Resources/Entities/" + value + ".json";
-				LoadJson(_entityLoad);
+
+				try
+				{
+					LoadJson(_entityLoad);
+				}
+				catch (Exception e)
+				{
+					Debug.LogError($"Can't load entity: {e.Message}");
+					Reset();
+				}
+
+
 				_entityLoad = value;
 				EntityName = value;
 				AvoidDirtyFlag = true;

@@ -11,6 +11,7 @@ namespace Zenobit.Systems
 	using System.Collections.Generic;
 	using Common.ZenECS;
 	using Components;
+	using UnityEngine;
 
 	#endregion
 
@@ -33,9 +34,35 @@ namespace Zenobit.Systems
 				for (int j = 0; j < dam.damagePackets.Count; j++)
 				{
 					var damageDone = dam.damagePackets.Pop();
-					ZenLogger.Log($"Dealing damage to ship: {damageDone.HealthDamage}");
+					ZenLogger.Log($"Dealing damage to ship: {damageDone.HullDamage}");
+					ApplyDamage(ref damageDone, matches[i]);
 				}
 			}
+		}
+
+		public void ApplyDamage(ref DamagePacket dp, Entity e)
+		{
+			var shield = e.GetComponent<ShieldComp>();
+			var hull   = e.GetComponent<HullComp>();
+
+			if (shield.CurrentShieldEnergy > 0)
+			{
+				shield.CurrentShieldEnergy -= dp.ShieldDamage;
+				dp.HullDamage -= dp.ShieldDamage;
+				e.GetComponent<ShieldComp>().shieldTrigger.TriggerShield();
+			}
+
+			if (shield.CurrentShieldEnergy <= 0)
+			{
+				dp.HullDamage += Mathf.Abs(shield.CurrentShieldEnergy) / dp.ShieldDamage; // Add hull dmg ratio
+				shield.CurrentShieldEnergy = 0;
+			}
+			else
+			{
+				return; //Don't deal hull damage since shields absorbed it all
+			}
+
+			hull.CurrentHull -= dp.HullDamage;
 		}
 	}
 }

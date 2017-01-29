@@ -11,8 +11,9 @@ namespace Zenobit.Common.ZenECS
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Zenobit.Common.Extensions;
 
-    #endregion
+	#endregion
 
     public class Matcher
     {
@@ -53,15 +54,32 @@ namespace Zenobit.Common.ZenECS
 			return this;
 	    }
 
-        public List<Entity> GetMatches()
+        public List<Entity> GetMatches(bool GetDisabled = false)
         {
             if (!_match.Any()) return new List<Entity>();
 
-            if (_storedGuid == EcsEngine.Instance.CurrentHash) return _matchedEntities;
+	        if (_storedGuid == EcsEngine.Instance.CurrentHash)
+	        {
+		        if (GetDisabled)
+		        {
+			        return _matchedEntities;
+		        }
+		        else
+		        {
+			        return _matchedEntities.Where(x => x.Wrapper.gameObject.HasNoTag(Tags.Disabled)).ToList();
+		        }
+	        }
 
             RefreshMatchedEntities();
             _storedGuid = EcsEngine.Instance.CurrentHash;
-            return _matchedEntities;
+	        if (GetDisabled)
+	        {
+		        return _matchedEntities;
+	        }
+	        else
+	        {
+		        return _matchedEntities.Where(x => x.Wrapper.gameObject.HasNoTag(Tags.Disabled)).ToList();
+	        }
         }
 
         private void RefreshMatchedEntities()
