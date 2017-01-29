@@ -11,6 +11,18 @@
 		[Inspect]
 		public List<ShipFitting> fittingList = new List<ShipFitting>();
 
+		public override void Initialise(EcsEngine _engine, Entity owner)
+		{
+			base.Initialise(_engine, owner);
+			foreach (var fitting in fittingList)
+			{
+				if (fitting.FittedWeapon != null)
+				{
+					fitting.FittedWeapon.fittingAttached = fitting;
+				}
+			}
+		}
+
 		public override ComponentTypes ComponentType => ComponentTypes.ShipFittingsComp;
 	}
 
