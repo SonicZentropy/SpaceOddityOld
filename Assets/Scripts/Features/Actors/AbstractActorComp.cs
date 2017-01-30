@@ -5,7 +5,7 @@
 
 	public class AbstractActorComp : ComponentEcs
 	{
-		[TextField(TextFieldType.Prefab)]
+		[TextField(TextFieldType.Prefab, "Ships")]
 		[Inspect(90)]
 		public string CurrentShip;
 

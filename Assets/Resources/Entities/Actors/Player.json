@@ -161,7 +161,9 @@
                         "ProjectileSpeed": 10.0,
                         "ProjectileEntity": null,
                         "IsFitted": false,
-                        "fittingAttached": null,
+                        "fittingAttached": {
+                            "$ref": "19"
+                        },
                         "WeaponPrefab": "None",
                         "WeaponGameObject": null,
                         "ProjectilePrefab": "Prefabs/Weapons/LaserBeamPrefab",
@@ -181,7 +183,75 @@
                         "w": 1.0
                     },
                     "WeaponFittingGO": null,
-                    "WeaponTypesAllowed": "Laser"
+                    "WeaponTypesAllowed": "Laser",
+                    "$id": "19"
+                },
+                {
+                    "FittedWeapon": {
+                        "missileInfoPacket": {
+                            "TimeToLive": 10.0,
+                            "ExplosionImpactRadius": 1.0,
+                            "ExplosionForce": 10.0,
+                            "ShieldDamage": 0.0,
+                            "HullDamage": 0.0,
+                            "FlightSpeed": 0.0,
+                            "RotationSpeed": 10.0,
+                            "StartPosition": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "z": 0.0
+                            },
+                            "fireDirection": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "z": 0.0
+                            },
+                            "OwningActorPos": null,
+                            "FiringWeaponComp": null,
+                            "ShouldDisperse": false,
+                            "DispersalTime": 0.0,
+                            "DispersalRandomTime": 0.0,
+                            "DetonationDistance": 0.0,
+                            "PIDNavigationalConstant": 0.0,
+                            "missileFireType": "Dumbfire",
+                            "target": null,
+                            "missileHomingMethod": "None"
+                        },
+                        "numberSwarmMissiles": 1,
+                        "ShieldDamage": 10,
+                        "HullDamage": 10,
+                        "AttackRange": 10.0,
+                        "AttackRate": 1.0,
+                        "WeaponType": "Missile",
+                        "ResolutionType": "Projectile",
+                        "FiringSoundEffect": "GunFire",
+                        "ProjectileSpeed": 10.0,
+                        "ProjectileEntity": "Weapons/DumbfireMissile",
+                        "IsFitted": false,
+                        "fittingAttached": {
+                            "$ref": "21"
+                        },
+                        "WeaponPrefab": "Prefabs/EmpyGO",
+                        "WeaponGameObject": null,
+                        "ProjectilePrefab": "None",
+                        "Id": "2738919a-cb4e-46b3-b5b5-6c1d8d1ebb35",
+                        "$type": "Zenobit.Components.MissileComp"
+                    },
+                    "IsEnabled": true,
+                    "PositionOffset": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "RotationOffset": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0,
+                        "w": 1.0
+                    },
+                    "WeaponFittingGO": null,
+                    "WeaponTypesAllowed": "Missile",
+                    "$id": "21"
                 }
             ],
             "Id": "00000000-0000-0000-0000-000000000000",

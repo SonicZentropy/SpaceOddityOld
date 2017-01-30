@@ -67,19 +67,19 @@ namespace Forge3D
         bool unClickedBarrel ;
         private bool isGUIStylesLoaded;
 
-        [MenuItem("FORGE3D/Turrets/Add default")]
+        //[MenuItem("FORGE3D/Turrets/Add default")]
         private static void AddDefault()
         {
             AddToSceneConstructor();
         }
 
-        [MenuItem("FORGE3D/Turrets/Add default at current selection")]
+        //[MenuItem("FORGE3D/Turrets/Add default at current selection")]
         private static void AddDefaultAtSelection()
         {
             AddToSceneConstructorSelection();
         }
 
-        [MenuItem("FORGE3D/Turrets/Turret Editor...")]
+        //[MenuItem("FORGE3D/Turrets/Turret Editor...")]
         private static void OpenTurretEditor()
         {
             ShowWindow();

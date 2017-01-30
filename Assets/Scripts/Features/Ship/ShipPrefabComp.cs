@@ -17,7 +17,7 @@ namespace Zenobit.Components
 	public class ShipPrefabComp : ComponentEcs
 	{
 		[Inspect]
-		[TextField(TextFieldType.Prefab)]
+		[TextField(TextFieldType.Prefab, "Ships")]
 		public string ShipPrefab = "Prefabs/None";
 
 		[Inspect]

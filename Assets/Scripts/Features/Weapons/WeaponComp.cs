@@ -10,7 +10,6 @@ namespace Zenobit.Components
 {
 	#region Dependencies
 
-	using System;
 	using AdvancedInspector;
 	using Common.Audio;
 	using UnityEngine;
@@ -43,7 +42,7 @@ namespace Zenobit.Components
 		[Inspect]
 		public SfxTypes FiringSoundEffect { get; set; } = SfxTypes.GunFire;
 
-		[TextField(TextFieldType.Prefab)] public string WeaponPrefab = "None";
+		[TextField(TextFieldType.Prefab, "Weapons")] public string WeaponPrefab = "None";
 
 		[HideInInspector]public GameObject WeaponGameObject;
 
@@ -76,17 +75,8 @@ namespace Zenobit.Components
 		[HideInInspector]
 		public bool IsFitted { get; set; }
 
-		private float _nextAttackTime;
 		[HideInInspector]
-		public float NextAttackTime
-		{
-			get { return _nextAttackTime; }
-			set
-			{
-				//Debug.Log("Setting next atk time to " + value);
-				_nextAttackTime = value;
-			}
-		}
+		public float NextAttackTime { get; set; }
 
 		[Inspect(500)]
 		public ShipFitting fittingAttached { get; set; }

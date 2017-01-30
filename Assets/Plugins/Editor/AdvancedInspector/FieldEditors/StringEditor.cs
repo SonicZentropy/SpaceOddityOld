@@ -139,7 +139,7 @@ namespace AdvancedInspector
 		    {
 			    if (prefab.Contains(inPath))
 			    {
-				    newList.Add(prefab);
+				    newList.Add(prefab.Replace("Prefabs/", ""));
 			    }
 		    }
 

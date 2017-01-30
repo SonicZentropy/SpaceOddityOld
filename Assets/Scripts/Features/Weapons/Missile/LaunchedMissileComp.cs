@@ -7,7 +7,7 @@
 	public class LaunchedMissileComp : ComponentEcs
 	{
 		[Inspect]
-		[TextField(TextFieldType.Prefab)]
+		[TextField(TextFieldType.Prefab, "Explosions")]
 		public string ExplosionPrefabLink = "Prefabs/None";
 
 		[HideInInspector] public GameObject ExplosionPrefab;

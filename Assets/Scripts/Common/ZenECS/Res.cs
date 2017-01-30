@@ -54,16 +54,16 @@ namespace Zenobit.Common
 			public const string Frigate = "Prefabs/Ships/Frigate";
 			public const string MK6_Strike_Drone = "Prefabs/Ships/MK6_Strike_Drone";
 			public const string Ship_Corvette = "Prefabs/Ships/Ship_Corvette";
-			public const string DumbfireMissile = "Prefabs/Weapons/DumbfireMissile";
-			public const string HomingMissile = "Prefabs/Weapons/HomingMissile";
-			public const string LaserBeamPrefab = "Prefabs/Weapons/LaserBeamPrefab";
-			public const string LaserBeamPrefabLR = "Prefabs/Weapons/LaserBeamPrefabLR";
-			public const string laser_impulse_projectile_002 = "Prefabs/Weapons/laser_impulse_projectile_002";
-			public const string PIDMissile = "Prefabs/Weapons/PIDMissile";
-			public const string plasma_gun_bolt = "Prefabs/Weapons/plasma_gun_bolt";
-			public const string plasma_gun_projectile_001 = "Prefabs/Weapons/plasma_gun_projectile_001";
-			public const string plasma_gun_projectile_002 = "Prefabs/Weapons/plasma_gun_projectile_002";
-			public const string SwarmMissile = "Prefabs/Weapons/SwarmMissile";
+			public const string DumbfireMissile = "Prefabs/Weapons/Projectiles/DumbfireMissile";
+			public const string HomingMissile = "Prefabs/Weapons/Projectiles/HomingMissile";
+			public const string LaserBeamPrefab = "Prefabs/Weapons/Projectiles/LaserBeamPrefab";
+			public const string LaserBeamPrefabLR = "Prefabs/Weapons/Projectiles/LaserBeamPrefabLR";
+			public const string laser_impulse_projectile_002 = "Prefabs/Weapons/Projectiles/laser_impulse_projectile_002";
+			public const string PIDMissile = "Prefabs/Weapons/Projectiles/PIDMissile";
+			public const string plasma_gun_bolt = "Prefabs/Weapons/Projectiles/plasma_gun_bolt";
+			public const string plasma_gun_projectile_001 = "Prefabs/Weapons/Projectiles/plasma_gun_projectile_001";
+			public const string plasma_gun_projectile_002 = "Prefabs/Weapons/Projectiles/plasma_gun_projectile_002";
+			public const string SwarmMissile = "Prefabs/Weapons/Projectiles/SwarmMissile";
 		}
 			
 		private static Dictionary<string, GameObject> LoadCache = new Dictionary<string,GameObject>();

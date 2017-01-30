@@ -17,7 +17,8 @@ namespace Zenobit.Components
 
     public class UnityPrefabComp : ComponentEcs
     {
-        [Inspect] [TextField(TextFieldType.Prefab)] public string PrefabLink = "Prefabs/None";
+        [Inspect, TextField(TextFieldType.Prefab)]
+        public string PrefabLink = "Prefabs/None";
 
         [Inspect]
         public bool IsPooled { get; set; }

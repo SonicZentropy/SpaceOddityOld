@@ -20,7 +20,12 @@
         },
         "Zenobit.Components.UnityPrefabComp": {
             "IsPooled": true,
-            "PrefabLink": "Prefabs/Weapons/SwarmMissile",
+            "PrefabLink": "Prefabs/Weapons/Projectiles/SwarmMissile",
+            "layer": {
+                "value": 8192
+            },
+            "entityTags": "IsEntity,IsProjectile",
+            "tags": "",
             "Id": "00000000-0000-0000-0000-000000000000",
             "$type": "Zenobit.Components.UnityPrefabComp"
         },

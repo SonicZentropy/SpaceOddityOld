@@ -20,7 +20,12 @@
         },
         "Zenobit.Components.UnityPrefabComp": {
             "IsPooled": true,
-            "PrefabLink": "Prefabs/Weapons/HomingMissile",
+            "PrefabLink": "Prefabs/Weapons/Projectiles/HomingMissile",
+            "layer": {
+                "value": 8192
+            },
+            "entityTags": "IsEntity,IsProjectile",
+            "tags": "",
             "Id": "00000000-0000-0000-0000-000000000000",
             "$type": "Zenobit.Components.UnityPrefabComp"
         },
@@ -36,7 +41,7 @@
                 "ExplosionForce": 0.0,
                 "ShieldDamage": 0.0,
                 "HullDamage": 0.0,
-                "ProjectileSpeed": 0.0,
+                "FlightSpeed": 0.0,
                 "RotationSpeed": 0.0,
                 "StartPosition": {
                     "x": 0.0,
@@ -50,14 +55,14 @@
                 },
                 "OwningActorPos": null,
                 "FiringWeaponComp": null,
-                "missileFireType": "Dumbfire",
-                "target": null,
                 "ShouldDisperse": false,
                 "DispersalTime": 0.0,
+                "DispersalRandomTime": 0.0,
                 "DetonationDistance": 0.0,
                 "PIDNavigationalConstant": 0.0,
-                "missileHomingMethod": "None",
-                "missileRetargetBehavior": "SelfDestruct"
+                "missileFireType": "Dumbfire",
+                "target": null,
+                "missileHomingMethod": "None"
             },
             "layerMask": {
                 "value": 0
@@ -65,7 +70,11 @@
             "detonationDistance": 1.0,
             "despawnDelay": 0.0,
             "RaycastAdvance": 2.0,
-            "dispersalTime": 2.0,
+            "dispersalTarget": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
             "previousLos": {
                 "x": 0.0,
                 "y": 0.0,
@@ -92,8 +101,9 @@
             "xRandom": 0.01,
             "yRandom": 0.01,
             "zRandom": 0.01,
-            "swarmRandomRange": 0.1,
+            "clusterRandomRange": 0.1,
             "randomSwirlOffset": 50.0,
+            "randomSwirlRotation": 10.0,
             "isFXSpawned": false,
             "targetLastPos": {
                 "x": 0.0,

@@ -100,7 +100,8 @@ namespace Zenobit.Common.ZenECS
 				aacomp = e.GetComponent<PlayerComp>();
 		    var shipToCreate = aacomp?.CurrentShip;
 
-		    GameObject ship = Instantiate(Resources.Load<GameObject>(shipToCreate));
+		    //GameObject ship = Instantiate(Resources.Load<GameObject>(shipToCreate));
+		    GameObject ship = Res.Instantiate(shipToCreate);
 		    ship.transform.SetParent(e.Wrapper.transform);
 
 		    //if (e.HasComponent(ComponentTypes.CameraComp))

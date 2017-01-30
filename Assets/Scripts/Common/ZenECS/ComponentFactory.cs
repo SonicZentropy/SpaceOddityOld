@@ -64,10 +64,10 @@ namespace Zenobit.Common.ZenECS
 			{ComponentTypes.UIRootComp, typeof(UIRootComp)},
 			{ComponentTypes.UISpriteComp, typeof(UISpriteComp)},
 			{ComponentTypes.UIWidgetComp, typeof(UIWidgetComp)},
-
 			{ComponentTypes.ShipFittingsComp, typeof(ShipFittingsComp)},
 			{ComponentTypes.WeaponComp, typeof(WeaponComp)},
 			{ComponentTypes.LaserComp, typeof(LaserComp)},
+			{ComponentTypes.LauncherComp, typeof(LauncherComp)},
 			{ComponentTypes.LaunchedMissileComp, typeof(LaunchedMissileComp)},
 			{ComponentTypes.MissileAreaDamageComp, typeof(MissileAreaDamageComp)},
 			{ComponentTypes.MissileComp, typeof(MissileComp)}
@@ -133,10 +133,10 @@ namespace Zenobit.Common.ZenECS
 		UIRootComp,
 		UISpriteComp,
 		UIWidgetComp,
-		AvailableWeaponsComp,
 		ShipFittingsComp,
 		WeaponComp,
 		LaserComp,
+		LauncherComp,
 		LaunchedMissileComp,
 		MissileAreaDamageComp,
 		MissileComp

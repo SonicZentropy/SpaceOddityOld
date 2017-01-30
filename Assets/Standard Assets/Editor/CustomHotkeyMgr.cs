@@ -6,7 +6,7 @@ public class CustomHotkeyMgr : Editor {
     
     private static Object selectedGO;
     
-    [MenuItem( "Tools/BreakPrefab %b" )]
+    [MenuItem( "GameObject/Zen/BreakPrefab %b" )]
     public static void Break()
     {
         selectedGO = Selection.activeObject;
