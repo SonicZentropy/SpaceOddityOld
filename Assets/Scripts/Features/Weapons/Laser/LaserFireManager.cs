@@ -1,10 +1,9 @@
-﻿using System;
-//using DigitalRuby.FastLineRenderer;
+﻿//using DigitalRuby.FastLineRenderer;
+
 using UnityEngine;
-using Zenobit.Common;
-using Zenobit.Common.Extensions;
-using Zenobit.Common.ObjectPool;
-using Zenobit.Components;
+using Zen.Common;
+using Zen.Common.Extensions;
+using Zen.Components;
 
 public class LaserFireManager : Singleton<LaserFireManager>
 {
@@ -29,6 +28,7 @@ public class LaserFireManager : Singleton<LaserFireManager>
 		//var lpc = Res.Load(wc.ProjectilePrefab);
 		//var lpcinst = lpc.InstantiateFromPool();
 		var ll = Res.CreateFromPool(wc.ProjectilePrefab);
+
 		var laser = ll.GetComponent<LaserProjectileController>();
 		laser.InitFromLaserInfo(wc.laserInfoPacket);
 		

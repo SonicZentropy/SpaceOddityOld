@@ -4,7 +4,7 @@
 //  * 20161205
 // */
 
-namespace Zenobit.Systems
+namespace Zen.Systems
 {
     public interface IEcsSystem
     {

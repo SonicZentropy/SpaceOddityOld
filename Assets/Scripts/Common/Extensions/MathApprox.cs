@@ -7,7 +7,7 @@
 
 #pragma warning disable 0414, 0219, 649, 169, 1570
 
-namespace Zenobit.Common.Extensions
+namespace Zen.Common.Extensions
 {
     #region Dependencies
 

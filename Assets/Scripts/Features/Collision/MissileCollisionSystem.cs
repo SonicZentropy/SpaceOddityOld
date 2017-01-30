@@ -1,15 +1,13 @@
 ﻿// /**
 // * MissileCollisionSystem
-// * Will Hart and Dylan Bailey
+// * Dylan Bailey
 // * 1/14/2017
 // */
 
-namespace Zenobit.Systems
+namespace Zen.Systems
 {
 	#region Dependencies
 
-	using System.Collections.Generic;
-	using AdvancedInspector;
 	using Common.Extensions;
 	using Common.ZenECS;
 	using Components;

@@ -1,10 +1,10 @@
 ﻿// /** 
 // * PlayerMechAiBundle.cs
-// * Will Hart and Dylan Bailey
+// * Dylan Bailey
 // * 20161215
 // */
 
-namespace Zenobit.AI.Bundles
+namespace Zen.AI.Bundles
 {
 	#region Dependencies
 

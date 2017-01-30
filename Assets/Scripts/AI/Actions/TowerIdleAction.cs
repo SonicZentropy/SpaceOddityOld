@@ -4,12 +4,12 @@
 //  * 20161116
 // */
 
-namespace Zenobit.AI.Actions
+namespace Zen.AI.Actions
 {
     #region Dependencies
 
     using System.Collections.Generic;
-    using Zenobit.AI.Axes;
+    using Zen.AI.Axes;
 
     #endregion
 

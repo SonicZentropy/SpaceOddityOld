@@ -4,7 +4,7 @@
 //  * 20161104
 // */
 
-namespace Zenobit.Weapons.Lightsaber
+namespace Zen.Weapons.Lightsaber
 {
     #region Dependencies
 

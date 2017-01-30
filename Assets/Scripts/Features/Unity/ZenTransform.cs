@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Runtime.CompilerServices;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Internal;
-using UnityEngine.Scripting;
 
 #pragma warning disable 1587
 

@@ -4,7 +4,7 @@
 //  * 20161103
 // */
 
-namespace Zenobit.AI.Actions
+namespace Zen.AI.Actions
 {
     #region Dependencies
 
@@ -14,10 +14,7 @@ namespace Zenobit.AI.Actions
     using Core;
     using UnityEngine;
 
-    using Zenobit.Components;
-    using Common.ZenECS;
-
-    #endregion
+	#endregion
 
     /// <summary>
     /// Sets navigation targets at set intervals

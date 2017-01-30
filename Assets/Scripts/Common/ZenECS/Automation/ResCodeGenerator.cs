@@ -1,30 +1,29 @@
 ﻿// /** 
 //  * ResCodeGenerator.cs
-//  * Will Hart and Dylan Bailey
+//  * Dylan Bailey
 //  * 2017
 // */
 
-namespace Zenobit.Common.Automation
+namespace Zen.Common.Automation
 {
 	using System.IO;
-	using System.Linq;
 	using Extensions;
 	using UnityEditor;
 	using UnityEngine;
-	using Zenobit.Editor.Utils;
+	using Zen.Editor.Utils;
 
 	public static class ResCodeGenerator
 	{
 		public static readonly string ResFilePath;
 		public static bool AutoGenerate = true;
 
-		//[MenuItem("Zenobit/Enable Res File Auto Generation")]
+		//[MenuItem("Zen/Enable Res File Auto Generation")]
 		public static void EnableGenerateCode()
 		{
 			AutoGenerate = true;
 		}
 
-		//[MenuItem("Zenobit/Disable Res File Auto Generation")]
+		//[MenuItem("Zen/Disable Res File Auto Generation")]
 		public static void DisableGenerateCode()
 		{
 			AutoGenerate = false;
@@ -37,10 +36,10 @@ namespace Zenobit.Common.Automation
 
 		public const string HEADER_FORMAT = @"using UnityEngine;
 
-namespace Zenobit.Common
+namespace Zen.Common
 {
     using System.Collections.Generic;
-	using Zenobit.Common.ObjectPool;
+	using Zen.Common.ObjectPool;
 
 	public static class Res
 	{
@@ -75,7 +74,7 @@ namespace Zenobit.Common
 
 		public static string EntityListFormatted;
 
-		[MenuItem("Zenobit/Generate Res File", false, 60)]
+		[MenuItem("Zen/Generate Res File", false, 60)]
 		public static void ForcedGenerateCode()
 		{
 			bool autoState = AutoGenerate;

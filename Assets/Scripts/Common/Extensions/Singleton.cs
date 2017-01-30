@@ -4,7 +4,7 @@
 //  * 20161210
 // */
 
-namespace Zenobit.Common.Extensions
+namespace Zen.Common.Extensions
 {
     /// <summary>
     ///     Be aware this will not prevent a non singleton constructor

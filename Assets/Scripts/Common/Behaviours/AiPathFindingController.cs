@@ -4,15 +4,14 @@
 //  * 20161103
 // */
 
-namespace Zenobit.Common.Behaviours
+namespace Zen.Common.Behaviours
 {
     #region Dependencies
 
 	using System;
 	using Pathfinding;
-    using UnityEngine;
-    using ZenECS;
-    using Zenobit.Components;
+	using ZenECS;
+    using Zen.Components;
 
     #endregion
 

@@ -1,8 +1,8 @@
-﻿namespace Zenobit.Common.Behaviours.CustomInit
+﻿namespace Zen.Common.Behaviours.CustomInit
 {
 	using AdvancedInspector;
 	using UnityEngine;
-	using Zenobit.Common.Extensions;
+	using Zen.Common.Extensions;
 
 	public class EntityTagInitBehaviour : MonoBehaviour
 	{

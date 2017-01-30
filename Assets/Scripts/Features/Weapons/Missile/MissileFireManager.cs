@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
 using MEC;
 using UnityEngine;
-using Zenobit.Common;
-using Zenobit.Common.Extensions;
-using Zenobit.Common.ObjectPool;
-using Zenobit.Common.ZenECS;
-using Zenobit.Components;
-using Zenobit.Weapons;
+using Zen.Common;
+using Zen.Common.Extensions;
+using Zen.Common.ZenECS;
+using Zen.Components;
 
 public class MissileFireManager : Singleton<MissileFireManager>
 {
@@ -26,6 +24,7 @@ public class MissileFireManager : Singleton<MissileFireManager>
 				FireHomingMissile(wc);
 				break;
 		}
+
 	}
 
 	private void FireMissile(MissileComp wc)

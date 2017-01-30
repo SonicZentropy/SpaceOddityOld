@@ -1,10 +1,10 @@
 ﻿// /**
 // * PositionUpdateSystem.cs
-// * Will Hart and Dylan Bailey
+// * Dylan Bailey
 // * 20161211
 // */
 
-namespace Zenobit.Systems
+namespace Zen.Systems
 {
     #region Dependencies
 

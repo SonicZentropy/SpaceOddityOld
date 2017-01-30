@@ -4,12 +4,11 @@
 //  * 20161104
 // */
 
-namespace Zenobit.Weapons.Lightsaber
+namespace Zen.Weapons.Lightsaber
 {
     #region Dependencies
 
     using UnityEngine;
-    using System.Collections;
     using System.Collections.Generic;
     using System;
     using Common.ObjectPool;

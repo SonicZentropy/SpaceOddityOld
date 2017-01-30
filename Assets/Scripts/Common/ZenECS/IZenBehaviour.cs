@@ -1,9 +1,9 @@
 ﻿// /** 
 // * IZenBehaviour.cs
-// * Will Hart and Dylan Bailey
+// * Dylan Bailey
 // * 20170101
 // */
-namespace Zenobit.Common.ZenECS
+namespace Zen.Common.ZenECS
 {
 	using System;
 

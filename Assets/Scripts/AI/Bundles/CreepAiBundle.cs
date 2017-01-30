@@ -4,12 +4,12 @@
 //  * 20161103
 // */
 
-namespace Zenobit.AI.Bundles
+namespace Zen.AI.Bundles
 {
     #region Dependencies
 
     using System.Collections.Generic;
-    using Zenobit.AI.Actions;
+    using Zen.AI.Actions;
 
     #endregion
 

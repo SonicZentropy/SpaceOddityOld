@@ -1,7 +1,6 @@
-﻿using AdvancedInspector;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Zenobit.Components
+namespace Zen.Components
 {
 	using Common.ZenECS;
 

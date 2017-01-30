@@ -1,16 +1,14 @@
 ﻿// /** 
 // * ShipModuleSystem.cs
-// * Will Hart and Dylan Bailey
+// * Dylan Bailey
 // * 20161224
 // */
 
-namespace Zenobit.Systems
+namespace Zen.Systems
 {
 	#region Dependencies
 
-	using Common;
 	using Common.ZenECS;
-	using Components;
 
 	#endregion
 

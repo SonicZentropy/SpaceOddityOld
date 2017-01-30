@@ -5,7 +5,7 @@
 //  * 20161104
 // */
 
-namespace Zenobit.Weapons
+namespace Zen.Weapons
 {
     #region Dependencies
 

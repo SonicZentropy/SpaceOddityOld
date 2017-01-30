@@ -1,18 +1,14 @@
 ﻿// /** 
 // * CameraControlSystem.cs
-// * Will Hart and Dylan Bailey
+// * Dylan Bailey
 // * 20161212
 // */
 
-namespace Zenobit.Systems
+namespace Zen.Systems
 {
 	#region Dependencies
 
-	using System.Collections.Generic;
-	using System.Linq;
 	using Common;
-	using Common.Camera;
-	using Common.Extensions;
 	using Common.ZenECS;
 	using Components;
 	using UnityEngine;

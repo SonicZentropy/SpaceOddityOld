@@ -1,10 +1,10 @@
 ﻿// /** 
 // * EntityTagInitSystem.cs
-// * Will Hart and Dylan Bailey
+// * Dylan Bailey
 // * 20170119
 // */
 
-namespace Zenobit.Systems
+namespace Zen.Systems
 {
 	#region Dependencies
 

@@ -1,11 +1,11 @@
 ﻿using System;
 using Features.Explosions;
 using UnityEngine;
-using Zenobit.Common;
-using Zenobit.Common.Extensions;
-using Zenobit.Common.ObjectPool;
-using Zenobit.Common.ZenECS;
-using Zenobit.Components;
+using Zen.Common;
+using Zen.Common.Extensions;
+using Zen.Common.ObjectPool;
+using Zen.Common.ZenECS;
+using Zen.Components;
 
 public class LaserProjectileController : ZenBehaviour, IOnUpdate
 {

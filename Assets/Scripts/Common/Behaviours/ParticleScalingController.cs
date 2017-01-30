@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
-using Zenobit.Common.Extensions;
+using Zen.Common.Extensions;
 
 public class ParticleScalingController : MonoBehaviour
 {

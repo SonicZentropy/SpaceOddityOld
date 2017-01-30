@@ -4,17 +4,16 @@
 //  * 20161104
 // */
 
-namespace Zenobit.Systems
+namespace Zen.Systems
 {
 	#region Dependencies
 
 	using Common.ZenECS;
 	using Components;
-	using System.Collections.Generic;
 	using System.Linq;
 	using Common;
 	using UnityEngine;
-	using Zenobit.Common.Extensions;
+	using Zen.Common.Extensions;
 
 	#endregion
 
@@ -117,7 +116,8 @@ namespace Zenobit.Systems
 			if (mc.missileInfoPacket.TimeToLive.IsAlmost( -1f))
 				mc.missileInfoPacket.TimeToLive = selectedWeapon.AttackRange / selectedWeapon.ProjectileSpeed;
 			mc.missileInfoPacket.fireDirection = direction;
-			mc.missileInfoPacket.StartPosition = pc.transform.TransformPoint(selectedWeapon.fittingAttached.PositionOffset);
+			mc.missileInfoPacket.StartPosition = pc.transform.TransformPoint(
+			                                                               selectedWeapon.fittingAttached.PositionOffset + selectedWeapon.fittingAttached.ProjectileSpawnPositionOffset);
 			mc.missileInfoPacket.OwningActorPos = pc;
 			mc.missileInfoPacket.FiringWeaponComp = selectedWeapon;
 			mc.missileInfoPacket.FlightSpeed = mc.ProjectileSpeed;
@@ -130,7 +130,8 @@ namespace Zenobit.Systems
 			LaserComp lc = (LaserComp) selectedWeapon;
 			lc.laserInfoPacket.TimeToLive = selectedWeapon.AttackRange / selectedWeapon.ProjectileSpeed;
 			lc.laserInfoPacket.fireDirection = direction;
-			lc.laserInfoPacket.StartPosition = pc.transform.TransformPoint(selectedWeapon.fittingAttached.PositionOffset);
+			lc.laserInfoPacket.StartPosition = pc.transform.TransformPoint(
+			   selectedWeapon.fittingAttached.PositionOffset + selectedWeapon.fittingAttached.ProjectileSpawnPositionOffset);
 			lc.laserInfoPacket.OwningActorPos = pc;
 			lc.laserInfoPacket.FiringWeaponComp = selectedWeapon;
 			lc.laserInfoPacket.ProjectileSpeed = selectedWeapon.ProjectileSpeed;

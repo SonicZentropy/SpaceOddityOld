@@ -1,10 +1,10 @@
 ﻿// /** 
 // * MissileAreaDamageSystem.cs
-// * Will Hart and Dylan Bailey
+// * Dylan Bailey
 // * 20170116
 // */
 
-namespace Zenobit.Systems
+namespace Zen.Systems
 {
 	#region Dependencies
 
@@ -40,7 +40,7 @@ namespace Zenobit.Systems
 						var lmc = ((MissileAreaDamageComp) areas[i]).GetComponent<LaunchedMissileComp>();
 						var dc = ew.Entity.GetOrAddComponent<DamageComp>(ComponentTypes.DamageComp);
 						dc.damagePackets.Push(new DamagePacket(lmc.projectileInfo.HullDamage, lmc.projectileInfo.ShieldDamage));
-						ZenUtils.PhysicsUtil.ApplyExplosionForce(ew, lmc.Owner.Wrapper.transform.position, lmc.projectileInfo.ExplosionImpactRadius);
+						ZenUtils.PhysicsUtil.ApplyExplosionForce(ew, lmc.Owner.Wrapper.transform.position, lmc.projectileInfo.ExplosionForce);
 					}
 				}
 

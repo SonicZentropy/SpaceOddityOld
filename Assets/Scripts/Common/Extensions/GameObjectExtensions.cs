@@ -4,17 +4,16 @@
 //  * 20161210
 // */
 
-using System;
+
 
 #pragma warning disable 0414, 0219, 649, 169, 1570
 
-namespace Zenobit.Common.Extensions
+namespace Zen.Common.Extensions
 {
 	#region Dependencies
 
 	using System;
 	using System.Collections.Generic;
-	using System.Linq;
 	using UnityEngine;
 	using ZenECS;
 

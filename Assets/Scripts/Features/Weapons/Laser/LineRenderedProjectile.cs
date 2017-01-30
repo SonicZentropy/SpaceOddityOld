@@ -4,14 +4,14 @@
 //  * 20161104
 // */
 
-namespace Zenobit.Weapons
+namespace Zen.Weapons
 {
     #region Dependencies
 
     using System.Collections.Generic;
     using MEC;
     using UnityEngine;
-    using Zenobit.Components;
+    using Zen.Components;
 
     using System;
     using Common.ZenECS;

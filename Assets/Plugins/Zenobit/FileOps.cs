@@ -4,7 +4,7 @@
 //  * 20161209
 // */
 
-namespace Zenobit.Editor.Utils
+namespace Zen.Editor.Utils
 {
     #region Dependencies
 

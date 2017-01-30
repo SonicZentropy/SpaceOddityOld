@@ -2,13 +2,13 @@
     "EntityName": "Player",
     "Wrapper": null,
     "_components": {
-        "Zenobit.Components.PlayerComp": {
+        "Zen.Components.PlayerComp": {
             "_credits": 10000,
             "CurrentShip": "Prefabs/Ships/BaseShip",
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.PlayerComp"
+            "$type": "Zen.Components.PlayerComp"
         },
-        "Zenobit.Components.UnityPrefabComp": {
+        "Zen.Components.UnityPrefabComp": {
             "IsPooled": false,
             "PrefabLink": "Prefabs/Player",
             "layer": {
@@ -17,14 +17,14 @@
             "entityTags": "Player,Ship,IsEntity,IsDamageable",
             "tags": "",
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.UnityPrefabComp"
+            "$type": "Zen.Components.UnityPrefabComp"
         },
-        "Zenobit.Components.RigidbodyComp": {
+        "Zen.Components.RigidbodyComp": {
             "Rigidbody": null,
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.RigidbodyComp"
+            "$type": "Zen.Components.RigidbodyComp"
         },
-        "Zenobit.Components.PositionComp": {
+        "Zen.Components.PositionComp": {
             "Position": {
                 "x": 0.0,
                 "y": 0.0,
@@ -38,9 +38,9 @@
             },
             "UseLateUpdate": false,
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.PositionComp"
+            "$type": "Zen.Components.PositionComp"
         },
-        "Zenobit.Components.CommandComp": {
+        "Zen.Components.CommandComp": {
             "PitchVertical": 0.0,
             "RotateHorizontal": 0.0,
             "MousePitchVertical": 0.0,
@@ -57,20 +57,20 @@
                 "value": false
             },
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.CommandComp"
+            "$type": "Zen.Components.CommandComp"
         },
-        "Zenobit.Components.MeshComp": {
+        "Zen.Components.MeshComp": {
             "MeshFilter": null,
             "MeshRenderer": null,
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.MeshComp"
+            "$type": "Zen.Components.MeshComp"
         },
-        "Zenobit.Components.ColliderComp": {
+        "Zen.Components.ColliderComp": {
             "collider": null,
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.ColliderComp"
+            "$type": "Zen.Components.ColliderComp"
         },
-        "Zenobit.Components.ShipPrefabComp": {
+        "Zen.Components.ShipPrefabComp": {
             "IsPooled": true,
             "FirstPersonCameraOffset": {
                 "x": 0.0,
@@ -79,15 +79,15 @@
             },
             "ShipPrefab": "Prefabs/Ships/BaseShip",
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.ShipPrefabComp"
+            "$type": "Zen.Components.ShipPrefabComp"
         },
-        "Zenobit.Components.InertialDamperModComp": {
+        "Zen.Components.InertialDamperModComp": {
             "ModuleEquipped": false,
             "ModuleEnabled": false,
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.InertialDamperModComp"
+            "$type": "Zen.Components.InertialDamperModComp"
         },
-        "Zenobit.Components.ShipComp": {
+        "Zen.Components.ShipComp": {
             "CurrentShields": {
                 "_value": 0.0
             },
@@ -121,16 +121,16 @@
             "CurrentEnergy": 0.0,
             "CurrentEnergyRecharge": 0.0,
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.ShipComp"
+            "$type": "Zen.Components.ShipComp"
         },
-        "Zenobit.Components.CombatComp": {
+        "Zen.Components.CombatComp": {
             "TargetedEnemy": {
                 "_value": "00000000-0000-0000-0000-000000000000"
             },
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.CombatComp"
+            "$type": "Zen.Components.CombatComp"
         },
-        "Zenobit.Components.ShipFittingsComp": {
+        "Zen.Components.ShipFittingsComp": {
             "fittingList": [
                 {
                     "FittedWeapon": {
@@ -161,14 +161,15 @@
                         "ProjectileSpeed": 10.0,
                         "ProjectileEntity": null,
                         "IsFitted": false,
+                        "NextAttackTime": 0.0,
                         "fittingAttached": {
                             "$ref": "19"
                         },
-                        "WeaponPrefab": "None",
+                        "LauncherPrefab": "Prefabs/None",
                         "WeaponGameObject": null,
-                        "ProjectilePrefab": "Prefabs/Weapons/LaserBeamPrefab",
+                        "ProjectilePrefab": "Prefabs/Weapons/Projectiles/LaserBeamPrefab",
                         "Id": "ab3e4e2d-2193-4b84-93ed-6acd2558c3f9",
-                        "$type": "Zenobit.Components.LaserComp"
+                        "$type": "Zen.Components.LaserComp"
                     },
                     "IsEnabled": true,
                     "PositionOffset": {
@@ -183,6 +184,11 @@
                         "w": 1.0
                     },
                     "WeaponFittingGO": null,
+                    "ProjectileSpawnPositionOffset": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
                     "WeaponTypesAllowed": "Laser",
                     "$id": "19"
                 },
@@ -191,7 +197,7 @@
                         "missileInfoPacket": {
                             "TimeToLive": 10.0,
                             "ExplosionImpactRadius": 1.0,
-                            "ExplosionForce": 10.0,
+                            "ExplosionForce": 0.005,
                             "ShieldDamage": 0.0,
                             "HullDamage": 0.0,
                             "FlightSpeed": 0.0,
@@ -228,20 +234,21 @@
                         "ProjectileSpeed": 10.0,
                         "ProjectileEntity": "Weapons/DumbfireMissile",
                         "IsFitted": false,
+                        "NextAttackTime": 0.0,
                         "fittingAttached": {
                             "$ref": "21"
                         },
-                        "WeaponPrefab": "Prefabs/EmpyGO",
+                        "LauncherPrefab": "Prefabs/Weapons/Launchers/MissileLauncher1",
                         "WeaponGameObject": null,
                         "ProjectilePrefab": "None",
                         "Id": "2738919a-cb4e-46b3-b5b5-6c1d8d1ebb35",
-                        "$type": "Zenobit.Components.MissileComp"
+                        "$type": "Zen.Components.MissileComp"
                     },
                     "IsEnabled": true,
                     "PositionOffset": {
                         "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
+                        "y": -0.3765,
+                        "z": 0.5472
                     },
                     "RotationOffset": {
                         "x": 0.0,
@@ -250,36 +257,41 @@
                         "w": 1.0
                     },
                     "WeaponFittingGO": null,
+                    "ProjectileSpawnPositionOffset": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
                     "WeaponTypesAllowed": "Missile",
                     "$id": "21"
                 }
             ],
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.ShipFittingsComp"
+            "$type": "Zen.Components.ShipFittingsComp"
         },
-        "Zenobit.Components.TargetComp": {
+        "Zen.Components.TargetComp": {
             "target": null,
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.TargetComp"
+            "$type": "Zen.Components.TargetComp"
         },
-        "Zenobit.Components.DamageComp": {
+        "Zen.Components.DamageComp": {
             "damagePackets": [],
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.DamageComp"
+            "$type": "Zen.Components.DamageComp"
         },
-        "Zenobit.Components.ShieldComp": {
+        "Zen.Components.ShieldComp": {
             "shieldTrigger": null,
             "CurrentShieldEnergy": 50.0,
             "MaxShieldEnergy": 50.0,
             "ShieldRechargeRate": 5.0,
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.ShieldComp"
+            "$type": "Zen.Components.ShieldComp"
         },
-        "Zenobit.Components.HullComp": {
+        "Zen.Components.HullComp": {
             "MaxHull": 100.0,
             "CurrentHull": 100.0,
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.HullComp"
+            "$type": "Zen.Components.HullComp"
         }
     }
 }

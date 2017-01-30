@@ -1,19 +1,16 @@
 ﻿// /** 
 // * MissileExplosionSystem.cs
-// * Will Hart and Dylan Bailey
+// * Dylan Bailey
 // * 20170115
 // */
 
-namespace Zenobit.Systems
+namespace Zen.Systems
 {
 	#region Dependencies
 
-	using System.Collections.Generic;
-	using Common.Extensions;
 	using Common.ObjectPool;
 	using Common.ZenECS;
 	using Components;
-	using UnityEngine;
 
 	#endregion
 

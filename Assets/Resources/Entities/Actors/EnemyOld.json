@@ -2,7 +2,7 @@
     "EntityName": "Enemy",
     "Wrapper": null,
     "_components": {
-        "Zenobit.Components.UnityPrefabComp": {
+        "Zen.Components.UnityPrefabComp": {
             "IsPooled": true,
             "PrefabLink": "Prefabs/EnemyShip",
             "layer": {
@@ -11,14 +11,14 @@
             "entityTags": "Ship,IsEntity,IsDamageable",
             "tags": "",
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.UnityPrefabComp"
+            "$type": "Zen.Components.UnityPrefabComp"
         },
-        "Zenobit.Components.RigidbodyComp": {
+        "Zen.Components.RigidbodyComp": {
             "Rigidbody": null,
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.RigidbodyComp"
+            "$type": "Zen.Components.RigidbodyComp"
         },
-        "Zenobit.Components.PositionComp": {
+        "Zen.Components.PositionComp": {
             "Position": {
                 "x": 0.0,
                 "y": 0.0,
@@ -32,9 +32,9 @@
             },
             "UseLateUpdate": false,
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.PositionComp"
+            "$type": "Zen.Components.PositionComp"
         },
-        "Zenobit.Components.CommandComp": {
+        "Zen.Components.CommandComp": {
             "PitchVertical": 0.0,
             "RotateHorizontal": 0.0,
             "MousePitchVertical": 0.0,
@@ -51,11 +51,11 @@
                 "value": false
             },
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.CommandComp"
+            "$type": "Zen.Components.CommandComp"
         },
-        "Zenobit.Components.ShipConnectionComp": {
+        "Zen.Components.ShipConnectionComp": {
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.ShipConnectionComp"
+            "$type": "Zen.Components.ShipConnectionComp"
         }
     }
 }

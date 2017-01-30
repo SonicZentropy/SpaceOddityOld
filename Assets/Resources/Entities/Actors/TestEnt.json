@@ -2,14 +2,14 @@
     "EntityName": "TestEnt",
     "Wrapper": null,
     "_components": {
-        "Zenobit.Components.UnityPrefabComp": {
+        "Zen.Components.UnityPrefabComp": {
             "IsPooled": false,
             "PrefabLink": "Prefabs/None",
             "layer": {
                 "value": 4096
             },
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.UnityPrefabComp"
+            "$type": "Zen.Components.UnityPrefabComp"
         }
     }
 }

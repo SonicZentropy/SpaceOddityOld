@@ -8,7 +8,7 @@
 
 #pragma warning disable 0414, 0219, 649, 169, 618, 1570
 
-namespace Zenobit.Common.Camera
+namespace Zen.Common.Camera
 {
     #region Dependencies
 

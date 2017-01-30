@@ -4,20 +4,18 @@
 //  * 20161103
 // */
 
-namespace Zenobit.AI.Actions
+namespace Zen.AI.Actions
 {
     #region Dependencies
 
     using System.Collections.Generic;
 
     using Axes;
-    using Zenobit.AI.Core;
+    using Zen.AI.Core;
     using UnityEngine;
     using Components;
-    using Common.ZenECS;
-    using System.Linq;
 
-    #endregion
+	#endregion
 
     /// <summary>
     /// Sets navigation targets at set intervals

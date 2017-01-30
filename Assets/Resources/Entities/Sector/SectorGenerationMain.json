@@ -2,7 +2,7 @@
     "EntityName": "SectorGenerationMain",
     "Wrapper": null,
     "_components": {
-        "Zenobit.Components.SectorGenerationComp": {
+        "Zen.Components.SectorGenerationComp": {
             "StarPrefab": "Prefabs/Environment/StarContainer",
             "renderCentralStar": false,
             "centralStarLocation": {
@@ -36,7 +36,7 @@
                 }
             ],
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.SectorGenerationComp"
+            "$type": "Zen.Components.SectorGenerationComp"
         }
     }
 }

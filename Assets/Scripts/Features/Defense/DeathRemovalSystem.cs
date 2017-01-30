@@ -1,17 +1,17 @@
 ﻿// /** 
 //  * DeathRemovalSystem.cs
-//  * Will Hart and Dylan Bailey
+//  * Dylan Bailey
 //  * 20161109
 // */
 
-namespace Zenobit.Systems
+namespace Zen.Systems
 {
     #region Dependencies
 
 	using Features.Explosions;
-	using Zenobit.Common;
-    using Zenobit.Common.ZenECS;
-    using Zenobit.Components;
+	using Zen.Common;
+    using Zen.Common.ZenECS;
+    using Zen.Components;
 
     #endregion
 

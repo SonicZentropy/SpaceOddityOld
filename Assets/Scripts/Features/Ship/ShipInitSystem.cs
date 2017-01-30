@@ -1,19 +1,19 @@
 ﻿// /** 
 // * ShipInitSystem.cs
-// * Will Hart and Dylan Bailey
+// * Dylan Bailey
 // * 20161225
 // */
 
-namespace Zenobit.Systems
+namespace Zen.Systems
 {
 	#region Dependencies
 
 	using System.Linq;
 	using Common;
-	using Common.ObjectPool;
 	using Common.ZenECS;
 	using Components;
 	using UnityEngine;
+	using Zen.Common.Extensions;
 
 	#endregion
 
@@ -71,20 +71,27 @@ namespace Zenobit.Systems
 
 			foreach (var fit in sfc.fittingList.Where(x => x.FittedWeapon != null))
 			{
-				fit.FittedWeapon.Owner = sdc.Owner; //have to manually set owner of contained components
-				fit.WeaponFittingGO = new GameObject("WeaponFitting");
-				Transform tf = fit.WeaponFittingGO.transform;
-				tf.SetParent(WeaponsGO.transform, false);
-				tf.localPosition = fit.PositionOffset;
-				tf.localRotation = fit.RotationOffset;
+				InitFitting(sdc, fit, WeaponsGO);
+			}
+		}
 
-				//spawn weapon prefab if exists
-				if (!fit.FittedWeapon.WeaponPrefab.Contains("None"))
-				{
-					var weaponPF = Res.CreateFromPool(fit.FittedWeapon.WeaponPrefab);
-					weaponPF.SetActive(true);
-					weaponPF.transform.SetParent(tf, false);
-				}
+		private static void InitFitting(ShipComp sdc, ShipFitting fit, GameObject WeaponsGO)
+		{
+			fit.FittedWeapon.Owner = sdc.Owner; //have to manually set owner of contained components
+			fit.WeaponFittingGO = new GameObject("WeaponFitting");
+			Transform tf = fit.WeaponFittingGO.transform;
+			tf.SetParent(WeaponsGO.transform, false);
+			tf.localPosition = fit.PositionOffset;
+			tf.localRotation = fit.RotationOffset;
+
+			//spawn weapon prefab if exists
+			if (fit.FittedWeapon.LauncherPrefab.DoesNotContain("None"))
+			{
+				var weaponPF = Res.CreateFromPool(fit.FittedWeapon.LauncherPrefab);
+				weaponPF.SetActive(true);
+				weaponPF.transform.SetParent(tf, false);
+				//weaponPF.transform.localPosition = fit.PositionOffset;
+				fit.ProjectileSpawnPositionOffset = weaponPF.GetComponent<LauncherBehaviour>()?.LaunchPosOffset ?? Vector3.zero;
 			}
 		}
 

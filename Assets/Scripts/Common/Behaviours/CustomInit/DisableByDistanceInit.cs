@@ -1,8 +1,7 @@
 ﻿using System.Linq;
-using AdvancedInspector;
 using UnityEngine;
-using Zenobit.Common.ZenECS;
-using Zenobit.Components;
+using Zen.Common.ZenECS;
+using Zen.Components;
 
 public class DisableByDistanceInit : MonoBehaviour, ICustomInit
 {

@@ -1,16 +1,16 @@
 // /**
 //  * ComponentFactory.cs
-//  * Will Hart and Dylan Bailey
+//  * Dylan Bailey
 //  * 20161210
 // */
 
-namespace Zenobit.Common.ZenECS
+namespace Zen.Common.ZenECS
 {
     #region Dependencies
 
     using System;
     using System.Collections.Generic;
-    using Zenobit.Components;
+    using Zen.Components;
 
     #endregion
 

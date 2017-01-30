@@ -1,20 +1,18 @@
 ﻿// /**
 // * MissileFlightSystem.cs
-// * Will Hart and Dylan Bailey
+// * Dylan Bailey
 // * 20170111
 // */
 
-namespace Zenobit.Systems
+namespace Zen.Systems
 {
 	#region Dependencies
 
 	using System.Linq;
 	using Common.Extensions;
 	using Common.Helpers;
-	using Common.ObjectPool;
 	using Common.ZenECS;
 	using Components;
-	using TypeSafe;
 	using UnityEngine;
 
 	#endregion

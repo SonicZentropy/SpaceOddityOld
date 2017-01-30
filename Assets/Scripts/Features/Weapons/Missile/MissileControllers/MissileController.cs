@@ -1,10 +1,10 @@
-﻿namespace Zenobit.Weapons
+﻿namespace Zen.Weapons
 {
 	using System;
 	using Common.ZenECS;
 	using UnityEngine;
-	using Zenobit.Common.ObjectPool;
-	using Zenobit.Components;
+	using Zen.Common.ObjectPool;
+	using Zen.Components;
 	using Random = UnityEngine.Random;
 
 	public class MissileController : ZenBehaviour, IPoolRelease, IOnUpdate, IOnAwake

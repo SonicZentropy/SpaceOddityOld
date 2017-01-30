@@ -1,9 +1,7 @@
-﻿namespace Zenobit.Systems
+﻿namespace Zen.Systems
 {
 	using Common;
-	using Components;
 	using UnityEngine;
-	using Zenobit.Common.ZenECS;
 
 	public class GameInitSystem : AbstractEcsSystem
 	{

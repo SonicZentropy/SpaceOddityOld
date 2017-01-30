@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using NUnit.Framework.Constraints;
-using Zenobit.Common.Extensions;
-using Zenobit.Common.ZenECS;
+﻿using System.Collections.Generic;
+using Zen.Common.Extensions;
+using Zen.Common.ZenECS;
 
 public class ComponentCache : Singleton<ComponentCache>
 {

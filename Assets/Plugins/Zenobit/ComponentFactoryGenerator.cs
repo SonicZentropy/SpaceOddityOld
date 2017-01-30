@@ -1,10 +1,10 @@
 ﻿// /**
 //  * ComponentFactoryGenerator.cs
-//  * Will Hart and Dylan Bailey
+//  * Dylan Bailey
 //  * 2017
 // */
 
-namespace Zenobit.Common.Automation
+namespace Zen.Common.Automation
 {
 	using System;
 	using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace Zenobit.Common.Automation
 	using System.Linq;
 	using UnityEditor;
 	using UnityEngine;
-	using Zenobit.Editor.Utils;
+	using Zen.Editor.Utils;
 
 	public static class ComponentFactoryGenerator
 	{
@@ -20,13 +20,13 @@ namespace Zenobit.Common.Automation
 		public static bool AutoGenerate;
 		public static bool IsGenerating;
 
-		[MenuItem("Zenobit/Enable Component Factory Auto Generation", false, 25)]
+		[MenuItem("Zen/Enable Component Factory Auto Generation", false, 25)]
 		public static void EnableGenerateCode()
 		{
 			AutoGenerate = true;
 		}
 
-		[MenuItem("Zenobit/Disable Component Factory Auto Generation", false, 27)]
+		[MenuItem("Zen/Disable Component Factory Auto Generation", false, 27)]
 		public static void DisableGenerateCode()
 		{
 			AutoGenerate = false;
@@ -39,17 +39,17 @@ namespace Zenobit.Common.Automation
 
 		public const string HEADER_FORMAT = @"// /**
 //  * ComponentFactory.cs
-//  * Will Hart and Dylan Bailey
+//  * Dylan Bailey
 //  * 20161210
 // */
 
-namespace Zenobit.Common.ZenECS
+namespace Zen.Common.ZenECS
 {
     #region Dependencies
 
     using System;
     using System.Collections.Generic;
-    using Zenobit.Components;
+    using Zen.Components;
 
     #endregion
 
@@ -65,7 +65,7 @@ namespace Zenobit.Common.ZenECS
 		public static string ComponentListFormatted;
 		public static string ComponentEnums;
 
-		[MenuItem("Zenobit/Generate Component Factory File", false, 65)]
+		[MenuItem("Zen/Generate Component Factory File", false, 65)]
 		public static void ForcedGenerateCode()
 		{
 			bool autoState = AutoGenerate;

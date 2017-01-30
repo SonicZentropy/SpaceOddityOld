@@ -4,17 +4,13 @@
 //  * 20161205
 // */
 
-namespace Zenobit.Systems
+namespace Zen.Systems
 {
 	#region Dependencies
 
-	using System.Collections.Generic;
-	using System.Linq;
-	using Common;
 	using Rewired;
-	using UnityEngine;
-	using Zenobit.Common.ZenECS;
-	using Zenobit.Components;
+	using Zen.Common.ZenECS;
+	using Zen.Components;
 
 	#endregion
 

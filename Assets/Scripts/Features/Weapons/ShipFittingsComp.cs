@@ -1,4 +1,4 @@
-﻿namespace Zenobit.Components
+﻿namespace Zen.Components
 {
 	using System;
 	using System.Collections.Generic;
@@ -40,6 +40,9 @@
 		[Inspect]public Vector3 PositionOffset;
 		[Inspect]public Quaternion RotationOffset;
 		[Inspect] [ReadOnly] public GameObject WeaponFittingGO;
+
+		[Inspect, ReadOnly]
+		public Vector3 ProjectileSpawnPositionOffset;
 
 		[Inspect]public WeaponTypes WeaponTypesAllowed;
 	}

@@ -1,12 +1,10 @@
 ﻿// /**
 //  * EcsEngine.cs
-//  * Will Hart and Dylan Bailey
+//  * Dylan Bailey
 //  * 20161205
 // */
 
-using Zenobit.Common.Debug;
-
-namespace Zenobit.Common.ZenECS
+namespace Zen.Common.ZenECS
 {
     #region Dependencies
 
@@ -18,7 +16,7 @@ namespace Zenobit.Common.ZenECS
     using AdvancedInspector;
     using Common.ObjectPool;
     using Editor.Utils;
-    using Zenobit.Systems;
+    using Zen.Systems;
     using UnityEngine;
 
     #endregion

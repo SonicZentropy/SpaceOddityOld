@@ -5,7 +5,7 @@
 // */
 
 
-namespace Zenobit.Common.ZenECS
+namespace Zen.Common.ZenECS
 {
     #region Dependencies
 
@@ -22,7 +22,8 @@ namespace Zenobit.Common.ZenECS
     {
         //[ShowInInspector]
 
-	    [HideInInspector]public Dictionary<Type, ComponentEcs> _components = new Dictionary<Type, ComponentEcs>();
+	    [Inspect]
+	    public Dictionary<Type, ComponentEcs> _components = new Dictionary<Type, ComponentEcs>();
 
 	    [Inspect]public List<ComponentEcs> ComponentsList
 	    {

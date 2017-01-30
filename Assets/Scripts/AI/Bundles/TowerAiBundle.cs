@@ -4,7 +4,7 @@
 //  * 20161103
 // */
 
-namespace Zenobit.AI.Bundles
+namespace Zen.AI.Bundles
 {
     #region Dependencies
 

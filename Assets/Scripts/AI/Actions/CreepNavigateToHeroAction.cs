@@ -4,7 +4,7 @@
 //  * 20161103
 // */
 
-namespace Zenobit.AI.Actions
+namespace Zen.AI.Actions
 {
     #region Dependencies
 
@@ -12,7 +12,7 @@ namespace Zenobit.AI.Actions
 
     using Axes;
     using Components;
-    using Zenobit.AI.Core;
+    using Zen.AI.Core;
     using UnityEngine;
 
     #endregion

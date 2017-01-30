@@ -1,8 +1,7 @@
-﻿using System.IO;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
-using Zenobit.Common.Automation;
-using Zenobit.Editor.Utils;
+using Zen.Common.Automation;
+using Zen.Editor.Utils;
 
 class ZenAllAssetPostprocessor : AssetPostprocessor
 {

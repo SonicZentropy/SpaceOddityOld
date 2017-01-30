@@ -1,4 +1,4 @@
-﻿namespace Zenobit.Common.ZenECS
+﻿namespace Zen.Common.ZenECS
 {
 	using System;
 	using UnityEngine;

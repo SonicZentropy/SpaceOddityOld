@@ -4,11 +4,10 @@
 //  * 20161210
 // */
 
-using System;
 
 #pragma warning disable 0414, 0219, 649, 169, 1570
 
-namespace Zenobit.Common.Extensions
+namespace Zen.Common.Extensions
 {
 	#region Dependencies
 
@@ -16,12 +15,13 @@ namespace Zenobit.Common.Extensions
 	using System.Collections.Generic;
 	using System.Linq;
 	using UnityEngine;
-	using ZenECS;
 
 	#endregion
 
 	public static class ExtensionMethodsZen
 	{
+		#region GameObjectExtensions
+
 		public static T GetComponentDownThenUp<T>(this Component gameObject)
 		{
 			var comp = gameObject.GetComponentInChildren<T>();
@@ -89,6 +89,23 @@ namespace Zenobit.Common.Extensions
 			return result;
 		}
 
+		public static int GetLayerIndex(this LayerMask layerMask)
+		{
+			int layerNumber = 0;
+			int layer = layerMask.value;
+			while (layer > 0)
+			{
+				layer = layer >> 1;
+				layerNumber++;
+			}
+			if (layerNumber < 1) return 0;
+			return layerNumber - 1;
+		}
+
+		#endregion
+
+		#region PhysicsExtensions
+
 		public static RaycastHit2D[] FilterObjects(this RaycastHit2D[] hits, params GameObject[] objsToFilter)
 		{
 			var filtered = new List<RaycastHit2D>(hits.Length);
@@ -109,10 +126,18 @@ namespace Zenobit.Common.Extensions
 			return filtered.ToArray();
 		}
 
+		#endregion
+
+		#region EnumExtensions
+
 		public static bool HasFlag(this Enum e, Enum flag)
 		{
 			return (Convert.ToInt64(e) & Convert.ToInt64(flag)) != 0;
 		}
+
+		#endregion
+
+		#region VectorExtensions
 
 		public static float MaxVectorElement(this Vector3 v)
 		{
@@ -122,11 +147,15 @@ namespace Zenobit.Common.Extensions
 		public static Vector3 Clamp(this Vector3 v, float min, float max)
 		{
 			return new Vector3(
-				Mathf.Clamp(v.x, min, max),
-				Mathf.Clamp(v.y, min, max),
-				Mathf.Clamp(v.z, min, max)
-				);
+			                   Mathf.Clamp(v.x, min, max),
+			                   Mathf.Clamp(v.y, min, max),
+			                   Mathf.Clamp(v.z, min, max)
+			                  );
 		}
+
+		#endregion
+
+		#region FloatExtensions
 
 		public static bool IsAlmost(this float a, float b)
 		{
@@ -148,6 +177,10 @@ namespace Zenobit.Common.Extensions
 			return !Mathf.Approximately(a, b);
 		}
 
+		#endregion
+
+		#region StringExtensions
+
 		public static string StripNonAlphanumeric(this string inString)
 		{
 			return new string(inString.Where(c => char.IsLetterOrDigit(c) || c == '_').ToArray());
@@ -158,17 +191,13 @@ namespace Zenobit.Common.Extensions
 			return String.IsNullOrEmpty(inString);
 		}
 
-		public static int GetLayerIndex(this LayerMask layerMask)
+		public static bool DoesNotContain(this string inString, string doesNotContain)
 		{
-			int layerNumber = 0;
-			int layer = layerMask.value;
-			while(layer > 0)
-			{
-				layer = layer >> 1;
-				layerNumber++;
-			}
-			if (layerNumber < 1) return 0;
-			return layerNumber-1;
+			return !inString.Contains(doesNotContain);
 		}
+
+		#endregion
+
+
 	}
 }

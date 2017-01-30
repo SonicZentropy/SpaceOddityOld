@@ -6,7 +6,7 @@
 
 #pragma warning disable 0414, 0219, 649, 169, 618, 1570
 
-namespace Zenobit.Common.ObjectPool
+namespace Zen.Common.ObjectPool
 {
 
     #region Dependencies
@@ -16,7 +16,6 @@ namespace Zenobit.Common.ObjectPool
     using AdvancedInspector;
     using MEC;
     using UnityEngine;
-    using Zenobit.Common.Debug;
     using Object = UnityEngine.Object;
 
     #endregion

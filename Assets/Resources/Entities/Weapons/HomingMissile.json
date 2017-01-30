@@ -2,7 +2,7 @@
     "EntityName": "HomingMissile",
     "Wrapper": null,
     "_components": {
-        "Zenobit.Components.PositionComp": {
+        "Zen.Components.PositionComp": {
             "Position": {
                 "x": 0.0,
                 "y": 0.0,
@@ -16,9 +16,9 @@
             },
             "UseLateUpdate": false,
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.PositionComp"
+            "$type": "Zen.Components.PositionComp"
         },
-        "Zenobit.Components.UnityPrefabComp": {
+        "Zen.Components.UnityPrefabComp": {
             "IsPooled": true,
             "PrefabLink": "Prefabs/Weapons/Projectiles/HomingMissile",
             "layer": {
@@ -27,9 +27,9 @@
             "entityTags": "IsEntity,IsProjectile",
             "tags": "",
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.UnityPrefabComp"
+            "$type": "Zen.Components.UnityPrefabComp"
         },
-        "Zenobit.Components.LaunchedMissileComp": {
+        "Zen.Components.LaunchedMissileComp": {
             "TimeAlive": 0.0,
             "IsHit": false,
             "ExplosionPrefabLink": "Prefabs/Effects/Explosions/Explosion_01",
@@ -122,22 +122,22 @@
             "particles": null,
             "transform": null,
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.LaunchedMissileComp"
+            "$type": "Zen.Components.LaunchedMissileComp"
         },
-        "Zenobit.Components.ParticleSystemComp": {
+        "Zen.Components.ParticleSystemComp": {
             "ParticleSystem": null,
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.ParticleSystemComp"
+            "$type": "Zen.Components.ParticleSystemComp"
         },
-        "Zenobit.Components.ColliderComp": {
+        "Zen.Components.ColliderComp": {
             "collider": null,
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.ColliderComp"
+            "$type": "Zen.Components.ColliderComp"
         },
-        "Zenobit.Components.RendererComp": {
+        "Zen.Components.RendererComp": {
             "renderer": null,
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zenobit.Components.RendererComp"
+            "$type": "Zen.Components.RendererComp"
         }
     }
 }

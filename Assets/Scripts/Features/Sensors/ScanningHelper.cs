@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using Zenobit.Common.Extensions;
-using Zenobit.Common.ZenECS;
+using Zen.Common.Extensions;
+using Zen.Common.ZenECS;
 
 public static class ScanningHelper 
 {

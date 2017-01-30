@@ -4,16 +4,13 @@
 //  * 20161103
 // */
 
-namespace Zenobit.AI.Axes
+namespace Zen.AI.Axes
 {
     #region Dependencies
 
-    using System.Linq;
-    using Zenobit.AI.Core;
-    using UnityEngine;
-    using Components;
+	using Zen.AI.Core;
 
-    #endregion
+	#endregion
 
     public class HasNearbyTargetsAxis : IAxis
     {

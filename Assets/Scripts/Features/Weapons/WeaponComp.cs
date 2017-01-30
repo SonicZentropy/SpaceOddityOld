@@ -1,19 +1,17 @@
 ﻿// /** 
 //  * WeaponComp.cs
-//  * Will Hart and Dylan Bailey 
+//  * Dylan Bailey
 //  * 20161103
 // */
 
-using Zenobit.Common.ZenECS;
-
-namespace Zenobit.Components
+namespace Zen.Components
 {
 	#region Dependencies
 
 	using AdvancedInspector;
 	using Common.Audio;
 	using UnityEngine;
-	using Zenobit.Common.ZenECS;
+	using Zen.Common.ZenECS;
 
 	#endregion
 
@@ -42,7 +40,7 @@ namespace Zenobit.Components
 		[Inspect]
 		public SfxTypes FiringSoundEffect { get; set; } = SfxTypes.GunFire;
 
-		[TextField(TextFieldType.Prefab, "Weapons")] public string WeaponPrefab = "None";
+		[TextField(TextFieldType.Prefab, "Weapons/Launchers")] public string LauncherPrefab = "None";
 
 		[HideInInspector]public GameObject WeaponGameObject;
 
@@ -70,7 +68,7 @@ namespace Zenobit.Components
 		[TextField(TextFieldType.Entity)]
 		public string ProjectileEntity { get; set; }
 
-		[Inspect("ProjectileUsesPrefab")] [TextField(TextFieldType.Prefab)] public string ProjectilePrefab = "None";
+		[Inspect("ProjectileUsesPrefab")] [TextField(TextFieldType.Prefab, "Weapons/Projectiles")] public string ProjectilePrefab = "None";
 
 		[HideInInspector]
 		public bool IsFitted { get; set; }

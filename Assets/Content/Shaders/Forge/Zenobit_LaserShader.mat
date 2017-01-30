@@ -10,34 +10,26 @@ Material:
   m_Shader: {fileID: 4800000, guid: a4ea1e9d6236a064e8a21fb7b4520def, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
+  disabledShaderPasses: []
   m_SavedProperties:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TexEnvs:
-    - first:
-        name: _MainTex
-      second:
+    - _MainTex:
         m_Texture: {fileID: 2800000, guid: 7479c82c177ed1c4d8a01b3e955440e7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: __MainTex
-      second:
+    - __MainTex:
         m_Texture: {fileID: 2800000, guid: aacfe2d1ae4e63c4c99633dc0252de07, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _node_7799
-      second:
+    - _node_7799:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - first:
-        name: _TintColor
-      second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - first:
-        name: _node_3375
-      second: {r: 1, g: 1, b: 1, a: 0.75}
+    - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _node_3375: {r: 1, g: 1, b: 1, a: 0.75}

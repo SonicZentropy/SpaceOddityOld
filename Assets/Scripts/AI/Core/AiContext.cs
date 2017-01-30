@@ -4,10 +4,10 @@
 //  * 20161103
 // */
 
-namespace Zenobit.AI.Core
+namespace Zen.AI.Core
 {
-    using Zenobit.Common.ZenECS;
-    using Zenobit.Components;
+    using Zen.Common.ZenECS;
+    using Zen.Components;
 
     /// <summary>
     ///     A class that contains information suitable for the AI context

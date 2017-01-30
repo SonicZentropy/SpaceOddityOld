@@ -4,16 +4,16 @@
 //  * 20161110
 // */
 
-namespace Zenobit.Components
+namespace Zen.Components
 {
     #region Dependencies
 
     using UnityEngine;
     using System;
     using System.Collections.Generic;
-    using Zenobit.AI.Actions;
-    using Zenobit.AI.Core;
-    using Zenobit.Common.ZenECS;
+    using Zen.AI.Actions;
+    using Zen.AI.Core;
+    using Zen.Common.ZenECS;
 
     #endregion
 

@@ -4,13 +4,11 @@
 //  * 20161103
 // */
 
-namespace Zenobit.AI.Axes
+namespace Zen.AI.Axes
 {
     #region Dependencies
 
-    using UnityEngine;
-
-    using Core;
+	using Core;
     using Components;
     using Common.ZenECS;
 

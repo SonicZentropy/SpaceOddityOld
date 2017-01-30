@@ -1,10 +1,10 @@
 ﻿// /** 
 // * SectorGenerationSystem.cs
-// * Will Hart and Dylan Bailey
+// * Dylan Bailey
 // * 20161213
 // */
 
-namespace Zenobit.Systems
+namespace Zen.Systems
 {
 	#region Dependencies
 

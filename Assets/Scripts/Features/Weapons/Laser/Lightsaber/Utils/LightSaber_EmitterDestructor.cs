@@ -4,7 +4,7 @@
 //  * 20161104
 // */
 
-namespace Zenobit.Weapons.Lightsaber.Utils
+namespace Zen.Weapons.Lightsaber.Utils
 {
     using Common.ObjectPool;
     #region Dependencies

@@ -1,10 +1,10 @@
 ﻿// /** 
 // * ZenUtils.cs
-// * Will Hart and Dylan Bailey
+// * Dylan Bailey
 // * 20161203
 // */
 
-namespace Zenobit.Common.Extensions
+namespace Zen.Common.Extensions
 {
 	#region Dependencies
 

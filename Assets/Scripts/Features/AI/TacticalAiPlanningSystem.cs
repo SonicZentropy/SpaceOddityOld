@@ -1,13 +1,13 @@
 ﻿// /** 
 // * TacticalAiPlanningSystem.cs
-// * Will Hart and Dylan Bailey
+// * Dylan Bailey
 // * 20161211
 // */
 
 
 //#define AI_DEBUG
 
-namespace Zenobit.Systems
+namespace Zen.Systems
 {
 	#region Dependencies
 

@@ -6,7 +6,7 @@
 
 #pragma warning disable 0414, 0219, 649, 169, 618, 1570
 
-namespace Zenobit.Common.ObjectPool
+namespace Zen.Common.ObjectPool
 {
     #region Dependencies
 

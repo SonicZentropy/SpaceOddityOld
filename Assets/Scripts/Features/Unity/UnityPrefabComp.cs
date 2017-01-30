@@ -4,14 +4,14 @@
 //  * 20161209
 // */
 
-namespace Zenobit.Components
+namespace Zen.Components
 {
     #region Dependencies
 
 	using AdvancedInspector;
     using UnityEngine;
-	using Zenobit.Common.Extensions;
-	using Zenobit.Common.ZenECS;
+	using Zen.Common.Extensions;
+	using Zen.Common.ZenECS;
 
     #endregion
 

@@ -4,11 +4,11 @@
 //  * 20161110
 // */
 
-namespace Zenobit.AI.Axes
+namespace Zen.AI.Axes
 {
     #region Dependencies
 
-    using Zenobit.AI.Core;
+    using Zen.AI.Core;
     using UnityEngine;
 
     #endregion

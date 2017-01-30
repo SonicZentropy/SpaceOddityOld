@@ -1,10 +1,10 @@
 // /** 
 //  * GuidLink.cs
-//  * Will Hart and Dylan Bailey
+//  * Dylan Bailey
 //  * 20161209
 // */
 
-namespace Zenobit.Common.ZenECS
+namespace Zen.Common.ZenECS
 {
     #region Dependencies
 

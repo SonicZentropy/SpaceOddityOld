@@ -4,7 +4,7 @@
 //  * 20161209
 // */
 
-namespace Zenobit.Common.Serialization
+namespace Zen.Common.Serialization
 {
     public interface IDataengine
     {

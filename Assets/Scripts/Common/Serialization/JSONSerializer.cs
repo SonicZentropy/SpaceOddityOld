@@ -6,7 +6,7 @@
 
 #pragma warning disable 0414, 0219, 649, 169, 618, 1570
 
-namespace Zenobit.Common.Serialization
+namespace Zen.Common.Serialization
 {
     #region Dependencies
 
@@ -15,8 +15,7 @@ namespace Zenobit.Common.Serialization
     using FullSerializer;
     using UnityEditor;
     using UnityEngine;
-    using Zenobit.Common.Debug;
-    using Zenobit.Common.ZenECS;
+    using Zen.Common.ZenECS;
 
     #endregion
 

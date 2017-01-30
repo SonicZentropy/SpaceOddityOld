@@ -6,23 +6,20 @@
 
 //#define AI_DEBUG
 
-namespace Zenobit.AI.Core
+namespace Zen.AI.Core
 {
     #region Dependencies
 
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using UnityEngine;
+	using System.Collections.Generic;
+	using UnityEngine;
 
 //#if UNITY_EDITOR
     using System.Collections.ObjectModel;
 //#endif
 
-    using Zenobit.AI.Actions;
-    using Zenobit.AI.Bundles;
-    using Unitilities.Tuples;
-    using Random = UnityEngine.Random;
+    using Zen.AI.Actions;
+    using Zen.AI.Bundles;
+	using Random = UnityEngine.Random;
 
     #endregion
 

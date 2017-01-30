@@ -1,8 +1,7 @@
 ﻿namespace Features.Explosions
 {
 	using UnityEngine;
-	using Zenobit.Common;
-	using Zenobit.Common.ObjectPool;
+	using Zen.Common;
 
 	public static class Explosions
 	{

@@ -4,15 +4,15 @@
 //  * 20161210
 // */
 
-namespace Zenobit.Common.ZenECS
+namespace Zen.Common.ZenECS
 {
     #region Dependencies
 
     using System;
     using FullSerializer;
     using UnityEngine;
-    using Zenobit.Common.Extensions;
-    using Zenobit.Common.Serialization;
+    using Zen.Common.Extensions;
+    using Zen.Common.Serialization;
 
     #endregion
 

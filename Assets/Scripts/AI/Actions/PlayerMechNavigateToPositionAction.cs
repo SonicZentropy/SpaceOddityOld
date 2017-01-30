@@ -1,11 +1,11 @@
 ﻿/*
 // / ** 
 // * PlayerMechNavigateToPositionAction.cs
-// * Will Hart and Dylan Bailey
+// * Dylan Bailey
 // * 20161215
 // * /
 
-namespace Zenobit.AI.Actions
+namespace Zen.AI.Actions
 {
 	#region Dependencies
 

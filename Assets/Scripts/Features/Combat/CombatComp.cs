@@ -4,14 +4,12 @@
   * 20161103
  */
 
-namespace Zenobit.Components
+namespace Zen.Components
 {
     #region Dependencies
 
-    using System;
-    using System.Collections.Generic;
-    using FullInspector;
-    using Zenobit.Common.ZenECS;
+	using FullInspector;
+    using Zen.Common.ZenECS;
 
     #endregion
 

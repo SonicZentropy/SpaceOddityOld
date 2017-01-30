@@ -4,12 +4,12 @@
 //  * 20161209
 // */
 
-namespace Zenobit.Common.Serialization
+namespace Zen.Common.Serialization
 {
     #region Dependencies
 
     using System;
-    using Zenobit.Common.ZenECS;
+    using Zen.Common.ZenECS;
 
     #endregion
 

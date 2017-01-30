@@ -1,4 +1,4 @@
-﻿Shader "Zenobit/LaserBeam"
+﻿Shader "Zen/LaserBeam"
 {
 
 	Properties

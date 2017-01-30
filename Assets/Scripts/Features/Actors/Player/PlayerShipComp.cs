@@ -1,4 +1,4 @@
-﻿namespace Zenobit.Components
+﻿namespace Zen.Components
 {
 	using Common.ZenECS;
 

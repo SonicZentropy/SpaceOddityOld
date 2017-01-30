@@ -1,22 +1,19 @@
 ﻿// /** 
 //* PlayerMovementSystem.cs
-//* Will Hart and Dylan Bailey
+//* Dylan Bailey
 //* 20161214
 //*/
 
-namespace Zenobit.Systems
+namespace Zen.Systems
 {
 	#region Dependencies
 
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using Common;
-	using Common.Camera;
-	using Common.Extensions;
-	using Common.ZenECS;
-	using Components;
+
 	using UnityEngine;
+	using Zen.Common;
+	using Zen.Common.Extensions;
+	using Zen.Common.ZenECS;
+	using Zen.Components;
 
 	#endregion
 

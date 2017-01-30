@@ -4,12 +4,12 @@
 //  * 20161205
 // */
 
-namespace Zenobit.Systems
+namespace Zen.Systems
 {
     #region Dependencies
 
 	using UnityEngine;
-	using Zenobit.Common.ZenECS;
+	using Zen.Common.ZenECS;
 
     #endregion
 

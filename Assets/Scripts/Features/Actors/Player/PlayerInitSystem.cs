@@ -1,10 +1,10 @@
 ﻿// /** 
 // * PlayerInitSystem.cs
-// * Will Hart and Dylan Bailey
+// * Dylan Bailey
 // * 20161223
 // */
 
-namespace Zenobit.Systems
+namespace Zen.Systems
 {
 	#region Dependencies
 

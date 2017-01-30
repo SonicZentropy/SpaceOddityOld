@@ -1,0 +1,26 @@
+{
+    "EntityName": "MissileLauncher1",
+    "Wrapper": null,
+    "_components": {
+        "Zen.Components.LauncherComp": {
+            "ProjectileLaunchOffset": {
+                "x": 0.0,
+                "y": -0.2042,
+                "z": 0.1832
+            },
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zen.Components.LauncherComp"
+        },
+        "Zen.Components.UnityPrefabComp": {
+            "IsPooled": false,
+            "PrefabLink": "Prefabs/None",
+            "layer": {
+                "value": 0
+            },
+            "entityTags": "IsEntity",
+            "tags": "",
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zen.Components.UnityPrefabComp"
+        }
+    }
+}

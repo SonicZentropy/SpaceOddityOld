@@ -4,11 +4,11 @@
 //  * 20161103
 // */
 
-namespace Zenobit.Components
+namespace Zen.Components
 {
     #region Dependencies
 
-    using Zenobit.Common.ZenECS;
+    using Zen.Common.ZenECS;
 
     #endregion
 

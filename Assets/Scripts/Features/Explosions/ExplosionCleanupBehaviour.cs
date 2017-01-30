@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Zenobit.Common.ObjectPool;
+using Zen.Common.ObjectPool;
 
 public class ExplosionCleanupBehaviour : MonoBehaviour
 {

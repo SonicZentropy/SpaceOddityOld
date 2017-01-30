@@ -4,7 +4,7 @@
 //  * 20161209
 // */
 
-namespace Zenobit.Common.ObjectPool
+namespace Zen.Common.ObjectPool
 {
     internal interface IPoolRelease
     {

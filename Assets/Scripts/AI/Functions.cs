@@ -4,7 +4,7 @@
 //  * 20161126
 // */
 
-namespace Zenobit.AI
+namespace Zen.AI
 {
     #region Dependencies
     

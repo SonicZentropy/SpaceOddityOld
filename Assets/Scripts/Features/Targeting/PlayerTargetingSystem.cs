@@ -1,22 +1,18 @@
 ﻿// /** 
 // * PlayerTargetingSystem.cs
-// * Will Hart and Dylan Bailey
+// * Dylan Bailey
 // * 20161230
 // */
 
-namespace Zenobit.Systems
+namespace Zen.Systems
 {
 	#region Dependencies
 
-	using System;
-	using AdvancedInspector;
 	using Common;
-	using Common.Debug;
 	using Common.Extensions;
 	using Common.ZenECS;
 	using Components;
 	//using HighlightingSystem;
-	using TypeSafe;
 	using UniRx;
 	using UnityEngine;
 

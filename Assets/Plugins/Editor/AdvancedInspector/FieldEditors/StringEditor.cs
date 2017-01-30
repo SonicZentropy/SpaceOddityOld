@@ -90,6 +90,7 @@ namespace AdvancedInspector
 					string[] PrefabListNoPrefix = UnityDrawerStatics.PrefabList
 					                                                .Select(x => x.Replace("Prefabs/", ""))
 					                                                .ToArray();
+					PrefabListNoPrefix = AddNoneToStringArray(PrefabListNoPrefix);
 
 					//int sel = Math.Max(Array.IndexOf(UnityDrawerStatics.PrefabList, prefabRemoved), 0);
 					int sel = Math.Max(Array.IndexOf(PrefabListNoPrefix, prefabRemoved), 0);
@@ -102,6 +103,7 @@ namespace AdvancedInspector
 				{
 					//Debug.Log($"Pruning by {text.Path}");
 					string[] pruned = PrunePrefabListByPath(UnityDrawerStatics.PrefabList, text.Path);
+					pruned = AddNoneToStringArray(pruned);
 					string prefabRemoved = field.GetValue<string>().Replace("Prefabs/", "");
 					int sel = Math.Max(Array.IndexOf(pruned, prefabRemoved), 0);
 					int idx = EditorGUILayout.Popup(sel, pruned);
@@ -132,12 +134,19 @@ namespace AdvancedInspector
             GUILayout.EndHorizontal();
         }
 
+	    public string[] AddNoneToStringArray(string[] stringArray)
+	    {
+		    var sa = stringArray.ToList();
+		    sa.Add("None");
+		    return sa.ToArray();
+	    }
+
 	    public string[] PrunePrefabListByPath(string[] prefabList, string inPath)
 	    {
 		    List<String> newList = new List<string>();
 		    foreach (var prefab in prefabList)
 		    {
-			    if (prefab.Contains(inPath))
+			    if (prefab.Contains(inPath) || prefab.Contains("EmptyGO"))
 			    {
 				    newList.Add(prefab.Replace("Prefabs/", ""));
 			    }

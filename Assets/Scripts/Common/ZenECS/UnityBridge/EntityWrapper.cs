@@ -4,26 +4,26 @@
 //  * 20161210
 // */
 
-namespace Zenobit.Common.ZenECS
+namespace Zen.Common.ZenECS
 {
     #region Dependencies
 
     using System.Linq;
     using AdvancedInspector;
     using FullInspector;
-    using Serialization;
     using UnityEngine;
-    using Zenobit.Common.Debug;
-    using Zenobit.Common.ObjectPool;
-    using Zenobit.Components;
+    using Zen.Common.ObjectPool;
+    using Zen.Components;
 
     #endregion
 
     /// Allows viewing in Inspector for debug/dev purposes, serves no in-game function
-    public class EntityWrapper : MonoBehaviour //: BaseBehavior 
+    [AdvancedInspector(false, false)]
+    public class EntityWrapper : BaseBehavior //MonoBehaviour //: BaseBehavior
     {
         //[fiInspectorOnly]
-		[Inspect]public Entity Entity;
+		//[Inspect]
+		public Entity Entity;
 
 
         public void SetEntity(Entity entity)

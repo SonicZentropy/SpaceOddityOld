@@ -7,13 +7,13 @@
 
 #pragma warning disable 0414, 0219, 649, 169, 618, 1570
 
-namespace Zenobit.Common.Audio
+namespace Zen.Common.Audio
 {
     #region Dependencies
 
     using System.Collections.Generic;
     using UnityEngine;
-    using Zenobit.Common.Extensions;
+    using Zen.Common.Extensions;
 
     #endregion
 

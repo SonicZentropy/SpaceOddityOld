@@ -4,7 +4,7 @@
 //  * 20161209
 // */
 #pragma warning disable 67
-namespace Zenobit.Serialization
+namespace Zen.Serialization
 {
 	#region Dependencies
 
@@ -16,7 +16,7 @@ namespace Zenobit.Serialization
 	using FullSerializer;
 	using UnityEditor;
 	using UnityEngine;
-	using Zenobit.Common.ZenECS;
+	using Zen.Common.ZenECS;
 
 	#endregion
 

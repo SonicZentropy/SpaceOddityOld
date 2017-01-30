@@ -1,10 +1,10 @@
 ﻿// /**
 // * DebugSystemZen.cs
-// * Will Hart and Dylan Bailey
+// * Dylan Bailey
 // * 20161208
 // */
 
-namespace Zenobit.Systems
+namespace Zen.Systems
 {
 	#region Dependencies
 

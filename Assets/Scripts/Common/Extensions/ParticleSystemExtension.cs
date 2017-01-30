@@ -4,7 +4,7 @@
 //  * 20161209
 // */
 
-namespace Zenobit.Common.Extensions
+namespace Zen.Common.Extensions
 {
 	#region Dependencies
 

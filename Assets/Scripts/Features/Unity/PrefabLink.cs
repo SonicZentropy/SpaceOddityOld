@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Zenobit.Common;
+using Zen.Common;
 
 public class PrefabLink
 {

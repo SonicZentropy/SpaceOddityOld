@@ -4,7 +4,7 @@
 //  * 20161218
 // */
 
-namespace Zenobit.Common.ObjectPool
+namespace Zen.Common.ObjectPool
 {
     public interface IPoolEntityInit
     {

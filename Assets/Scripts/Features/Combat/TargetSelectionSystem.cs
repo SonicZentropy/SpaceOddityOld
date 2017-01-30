@@ -1,11 +1,11 @@
 ﻿/*
 // / ** 
 //  * TargetSelectionSystem.cs
-//  * Will Hart and Dylan Bailey
+//  * Dylan Bailey
 //  * 20161104
 // * /
 
-namespace Zenobit.Systems
+namespace Zen.Systems
 {
     #region Dependencies
 

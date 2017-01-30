@@ -1,7 +1,7 @@
 ﻿using Features.Defense;
 using UnityEngine;
-using Zenobit.Common.ZenECS;
-using Zenobit.Components;
+using Zen.Common.ZenECS;
+using Zen.Components;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(PKFxFX))]

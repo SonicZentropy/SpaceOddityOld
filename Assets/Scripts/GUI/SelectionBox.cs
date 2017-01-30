@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Zenobit.Common;
-using Zenobit.Common.ZenECS;
-using Zenobit.Components;
+using Zen.Common;
+using Zen.Common.ZenECS;
+using Zen.Components;
 
 public class SelectionBox : ZenBehaviour, IOnAwake, IOnUpdate, IInitAfterECS
 {

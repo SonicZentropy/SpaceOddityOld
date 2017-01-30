@@ -1,6 +1,6 @@
-﻿//namespace Zenobit.Components
+﻿//namespace Zen.Components
 //{
-//	using Zenobit.Common.ZenECS;
+//	using Zen.Common.ZenECS;
 //
 //	public static class EntityHelper
 //	{

@@ -4,7 +4,7 @@
 //  * 20161103
 // */
 
-namespace Zenobit.AI.Axes
+namespace Zen.AI.Axes
 {
     #region Dependencies
 

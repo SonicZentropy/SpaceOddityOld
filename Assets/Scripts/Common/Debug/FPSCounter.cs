@@ -4,7 +4,7 @@
 //  * 20161209
 // */
 
-namespace Zenobit.Common.Debug
+namespace Zen.Common.Debug
 {
     #region Dependencies
 

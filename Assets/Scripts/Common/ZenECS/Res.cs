@@ -1,9 +1,9 @@
 using UnityEngine;
 
-namespace Zenobit.Common
+namespace Zen.Common
 {
     using System.Collections.Generic;
-	using Zenobit.Common.ObjectPool;
+	using Zen.Common.ObjectPool;
 
 	public static class Res
 	{
@@ -21,6 +21,7 @@ namespace Zenobit.Common
 			public const string DumbfireMissile = "Weapons/DumbfireMissile";
 			public const string HomingMissile = "Weapons/HomingMissile";
 			public const string SwarmMissile = "Weapons/SwarmMissile";
+			public const string MissileLauncher1 = "Weapons/Launchers/MissileLauncher1";
 		}
 		
 		public static class Prefabs
@@ -54,6 +55,7 @@ namespace Zenobit.Common
 			public const string Frigate = "Prefabs/Ships/Frigate";
 			public const string MK6_Strike_Drone = "Prefabs/Ships/MK6_Strike_Drone";
 			public const string Ship_Corvette = "Prefabs/Ships/Ship_Corvette";
+			public const string MissileLauncher1 = "Prefabs/Weapons/Launchers/MissileLauncher1";
 			public const string DumbfireMissile = "Prefabs/Weapons/Projectiles/DumbfireMissile";
 			public const string HomingMissile = "Prefabs/Weapons/Projectiles/HomingMissile";
 			public const string LaserBeamPrefab = "Prefabs/Weapons/Projectiles/LaserBeamPrefab";

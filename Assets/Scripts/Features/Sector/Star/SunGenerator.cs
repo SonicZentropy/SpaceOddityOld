@@ -10,7 +10,6 @@
 //
 
 using UnityEngine;
-using System.Collections;
 
 namespace Panteleymonov {
 [ExecuteInEditMode]

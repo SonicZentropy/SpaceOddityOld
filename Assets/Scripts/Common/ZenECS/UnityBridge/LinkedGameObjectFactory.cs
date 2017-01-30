@@ -4,18 +4,15 @@
 //  * 20161209
 // */
 
-namespace Zenobit.Common.ZenECS
+namespace Zen.Common.ZenECS
 {
     #region Dependencies
 
     using System;
     using TMPro;
     using UnityEngine;
-    using Weapons;
-    using Zenobit.Common.Debug;
-    using Zenobit.Common.Extensions;
-    using Zenobit.Common.ObjectPool;
-    using Zenobit.Components;
+    using Zen.Common.Extensions;
+    using Zen.Components;
 
     #endregion
 

@@ -4,14 +4,14 @@
 //  * 20161208
 // */
 
-namespace Zenobit.Common.ZenECS
+namespace Zen.Common.ZenECS
 {
     #region Dependencies
 
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Zenobit.Common.Extensions;
+    using Zen.Common.Extensions;
 
 	#endregion
 

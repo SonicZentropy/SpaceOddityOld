@@ -1,4 +1,4 @@
-﻿/*namespace Zenobit.Editor
+﻿/*namespace Zen.Editor
 {
 	using AdvancedInspector;
 	using Common.ZenECS;
@@ -12,7 +12,7 @@
 
 		private EntityGUICreator egc;
 
-		[MenuItem("Zenobit/Entity Editor Window", false, 0)]
+		[MenuItem("Zen/Entity Editor Window", false, 0)]
 		public static void Init()
 		{
 			EntityGUIWindow window = EditorWindow.GetWindow<EntityGUIWindow>();
@@ -78,7 +78,7 @@
 
 		private EcsEngine egc;
 
-		[MenuItem("Zenobit/ECS Engine Window", false, 1)]
+		[MenuItem("Zen/ECS Engine Window", false, 1)]
 		public static void Init()
 		{
 			EngineWindow window = EditorWindow.GetWindow<EngineWindow>();

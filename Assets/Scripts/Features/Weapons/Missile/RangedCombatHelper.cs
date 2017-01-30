@@ -1,18 +1,18 @@
 ﻿// /** 
 // * RangedCombatHelper.cs
-// * Will Hart and Dylan Bailey
+// * Dylan Bailey
 // * 20170117
 // */
 
-namespace Zenobit.Common.Helpers
+namespace Zen.Common.Helpers
 {
 
 	#region Dependencies
 
 	using System;
 	using UnityEngine;
-	using Zenobit.Common.ZenECS;
-	using Zenobit.Components;
+	using Zen.Common.ZenECS;
+	using Zen.Components;
 
 	#endregion
 

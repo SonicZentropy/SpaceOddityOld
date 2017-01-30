@@ -6,14 +6,13 @@
 
 #pragma warning disable 0414, 0219, 649, 169, 1570
 
-namespace Zenobit.Common.Extensions
+namespace Zen.Common.Extensions
 {
     #region Dependencies
 
     using UnityEngine;
-    using Zenobit.Common.Debug;
 
-    #endregion
+	#endregion
 
     /// <summary>
     ///     Be aware this will not prevent a non singleton constructor
