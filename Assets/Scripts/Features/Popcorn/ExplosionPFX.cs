@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using MEC;
+using UnityEngine;
 using Zen.Common.ObjectPool;
 
 [RequireComponent(typeof(PKFxFX))]
@@ -22,13 +25,16 @@ public class ExplosionPFX : MonoBehaviour//, IOnAwake, IOnUpdate
 		col.ValueFloat4 = ExplosionRGBA;
 		ExplosionPfx.SetAttribute(col);
 
-		col = ExplosionPfx.GetAttribute("HitScale");
+		ChangeExplosionScale(ExplosionScale);
+	}
+
+	public void ChangeExplosionScale(float newScale)
+	{
+		Debug.Assert(newScale > 0, "New scale for explosion less than 0!");
+		ExplosionScale = newScale;
+		var col = ExplosionPfx.GetAttribute("HitScale");
 		col.ValueFloat = ExplosionScale;
 		ExplosionPfx.SetAttribute(col);
-
-		//Debug.Log("Setting delegate");
-		//ExplosionPfx.m_OnFxStopped += OnFxStoppedDelegate;
-
 	}
 
 	//void Update()
@@ -58,11 +64,26 @@ public class ExplosionPFX : MonoBehaviour//, IOnAwake, IOnUpdate
 
 	public void OnEnable()
 	{
+		Timing.RunCoroutine(_CheckPfxAliveAndRelease());
+		//ExplosionPfx.StartEffect();
+		////Debug.Log($"Started on enable, is alive? {ExplosionPfx.Alive()}");
+		////updatereported = false;
+		////deathreported = false;
+		//gameObject.ReleaseDelayed(1.2f);
+	}
+
+	IEnumerator<float> _CheckPfxAliveAndRelease()
+	{
 		ExplosionPfx.StartEffect();
-		//Debug.Log($"Started on enable, is alive? {ExplosionPfx.Alive()}");
-		//updatereported = false;
-		//deathreported = false;
-		gameObject.ReleaseDelayed(1.2f);
+		yield return Timing.WaitForSeconds(1.0f);
+
+		while (ExplosionPfx.Alive())
+		{
+			yield return Timing.WaitForSeconds(1.0f);
+		}
+
+		ExplosionPfx.StopEffect();
+		gameObject.Release();
 	}
 
 }
