@@ -123,13 +123,6 @@
             "Id": "00000000-0000-0000-0000-000000000000",
             "$type": "Zen.Components.ShipComp"
         },
-        "Zen.Components.CombatComp": {
-            "TargetedEnemy": {
-                "_value": "00000000-0000-0000-0000-000000000000"
-            },
-            "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zen.Components.CombatComp"
-        },
         "Zen.Components.ShipFittingsComp": {
             "fittingList": [
                 {

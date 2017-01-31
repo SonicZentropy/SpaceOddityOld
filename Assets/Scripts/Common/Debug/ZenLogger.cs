@@ -69,7 +69,7 @@
         }
 #endif
 
-	    public static void GameLog(object message)
+	    public static void LogGame(object message)
 	    {
 		    InGameConsole.Instance.Print(message.ToString());
 	    }

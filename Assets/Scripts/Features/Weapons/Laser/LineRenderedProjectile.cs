@@ -39,7 +39,7 @@ namespace Zen.Weapons
             //line.material = mat;
         }
 
-        public void FireProjectile(CombatComp attacker, Transform target)
+        public void FireProjectile(WeaponComp attacker, Transform target)
         {
             if (target == null) return;
             line.enabled = true;

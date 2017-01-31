@@ -721,7 +721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc6413bbc0abf04e9c82155ed9a47a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AvoidDirtyFlag: 1
+  AvoidDirtyFlag: 0
   EntityName: Actors/Player
 --- !u!4 &1250855352
 Transform:

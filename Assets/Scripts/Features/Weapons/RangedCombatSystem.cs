@@ -20,10 +20,10 @@ namespace Zen.Systems
 	public class RangedCombatSystem : AbstractEcsSystem
 	{
 		private readonly Matcher playerShipMatcher = new Matcher()
-			.AllOf(ComponentTypes.CombatComp, ComponentTypes.PlayerComp);
+			.AllOf(ComponentTypes.TargetComp, ComponentTypes.PlayerComp);
 
 		private readonly Matcher enemyShipMatcher = new Matcher()
-			.AllOf(ComponentTypes.CombatComp)
+			.AllOf(ComponentTypes.TargetComp)
 			.NoneOf(ComponentTypes.PlayerComp);
 
 		private CommandComp playerCommand;
@@ -53,7 +53,7 @@ namespace Zen.Systems
 			{
 				if (playerCommand.AttackPressed)
 				{
-					//ZenLogger.Log("Attack triggered");
+					ZenLogger.LogGame("Attack triggered");
 					ExecuteAttack(ent);
 				}
 			}
@@ -71,21 +71,21 @@ namespace Zen.Systems
 
 		private static void ExecuteAttack(Entity entity)
 		{
-			var combat = entity.GetComponent<CombatComp>();
+			var combat = entity.GetComponent<TargetComp>();
 
 			var weaponsToShoot = combat.GetComponent<ShipFittingsComp>().fittingList;
 
 			foreach (var fitting in weaponsToShoot.Where(x => x.IsEnabled))
 			{
 				WeaponComp selectedWeapon = fitting.FittedWeapon;
-				if (selectedWeapon == null || !UnitCanAttack(combat, selectedWeapon)) return;
+				if (selectedWeapon == null || !UnitCanAttack(selectedWeapon)) return;
 
 				bool attacked = FireProjectile(selectedWeapon, entity.Wrapper.transform.forward);
 
 				if (!attacked) return;
 
-				PlayAttackNoise(combat, selectedWeapon);
-				SetNextAttackTime(combat, selectedWeapon);
+				PlayAttackNoise(selectedWeapon);
+				SetNextAttackTime( selectedWeapon);
 			}
 		}
 
@@ -138,21 +138,21 @@ namespace Zen.Systems
 			lc.laserInfoPacket.laserFireType = LaserFireType.ProjectileGO;
 		}
 
-		private static void SetNextAttackTime(CombatComp combat, WeaponComp selectedWeapon)
+		private static void SetNextAttackTime( WeaponComp selectedWeapon)
 		{
 			selectedWeapon.NextAttackTime = Time.time + selectedWeapon.AttackRate;
 		}
 
-		private static bool UnitCanAttack(CombatComp combat, WeaponComp selectedWeapon)
+		private static bool UnitCanAttack(WeaponComp selectedWeapon)
 		{
 			return selectedWeapon.NextAttackTime < Time.time;
 		}
 
-		private static void PlayAttackNoise(CombatComp attacker, WeaponComp weapon)
+		private static void PlayAttackNoise(WeaponComp weapon)
 		{
-			if (attacker.Owner.HasComponent(ComponentTypes.AudioSourceComp))
+			if (weapon.Owner.HasComponent(ComponentTypes.AudioSourceComp))
 			{
-				attacker.Owner.GetComponent<AudioSourceComp>().TriggerSfx(weapon.FiringSoundEffect);
+				weapon.Owner.GetComponent<AudioSourceComp>().TriggerSfx(weapon.FiringSoundEffect);
 			}
 		}
 
@@ -161,7 +161,7 @@ namespace Zen.Systems
 		/// </summary>
 		/// <param name="firer"></param>
 		/// <param name="projectile"></param>
-		private static void IgnoreProjectileCollisions(CombatComp firer, GameObject projectile)
+		private static void IgnoreProjectileCollisions(WeaponComp firer, GameObject projectile)
 		{
 			var projectileCollider = projectile.GetComponentInChildren<Collider>();
 			foreach (var col in firer.Owner.Wrapper.GetComponentsInChildren<Collider>())

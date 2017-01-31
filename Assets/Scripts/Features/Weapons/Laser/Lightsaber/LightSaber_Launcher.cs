@@ -95,7 +95,7 @@ namespace Zen.Weapons.Lightsaber
             // arcPrefab = Resourcesengine.LaserTypesMapping[LaserTypes.LightningBig];
         }
 
-        public void FireProjectile(CombatComp attacker, Transform target)
+        public void FireProjectile(TargetComp attacker)
         {
             if (launchMethod == LaunchMethod.forward_raycast && startBehaviour == RayTransformBehaivour.follow_raycast)
             {
@@ -111,14 +111,13 @@ namespace Zen.Weapons.Lightsaber
             }
 
             Transform start = transform;
-            Transform end;
-            GameObject tmpobj = new GameObject("rayEndPoint");
+	        GameObject tmpobj = new GameObject("rayEndPoint");
 
-            tmpobj.transform.position = target.position;
+            tmpobj.transform.position = attacker.target.position;
 
 
             //End position will be raycasted in any case
-            end = tmpobj.transform;
+            var end = tmpobj.transform;
 
             //Start position will depend on launch method
             tmpobj = new GameObject("rayStartPoint");

@@ -36,9 +36,9 @@ namespace Zen.AI.Actions
         protected virtual Vector3 GetAttackingPosition(AiContext context)
         {
             var pos = context.GetComponent<PositionComp>();
-            var combat = context.GetComponent<CombatComp>();
+            var combat = context.GetComponent<TargetComp>();
 
-            var dirToTarget = (combat.TargetedEnemy.Value.Position - pos.Position).normalized;
+            var dirToTarget = (combat.target.position - pos.Position).normalized;
             //var movementRange = combat.SelectedWeapon.Value.AttackRange;
 	        var movementRange = 0f; //need to refactor above
             return movementRange * dirToTarget;
@@ -52,18 +52,19 @@ namespace Zen.AI.Actions
         protected virtual bool CheckTargetIsStillValid(AiContext context)
         {
             var pos = context.GetComponent<PositionComp>();
-            var combat = context.GetComponent<CombatComp>();
+            var combat = context.GetComponent<TargetComp>();
 
             // check if our current enemy is valid
-            if (combat.TargetedEnemy == null) return false;
+            if (combat.target == null) return false;
 
-            var dist = (pos.Position - combat.TargetedEnemy.Value.Position).sqrMagnitude;
+            //var dist = (pos.Position - combat.target.position).sqrMagnitude;
             //if (!combat.TargetedEnemy.Value.Owner.GetComponent<HealthComp>().IsDead && 
             //    dist < combat.SelectedWeapon.Value.AttackRange) return true;
 			//need to refactor above for combatcomp changes
 
-            combat.TargetedEnemy = null;
-            return false;
+            //combat.target = null;
+            //return false;
+	        return true;
         }
 
         ///// <summary>
