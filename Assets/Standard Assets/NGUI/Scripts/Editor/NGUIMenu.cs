@@ -493,7 +493,7 @@ static public class NGUIMenu
 	static public void SetToMin ()
 	{
 		NGUISettings.minimalisticLook = true;
-		if (NGUITransformInspector.instance != null) NGUITransformInspector.instance.Repaint();
+		//if (NGUITransformInspector.instance != null) NGUITransformInspector.instance.Repaint();
 	}
 
 	[MenuItem("NGUI/Options/Inspector Look/Set to Minimalistic", true, 10)]
@@ -503,7 +503,7 @@ static public class NGUIMenu
 	static public void SetToDistinct ()
 	{
 		NGUISettings.minimalisticLook = false;
-		if (NGUITransformInspector.instance != null) NGUITransformInspector.instance.Repaint();
+		//if (NGUITransformInspector.instance != null) NGUITransformInspector.instance.Repaint();
 	}
 
 	[MenuItem("NGUI/Options/Inspector Look/Set to Distinct", true, 10)]
@@ -513,7 +513,7 @@ static public class NGUIMenu
 	static public void SetToUnified ()
 	{
 		NGUISettings.unifiedTransform = true;
-		if (NGUITransformInspector.instance != null) NGUITransformInspector.instance.Repaint();
+		//if (NGUITransformInspector.instance != null) NGUITransformInspector.instance.Repaint();
 	}
 
 	[MenuItem("NGUI/Options/Inspector Look/Set to Unified", true, 10)]
@@ -523,7 +523,7 @@ static public class NGUIMenu
 	static public void SetToTraditional ()
 	{
 		NGUISettings.unifiedTransform = false;
-		if (NGUITransformInspector.instance != null) NGUITransformInspector.instance.Repaint();
+		//if (NGUITransformInspector.instance != null) NGUITransformInspector.instance.Repaint();
 	}
 
 	[MenuItem("NGUI/Options/Inspector Look/Set to Traditional", true, 10)]

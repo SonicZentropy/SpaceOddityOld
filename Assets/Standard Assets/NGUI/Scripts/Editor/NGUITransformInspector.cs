@@ -1,3 +1,4 @@
+/*
 //----------------------------------------------
 //			  NGUI: Next-Gen UI kit
 // Copyright © 2011-2016 Tasharen Entertainment
@@ -67,7 +68,7 @@ public class NGUITransformInspector : Editor
 		if (NGUISettings.unifiedTransform)
 		{
 			NGUIEditorTools.SetLabelWidth(80f);
-			
+
 			if (UIWidgetInspector.instance != null)
 			{
 				UIWidgetInspector.instance.serializedObject.Update();
@@ -254,3 +255,4 @@ public class NGUITransformInspector : Editor
 	}
 #endregion
 }
+*/

@@ -63,7 +63,5 @@ namespace Zen.AI.Actions
             // don't pathfind for very small differences - an arbitrary number which prevents jittering and spurious pathing
             context.State.NavigationTargetUpdated = (previous - context.State.NavigationTarget).sqrMagnitude > 0.1f;
         }
-
-        
     }
 }

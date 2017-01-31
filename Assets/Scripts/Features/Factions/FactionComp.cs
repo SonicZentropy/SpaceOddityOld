@@ -4,12 +4,12 @@
 
 	public class FactionComp : ComponentEcs
 	{
-		public FactionType EntityFaction;
+		public EFactionType EntityFaction;
 
 		public override ComponentTypes ComponentType => ComponentTypes.FactionComp;
 	}
 
-	public enum FactionType
+	public enum EFactionType
 	{
 		Player,
 		Xenith, //bio mech AI

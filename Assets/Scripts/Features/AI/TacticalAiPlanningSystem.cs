@@ -85,7 +85,7 @@ namespace Zen.Systems
 			}
 			else
 			{
-				Debug.LogWarning($"Unable to select an appropriate AI bundle for entity {planner.Owner.EntityName}, ignoring");
+				ZenLogger.LogWarning($"Unable to select an appropriate AI bundle for entity {planner.Owner.EntityName}, ignoring");
 				return true;
 			}
 
