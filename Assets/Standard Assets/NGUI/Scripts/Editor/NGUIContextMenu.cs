@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 static public class NGUIContextMenu
 {
-	[MenuItem("Help/NGUI Documentation (v.3.10.2)")]
+	[MenuItem("Help/NGUI Documentation (v.3.11.0)")]
 	static void ShowHelp0 (MenuCommand command) { NGUIHelp.Show(); }
 
 	[MenuItem("Help/NGUI Support Forum")]
@@ -474,7 +474,7 @@ static public class NGUIContextMenu
 			GameObject go = Selection.gameObjects[i];
 			if (go.GetComponent(type) != null) continue;
 #if !UNITY_3_5
-			UnityEngine.Component cmp = go.AddComponent(type);
+			Component cmp = go.AddComponent(type);
 			Undo.RegisterCreatedObjectUndo(cmp, "Attach " + type);
 #endif
 		}

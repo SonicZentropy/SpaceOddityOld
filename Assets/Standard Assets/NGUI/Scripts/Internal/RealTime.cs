@@ -68,12 +68,12 @@ public class RealTime : MonoBehaviour
 	/// Real time since startup.
 	/// </summary>
 
-	public static float time { get { return Time.unscaledTime; } }
+	static public float time { get { return Time.unscaledTime; } }
 
 	/// <summary>
 	/// Real delta time.
 	/// </summary>
 
-	public static float deltaTime { get { return Time.unscaledDeltaTime; } }
+	static public float deltaTime { get { return Time.unscaledDeltaTime; } }
 #endif
 }

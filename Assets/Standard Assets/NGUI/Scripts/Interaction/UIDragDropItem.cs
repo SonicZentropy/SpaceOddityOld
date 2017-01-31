@@ -67,7 +67,7 @@ public class UIDragDropItem : MonoBehaviour
 	/// List of items that are currently being dragged.
 	/// </summary>
 
-	public static List<UIDragDropItem> draggedItems = new List<UIDragDropItem>();
+	static public List<UIDragDropItem> draggedItems = new List<UIDragDropItem>();
 
 	protected virtual void Awake ()
 	{

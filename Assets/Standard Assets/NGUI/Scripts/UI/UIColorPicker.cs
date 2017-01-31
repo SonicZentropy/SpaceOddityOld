@@ -14,7 +14,7 @@ using System.Collections.Generic;
 [RequireComponent(typeof(UITexture))]
 public class UIColorPicker : MonoBehaviour
 {
-	public static UIColorPicker current;
+	static public UIColorPicker current;
 
 	/// <summary>
 	/// Color picker's current value.
@@ -209,7 +209,7 @@ public class UIColorPicker : MonoBehaviour
 	/// Choose a color, given X and Y in 0-1 range.
 	/// </summary>
 
-	public static Color Sample (float x, float y)
+	static public Color Sample (float x, float y)
 	{
 		if (mRed == null)
 		{

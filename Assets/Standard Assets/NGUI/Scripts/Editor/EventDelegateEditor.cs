@@ -1,4 +1,4 @@
-﻿//----------------------------------------------
+//----------------------------------------------
 //            NGUI: Next-Gen UI kit
 // Copyright © 2011-2016 Tasharen Entertainment
 //----------------------------------------------
@@ -161,7 +161,7 @@ static public class EventDelegateEditor
 					GameObject selGO = null;
 					System.Type type = obj.GetType();
 					if (type == typeof(GameObject)) selGO = obj as GameObject;
-					else if (type.IsSubclassOf(typeof(UnityEngine.Component))) selGO = (obj as UnityEngine.Component).gameObject;
+					else if (type.IsSubclassOf(typeof(Component))) selGO = (obj as Component).gameObject;
 
 					if (selGO != null)
 					{

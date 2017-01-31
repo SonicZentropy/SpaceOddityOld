@@ -17,7 +17,7 @@ public class UIButton : UIButtonColor
 	/// Current button that sent out the onClick event.
 	/// </summary>
 
-	public static UIButton current;
+	static public UIButton current;
 
 	/// <summary>
 	/// Whether the button will highlight when you drag something over it.

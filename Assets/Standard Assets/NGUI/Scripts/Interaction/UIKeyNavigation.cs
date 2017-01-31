@@ -16,7 +16,7 @@ public class UIKeyNavigation : MonoBehaviour
 	/// List of all the active UINavigation components.
 	/// </summary>
 
-	public static BetterList<UIKeyNavigation> list = new BetterList<UIKeyNavigation>();
+	static public BetterList<UIKeyNavigation> list = new BetterList<UIKeyNavigation>();
 
 	public enum Constraint
 	{
@@ -80,7 +80,7 @@ public class UIKeyNavigation : MonoBehaviour
 	/// Convenience function that returns the current key navigation selection.
 	/// </summary>
 
-	public static UIKeyNavigation current
+	static public UIKeyNavigation current
 	{
 		get
 		{
@@ -205,7 +205,7 @@ public class UIKeyNavigation : MonoBehaviour
 		return go;
 	}
 
-	protected static Vector3 GetCenter (GameObject go)
+	static protected Vector3 GetCenter (GameObject go)
 	{
 		UIWidget w = go.GetComponent<UIWidget>();
 		UICamera cam = UICamera.FindCameraForLayer(go.layer);
@@ -232,7 +232,7 @@ public class UIKeyNavigation : MonoBehaviour
 		return go.transform.position;
 	}
 
-	public static int mLastFrame = 0;
+	static public int mLastFrame = 0;
 
 	/// <summary>
 	/// React to navigation.

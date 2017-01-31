@@ -477,7 +477,7 @@ public class UIFont : MonoBehaviour
 	/// Helper function that determines whether the two atlases are related.
 	/// </summary>
 
-	public static bool CheckIfRelated (UIFont a, UIFont b)
+	static public bool CheckIfRelated (UIFont a, UIFont b)
 	{
 		if (a == null || b == null) return false;
 #if DYNAMIC_FONT && !UNITY_FLASH

@@ -21,7 +21,7 @@ public class NGUIDebug : MonoBehaviour
 	/// Set by UICamera. Can be used to show/hide raycast information.
 	/// </summary>
 
-	public static bool debugRaycast
+	static public bool debugRaycast
 	{
 		get
 		{
@@ -39,7 +39,7 @@ public class NGUIDebug : MonoBehaviour
 	/// Ensure we have an instance present.
 	/// </summary>
 
-	public static void CreateInstance ()
+	static public void CreateInstance ()
 	{
 		if (mInstance == null)
 		{
@@ -68,7 +68,7 @@ public class NGUIDebug : MonoBehaviour
 	/// Add a new log entry, printing all of the specified parameters.
 	/// </summary>
 
-	public static void Log (params object[] objs)
+	static public void Log (params object[] objs)
 	{
 		string text = "";
 
@@ -90,7 +90,7 @@ public class NGUIDebug : MonoBehaviour
 	/// Add a new log entry.
 	/// </summary>
 
-	public static void Log (string s)
+	static public void Log (string s)
 	{
 		if (!string.IsNullOrEmpty(s))
 		{
@@ -103,13 +103,13 @@ public class NGUIDebug : MonoBehaviour
 	/// Clear the logged text.
 	/// </summary>
 
-	public static void Clear () { mLines.Clear(); }
+	static public void Clear () { mLines.Clear(); }
 
 	/// <summary>
 	/// Draw bounds immediately. Won't be remembered for the next frame.
 	/// </summary>
 
-	public static void DrawBounds (Bounds b)
+	static public void DrawBounds (Bounds b)
 	{
 		Vector3 c = b.center;
 		Vector3 v0 = b.center - b.extents;

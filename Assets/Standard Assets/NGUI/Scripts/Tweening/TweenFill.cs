@@ -54,7 +54,7 @@ public class TweenFill : UITweener
 	/// Start the tweening operation.
 	/// </summary>
 
-	public static TweenFill Begin (GameObject go, float duration, float fill)
+	static public TweenFill Begin (GameObject go, float duration, float fill)
 	{
 		TweenFill comp = UITweener.Begin<TweenFill>(go, duration);
 		comp.from = comp.value;

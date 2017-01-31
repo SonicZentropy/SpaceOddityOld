@@ -5,7 +5,7 @@
 
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.Profiling;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -123,7 +123,7 @@ public class UICamera : MonoBehaviour
 	/// List of all active cameras in the scene.
 	/// </summary>
 
-	public static BetterList<UICamera> list = new BetterList<UICamera>();
+	static public BetterList<UICamera> list = new BetterList<UICamera>();
 
 	public delegate bool GetKeyStateFunc (KeyCode key);
 	public delegate float GetAxisFunc (string name);
@@ -136,7 +136,7 @@ public class UICamera : MonoBehaviour
 	/// GetKeyDown function -- return whether the specified key was pressed this Update().
 	/// </summary>
 
-	public static GetKeyStateFunc GetKeyDown = delegate(KeyCode key)
+	static public GetKeyStateFunc GetKeyDown = delegate(KeyCode key)
 	{
 		if (key >= KeyCode.JoystickButton0 && ignoreControllerInput) return false;
 		return Input.GetKeyDown(key);
@@ -146,7 +146,7 @@ public class UICamera : MonoBehaviour
 	/// GetKeyDown function -- return whether the specified key was released this Update().
 	/// </summary>
 
-	public static GetKeyStateFunc GetKeyUp = delegate(KeyCode key)
+	static public GetKeyStateFunc GetKeyUp = delegate(KeyCode key)
 	{
 		if (key >= KeyCode.JoystickButton0 && ignoreControllerInput) return false;
 		return Input.GetKeyUp(key);
@@ -156,7 +156,7 @@ public class UICamera : MonoBehaviour
 	/// GetKey function -- return whether the specified key is currently held.
 	/// </summary>
 
-	public static GetKeyStateFunc GetKey = delegate(KeyCode key)
+	static public GetKeyStateFunc GetKey = delegate(KeyCode key)
 	{
 		if (key >= KeyCode.JoystickButton0 && ignoreControllerInput) return false;
 		return Input.GetKey(key);
@@ -166,7 +166,7 @@ public class UICamera : MonoBehaviour
 	/// GetAxis function -- return the state of the specified axis.
 	/// </summary>
 
-	public static GetAxisFunc GetAxis = delegate(string axis)
+	static public GetAxisFunc GetAxis = delegate(string axis)
 	{
 		if (ignoreControllerInput) return 0f;
 		return Input.GetAxis(axis);
@@ -176,19 +176,19 @@ public class UICamera : MonoBehaviour
 	/// User-settable Input.anyKeyDown
 	/// </summary>
 
-	public static GetAnyKeyFunc GetAnyKeyDown;
+	static public GetAnyKeyFunc GetAnyKeyDown;
 
 	/// <summary>
 	/// Get the details of the specified mouse button.
 	/// </summary>
 
-	public static GetMouseDelegate GetMouse = delegate(int button) { return mMouse[button]; };
+	static public GetMouseDelegate GetMouse = delegate(int button) { return mMouse[button]; };
 	
 	/// <summary>
 	/// Get or create a touch event. If you are trying to iterate through a list of active touches, use activeTouches instead.
 	/// </summary>
 
-	public static GetTouchDelegate GetTouch = delegate(int id, bool createIfMissing)
+	static public GetTouchDelegate GetTouch = delegate(int id, bool createIfMissing)
 	{
 		if (id < 0) return GetMouse(-id - 1);
 
@@ -211,7 +211,7 @@ public class UICamera : MonoBehaviour
 	/// Remove a touch event from the list.
 	/// </summary>
 
-	public static RemoveTouchDelegate RemoveTouch = delegate(int id)
+	static public RemoveTouchDelegate RemoveTouch = delegate(int id)
 	{
 		for (int i = 0, imax = mTouchIDs.Count; i < imax; ++i)
 		{
@@ -229,7 +229,7 @@ public class UICamera : MonoBehaviour
 	/// Subscribe to it if you don't want to compare Screen.width and Screen.height each frame.
 	/// </summary>
 
-	public static OnScreenResize onScreenResize;
+	static public OnScreenResize onScreenResize;
 	public delegate void OnScreenResize ();
 
 	/// <summary>
@@ -409,20 +409,20 @@ public class UICamera : MonoBehaviour
 	/// Use UICamera.current to get the current camera.
 	/// </summary>
 
-	public static OnCustomInput onCustomInput;
+	static public OnCustomInput onCustomInput;
 
 	/// <summary>
 	/// Whether tooltips will be shown or not.
 	/// </summary>
 
-	public static bool showTooltips = true;
+	static public bool showTooltips = true;
 
 	/// <summary>
 	/// Whether controller input will be temporarily disabled or not.
 	/// It's useful to be able to turn off controller interaction and only turn it on when the UI is actually visible.
 	/// </summary>
 
-	public static bool disableController
+	static public bool disableController
 	{
 		get
 		{
@@ -438,13 +438,13 @@ public class UICamera : MonoBehaviour
 	/// If set to 'true', all events will be ignored until set to 'true'.
 	/// </summary>
 
-	public static bool ignoreAllEvents = false;
+	static public bool ignoreAllEvents = false;
 
 	/// <summary>
 	/// If set to 'true', controller input will be flat-out ignored. Permanently, for all cameras.
 	/// </summary>
 
-	public static bool ignoreControllerInput = false;
+	static public bool ignoreControllerInput = false;
 
 	static bool mDisableController = false;
 	static Vector2 mLastPos = Vector2.zero;
@@ -454,13 +454,13 @@ public class UICamera : MonoBehaviour
 	/// </summary>
 
 	[System.Obsolete("Use lastEventPosition instead. It handles controller input properly.")]
-	public static Vector2 lastTouchPosition { get { return mLastPos; } set { mLastPos = value; } }
+	static public Vector2 lastTouchPosition { get { return mLastPos; } set { mLastPos = value; } }
 
 	/// <summary>
 	/// Position of the last touch (or mouse) event.
 	/// </summary>
 
-	public static Vector2 lastEventPosition
+	static public Vector2 lastEventPosition
 	{
 		get
 		{
@@ -486,7 +486,13 @@ public class UICamera : MonoBehaviour
 	/// Position of the last touch (or mouse) event in the world.
 	/// </summary>
 
-	public static Vector3 lastWorldPosition = Vector3.zero;
+	static public Vector3 lastWorldPosition = Vector3.zero;
+
+	/// <summary>
+	/// Last raycast into the world space.
+	/// </summary>
+
+	static public Ray lastWorldRay = new Ray();
 
 	/// <summary>
 	/// Last raycast hit prior to sending out the event. This is useful if you want detailed information
@@ -494,19 +500,19 @@ public class UICamera : MonoBehaviour
 	/// Note that this is not going to be valid if you're using 2D colliders.
 	/// </summary>
 
-	public static RaycastHit lastHit;
+	static public RaycastHit lastHit;
 
 	/// <summary>
 	/// UICamera that sent out the event.
 	/// </summary>
 
-	public static UICamera current = null;
+	static public UICamera current = null;
 
 	/// <summary>
 	/// NGUI event system that will be handling all events.
 	/// </summary>
 
-	public static UICamera first
+	static public UICamera first
 	{
 		get
 		{
@@ -519,7 +525,7 @@ public class UICamera : MonoBehaviour
 	/// Last camera active prior to sending out the event. This will always be the camera that actually sent out the event.
 	/// </summary>
 
-	public static Camera currentCamera = null;
+	static public Camera currentCamera = null;
 
 	public delegate void OnSchemeChange ();
 
@@ -527,14 +533,14 @@ public class UICamera : MonoBehaviour
 	/// Delegate called when the control scheme changes.
 	/// </summary>
 
-	public static OnSchemeChange onSchemeChange;
+	static public OnSchemeChange onSchemeChange;
 	static ControlScheme mLastScheme = ControlScheme.Mouse;
 
 	/// <summary>
 	/// Current control scheme. Derived from the last event to arrive.
 	/// </summary>
 
-	public static ControlScheme currentScheme
+	static public ControlScheme currentScheme
 	{
 		get
 		{
@@ -573,7 +579,7 @@ public class UICamera : MonoBehaviour
 	/// Mouse ID is '-1' for left, '-2' for right mouse button, '-3' for middle.
 	/// </summary>
 
-	public static int currentTouchID = -100;
+	static public int currentTouchID = -100;
 
 	static KeyCode mCurrentKey = KeyCode.Alpha0;
 
@@ -581,7 +587,7 @@ public class UICamera : MonoBehaviour
 	/// Key that triggered the event, if any.
 	/// </summary>
 
-	public static KeyCode currentKey
+	static public KeyCode currentKey
 	{
 		get
 		{
@@ -640,7 +646,7 @@ public class UICamera : MonoBehaviour
 	/// Ray projected into the screen underneath the current touch.
 	/// </summary>
 
-	public static Ray currentRay
+	static public Ray currentRay
 	{
 		get
 		{
@@ -653,7 +659,7 @@ public class UICamera : MonoBehaviour
 	/// Current touch, set before any event function gets called.
 	/// </summary>
 
-	public static MouseOrTouch currentTouch = null;
+	static public MouseOrTouch currentTouch = null;
 
 	static bool mInputFocus = false;
 
@@ -661,7 +667,7 @@ public class UICamera : MonoBehaviour
 	/// Whether an input field currently has focus.
 	/// </summary>
 
-	public static bool inputHasFocus
+	static public bool inputHasFocus
 	{
 		get
 		{
@@ -678,13 +684,13 @@ public class UICamera : MonoBehaviour
 	/// </summary>
 
 	[System.Obsolete("Use delegates instead such as UICamera.onClick, UICamera.onHover, etc.")]
-	public static GameObject genericEventHandler { get { return mGenericHandler; } set { mGenericHandler = value; } }
+	static public GameObject genericEventHandler { get { return mGenericHandler; } set { mGenericHandler = value; } }
 
 	/// <summary>
 	/// If events don't get handled, they will be forwarded to this game object.
 	/// </summary>
 
-	public static GameObject fallThrough;
+	static public GameObject fallThrough;
 
 	public delegate void MoveDelegate (Vector2 delta);
 	public delegate void VoidDelegate (GameObject go);
@@ -698,35 +704,43 @@ public class UICamera : MonoBehaviour
 	/// These notifications are sent out prior to the actual event going out.
 	/// </summary>
 
-	public static VoidDelegate onClick;
-	public static VoidDelegate onDoubleClick;
-	public static BoolDelegate onHover;
-	public static BoolDelegate onPress;
-	public static BoolDelegate onSelect;
-	public static FloatDelegate onScroll;
-	public static VectorDelegate onDrag;
-	public static VoidDelegate onDragStart;
-	public static ObjectDelegate onDragOver;
-	public static ObjectDelegate onDragOut;
-	public static VoidDelegate onDragEnd;
-	public static ObjectDelegate onDrop;
-	public static KeyCodeDelegate onKey;
-	public static KeyCodeDelegate onNavigate;
-	public static VectorDelegate onPan;
-	public static BoolDelegate onTooltip;
-	public static MoveDelegate onMouseMove;
+	static public VoidDelegate onClick;
+	static public VoidDelegate onDoubleClick;
+	static public BoolDelegate onHover;
+	static public BoolDelegate onPress;
+	static public BoolDelegate onSelect;
+	static public FloatDelegate onScroll;
+	static public VectorDelegate onDrag;
+	static public VoidDelegate onDragStart;
+	static public ObjectDelegate onDragOver;
+	static public ObjectDelegate onDragOut;
+	static public VoidDelegate onDragEnd;
+	static public ObjectDelegate onDrop;
+	static public KeyCodeDelegate onKey;
+	static public KeyCodeDelegate onNavigate;
+	static public VectorDelegate onPan;
+	static public BoolDelegate onTooltip;
+	static public MoveDelegate onMouseMove;
 
 	// Mouse events
 	static MouseOrTouch[] mMouse = new MouseOrTouch[] { new MouseOrTouch(), new MouseOrTouch(), new MouseOrTouch() };
 
+	/// <summary>
+	/// Access to the mouse-related data. This is intended to be read-only.
+	/// </summary>
+
+	static public MouseOrTouch mouse0 { get { return mMouse[0]; } }
+	static public MouseOrTouch mouse1 { get { return mMouse[1]; } }
+	static public MouseOrTouch mouse2 { get { return mMouse[2]; } }
+
 	// Joystick/controller/keyboard event
-	public static MouseOrTouch controller = new MouseOrTouch();
+	static public MouseOrTouch controller = new MouseOrTouch();
 
 	/// <summary>
 	/// List of all the active touches.
 	/// </summary>
 	
-	public static List<MouseOrTouch> activeTouches = new List<MouseOrTouch>();
+	static public List<MouseOrTouch> activeTouches = new List<MouseOrTouch>();
 
 	// Used internally to store IDs of active touches
 	static List<int> mTouchIDs = new List<int>();
@@ -763,19 +777,19 @@ public class UICamera : MonoBehaviour
 	/// Set to 'true' just before OnDrag-related events are sent. No longer needed, but kept for backwards compatibility.
 	/// </summary>
 
-	public static bool isDragging = false;
+	static public bool isDragging = false;
 
 	/// <summary>
 	/// Object that should be showing the tooltip.
 	/// </summary>
 
-	public static GameObject tooltipObject { get { return mTooltip; } }
+	static public GameObject tooltipObject { get { return mTooltip; } }
 
 	/// <summary>
 	/// Whether the last raycast was over the UI.
 	/// </summary>
 
-	public static bool isOverUI
+	static public bool isOverUI
 	{
 		get
 		{
@@ -784,15 +798,46 @@ public class UICamera : MonoBehaviour
 			for (int i = 0, imax = activeTouches.Count; i < imax; ++i)
 			{
 				MouseOrTouch touch = activeTouches[i];
-				if (touch.pressed != null && touch.pressed != fallThrough && NGUITools.FindInParents<UIRoot>(touch.pressed) != null)
-					return true;
+				if (touch.pressed != null && touch.pressed != fallThrough && NGUITools.FindInParents<UIRoot>(touch.pressed) != null) return true;
 			}
 
-			if (mMouse[0].current != null && mMouse[0].current != fallThrough && NGUITools.FindInParents<UIRoot>(mMouse[0].current) != null)
-				return true;
+			for (int i = 0; i < 3; ++i)
+			{
+				var m = mMouse[i];
+				if (m.current != null && m.current != fallThrough && NGUITools.FindInParents<UIRoot>(m.current) != null) return true;
+			}
 
-			if (controller.pressed != null && controller.pressed != fallThrough && NGUITools.FindInParents<UIRoot>(controller.pressed) != null)
-				return true;
+			if (controller.pressed != null && controller.pressed != fallThrough && NGUITools.FindInParents<UIRoot>(controller.pressed) != null) return true;
+
+			return false;
+		}
+	}
+
+	/// <summary>
+	/// Much like 'isOverUI', but also returns 'true' if there is currently an active mouse press on a UI element, or if a UI input has focus.
+	/// </summary>
+
+	static public bool uiHasFocus
+	{
+		get
+		{
+			if (inputHasFocus) return true;
+			if (currentTouch != null) return currentTouch.isOverUI;
+
+			for (int i = 0, imax = activeTouches.Count; i < imax; ++i)
+			{
+				MouseOrTouch touch = activeTouches[i];
+				if (touch.pressed != null && touch.pressed != fallThrough && NGUITools.FindInParents<UIRoot>(touch.pressed) != null) return true;
+			}
+
+			for (int i = 0; i < 3; ++i)
+			{
+				var m = mMouse[i];
+				if (m.pressed != null && m.pressed != fallThrough && NGUITools.FindInParents<UIRoot>(m.pressed) != null) return true;
+				if (m.current != null && m.current != fallThrough && NGUITools.FindInParents<UIRoot>(m.current) != null) return true;
+			}
+
+			if (controller.pressed != null && controller.pressed != fallThrough && NGUITools.FindInParents<UIRoot>(controller.pressed) != null) return true;
 
 			return false;
 		}
@@ -808,7 +853,7 @@ public class UICamera : MonoBehaviour
 	/// Checking this value from within a touch-based event will simply return the current touched object.
 	/// </summary>
 
-	public static GameObject hoveredObject
+	static public GameObject hoveredObject
 	{
 		get
 		{
@@ -857,9 +902,15 @@ public class UICamera : MonoBehaviour
 			{
 				if (mHover != controller.current)
 				{
+#if UNITY_5_5_OR_NEWER
+					UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
+					if (mHover.GetComponent<UIKeyNavigation>() != null) controller.current = mHover;
+					UnityEngine.Profiling.Profiler.EndSample();
+#else
 					Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
 					if (mHover.GetComponent<UIKeyNavigation>() != null) controller.current = mHover;
 					Profiler.EndSample();
+#endif
 				}
 
 				// Locate the appropriate camera for the new object
@@ -893,7 +944,7 @@ public class UICamera : MonoBehaviour
 	/// Currently chosen object for controller-based navigation.
 	/// </summary>
 
-	public static GameObject controllerNavigationObject
+	static public GameObject controllerNavigationObject
 	{
 		get
 		{
@@ -955,7 +1006,7 @@ public class UICamera : MonoBehaviour
 	/// but only one object can be selected at a time.
 	/// </summary>
 
-	public static GameObject selectedObject
+	static public GameObject selectedObject
 	{
 		get
 		{
@@ -1011,10 +1062,18 @@ public class UICamera : MonoBehaviour
 
 			if (value != null)
 			{
+#if UNITY_5_5_OR_NEWER
+				UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
+#else
 				Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
+#endif
 				UIKeyNavigation nav = value.GetComponent<UIKeyNavigation>();
 				if (nav != null) controller.current = value;
+#if UNITY_5_5_OR_NEWER
+				UnityEngine.Profiling.Profiler.EndSample();
+#else
 				Profiler.EndSample();
+#endif
 			}
 
 			// Set the camera for events
@@ -1039,9 +1098,15 @@ public class UICamera : MonoBehaviour
 			// Set the selection
 			if (mSelected)
 			{
+#if UNITY_5_5_OR_NEWER
+				UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
+				mInputFocus = (mSelected.activeInHierarchy && mSelected.GetComponent<UIInput>() != null);
+				UnityEngine.Profiling.Profiler.EndSample();
+#else
 				Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
 				mInputFocus = (mSelected.activeInHierarchy && mSelected.GetComponent<UIInput>() != null);
 				Profiler.EndSample();
+#endif
 				if (onSelect != null) onSelect(mSelected, true);
 				Notify(mSelected, "OnSelect", true);
 			}
@@ -1061,7 +1126,7 @@ public class UICamera : MonoBehaviour
 	/// Returns 'true' if any of the active touch, mouse or controller is currently holding the specified object.
 	/// </summary>
 
-	public static bool IsPressed (GameObject go)
+	static public bool IsPressed (GameObject go)
 	{
 		for (int i = 0; i < 3; ++i) if (mMouse[i].pressed == go) return true;
 		for (int i = 0, imax = activeTouches.Count; i < imax; ++i)
@@ -1074,7 +1139,7 @@ public class UICamera : MonoBehaviour
 	}
 
 	[System.Obsolete("Use either 'CountInputSources()' or 'activeTouches.Count'")]
-	public static int touchCount { get { return CountInputSources(); } }
+	static public int touchCount { get { return CountInputSources(); } }
 
 	/// <summary>
 	/// Number of active touches from all sources.
@@ -1082,7 +1147,7 @@ public class UICamera : MonoBehaviour
 	/// If you want only touch events, use activeTouches.Count.
 	/// </summary>
 
-	public static int CountInputSources ()
+	static public int CountInputSources ()
 	{
 		int count = 0;
 
@@ -1107,7 +1172,7 @@ public class UICamera : MonoBehaviour
 	/// Number of active drag events from all sources.
 	/// </summary>
 
-	public static int dragCount
+	static public int dragCount
 	{
 		get
 		{
@@ -1135,7 +1200,7 @@ public class UICamera : MonoBehaviour
 	/// Convenience function that returns the main HUD camera.
 	/// </summary>
 
-	public static Camera mainCamera
+	static public Camera mainCamera
 	{
 		get
 		{
@@ -1148,7 +1213,7 @@ public class UICamera : MonoBehaviour
 	/// Event handler for all types of events.
 	/// </summary>
 
-	public static UICamera eventHandler
+	static public UICamera eventHandler
 	{
 		get
 		{
@@ -1192,7 +1257,11 @@ public class UICamera : MonoBehaviour
 
 	static Rigidbody FindRootRigidbody (Transform trans)
 	{
+#if UNITY_5_5_OR_NEWER
+		UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
+#else
 		Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
+#endif
 
 		while (trans != null)
 		{
@@ -1204,12 +1273,20 @@ public class UICamera : MonoBehaviour
 #endif
 			if (rb != null)
 			{
+#if UNITY_5_5_OR_NEWER
+				UnityEngine.Profiling.Profiler.EndSample();
+#else
 				Profiler.EndSample();
+#endif
 				return rb;
 			}
 			trans = trans.parent;
 		}
+#if UNITY_5_5_OR_NEWER
+		UnityEngine.Profiling.Profiler.EndSample();
+#else
 		Profiler.EndSample();
+#endif
 		return null;
 	}
 
@@ -1219,7 +1296,11 @@ public class UICamera : MonoBehaviour
 
 	static Rigidbody2D FindRootRigidbody2D (Transform trans)
 	{
+#if UNITY_5_5_OR_NEWER
+		UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
+#else
 		Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
+#endif
 
 		while (trans != null)
 		{
@@ -1231,12 +1312,20 @@ public class UICamera : MonoBehaviour
 #endif
 			if (rb != null)
 			{
+#if UNITY_5_5_OR_NEWER
+				UnityEngine.Profiling.Profiler.EndSample();
+#else
 				Profiler.EndSample();
+#endif
 				return rb;
 			}
 			trans = trans.parent;
 		}
+#if UNITY_5_5_OR_NEWER
+		UnityEngine.Profiling.Profiler.EndSample();
+#else
 		Profiler.EndSample();
+#endif
 		return null;
 	}
 
@@ -1244,7 +1333,7 @@ public class UICamera : MonoBehaviour
 	/// Raycast into the screen underneath the touch and update its 'current' value.
 	/// </summary>
 
-	public static void Raycast (MouseOrTouch touch)
+	static public void Raycast (MouseOrTouch touch)
 	{
 		if (!Raycast(touch.pos)) mRayHitObject = fallThrough;
 		if (mRayHitObject == null) mRayHitObject = mGenericHandler;
@@ -1253,11 +1342,16 @@ public class UICamera : MonoBehaviour
 		mLastPos = touch.pos;
 	}
 
+#if !UNITY_4_7
+	static RaycastHit[] mRayHits;
+	static Collider2D[] mOverlap;
+#endif
+
 	/// <summary>
 	/// Returns the object under the specified position.
 	/// </summary>
 
-	public static bool Raycast (Vector3 inPos)
+	static public bool Raycast (Vector3 inPos)
 	{
 		for (int i = 0; i < list.size; ++i)
 		{
@@ -1286,14 +1380,20 @@ public class UICamera : MonoBehaviour
 
 			if (cam.eventType == EventType.World_3D)
 			{
+				lastWorldRay = ray;
+
+#if UNITY_4_7
 				if (Physics.Raycast(ray, out lastHit, dist, mask))
+#else
+				if (Physics.Raycast(ray, out lastHit, dist, mask, QueryTriggerInteraction.Ignore))
+#endif
 				{
 					lastWorldPosition = lastHit.point;
 					mRayHitObject = lastHit.collider.gameObject;
 
 					if (!cam.eventsGoToColliders)
 					{
-						Rigidbody rb = FindRootRigidbody(mRayHitObject.transform);
+						var rb = mRayHitObject.gameObject.GetComponentInParent<Rigidbody>();
 						if (rb != null) mRayHitObject = rb.gameObject;
 					}
 					return true;
@@ -1302,21 +1402,32 @@ public class UICamera : MonoBehaviour
 			}
 			else if (cam.eventType == EventType.UI_3D)
 			{
-				RaycastHit[] hits = Physics.RaycastAll(ray, dist, mask);
-
-				if (hits.Length > 1)
+#if UNITY_4_7
+				RaycastHit[] mRayHits = Physics.RaycastAll(ray, dist, mask);
+				var hitCount = mRayHits.Length;
+#else
+				if (mRayHits == null) mRayHits = new RaycastHit[50];
+				var hitCount = Physics.RaycastNonAlloc(ray, mRayHits, dist, mask, QueryTriggerInteraction.Collide);
+#endif
+				if (hitCount > 1)
 				{
-					for (int b = 0; b < hits.Length; ++b)
+					for (int b = 0; b < hitCount; ++b)
 					{
-						GameObject go = hits[b].collider.gameObject;
+						GameObject go = mRayHits[b].collider.gameObject;
+#if UNITY_5_5_OR_NEWER
+						UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
+						UIWidget w = go.GetComponent<UIWidget>();
+						UnityEngine.Profiling.Profiler.EndSample();
+#else
 						Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
 						UIWidget w = go.GetComponent<UIWidget>();
 						Profiler.EndSample();
+#endif
 
 						if (w != null)
 						{
 							if (!w.isVisible) continue;
-							if (w.hitCheck != null && !w.hitCheck(hits[b].point)) continue;
+							if (w.hitCheck != null && !w.hitCheck(mRayHits[b].point)) continue;
 						}
 						else
 						{
@@ -1328,9 +1439,9 @@ public class UICamera : MonoBehaviour
 
 						if (mHit.depth != int.MaxValue)
 						{
-							mHit.hit = hits[b];
-							mHit.point = hits[b].point;
-							mHit.go = hits[b].collider.gameObject;
+							mHit.hit = mRayHits[b];
+							mHit.point = mRayHits[b].point;
+							mHit.go = mRayHits[b].collider.gameObject;
 							mHits.Add(mHit);
 						}
 					}
@@ -1347,6 +1458,7 @@ public class UICamera : MonoBehaviour
 						{
 							lastHit = mHits[b].hit;
 							mRayHitObject = mHits[b].go;
+							lastWorldRay = ray;
 							lastWorldPosition = mHits[b].point;
 							mHits.Clear();
 							return true;
@@ -1354,17 +1466,23 @@ public class UICamera : MonoBehaviour
 					}
 					mHits.Clear();
 				}
-				else if (hits.Length == 1)
+				else if (hitCount == 1)
 				{
-					GameObject go = hits[0].collider.gameObject;
+					GameObject go = mRayHits[0].collider.gameObject;
+#if UNITY_5_5_OR_NEWER
+					UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
+					UIWidget w = go.GetComponent<UIWidget>();
+					UnityEngine.Profiling.Profiler.EndSample();
+#else
 					Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
 					UIWidget w = go.GetComponent<UIWidget>();
 					Profiler.EndSample();
+#endif
 
 					if (w != null)
 					{
 						if (!w.isVisible) continue;
-						if (w.hitCheck != null && !w.hitCheck(hits[0].point)) continue;
+						if (w.hitCheck != null && !w.hitCheck(mRayHits[0].point)) continue;
 					}
 					else
 					{
@@ -1372,10 +1490,11 @@ public class UICamera : MonoBehaviour
 						if (rect != null && rect.finalAlpha < 0.001f) continue;
 					}
 
-					if (IsVisible(hits[0].point, hits[0].collider.gameObject))
+					if (IsVisible(mRayHits[0].point, mRayHits[0].collider.gameObject))
 					{
-						lastHit = hits[0];
-						lastWorldPosition = hits[0].point;
+						lastHit = mRayHits[0];
+						lastWorldRay = ray;
+						lastWorldPosition = mRayHits[0].point;
 						mRayHitObject = lastHit.collider.gameObject;
 						return true;
 					}
@@ -1386,8 +1505,8 @@ public class UICamera : MonoBehaviour
 			{
 				if (m2DPlane.Raycast(ray, out dist))
 				{
-					Vector3 point = ray.GetPoint(dist);
-					Collider2D c2d = Physics2D.OverlapPoint(point, mask);
+					var point = ray.GetPoint(dist);
+					var c2d = Physics2D.OverlapPoint(point, mask);
 
 					if (c2d)
 					{
@@ -1409,16 +1528,27 @@ public class UICamera : MonoBehaviour
 				if (m2DPlane.Raycast(ray, out dist))
 				{
 					lastWorldPosition = ray.GetPoint(dist);
-					Collider2D[] hits = Physics2D.OverlapPointAll(lastWorldPosition, mask);
-
-					if (hits.Length > 1)
+#if UNITY_4_7
+					Collider2D[] mOverlap = Physics2D.OverlapPointAll(lastWorldPosition, mask);
+					var hitCount = mOverlap.Length;
+#else
+					if (mOverlap == null) mOverlap = new Collider2D[50];
+					var hitCount = Physics2D.OverlapPointNonAlloc(lastWorldPosition, mOverlap, mask);
+#endif
+					if (hitCount > 1)
 					{
-						for (int b = 0; b < hits.Length; ++b)
+						for (int b = 0; b < hitCount; ++b)
 						{
-							GameObject go = hits[b].gameObject;
+							GameObject go = mOverlap[b].gameObject;
+#if UNITY_5_5_OR_NEWER
+							UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
+							UIWidget w = go.GetComponent<UIWidget>();
+							UnityEngine.Profiling.Profiler.EndSample();
+#else
 							Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
 							UIWidget w = go.GetComponent<UIWidget>();
 							Profiler.EndSample();
+#endif
 
 							if (w != null)
 							{
@@ -1458,12 +1588,18 @@ public class UICamera : MonoBehaviour
 						}
 						mHits.Clear();
 					}
-					else if (hits.Length == 1)
+					else if (hitCount == 1)
 					{
-						GameObject go = hits[0].gameObject;
+						var go = mOverlap[0].gameObject;
+#if UNITY_5_5_OR_NEWER
+						UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
+						var w = go.GetComponent<UIWidget>();
+						UnityEngine.Profiling.Profiler.EndSample();
+#else
 						Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
-						UIWidget w = go.GetComponent<UIWidget>();
+						var w = go.GetComponent<UIWidget>();
 						Profiler.EndSample();
+#endif
 
 						if (w != null)
 						{
@@ -1472,7 +1608,7 @@ public class UICamera : MonoBehaviour
 						}
 						else
 						{
-							UIRect rect = NGUITools.FindInParents<UIRect>(go);
+							var rect = NGUITools.FindInParents<UIRect>(go);
 							if (rect != null && rect.finalAlpha < 0.001f) continue;
 						}
 
@@ -1531,13 +1667,13 @@ public class UICamera : MonoBehaviour
 	/// Whether the specified object should be highlighted.
 	/// </summary>
 
-	public static bool IsHighlighted (GameObject go) { return (UICamera.hoveredObject == go); }
+	static public bool IsHighlighted (GameObject go) { return (UICamera.hoveredObject == go); }
 
 	/// <summary>
 	/// Find the camera responsible for handling events on objects of the specified layer.
 	/// </summary>
 
-	public static UICamera FindCameraForLayer (int layer)
+	static public UICamera FindCameraForLayer (int layer)
 	{
 		int layerMask = 1 << layer;
 
@@ -1612,7 +1748,7 @@ public class UICamera : MonoBehaviour
 	/// Generic notification function. Used in place of SendMessage to shorten the code and allow for more than one receiver.
 	/// </summary>
 
-	public static void Notify (GameObject go, string funcName, object obj)
+	static public void Notify (GameObject go, string funcName, object obj)
 	{
 		if (mNotifying > 10) return;
 
@@ -1645,8 +1781,11 @@ public class UICamera : MonoBehaviour
 #if (UNITY_IPHONE || UNITY_ANDROID || UNITY_WP8 || UNITY_WP_8_1 || UNITY_BLACKBERRY || UNITY_WINRT || UNITY_METRO)
 		currentScheme = ControlScheme.Touch;
 #else
-		if (Application.platform == RuntimePlatform.PS3 ||
-			Application.platform == RuntimePlatform.XBOX360)
+#if !UNITY_5_5_OR_NEWER
+		if (Application.platform == RuntimePlatform.PS3 || Application.platform == RuntimePlatform.XBOX360)
+#else
+		if (Application.platform == RuntimePlatform.PS4 || Application.platform == RuntimePlatform.XboxOne)
+#endif
 		{
 			currentScheme = ControlScheme.Controller;
 		}
@@ -2005,8 +2144,8 @@ public class UICamera : MonoBehaviour
 	public delegate int GetTouchCountCallback ();
 	public delegate Touch GetTouchCallback (int index);
 
-	public static GetTouchCountCallback GetInputTouchCount;
-	public static GetTouchCallback GetInputTouch;
+	static public GetTouchCountCallback GetInputTouchCount;
+	static public GetTouchCallback GetInputTouch;
 
 	/// <summary>
 	/// Update touch-based events.
@@ -2329,18 +2468,30 @@ public class UICamera : MonoBehaviour
 
 				if (currentTouch.pressed != null)
 				{
+#if UNITY_5_5_OR_NEWER
+					UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
+					UIKeyNavigation nav = currentTouch.pressed.GetComponent<UIKeyNavigation>();
+					UnityEngine.Profiling.Profiler.EndSample();
+#else
 					Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
 					UIKeyNavigation nav = currentTouch.pressed.GetComponent<UIKeyNavigation>();
 					Profiler.EndSample();
+#endif
 					if (nav != null) controller.current = currentTouch.pressed;
 				}
 
 				// Set the selection
 				if (mSelected)
 				{
+#if UNITY_5_5_OR_NEWER
+					UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
+					mInputFocus = (mSelected.activeInHierarchy && mSelected.GetComponent<UIInput>() != null);
+					UnityEngine.Profiling.Profiler.EndSample();
+#else
 					Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
 					mInputFocus = (mSelected.activeInHierarchy && mSelected.GetComponent<UIInput>() != null);
 					Profiler.EndSample();
+#endif
 					if (onSelect != null) onSelect(mSelected, true);
 					Notify(mSelected, "OnSelect", true);
 				}
@@ -2452,9 +2603,15 @@ public class UICamera : MonoBehaviour
 			// Send a hover message to the object
 			if (isMouse)
 			{
+#if UNITY_5_5_OR_NEWER
+				UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
+				var hasCollider = HasCollider(currentTouch.pressed);
+				UnityEngine.Profiling.Profiler.EndSample();
+#else
 				Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
 				var hasCollider = HasCollider(currentTouch.pressed);
 				Profiler.EndSample();
+#endif
 
 				if (hasCollider)
 				{
@@ -2558,13 +2715,13 @@ public class UICamera : MonoBehaviour
 	/// Moving the mouse again will reset this counter.
 	/// </summary>
 
-	public static void CancelNextTooltip () { mTooltipTime = 0f; }
+	static public void CancelNextTooltip () { mTooltipTime = 0f; }
 
 	/// <summary>
 	/// Show or hide the tooltip.
 	/// </summary>
 
-	public static bool ShowTooltip (GameObject go)
+	static public bool ShowTooltip (GameObject go)
 	{
 		if (mTooltip != go)
 		{
@@ -2591,5 +2748,5 @@ public class UICamera : MonoBehaviour
 	/// Hide the tooltip, if one is visible.
 	/// </summary>
 
-	public static bool HideTooltip () { return ShowTooltip(null); }
+	static public bool HideTooltip () { return ShowTooltip(null); }
 }

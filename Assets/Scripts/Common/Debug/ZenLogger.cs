@@ -15,6 +15,7 @@
     #region Dependencies
 
     using UnityEngine;
+    using Zen.Common.Debug;
 
 #if LOG_TO_FILE
     using NLog.Config;
@@ -67,6 +68,11 @@
             Debug.Log($"Logging to file at {Application.persistentDataPath}/debug.log");
         }
 #endif
+
+	    public static void GameLog(object message)
+	    {
+		    InGameConsole.Instance.Print(message.ToString());
+	    }
 
         public static void Log(object message)
         {

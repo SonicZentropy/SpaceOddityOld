@@ -397,7 +397,7 @@ public class UIAtlas : MonoBehaviour
 	/// Helper function that determines whether the two atlases are related.
 	/// </summary>
 
-	public static bool CheckIfRelated (UIAtlas a, UIAtlas b)
+	static public bool CheckIfRelated (UIAtlas a, UIAtlas b)
 	{
 		if (a == null || b == null) return false;
 		return a == b || a.References(b) || b.References(a);

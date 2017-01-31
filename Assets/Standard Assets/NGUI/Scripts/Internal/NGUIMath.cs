@@ -12,7 +12,7 @@ using System.Text;
 /// Helper class containing generic functions used throughout the UI library.
 /// </summary>
 
-public static class NGUIMath
+static public class NGUIMath
 {
 	/// <summary>
 	/// Lerp function that doesn't clamp the 'factor' in 0-1 range.
@@ -20,7 +20,7 @@ public static class NGUIMath
 
 	[System.Diagnostics.DebuggerHidden]
 	[System.Diagnostics.DebuggerStepThrough]
-	public static float Lerp (float from, float to, float factor) { return from * (1f - factor) + to * factor; }
+	static public float Lerp (float from, float to, float factor) { return from * (1f - factor) + to * factor; }
 
 	/// <summary>
 	/// Clamp the specified integer to be between 0 and below 'max'.
@@ -28,7 +28,7 @@ public static class NGUIMath
 
 	[System.Diagnostics.DebuggerHidden]
 	[System.Diagnostics.DebuggerStepThrough]
-	public static int ClampIndex (int val, int max) { return (val < 0) ? 0 : (val < max ? val : max - 1); }
+	static public int ClampIndex (int val, int max) { return (val < 0) ? 0 : (val < max ? val : max - 1); }
 
 	/// <summary>
 	/// Wrap the index using repeating logic, so that for example +1 past the end means index of '1'.
@@ -36,7 +36,7 @@ public static class NGUIMath
 
 	[System.Diagnostics.DebuggerHidden]
 	[System.Diagnostics.DebuggerStepThrough]
-	public static int RepeatIndex (int val, int max)
+	static public int RepeatIndex (int val, int max)
 	{
 		if (max < 1) return 0;
 		while (val < 0) val += max;
@@ -50,7 +50,7 @@ public static class NGUIMath
 
 	[System.Diagnostics.DebuggerHidden]
 	[System.Diagnostics.DebuggerStepThrough]
-	public static float WrapAngle (float angle)
+	static public float WrapAngle (float angle)
 	{
 		while (angle > 180f) angle -= 360f;
 		while (angle < -180f) angle += 360f;
@@ -63,7 +63,7 @@ public static class NGUIMath
 
 	[System.Diagnostics.DebuggerHidden]
 	[System.Diagnostics.DebuggerStepThrough]
-	public static float Wrap01 (float val) { return val - Mathf.FloorToInt(val); }
+	static public float Wrap01 (float val) { return val - Mathf.FloorToInt(val); }
 
 	/// <summary>
 	/// Convert a hexadecimal character to its decimal value.
@@ -71,7 +71,7 @@ public static class NGUIMath
 
 	[System.Diagnostics.DebuggerHidden]
 	[System.Diagnostics.DebuggerStepThrough]
-	public static int HexToDecimal (char ch)
+	static public int HexToDecimal (char ch)
 	{
 		switch (ch)
 		{
@@ -108,7 +108,7 @@ public static class NGUIMath
 
 	[System.Diagnostics.DebuggerHidden]
 	[System.Diagnostics.DebuggerStepThrough]
-	public static char DecimalToHexChar (int num)
+	static public char DecimalToHexChar (int num)
 	{
 		if (num > 15) return 'F';
 		if (num < 10) return (char)('0' + num);
@@ -121,7 +121,7 @@ public static class NGUIMath
 
 	[System.Diagnostics.DebuggerHidden]
 	[System.Diagnostics.DebuggerStepThrough]
-	public static string DecimalToHex8 (int num)
+	static public string DecimalToHex8 (int num)
 	{
 		num &= 0xFF;
 #if UNITY_FLASH
@@ -142,7 +142,7 @@ public static class NGUIMath
 
 	[System.Diagnostics.DebuggerHidden]
 	[System.Diagnostics.DebuggerStepThrough]
-	public static string DecimalToHex24 (int num)
+	static public string DecimalToHex24 (int num)
 	{
 		num &= 0xFFFFFF;
 #if UNITY_FLASH
@@ -167,7 +167,7 @@ public static class NGUIMath
 
 	[System.Diagnostics.DebuggerHidden]
 	[System.Diagnostics.DebuggerStepThrough]
-	public static string DecimalToHex32 (int num)
+	static public string DecimalToHex32 (int num)
 	{
 #if UNITY_FLASH
 		StringBuilder sb = new StringBuilder();
@@ -191,7 +191,7 @@ public static class NGUIMath
 
 	[System.Diagnostics.DebuggerHidden]
 	[System.Diagnostics.DebuggerStepThrough]
-	public static int ColorToInt (Color c)
+	static public int ColorToInt (Color c)
 	{
 		int retVal = 0;
 		retVal |= Mathf.RoundToInt(c.r * 255f) << 24;
@@ -207,7 +207,7 @@ public static class NGUIMath
 
 	[System.Diagnostics.DebuggerHidden]
 	[System.Diagnostics.DebuggerStepThrough]
-	public static Color IntToColor (int val)
+	static public Color IntToColor (int val)
 	{
 		float inv = 1f / 255f;
 		Color c = Color.black;
@@ -224,7 +224,7 @@ public static class NGUIMath
 
 	[System.Diagnostics.DebuggerHidden]
 	[System.Diagnostics.DebuggerStepThrough]
-	public static string IntToBinary (int val, int bits)
+	static public string IntToBinary (int val, int bits)
 	{
 		string final = "";
 
@@ -242,7 +242,7 @@ public static class NGUIMath
 
 	[System.Diagnostics.DebuggerHidden]
 	[System.Diagnostics.DebuggerStepThrough]
-	public static Color HexToColor (uint val)
+	static public Color HexToColor (uint val)
 	{
 		return IntToColor((int)val);
 	}
@@ -251,7 +251,7 @@ public static class NGUIMath
 	/// Convert from top-left based pixel coordinates to bottom-left based UV coordinates.
 	/// </summary>
 
-	public static Rect ConvertToTexCoords (Rect rect, int width, int height)
+	static public Rect ConvertToTexCoords (Rect rect, int width, int height)
 	{
 		Rect final = rect;
 
@@ -269,7 +269,7 @@ public static class NGUIMath
 	/// Convert from bottom-left based UV coordinates to top-left based pixel coordinates.
 	/// </summary>
 
-	public static Rect ConvertToPixels (Rect rect, int width, int height, bool round)
+	static public Rect ConvertToPixels (Rect rect, int width, int height, bool round)
 	{
 		Rect final = rect;
 
@@ -294,7 +294,7 @@ public static class NGUIMath
 	/// Round the pixel rectangle's dimensions.
 	/// </summary>
 
-	public static Rect MakePixelPerfect (Rect rect)
+	static public Rect MakePixelPerfect (Rect rect)
 	{
 		rect.xMin = Mathf.RoundToInt(rect.xMin);
 		rect.yMin = Mathf.RoundToInt(rect.yMin);
@@ -307,7 +307,7 @@ public static class NGUIMath
 	/// Round the texture coordinate rectangle's dimensions.
 	/// </summary>
 
-	public static Rect MakePixelPerfect (Rect rect, int width, int height)
+	static public Rect MakePixelPerfect (Rect rect, int width, int height)
 	{
 		rect = ConvertToPixels(rect, width, height, true);
 		rect.xMin = Mathf.RoundToInt(rect.xMin);
@@ -322,7 +322,7 @@ public static class NGUIMath
 	/// This function is useful when trying to restrict one area (window) to always be within another (viewport).
 	/// </summary>
 
-	public static Vector2 ConstrainRect (Vector2 minRect, Vector2 maxRect, Vector2 minArea, Vector2 maxArea)
+	static public Vector2 ConstrainRect (Vector2 minRect, Vector2 maxRect, Vector2 minArea, Vector2 maxArea)
 	{
 		Vector2 offset = Vector2.zero;
 
@@ -358,7 +358,7 @@ public static class NGUIMath
 	/// Calculate the combined bounds of all widgets attached to the specified game object or its children (in world space).
 	/// </summary>
 
-	public static Bounds CalculateAbsoluteWidgetBounds (Transform trans)
+	static public Bounds CalculateAbsoluteWidgetBounds (Transform trans)
 	{
 		if (trans != null)
 		{
@@ -401,7 +401,7 @@ public static class NGUIMath
 	/// Calculate the combined bounds of all widgets attached to the specified game object or its children (in relative-to-object space).
 	/// </summary>
 
-	public static Bounds CalculateRelativeWidgetBounds (Transform trans)
+	static public Bounds CalculateRelativeWidgetBounds (Transform trans)
 	{
 		return CalculateRelativeWidgetBounds(trans, trans, false);
 	}
@@ -410,7 +410,7 @@ public static class NGUIMath
 	/// Calculate the combined bounds of all widgets attached to the specified game object or its children (in relative-to-object space).
 	/// </summary>
 
-	public static Bounds CalculateRelativeWidgetBounds (Transform trans, bool considerInactive)
+	static public Bounds CalculateRelativeWidgetBounds (Transform trans, bool considerInactive)
 	{
 		return CalculateRelativeWidgetBounds(trans, trans, considerInactive);
 	}
@@ -419,7 +419,7 @@ public static class NGUIMath
 	/// Calculate the combined bounds of all widgets attached to the specified game object or its children (in relative-to-object space).
 	/// </summary>
 
-	public static Bounds CalculateRelativeWidgetBounds (Transform relativeTo, Transform content)
+	static public Bounds CalculateRelativeWidgetBounds (Transform relativeTo, Transform content)
 	{
 		return CalculateRelativeWidgetBounds(relativeTo, content, false);
 	}
@@ -428,7 +428,7 @@ public static class NGUIMath
 	/// Calculate the combined bounds of all widgets attached to the specified game object or its children (in relative-to-object space).
 	/// </summary>
 
-	public static Bounds CalculateRelativeWidgetBounds (Transform relativeTo, Transform content, bool considerInactive, bool considerChildren = true)
+	static public Bounds CalculateRelativeWidgetBounds (Transform relativeTo, Transform content, bool considerInactive, bool considerChildren = true)
 	{
 		if (content != null && relativeTo != null)
 		{
@@ -529,7 +529,7 @@ public static class NGUIMath
 	/// target.position += NGUIMath.SpringDampen(ref velocity, 9f, Time.deltaTime);
 	/// </summary>
 
-	public static Vector3 SpringDampen (ref Vector3 velocity, float strength, float deltaTime)
+	static public Vector3 SpringDampen (ref Vector3 velocity, float strength, float deltaTime)
 	{
 		if (deltaTime > 1f) deltaTime = 1f;
 		float dampeningFactor = 1f - strength * 0.001f;
@@ -544,7 +544,7 @@ public static class NGUIMath
 	/// Same as the Vector3 version, it's a framerate-independent Lerp.
 	/// </summary>
 
-	public static Vector2 SpringDampen (ref Vector2 velocity, float strength, float deltaTime)
+	static public Vector2 SpringDampen (ref Vector2 velocity, float strength, float deltaTime)
 	{
 		if (deltaTime > 1f) deltaTime = 1f;
 		float dampeningFactor = 1f - strength * 0.001f;
@@ -559,7 +559,7 @@ public static class NGUIMath
 	/// Calculate how much to interpolate by.
 	/// </summary>
 
-	public static float SpringLerp (float strength, float deltaTime)
+	static public float SpringLerp (float strength, float deltaTime)
 	{
 		if (deltaTime > 1f) deltaTime = 1f;
 		int ms = Mathf.RoundToInt(deltaTime * 1000f);
@@ -573,7 +573,7 @@ public static class NGUIMath
 	/// Mathf.Lerp(from, to, Time.deltaTime * strength) is not framerate-independent. This function is.
 	/// </summary>
 
-	public static float SpringLerp (float from, float to, float strength, float deltaTime)
+	static public float SpringLerp (float from, float to, float strength, float deltaTime)
 	{
 		if (deltaTime > 1f) deltaTime = 1f;
 		int ms = Mathf.RoundToInt(deltaTime * 1000f);
@@ -586,7 +586,7 @@ public static class NGUIMath
 	/// Vector2.Lerp(from, to, Time.deltaTime * strength) is not framerate-independent. This function is.
 	/// </summary>
 
-	public static Vector2 SpringLerp (Vector2 from, Vector2 to, float strength, float deltaTime)
+	static public Vector2 SpringLerp (Vector2 from, Vector2 to, float strength, float deltaTime)
 	{
 		return Vector2.Lerp(from, to, SpringLerp(strength, deltaTime));
 	}
@@ -595,7 +595,7 @@ public static class NGUIMath
 	/// Vector3.Lerp(from, to, Time.deltaTime * strength) is not framerate-independent. This function is.
 	/// </summary>
 
-	public static Vector3 SpringLerp (Vector3 from, Vector3 to, float strength, float deltaTime)
+	static public Vector3 SpringLerp (Vector3 from, Vector3 to, float strength, float deltaTime)
 	{
 		return Vector3.Lerp(from, to, SpringLerp(strength, deltaTime));
 	}
@@ -604,7 +604,7 @@ public static class NGUIMath
 	/// Quaternion.Slerp(from, to, Time.deltaTime * strength) is not framerate-independent. This function is.
 	/// </summary>
 
-	public static Quaternion SpringLerp (Quaternion from, Quaternion to, float strength, float deltaTime)
+	static public Quaternion SpringLerp (Quaternion from, Quaternion to, float strength, float deltaTime)
 	{
 		return Quaternion.Slerp(from, to, SpringLerp(strength, deltaTime));
 	}
@@ -613,7 +613,7 @@ public static class NGUIMath
 	/// Since there is no Mathf.RotateTowards...
 	/// </summary>
 
-	public static float RotateTowards (float from, float to, float maxAngle)
+	static public float RotateTowards (float from, float to, float maxAngle)
 	{
 		float diff = WrapAngle(to - from);
 		if (Mathf.Abs(diff) > maxAngle) diff = maxAngle * Mathf.Sign(diff);
@@ -639,7 +639,7 @@ public static class NGUIMath
 	/// Determine the distance from the mouse position to the screen space rectangle specified by the 4 points.
 	/// </summary>
 
-	public static float DistanceToRectangle (Vector2[] screenPoints, Vector2 mousePos)
+	static public float DistanceToRectangle (Vector2[] screenPoints, Vector2 mousePos)
 	{
 		bool oddNodes = false;
 		int j = 4;
@@ -681,7 +681,7 @@ public static class NGUIMath
 	/// Determine the distance from the mouse position to the world rectangle specified by the 4 points.
 	/// </summary>
 
-	public static float DistanceToRectangle (Vector3[] worldPoints, Vector2 mousePos, Camera cam)
+	static public float DistanceToRectangle (Vector3[] worldPoints, Vector2 mousePos, Camera cam)
 	{
 		Vector2[] screenPoints = new Vector2[4];
 		for (int i = 0; i < 4; ++i)
@@ -693,7 +693,7 @@ public static class NGUIMath
 	/// Helper function that converts the widget's pivot enum into a 0-1 range vector.
 	/// </summary>
 
-	public static Vector2 GetPivotOffset (UIWidget.Pivot pv)
+	static public Vector2 GetPivotOffset (UIWidget.Pivot pv)
 	{
 		Vector2 v = Vector2.zero;
 
@@ -712,7 +712,7 @@ public static class NGUIMath
 	/// Helper function that converts the pivot offset to a pivot point.
 	/// </summary>
 
-	public static UIWidget.Pivot GetPivot (Vector2 offset)
+	static public UIWidget.Pivot GetPivot (Vector2 offset)
 	{
 		if (offset.x == 0f)
 		{
@@ -738,13 +738,13 @@ public static class NGUIMath
 	/// Adjust the widget's position using the specified local delta coordinates.
 	/// </summary>
 
-	public static void MoveWidget (UIRect w, float x, float y) { MoveRect(w, x, y); }
+	static public void MoveWidget (UIRect w, float x, float y) { MoveRect(w, x, y); }
 
 	/// <summary>
 	/// Adjust the rectangle's position using the specified local delta coordinates.
 	/// </summary>
 
-	public static void MoveRect (UIRect rect, float x, float y)
+	static public void MoveRect (UIRect rect, float x, float y)
 	{
 		int ix = Mathf.FloorToInt(x + 0.5f);
 		int iy = Mathf.FloorToInt(y + 0.5f);
@@ -789,7 +789,7 @@ public static class NGUIMath
 	/// Given the specified dragged pivot point, adjust the widget's dimensions.
 	/// </summary>
 
-	public static void ResizeWidget (UIWidget w, UIWidget.Pivot pivot, float x, float y, int minWidth, int minHeight)
+	static public void ResizeWidget (UIWidget w, UIWidget.Pivot pivot, float x, float y, int minWidth, int minHeight)
 	{
 		ResizeWidget(w, pivot, x, y, 2, 2, 100000, 100000);
 	}
@@ -798,7 +798,7 @@ public static class NGUIMath
 	/// Given the specified dragged pivot point, adjust the widget's dimensions.
 	/// </summary>
 
-	public static void ResizeWidget (UIWidget w, UIWidget.Pivot pivot, float x, float y, int minWidth, int minHeight, int maxWidth, int maxHeight)
+	static public void ResizeWidget (UIWidget w, UIWidget.Pivot pivot, float x, float y, int minWidth, int minHeight, int maxWidth, int maxHeight)
 	{
 		if (pivot == UIWidget.Pivot.Center)
 		{
@@ -860,7 +860,7 @@ public static class NGUIMath
 	/// Adjust the widget's rectangle based on the specified modifier values.
 	/// </summary>
 
-	public static void AdjustWidget (UIWidget w, float left, float bottom, float right, float top)
+	static public void AdjustWidget (UIWidget w, float left, float bottom, float right, float top)
 	{
 		AdjustWidget(w, left, bottom, right, top, 2, 2, 100000, 100000);
 	}
@@ -869,7 +869,7 @@ public static class NGUIMath
 	/// Adjust the widget's rectangle based on the specified modifier values.
 	/// </summary>
 
-	public static void AdjustWidget (UIWidget w, float left, float bottom, float right, float top, int minWidth, int minHeight)
+	static public void AdjustWidget (UIWidget w, float left, float bottom, float right, float top, int minWidth, int minHeight)
 	{
 		AdjustWidget(w, left, bottom, right, top, minWidth, minHeight, 100000, 100000);
 	}
@@ -878,7 +878,7 @@ public static class NGUIMath
 	/// Adjust the widget's rectangle based on the specified modifier values.
 	/// </summary>
 
-	public static void AdjustWidget (UIWidget w, float left, float bottom, float right, float top,
+	static public void AdjustWidget (UIWidget w, float left, float bottom, float right, float top,
 		int minWidth, int minHeight, int maxWidth, int maxHeight)
 	{
 		Vector2 piv = w.pivotOffset;
@@ -1027,7 +1027,7 @@ public static class NGUIMath
 	/// This will result in in a smaller value returned for higher pixel density devices.
 	/// </summary>
 
-	public static int AdjustByDPI (float height)
+	static public int AdjustByDPI (float height)
 	{
 		float dpi = Screen.dpi;
 
@@ -1052,7 +1052,7 @@ public static class NGUIMath
 	/// Convert the specified position, making it relative to the specified object.
 	/// </summary>
 
-	public static Vector2 ScreenToPixels (Vector2 pos, Transform relativeTo)
+	static public Vector2 ScreenToPixels (Vector2 pos, Transform relativeTo)
 	{
 		int layer = relativeTo.gameObject.layer;
 		Camera cam = NGUITools.FindCameraForLayer(layer);
@@ -1072,7 +1072,7 @@ public static class NGUIMath
 	/// Useful if you plan on positioning the widget using the specified value (think mouse cursor).
 	/// </summary>
 
-	public static Vector2 ScreenToParentPixels (Vector2 pos, Transform relativeTo)
+	static public Vector2 ScreenToParentPixels (Vector2 pos, Transform relativeTo)
 	{
 		int layer = relativeTo.gameObject.layer;
 		if (relativeTo.parent != null)
@@ -1097,7 +1097,7 @@ public static class NGUIMath
 	/// You can then assign the widget's localPosition to the returned value.
 	/// </summary>
 
-	public static Vector3 WorldToLocalPoint (Vector3 worldPos, Camera worldCam, Camera uiCam, Transform relativeTo)
+	static public Vector3 WorldToLocalPoint (Vector3 worldPos, Camera worldCam, Camera uiCam, Transform relativeTo)
 	{
 		worldPos = worldCam.WorldToViewportPoint(worldPos);
 		worldPos = uiCam.ViewportToWorldPoint(worldPos);
@@ -1115,7 +1115,7 @@ public static class NGUIMath
 	/// <param name="worldCam">Camera that is able to see the worldPos</param>
 	/// <param name="myCam">Camera that is able to see the transform this function is called on</param>
 
-	public static void OverlayPosition (this Transform trans, Vector3 worldPos, Camera worldCam, Camera myCam)
+	static public void OverlayPosition (this Transform trans, Vector3 worldPos, Camera worldCam, Camera myCam)
 	{
 		worldPos = worldCam.WorldToViewportPoint(worldPos);
 		worldPos = myCam.ViewportToWorldPoint(worldPos);
@@ -1130,7 +1130,7 @@ public static class NGUIMath
 	/// <param name="worldPos">World position, visible by the worldCam</param>
 	/// <param name="worldCam">Camera that is able to see the worldPos</param>
 
-	public static void OverlayPosition (this Transform trans, Vector3 worldPos, Camera worldCam)
+	static public void OverlayPosition (this Transform trans, Vector3 worldPos, Camera worldCam)
 	{
 		Camera myCam = NGUITools.FindCameraForLayer(trans.gameObject.layer);
 		if (myCam != null) trans.OverlayPosition(worldPos, worldCam, myCam);
@@ -1142,7 +1142,7 @@ public static class NGUIMath
 	/// </summary>
 	/// <param name="target">Target over which the transform should be positioned</param>
 
-	public static void OverlayPosition (this Transform trans, Transform target)
+	static public void OverlayPosition (this Transform trans, Transform target)
 	{
 		Camera myCam = NGUITools.FindCameraForLayer(trans.gameObject.layer);
 		Camera worldCam = NGUITools.FindCameraForLayer(target.gameObject.layer);

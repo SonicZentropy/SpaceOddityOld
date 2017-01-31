@@ -51,7 +51,7 @@ public class TweenOrthoSize : UITweener
 	/// Start the tweening operation.
 	/// </summary>
 
-	public static TweenOrthoSize Begin (GameObject go, float duration, float to)
+	static public TweenOrthoSize Begin (GameObject go, float duration, float to)
 	{
 		TweenOrthoSize comp = UITweener.Begin<TweenOrthoSize>(go, duration);
 		comp.from = comp.value;

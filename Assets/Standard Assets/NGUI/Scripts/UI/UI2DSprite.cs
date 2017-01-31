@@ -18,7 +18,6 @@ using System.Collections.Generic;
 public class UI2DSprite : UIBasicSprite
 {
 	[HideInInspector][SerializeField] UnityEngine.Sprite mSprite;
-	[HideInInspector][SerializeField] Material mMat;
 	[HideInInspector][SerializeField] Shader mShader;
 	[HideInInspector][SerializeField] Vector4 mBorder = Vector4.zero;
 	[HideInInspector][SerializeField] bool mFixedAspect = false;
@@ -160,7 +159,7 @@ public class UI2DSprite : UIBasicSprite
 	/// Size of the pixel -- used for drawing.
 	/// </summary>
 
-	public override float pixelSize { get { return mPixelSize; } }
+	override public float pixelSize { get { return mPixelSize; } }
 
 	/// <summary>
 	/// Widget's dimensions used for drawing. X = left, Y = bottom, Z = right, W = top.
@@ -365,7 +364,7 @@ public class UI2DSprite : UIBasicSprite
 	/// Virtual function called by the UIPanel that fills the buffers.
 	/// </summary>
 
-	public override void OnFill (BetterList<Vector3> verts, BetterList<Vector2> uvs, BetterList<Color> cols)
+	public override void OnFill (List<Vector3> verts, List<Vector2> uvs, List<Color> cols)
 	{
 		Texture tex = mainTexture;
 		if (tex == null) return;
@@ -391,7 +390,7 @@ public class UI2DSprite : UIBasicSprite
 		inner.yMin *= h;
 		inner.yMax *= h;
 
-		int offset = verts.size;
+		int offset = verts.Count;
 		Fill(verts, uvs, cols, outer, inner);
 
 		if (onPostFill != null)

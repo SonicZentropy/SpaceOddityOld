@@ -13,7 +13,7 @@ using System.Collections.Generic;
 [AddComponentMenu("NGUI/Interaction/Event Trigger")]
 public class UIEventTrigger : MonoBehaviour
 {
-	public static UIEventTrigger current;
+	static public UIEventTrigger current;
 
 	public List<EventDelegate> onHoverOver = new List<EventDelegate>();
 	public List<EventDelegate> onHoverOut = new List<EventDelegate>();

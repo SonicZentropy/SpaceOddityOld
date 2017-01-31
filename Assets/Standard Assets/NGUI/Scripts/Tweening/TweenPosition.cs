@@ -63,7 +63,7 @@ public class TweenPosition : UITweener
 	/// Start the tweening operation.
 	/// </summary>
 
-	public static TweenPosition Begin (GameObject go, float duration, Vector3 pos)
+	static public TweenPosition Begin (GameObject go, float duration, Vector3 pos)
 	{
 		TweenPosition comp = UITweener.Begin<TweenPosition>(go, duration);
 		comp.from = comp.value;
@@ -81,7 +81,7 @@ public class TweenPosition : UITweener
 	/// Start the tweening operation.
 	/// </summary>
 
-	public static TweenPosition Begin (GameObject go, float duration, Vector3 pos, bool worldSpace)
+	static public TweenPosition Begin (GameObject go, float duration, Vector3 pos, bool worldSpace)
 	{
 		TweenPosition comp = UITweener.Begin<TweenPosition>(go, duration);
 		comp.worldSpace = worldSpace;

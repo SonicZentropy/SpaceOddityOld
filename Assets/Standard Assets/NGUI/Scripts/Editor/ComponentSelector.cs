@@ -1,4 +1,4 @@
-﻿//----------------------------------------------
+//----------------------------------------------
 //            NGUI: Next-Gen UI kit
 // Copyright © 2011-2016 Tasharen Entertainment
 //----------------------------------------------
@@ -44,7 +44,7 @@ public class ComponentSelector : ScriptableWizard
 
 		if (editButton && o != null && o is MonoBehaviour)
 		{
-			UnityEngine.Component mb = o as UnityEngine.Component;
+			Component mb = o as Component;
 			if (Selection.activeObject != mb.gameObject && GUILayout.Button("Edit", GUILayout.Width(40f)))
 				Selection.activeObject = mb.gameObject;
 		}
@@ -126,7 +126,7 @@ public class ComponentSelector : ScriptableWizard
 		if (mExtensions != null)
 		{
 			string[] paths = AssetDatabase.GetAllAssetPaths();
-			bool isComponent = mType.IsSubclassOf(typeof(UnityEngine.Component));
+			bool isComponent = mType.IsSubclassOf(typeof(Component));
 			List<Object> list = new List<Object>();
 
 			for (int i = 0; i < mObjects.Length; ++i)
@@ -251,7 +251,7 @@ public class ComponentSelector : ScriptableWizard
 	{
 		if (obj == null) return false;
 		bool retVal = false;
-		UnityEngine.Component comp = obj as UnityEngine.Component;
+		Component comp = obj as Component;
 
 		GUILayout.BeginHorizontal();
 		{

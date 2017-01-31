@@ -73,7 +73,7 @@ public class UIKeyBinding : MonoBehaviour
 	/// Check to see if the specified key happens to be bound to some element.
 	/// </summary>
 
-	public static bool IsBound (KeyCode key)
+	static public bool IsBound (KeyCode key)
 	{
 		for (int i = 0, imax = mList.Count; i < imax; ++i)
 		{
@@ -113,7 +113,7 @@ public class UIKeyBinding : MonoBehaviour
 	/// Convenience function that checks whether the required modifier key is active.
 	/// </summary>
 
-	public static bool IsModifierActive (Modifier modifier)
+	static public bool IsModifierActive (Modifier modifier)
 	{
 		if (modifier == Modifier.Any) return true;
 
@@ -218,7 +218,7 @@ public class UIKeyBinding : MonoBehaviour
 	/// Convert the key binding to its text format.
 	/// </summary>
 
-	public static string GetString (KeyCode keyCode, Modifier modifier)
+	static public string GetString (KeyCode keyCode, Modifier modifier)
 	{
 		return (modifier != Modifier.None) ? modifier + "+" + keyCode : keyCode.ToString();
 	}
@@ -227,7 +227,7 @@ public class UIKeyBinding : MonoBehaviour
 	/// Given the ToString() text, parse it for key and modifier information.
 	/// </summary>
 
-	public static bool GetKeyCode (string text, out KeyCode key, out Modifier modifier)
+	static public bool GetKeyCode (string text, out KeyCode key, out Modifier modifier)
 	{
 		key = KeyCode.None;
 		modifier = Modifier.None;
@@ -257,7 +257,7 @@ public class UIKeyBinding : MonoBehaviour
 	/// Get the currently active key modifier, if any.
 	/// </summary>
 
-	public static Modifier GetActiveModifier ()
+	static public Modifier GetActiveModifier ()
 	{
 		UIKeyBinding.Modifier mod = UIKeyBinding.Modifier.None;
 

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 [AddComponentMenu("NGUI/UI/Tooltip")]
 public class UITooltip : MonoBehaviour
 {
-	protected static UITooltip mInstance;
+	static protected UITooltip mInstance;
 
 	public Camera uiCamera;
 	public UILabel text;
@@ -30,7 +30,7 @@ public class UITooltip : MonoBehaviour
 	/// Whether the tooltip is currently visible.
 	/// </summary>
 
-	public static bool isVisible { get { return (mInstance != null && mInstance.mTarget == 1f); } }
+	static public bool isVisible { get { return (mInstance != null && mInstance.mTarget == 1f); } }
 
 	void Awake () { mInstance = this; }
 	void OnDestroy () { mInstance = null; }
@@ -184,17 +184,17 @@ public class UITooltip : MonoBehaviour
 	/// </summary>
 
 	[System.Obsolete("Use UITooltip.Show instead")]
-	public static void ShowText (string text) { if (mInstance != null) mInstance.SetText(text); }
+	static public void ShowText (string text) { if (mInstance != null) mInstance.SetText(text); }
 
 	/// <summary>
 	/// Show the tooltip.
 	/// </summary>
 
-	public static void Show (string text) { if (mInstance != null) mInstance.SetText(text); }
+	static public void Show (string text) { if (mInstance != null) mInstance.SetText(text); }
 	
 	/// <summary>
 	/// Hide the tooltip.
 	/// </summary>
 
-	public static void Hide () { if (mInstance != null) { mInstance.mTooltip = null; mInstance.mTarget = 0f; } }
+	static public void Hide () { if (mInstance != null) { mInstance.mTooltip = null; mInstance.mTarget = 0f; } }
 }

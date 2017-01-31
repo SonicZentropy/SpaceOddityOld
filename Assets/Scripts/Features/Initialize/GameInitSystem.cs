@@ -20,6 +20,8 @@
 
 			var ets = engine.CreateEntity(Res.Entities.Enemy);
 			ets.Wrapper.transform.position = new Vector3(0, 0, 10);
+
+			ZenLogger.GameLog("Completed init");
 			
 			//ets = engine.CreateEntity(Res.Entities.EnemyTestShip);
 			//ets.Wrapper.transform.position = new Vector3(5, 0, 25);

@@ -184,7 +184,7 @@ public class PropertyReference
 	/// Convenience function that converts the specified component + property pair into its string representation.
 	/// </summary>
 
-	public static string ToString (Component comp, string property)
+	static public string ToString (Component comp, string property)
 	{
 		if (comp != null)
 		{
@@ -343,7 +343,7 @@ public class PropertyReference
 	/// Whether we can convert one type to another for assignment purposes.
 	/// </summary>
 
-	public static bool Convert (Type from, Type to)
+	static public bool Convert (Type from, Type to)
 	{
 		object temp = null;
 		return Convert(ref temp, from, to);
@@ -353,7 +353,7 @@ public class PropertyReference
 	/// Whether we can convert one type to another for assignment purposes.
 	/// </summary>
 
-	public static bool Convert (object value, Type to)
+	static public bool Convert (object value, Type to)
 	{
 		if (value == null)
 		{
@@ -367,7 +367,7 @@ public class PropertyReference
 	/// Whether we can convert one type to another for assignment purposes.
 	/// </summary>
 
-	public static bool Convert (ref object value, Type from, Type to)
+	static public bool Convert (ref object value, Type from, Type to)
 	{
 #if REFLECTION_SUPPORT
 		// If the value can be assigned as-is, we're done

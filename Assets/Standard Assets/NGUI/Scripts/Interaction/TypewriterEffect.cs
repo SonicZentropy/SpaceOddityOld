@@ -15,7 +15,7 @@ using System.Collections.Generic;
 [AddComponentMenu("NGUI/Interaction/Typewriter Effect")]
 public class TypewriterEffect : MonoBehaviour
 {
-	public static TypewriterEffect current;
+	static public TypewriterEffect current;
 
 	struct FadeEntry
 	{

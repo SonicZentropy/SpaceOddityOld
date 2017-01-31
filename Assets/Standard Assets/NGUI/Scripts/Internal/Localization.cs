@@ -27,7 +27,7 @@ using System.Collections.Generic;
 /// Info,"Localization Example","Par exemple la localisation"
 /// </summary>
 
-public static class Localization
+static public class Localization
 {
 	public delegate byte[] LoadFunction (string path);
 	public delegate void OnLocalizeNotification ();
@@ -36,20 +36,20 @@ public static class Localization
 	/// Want to have Localization loading be custom instead of just Resources.Load? Set this function.
 	/// </summary>
 
-	public static LoadFunction loadFunction;
+	static public LoadFunction loadFunction;
 
 	/// <summary>
 	/// Notification triggered when the localization data gets changed, such as when changing the language.
 	/// If you want to make modifications to the localization data after it was loaded, this is the place.
 	/// </summary>
 
-	public static OnLocalizeNotification onLocalize;
+	static public OnLocalizeNotification onLocalize;
 
 	/// <summary>
 	/// Whether the localization dictionary has been loaded.
 	/// </summary>
  
-	public static bool localizationHasBeenSet = false;
+	static public bool localizationHasBeenSet = false;
 
 	// Loaded languages, if any
 	static string[] mLanguages = null;
@@ -74,7 +74,7 @@ public static class Localization
 	/// Dictionary value is the list of localized values (columns in the CSV file).
 	/// </summary>
 
-	public static Dictionary<string, string[]> dictionary
+	static public Dictionary<string, string[]> dictionary
 	{
 		get
 		{
@@ -92,7 +92,7 @@ public static class Localization
 	/// List of loaded languages. Available if a single Localization.csv file was used.
 	/// </summary>
 
-	public static string[] knownLanguages
+	static public string[] knownLanguages
 	{
 		get
 		{
@@ -105,7 +105,7 @@ public static class Localization
 	/// Name of the currently active language.
 	/// </summary>
 
-	public static string language
+	static public string language
 	{
 		get
 		{
@@ -195,7 +195,7 @@ public static class Localization
 	/// Load the specified asset and activate the localization.
 	/// </summary>
 
-	public static void Load (TextAsset asset)
+	static public void Load (TextAsset asset)
 	{
 		ByteReader reader = new ByteReader(asset);
 		Set(asset.name, reader.ReadDictionary());
@@ -205,7 +205,7 @@ public static class Localization
 	/// Set the localization data directly.
 	/// </summary>
 
-	public static void Set (string languageName, byte[] bytes)
+	static public void Set (string languageName, byte[] bytes)
 	{
 		ByteReader reader = new ByteReader(bytes);
 		Set(languageName, reader.ReadDictionary());
@@ -215,7 +215,7 @@ public static class Localization
 	/// Forcefully replace the specified key with another value.
 	/// </summary>
 
-	public static void ReplaceKey (string key, string val)
+	static public void ReplaceKey (string key, string val)
 	{
 		if (!string.IsNullOrEmpty(val)) mReplacement[key] = val;
 		else mReplacement.Remove(key);
@@ -225,19 +225,19 @@ public static class Localization
 	/// Clear the replacement values.
 	/// </summary>
 
-	public static void ClearReplacements () { mReplacement.Clear(); }
+	static public void ClearReplacements () { mReplacement.Clear(); }
 
 	/// <summary>
 	/// Load the specified CSV file.
 	/// </summary>
 
-	public static bool LoadCSV (TextAsset asset, bool merge = false) { return LoadCSV(asset.bytes, asset, merge); }
+	static public bool LoadCSV (TextAsset asset, bool merge = false) { return LoadCSV(asset.bytes, asset, merge); }
 
 	/// <summary>
 	/// Load the specified CSV file.
 	/// </summary>
 
-	public static bool LoadCSV (byte[] bytes, bool merge = false) { return LoadCSV(bytes, null, merge); }
+	static public bool LoadCSV (byte[] bytes, bool merge = false) { return LoadCSV(bytes, null, merge); }
 
 	static bool mMerging = false;
 
@@ -445,7 +445,7 @@ public static class Localization
 	/// Load the specified asset and activate the localization.
 	/// </summary>
 
-	public static void Set (string languageName, Dictionary<string, string> dictionary)
+	static public void Set (string languageName, Dictionary<string, string> dictionary)
 	{
 		mLanguage = languageName;
 		PlayerPrefs.SetString("Language", mLanguage);
@@ -464,7 +464,7 @@ public static class Localization
 	/// To set the multi-language value just modify Localization.dictionary directly.
 	/// </summary>
 
-	public static void Set (string key, string value)
+	static public void Set (string key, string value)
 	{
 		if (mOldDictionary.ContainsKey(key)) mOldDictionary[key] = value;
 		else mOldDictionary.Add(key, value);
@@ -474,7 +474,7 @@ public static class Localization
 	/// Localize the specified value.
 	/// </summary>
 
-	public static string Get (string key)
+	static public string Get (string key)
 	{
 		if (string.IsNullOrEmpty(key)) return null;
 
@@ -563,19 +563,19 @@ public static class Localization
 	/// Localize the specified value and format it.
 	/// </summary>
 
-	public static string Format (string key, params object[] parameters) { return string.Format(Get(key), parameters); }
+	static public string Format (string key, params object[] parameters) { return string.Format(Get(key), parameters); }
 
 	[System.Obsolete("Localization is now always active. You no longer need to check this property.")]
-	public static bool isActive { get { return true; } }
+	static public bool isActive { get { return true; } }
 
 	[System.Obsolete("Use Localization.Get instead")]
-	public static string Localize (string key) { return Get(key); }
+	static public string Localize (string key) { return Get(key); }
 
 	/// <summary>
 	/// Returns whether the specified key is present in the localization dictionary.
 	/// </summary>
 
-	public static bool Exists (string key)
+	static public bool Exists (string key)
 	{
 		// Ensure we have a language to work with
 		if (!localizationHasBeenSet) language = PlayerPrefs.GetString("Language", "English");
@@ -592,7 +592,7 @@ public static class Localization
 	/// Add a new entry to the localization dictionary.
 	/// </summary>
 
-	public static void Set (string language, string key, string text)
+	static public void Set (string language, string key, string text)
 	{
 		// Check existing languages first
 		string[] kl = knownLanguages;

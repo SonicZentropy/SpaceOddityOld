@@ -125,7 +125,7 @@ public class UIGrid : UIWidgetContainer
 		for (int i = 0; i < myTrans.childCount; ++i)
 		{
 			Transform t = myTrans.GetChild(i);
-			if (!hideInactive || (t && NGUITools.GetActive(t.gameObject)))
+			if (!hideInactive || (t && t.gameObject.activeSelf))
 				list.Add(t);
 		}
 
@@ -162,13 +162,22 @@ public class UIGrid : UIWidgetContainer
 	/// Convenience method -- add a new child.
 	/// </summary>
 
-	public void AddChild (Transform trans) { AddChild(trans, true); }
+	[System.Obsolete("Use gameObject.AddChild or transform.parent = gridTransform")]
+	public void AddChild (Transform trans)
+	{
+		if (trans != null)
+		{
+			trans.parent = transform;
+			ResetPosition(GetChildList());
+		}
+	}
 
 	/// <summary>
 	/// Convenience method -- add a new child.
 	/// Note that if you plan on adding multiple objects, it's faster to GetChildList() and modify that instead.
 	/// </summary>
 
+	[System.Obsolete("Use gameObject.AddChild or transform.parent = gridTransform")]
 	public void AddChild (Transform trans, bool sort)
 	{
 		if (trans != null)
@@ -274,9 +283,9 @@ public class UIGrid : UIWidgetContainer
 	void OnValidate () { if (!Application.isPlaying && NGUITools.GetActive(this)) Reposition(); }
 
 	// Various generic sorting functions
-	public static int SortByName (Transform a, Transform b) { return string.Compare(a.name, b.name); }
-	public static int SortHorizontal (Transform a, Transform b) { return a.localPosition.x.CompareTo(b.localPosition.x); }
-	public static int SortVertical (Transform a, Transform b) { return b.localPosition.y.CompareTo(a.localPosition.y); }
+	static public int SortByName (Transform a, Transform b) { return string.Compare(a.name, b.name); }
+	static public int SortHorizontal (Transform a, Transform b) { return a.localPosition.x.CompareTo(b.localPosition.x); }
+	static public int SortVertical (Transform a, Transform b) { return b.localPosition.y.CompareTo(a.localPosition.y); }
 
 	/// <summary>
 	/// You can override this function, but in most cases it's easier to just set the onCustomSort delegate instead.

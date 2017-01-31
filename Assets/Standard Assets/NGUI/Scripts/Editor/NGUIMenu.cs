@@ -1,4 +1,4 @@
-﻿//----------------------------------------------
+//----------------------------------------------
 //            NGUI: Next-Gen UI kit
 // Copyright © 2011-2016 Tasharen Entertainment
 //----------------------------------------------
@@ -192,11 +192,11 @@ static public class NGUIMenu
 	}
 
 	[MenuItem("NGUI/Create/2D UI", false, 6)]
-	//[MenuItem("Assets/NGUI/Create 2D UI", false, 1)]
+	[MenuItem("Assets/NGUI/Create 2D UI", false, 1)]
 	static void Create2D () { UICreateNewUIWizard.CreateNewUI(UICreateNewUIWizard.CameraType.Simple2D); }
 
 	[MenuItem("NGUI/Create/2D UI", true)]
-	//[MenuItem("Assets/NGUI/Create 2D UI", true, 1)]
+	[MenuItem("Assets/NGUI/Create 2D UI", true, 1)]
 	static bool Create2Da ()
 	{
 		if (UIRoot.list.Count == 0 || UICamera.list.size == 0) return true;
@@ -211,11 +211,11 @@ static public class NGUIMenu
 	}
 
 	[MenuItem("NGUI/Create/3D UI", false, 6)]
-	//[MenuItem("Assets/NGUI/Create 3D UI", false, 1)]
+	[MenuItem("Assets/NGUI/Create 3D UI", false, 1)]
 	static void Create3D () { UICreateNewUIWizard.CreateNewUI(UICreateNewUIWizard.CameraType.Advanced3D); }
 
 	[MenuItem("NGUI/Create/3D UI", true)]
-	//[MenuItem("Assets/NGUI/Create 3D UI", true, 1)]
+	[MenuItem("Assets/NGUI/Create 3D UI", true, 1)]
 	static bool Create3Da ()
 	{
 		if (UIRoot.list.Count == 0 || UICamera.list.size == 0) return true;
@@ -232,7 +232,7 @@ static public class NGUIMenu
 #endregion
 #region Attach
 
-	static void AddIfMissing<T> () where T : UnityEngine.Component
+	static void AddIfMissing<T> () where T : Component
 	{
 		if (Selection.activeGameObject != null)
 		{
@@ -242,7 +242,7 @@ static public class NGUIMenu
 		else Debug.Log("You must select a game object first.");
 	}
 
-	static bool Exists<T> () where T : UnityEngine.Component
+	static bool Exists<T> () where T : Component
 	{
 		GameObject go = Selection.activeGameObject;
 		if (go != null) return go.GetComponent<T>() != null;
@@ -387,21 +387,21 @@ static public class NGUIMenu
 #region Open
 
 	[MenuItem("NGUI/Open/Atlas Maker", false, 9)]
-	//[MenuItem("Assets/NGUI/Open Atlas Maker", false, 0)]
+	[MenuItem("Assets/NGUI/Open Atlas Maker", false, 0)]
 	static public void OpenAtlasMaker ()
 	{
 		EditorWindow.GetWindow<UIAtlasMaker>(false, "Atlas Maker", true).Show();
 	}
 
 	[MenuItem("NGUI/Open/Font Maker", false, 9)]
-	//[MenuItem("Assets/NGUI/Open Bitmap Font Maker", false, 0)]
+	[MenuItem("Assets/NGUI/Open Bitmap Font Maker", false, 0)]
 	static public void OpenFontMaker ()
 	{
 		EditorWindow.GetWindow<UIFontMaker>(false, "Font Maker", true).Show();
 	}
 
-	[MenuItem("NGUI/Open/", false, 900)]
-	//[MenuItem("Assets/NGUI/", false, 1000)]
+	[MenuItem("NGUI/Open/", false, 9)]
+	[MenuItem("Assets/NGUI/", false, 0)]
 	static public void OpenSeparator2 () { }
 
 	[MenuItem("NGUI/Open/Prefab Toolbar", false, 9)]
@@ -493,7 +493,7 @@ static public class NGUIMenu
 	static public void SetToMin ()
 	{
 		NGUISettings.minimalisticLook = true;
-		//if (NGUITransformInspector.instance != null) NGUITransformInspector.instance.Repaint();
+		if (NGUITransformInspector.instance != null) NGUITransformInspector.instance.Repaint();
 	}
 
 	[MenuItem("NGUI/Options/Inspector Look/Set to Minimalistic", true, 10)]
@@ -503,7 +503,7 @@ static public class NGUIMenu
 	static public void SetToDistinct ()
 	{
 		NGUISettings.minimalisticLook = false;
-		//if (NGUITransformInspector.instance != null) NGUITransformInspector.instance.Repaint();
+		if (NGUITransformInspector.instance != null) NGUITransformInspector.instance.Repaint();
 	}
 
 	[MenuItem("NGUI/Options/Inspector Look/Set to Distinct", true, 10)]
@@ -513,7 +513,7 @@ static public class NGUIMenu
 	static public void SetToUnified ()
 	{
 		NGUISettings.unifiedTransform = true;
-		//if (NGUITransformInspector.instance != null) NGUITransformInspector.instance.Repaint();
+		if (NGUITransformInspector.instance != null) NGUITransformInspector.instance.Repaint();
 	}
 
 	[MenuItem("NGUI/Options/Inspector Look/Set to Unified", true, 10)]
@@ -523,7 +523,7 @@ static public class NGUIMenu
 	static public void SetToTraditional ()
 	{
 		NGUISettings.unifiedTransform = false;
-		//if (NGUITransformInspector.instance != null) NGUITransformInspector.instance.Repaint();
+		if (NGUITransformInspector.instance != null) NGUITransformInspector.instance.Repaint();
 	}
 
 	[MenuItem("NGUI/Options/Inspector Look/Set to Traditional", true, 10)]

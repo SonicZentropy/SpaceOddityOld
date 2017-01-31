@@ -1,4 +1,4 @@
-﻿//----------------------------------------------
+//----------------------------------------------
 //            NGUI: Next-Gen UI kit
 // Copyright © 2011-2016 Tasharen Entertainment
 //----------------------------------------------
@@ -22,7 +22,7 @@ public class PropertyReferenceDrawer
 {
 	public class Entry
 	{
-		public UnityEngine.Component target;
+		public Component target;
 		public string name;
 	}
 
@@ -56,13 +56,13 @@ public class PropertyReferenceDrawer
 
 	static public List<Entry> GetProperties (GameObject target, bool read, bool write)
 	{
-		UnityEngine.Component[] comps = target.GetComponents<UnityEngine.Component>();
+		Component[] comps = target.GetComponents<Component>();
 
 		List<Entry> list = new List<Entry>();
 
 		for (int i = 0, imax = comps.Length; i < imax; ++i)
 		{
-			UnityEngine.Component comp = comps[i];
+			Component comp = comps[i];
 			if (comp == null) continue;
 
 			Type type = comp.GetType();
@@ -150,7 +150,7 @@ public class PropertyReferenceDrawer
 	public override float GetPropertyHeight (SerializedProperty prop, GUIContent label)
 	{
 		SerializedProperty target = prop.FindPropertyRelative("mTarget");
-		UnityEngine.Component comp = target.objectReferenceValue as UnityEngine.Component;
+		Component comp = target.objectReferenceValue as Component;
 		return (comp != null) ? 36f : 16f;
 	}
 
@@ -166,7 +166,7 @@ public class PropertyReferenceDrawer
 		rect.height = 16f;
 		EditorGUI.PropertyField(rect, target, label);
 
-		UnityEngine.Component comp = target.objectReferenceValue as UnityEngine.Component;
+		Component comp = target.objectReferenceValue as Component;
 
 		if (comp != null)
 		{
@@ -179,7 +179,7 @@ public class PropertyReferenceDrawer
 			List<Entry> list = GetProperties(comp.gameObject, mustRead, mustWrite);
 
 			// We want the field to look like "Component.property" rather than just "property"
-			string current = PropertyReference.ToString(target.objectReferenceValue as UnityEngine.Component, field.stringValue);
+			string current = PropertyReference.ToString(target.objectReferenceValue as Component, field.stringValue);
 
 			// Convert all the properties to names
 			string[] names = PropertyReferenceDrawer.GetNames(list, current, out index);

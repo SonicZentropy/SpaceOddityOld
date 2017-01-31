@@ -34,20 +34,22 @@ public class UIWidget : UIRect
 	[HideInInspector][SerializeField] protected int mHeight = 100;
 	[HideInInspector][SerializeField] protected int mDepth = 0;
 
-	public delegate void OnDimensionsChanged ();
-	public delegate void OnPostFillCallback (UIWidget widget, int bufferOffset, BetterList<Vector3> verts, BetterList<Vector2> uvs, BetterList<Color> cols);
+	[Tooltip("Custom material, if desired")]
+	[HideInInspector][SerializeField] protected Material mMat;
 
 	/// <summary>
 	/// Notification triggered when the widget's dimensions or position changes.
 	/// </summary>
 
 	public OnDimensionsChanged onChange;
+	public delegate void OnDimensionsChanged ();
 
 	/// <summary>
 	/// Notification triggered after the widget's buffer has been filled.
 	/// </summary>
 
 	public OnPostFillCallback onPostFill;
+	public delegate void OnPostFillCallback (UIWidget widget, int bufferOffset, List<Vector3> verts, List<Vector2> uvs, List<Color> cols);
 
 	/// <summary>
 	/// Callback triggered when the widget is about to be renderered (OnWillRenderObject).
@@ -557,18 +559,23 @@ public class UIWidget : UIRect
 	}
 
 	/// <summary>
-	/// Material used by the widget.
+	/// Custom material associated with the widget, if any.
 	/// </summary>
 
 	public virtual Material material
 	{
 		get
 		{
-			return null;
+			return mMat;
 		}
 		set
 		{
-			throw new System.NotImplementedException(GetType() + " has no material setter");
+			if (mMat != value)
+			{
+				RemoveFromPanel();
+				mMat = value;
+				MarkAsChanged();
+			}
 		}
 	}
 
@@ -805,7 +812,7 @@ public class UIWidget : UIRect
 
 	[System.Diagnostics.DebuggerHidden]
 	[System.Diagnostics.DebuggerStepThrough]
-	public static int FullCompareFunc (UIWidget left, UIWidget right)
+	static public int FullCompareFunc (UIWidget left, UIWidget right)
 	{
 		int val = UIPanel.CompareFunc(left.panel, right.panel);
 		return (val == 0) ? PanelCompareFunc(left, right) : val;
@@ -817,7 +824,7 @@ public class UIWidget : UIRect
 
 	[System.Diagnostics.DebuggerHidden]
 	[System.Diagnostics.DebuggerStepThrough]
-	public static int PanelCompareFunc (UIWidget left, UIWidget right)
+	static public int PanelCompareFunc (UIWidget left, UIWidget right)
 	{
 		if (left.mDepth < right.mDepth) return -1;
 		if (left.mDepth > right.mDepth) return 1;
@@ -1272,7 +1279,7 @@ public class UIWidget : UIRect
 	/// Whether widgets will show handles with the Move Tool, or just the View Tool.
 	/// </summary>
 
-	public static bool showHandlesWithMoveTool
+	static public bool showHandlesWithMoveTool
 	{
 		get
 		{
@@ -1298,7 +1305,7 @@ public class UIWidget : UIRect
 	/// Whether the widget should have some form of handles shown.
 	/// </summary>
 
-	public static bool showHandles
+	static public bool showHandles
 	{
 		get
 		{
@@ -1494,16 +1501,16 @@ public class UIWidget : UIRect
 	/// Append the local geometry buffers to the specified ones.
 	/// </summary>
 
-	public void WriteToBuffers (BetterList<Vector3> v, BetterList<Vector2> u, BetterList<Color> c, BetterList<Vector3> n, BetterList<Vector4> t)
+	public void WriteToBuffers (List<Vector3> v, List<Vector2> u, List<Color> c, List<Vector3> n, List<Vector4> t, List<Vector4> u2)
 	{
-		geometry.WriteToBuffers(v, u, c, n, t);
+		geometry.WriteToBuffers(v, u, c, n, t, u2);
 	}
 
 	/// <summary>
 	/// Make the widget pixel-perfect.
 	/// </summary>
 
-	public virtual void MakePixelPerfect ()
+	virtual public void MakePixelPerfect ()
 	{
 		Vector3 pos = cachedTransform.localPosition;
 		pos.z = Mathf.Round(pos.z);
@@ -1519,25 +1526,25 @@ public class UIWidget : UIRect
 	/// Minimum allowed width for this widget.
 	/// </summary>
 
-	public virtual int minWidth { get { return 2; } }
+	virtual public int minWidth { get { return 2; } }
 
 	/// <summary>
 	/// Minimum allowed height for this widget.
 	/// </summary>
 
-	public virtual int minHeight { get { return 2; } }
+	virtual public int minHeight { get { return 2; } }
 
 	/// <summary>
 	/// Dimensions of the sprite's border, if any.
 	/// </summary>
 
-	public virtual Vector4 border { get { return Vector4.zero; } set { } }
+	virtual public Vector4 border { get { return Vector4.zero; } set { } }
 
 	/// <summary>
 	/// Virtual function called by the UIPanel that fills the buffers.
 	/// </summary>
 
-	public virtual void OnFill(BetterList<Vector3> verts, BetterList<Vector2> uvs, BetterList<Color> cols)
+	virtual public void OnFill (List<Vector3> verts, List<Vector2> uvs, List<Color> cols)
 	{
 		// Call this in your derived classes:
 		//if (onPostFill != null)

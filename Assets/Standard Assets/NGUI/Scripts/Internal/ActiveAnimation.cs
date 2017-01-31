@@ -19,7 +19,7 @@ public class ActiveAnimation : MonoBehaviour
 	/// Active animation that resulted in the event notification.
 	/// </summary>
 
-	public static ActiveAnimation current;
+	static public ActiveAnimation current;
 
 	/// <summary>
 	/// Event delegates called when the animation finishes.
@@ -283,7 +283,7 @@ public class ActiveAnimation : MonoBehaviour
 	/// Play the specified animation on the specified object.
 	/// </summary>
 
-	public static ActiveAnimation Play (Animation anim, string clipName, Direction playDirection,
+	static public ActiveAnimation Play (Animation anim, string clipName, Direction playDirection,
 		EnableCondition enableBeforePlay, DisableCondition disableCondition)
 	{
 		if (!NGUITools.GetActive(anim.gameObject))
@@ -315,7 +315,7 @@ public class ActiveAnimation : MonoBehaviour
 	/// Play the specified animation.
 	/// </summary>
 
-	public static ActiveAnimation Play (Animation anim, string clipName, Direction playDirection)
+	static public ActiveAnimation Play (Animation anim, string clipName, Direction playDirection)
 	{
 		return Play(anim, clipName, playDirection, EnableCondition.DoNothing, DisableCondition.DoNotDisable);
 	}
@@ -324,7 +324,7 @@ public class ActiveAnimation : MonoBehaviour
 	/// Play the specified animation.
 	/// </summary>
 
-	public static ActiveAnimation Play (Animation anim, Direction playDirection)
+	static public ActiveAnimation Play (Animation anim, Direction playDirection)
 	{
 		return Play(anim, null, playDirection, EnableCondition.DoNothing, DisableCondition.DoNotDisable);
 	}
@@ -333,7 +333,7 @@ public class ActiveAnimation : MonoBehaviour
 	/// Play the specified animation on the specified object.
 	/// </summary>
 
-	public static ActiveAnimation Play (Animator anim, string clipName, Direction playDirection,
+	static public ActiveAnimation Play (Animator anim, string clipName, Direction playDirection,
 		EnableCondition enableBeforePlay, DisableCondition disableCondition)
 	{
 		if (enableBeforePlay != EnableCondition.IgnoreDisabledState && !NGUITools.GetActive(anim.gameObject))

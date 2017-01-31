@@ -12,7 +12,7 @@ using UnityEngine;
 [AddComponentMenu("NGUI/Tween/Spring Position")]
 public class SpringPosition : MonoBehaviour
 {
-	public static SpringPosition current;
+	static public SpringPosition current;
 
 	/// <summary>
 	/// Target position to tween to.
@@ -127,7 +127,7 @@ public class SpringPosition : MonoBehaviour
 	/// Start the tweening process.
 	/// </summary>
 
-	public static SpringPosition Begin (GameObject go, Vector3 pos, float strength)
+	static public SpringPosition Begin (GameObject go, Vector3 pos, float strength)
 	{
 		SpringPosition sp = go.GetComponent<SpringPosition>();
 		if (sp == null) sp = go.AddComponent<SpringPosition>();

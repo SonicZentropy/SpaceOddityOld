@@ -75,13 +75,13 @@ public class UIInput : MonoBehaviour
 	/// Currently active input field. Only valid during callbacks.
 	/// </summary>
 
-	public static UIInput current;
+	static public UIInput current;
 
 	/// <summary>
 	/// Currently selected input field, if any.
 	/// </summary>
 
-	public static UIInput selection;
+	static public UIInput selection;
 
 	/// <summary>
 	/// Text label used to display the input's value.
@@ -193,8 +193,8 @@ public class UIInput : MonoBehaviour
 	[System.NonSerialized] protected NGUIText.Alignment mAlignment = NGUIText.Alignment.Left;
 	[System.NonSerialized] protected bool mLoadSavedValue = true;
 
-	protected static int mDrawStart = 0;
-	protected static string mLastIME = "";
+	static protected int mDrawStart = 0;
+	static protected string mLastIME = "";
 
 #if MOBILE
 	// Unity fails to compile if the touch screen keyboard is used on a non-mobile device
@@ -500,7 +500,6 @@ public class UIInput : MonoBehaviour
 			mDoInit = false;
 			mDefaultText = label.text;
 			mDefaultColor = label.color;
-			label.supportEncoding = false;
 			mEllipsis = label.overflowEllipsis;
 
 			if (label.alignment == NGUIText.Alignment.Justified)
@@ -540,6 +539,8 @@ public class UIInput : MonoBehaviour
 	{
 		if (isSelected)
 		{
+			if (label != null) label.supportEncoding = false;
+
 #if !MOBILE
 			if (mOnGUI == null)
 				mOnGUI = gameObject.AddComponent<UIInputOnGUI>();
@@ -766,6 +767,7 @@ public class UIInput : MonoBehaviour
 					if (ch == '\uF701') continue;
 					if (ch == '\uF702') continue;
 					if (ch == '\uF703') continue;
+					if (ch == '\uF728') continue;
 
 					Insert(ch.ToString());
 				}

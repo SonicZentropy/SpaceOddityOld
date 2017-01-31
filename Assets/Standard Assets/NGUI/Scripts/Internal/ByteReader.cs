@@ -26,7 +26,7 @@ public class ByteReader
 	/// Read the contents of the specified file and return a Byte Reader to work with.
 	/// </summary>
 
-	public static ByteReader Open (string path)
+	static public ByteReader Open (string path)
 	{
 #if UNITY_EDITOR || (!UNITY_FLASH && !NETFX_CORE && !UNITY_WP8 && !UNITY_WP_8_1)
 		FileStream fs = File.OpenRead(path);

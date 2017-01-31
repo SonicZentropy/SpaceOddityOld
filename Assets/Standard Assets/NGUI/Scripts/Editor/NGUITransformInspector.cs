@@ -1,4 +1,3 @@
-/*
 //----------------------------------------------
 //			  NGUI: Next-Gen UI kit
 // Copyright © 2011-2016 Tasharen Entertainment
@@ -255,4 +254,3 @@ public class NGUITransformInspector : Editor
 	}
 #endregion
 }
-*/

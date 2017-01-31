@@ -343,7 +343,7 @@ public abstract class UIRect : MonoBehaviour
 	}
 
 	// Temporary variable to avoid GC allocation
-	protected static Vector3[] mSides = new Vector3[4];
+	static protected Vector3[] mSides = new Vector3[4];
 
 	/// <summary>
 	/// Get the sides of the rectangle relative to the specified transform.
@@ -710,23 +710,6 @@ public abstract class UIRect : MonoBehaviour
 	public void SetScreenRect (int left, int top, int width, int height)
 	{
 		SetAnchor(0f, left, 1f, -top - height, 0f, left + width, 1f, -top);
-	}
-
-	/// <summary>
-	/// Set the rect of the widget to the specified X, Y, width and height, anchored to the top-left corner of the screen.
-	/// Convenience function for those familiar with GUI.Draw.
-	/// </summary>
-
-	public void SetScreenRect(float left, float top, float width, float height)
-	{
-		SetAnchor(0f, 
-			Mathf.FloorToInt(left), 
-			1f, 
-			-Mathf.FloorToInt(top) - Mathf.FloorToInt(height), 
-			0f,
-			Mathf.FloorToInt(left) + Mathf.FloorToInt(width), 
-			1f, 
-			-Mathf.FloorToInt(top));
 	}
 
 	/// <summary>

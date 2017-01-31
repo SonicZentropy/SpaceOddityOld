@@ -19,7 +19,7 @@ public class UIRoot : MonoBehaviour
 	/// List of all UIRoots present in the scene.
 	/// </summary>
 
-	public static List<UIRoot> list = new List<UIRoot>();
+	static public List<UIRoot> list = new List<UIRoot>();
 
 	public enum Scaling
 	{
@@ -215,7 +215,7 @@ public class UIRoot : MonoBehaviour
 	/// Helper function that figures out the pixel size adjustment for the specified game object.
 	/// </summary>
 
-	public static float GetPixelSizeAdjustment (GameObject go)
+	static public float GetPixelSizeAdjustment (GameObject go)
 	{
 		UIRoot root = NGUITools.FindInParents<UIRoot>(go);
 		return (root != null) ? root.pixelSizeAdjustment : 1f;
@@ -297,7 +297,7 @@ public class UIRoot : MonoBehaviour
 	/// Broadcast the specified message to the entire UI.
 	/// </summary>
 
-	public static void Broadcast (string funcName)
+	static public void Broadcast (string funcName)
 	{
 #if UNITY_EDITOR
 		if (Application.isPlaying)
@@ -315,7 +315,7 @@ public class UIRoot : MonoBehaviour
 	/// Broadcast the specified message to the entire UI.
 	/// </summary>
 
-	public static void Broadcast (string funcName, object param)
+	static public void Broadcast (string funcName, object param)
 	{
 		if (param == null)
 		{

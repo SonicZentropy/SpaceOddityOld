@@ -15,7 +15,7 @@ using AnimationOrTween;
 [AddComponentMenu("NGUI/Interaction/Play Animation")]
 public class UIPlayAnimation : MonoBehaviour
 {
-	public static UIPlayAnimation current = null;
+	static public UIPlayAnimation current = null;
 
 	/// <summary>
 	/// Target animation to activate.
