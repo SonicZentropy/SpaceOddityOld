@@ -10,7 +10,7 @@
         },
         "Zen.Components.UnityPrefabComp": {
             "IsPooled": false,
-            "PrefabLink": "Prefabs/Player",
+            "PrefabLink": "Prefabs/Actors/Player",
             "layer": {
                 "value": 4096
             },
@@ -218,10 +218,10 @@
                             "DispersalTime": 0.0,
                             "DispersalRandomTime": 0.0,
                             "DetonationDistance": 0.0,
-                            "PIDNavigationalConstant": 0.0,
-                            "missileFireType": "Dumbfire",
+                            "PIDNavigationalConstant": 1.0,
+                            "missileFireType": "Homing",
                             "target": null,
-                            "missileHomingMethod": "None"
+                            "missileHomingMethod": "AdvNav"
                         },
                         "numberSwarmMissiles": 1,
                         "ShieldDamage": 10,
@@ -230,9 +230,9 @@
                         "AttackRate": 1.0,
                         "WeaponType": "Missile",
                         "ResolutionType": "Projectile",
-                        "FiringSoundEffect": "GunFire",
+                        "FiringSoundEffect": "Explosion",
                         "ProjectileSpeed": 10.0,
-                        "ProjectileEntity": "Weapons/DumbfireMissile",
+                        "ProjectileEntity": "Weapons/HomingMissile",
                         "IsFitted": false,
                         "NextAttackTime": 0.0,
                         "fittingAttached": {

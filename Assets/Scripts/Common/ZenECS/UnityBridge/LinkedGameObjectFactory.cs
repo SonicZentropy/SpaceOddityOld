@@ -141,7 +141,7 @@ namespace Zen.Common.ZenECS
 			//string prefabString
             GameObject go = pc.IsPooled
                 ? Res.CreateFromPool(pc.PrefabLink)//Resources.Load<GameObject>(pc.PrefabLink).InstantiateFromPool()
-                : Instantiate(Resources.Load<GameObject>(pc.PrefabLink));
+                : Res.Instantiate(pc.PrefabLink);
 
             var ew = go.GetComponent<EntityWrapper>();
 

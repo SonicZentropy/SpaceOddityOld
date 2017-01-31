@@ -4,7 +4,7 @@
     "_components": {
         "Zen.Components.UnityPrefabComp": {
             "IsPooled": false,
-            "PrefabLink": "Prefabs/EnemyShip",
+            "PrefabLink": "Prefabs/Actors/EnemyShip",
             "layer": {
                 "value": 2048
             },

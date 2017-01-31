@@ -1,4 +1,5 @@
-﻿// Copyright (C) 2014 - 2016 Stephan Bouchard - All Rights Reserved
+﻿/*
+// Copyright (C) 2014 - 2016 Stephan Bouchard - All Rights Reserved
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
@@ -9,8 +10,8 @@ using System.Collections;
 
 namespace TMPro.EditorUtilities
 {
-    [CanEditMultipleObjects]
-    [CustomEditor(typeof(MeshRenderer))]
+    //[CanEditMultipleObjects]
+    //[CustomEditor(typeof(MeshRenderer))]
     public class TMP_MeshRendererEditor : Editor
     {
         private SerializedProperty m_Materials;
@@ -72,3 +73,4 @@ namespace TMPro.EditorUtilities
         }
     }
 }
+*/

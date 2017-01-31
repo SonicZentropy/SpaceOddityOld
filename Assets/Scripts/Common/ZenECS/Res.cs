@@ -14,7 +14,6 @@ namespace Zen.Common
 			public const string EnemyOld = "Actors/EnemyOld";
 			public const string EnemyTestShip = "Actors/EnemyTestShip";
 			public const string Player = "Actors/Player";
-			public const string TestEnt = "Actors/TestEnt";
 			public const string Camera = "Core/Camera";
 			public const string GameSettings = "Core/GameSettings";
 			public const string SectorGenerationMain = "Sector/SectorGenerationMain";
@@ -27,10 +26,10 @@ namespace Zen.Common
 		public static class Prefabs
 		{
 			public const string EmpyGO = "Prefabs/EmpyGO";
-			public const string EnemyShip = "Prefabs/EnemyShip";
-			public const string Player = "Prefabs/Player";
-			public const string ShieldPFXObj = "Prefabs/ShieldPFXObj";
+			public const string EnemyShip = "Prefabs/Actors/EnemyShip";
+			public const string Player = "Prefabs/Actors/Player";
 			public const string CameraMain = "Prefabs/Core/CameraMain";
+			public const string ShieldPFXObj = "Prefabs/Effects/ShieldPFXObj";
 			public const string ExplosionPFX_Blue = "Prefabs/Effects/Explosions/ExplosionPFX_Blue";
 			public const string Explosion_007_example = "Prefabs/Effects/Explosions/Explosion_007_example";
 			public const string Explosion_01 = "Prefabs/Effects/Explosions/Explosion_01";
@@ -46,8 +45,9 @@ namespace Zen.Common
 			public const string trail_017 = "Prefabs/Effects/RedParticleTrails/trail_017";
 			public const string ShieldSmallShell = "Prefabs/Effects/Shields/ShieldSmallShell";
 			public const string VibrantShieldSmall = "Prefabs/Effects/Shields/VibrantShieldSmall";
-			public const string Asteroid = "Prefabs/Environment/Asteroid";
 			public const string StarContainer = "Prefabs/Environment/StarContainer";
+			public const string Asteroid = "Prefabs/Environment/Asteroids/Asteroid";
+			public const string rock_01 = "Prefabs/Environment/Asteroids/rock_01";
 			public const string UIRoot3D = "Prefabs/GUI/UI Root (3D)";
 			public const string UIRoot = "Prefabs/GUI/UIRoot";
 			public const string BaseFighter = "Prefabs/Ships/BaseFighter";

@@ -68,10 +68,10 @@ public class LaserProjectileController : ZenBehaviour, IOnUpdate
 	{
 		var go = other.attachedRigidbody.gameObject;
 
-		ZenLogger.Log($"Laser hit {go.name}");
+		//ZenLogger.Log($"Laser hit {go.name}");
 		if (go.HasEntityTag(EntityTags.IsDamageable))
 		{
-			ZenLogger.Log($"Adding dmg component to ship");
+			//ZenLogger.Log($"Adding dmg component to ship");
 			go.GetEntity().GetComponent<DamageComp>().damagePackets.Push(new DamagePacket(10, 10));
 		}
 		Explosions.Create(Res.Prefabs.ExplosionPFX_Blue, transform.position);
