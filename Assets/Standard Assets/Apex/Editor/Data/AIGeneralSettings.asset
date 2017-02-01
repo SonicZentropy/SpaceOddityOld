@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: AIGeneralSettings
   m_EditorClassIdentifier: 
   _storagePath: Assets/Resources/ApexAIStorage
-  _nameMapPath: Assets/Standard Assets/Apex
+  _nameMapPath: Assets/Scripts/Common/Apex

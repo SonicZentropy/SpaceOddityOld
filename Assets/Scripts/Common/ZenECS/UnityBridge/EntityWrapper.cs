@@ -19,7 +19,7 @@ namespace Zen.Common.ZenECS
 
     /// Allows viewing in Inspector for debug/dev purposes, serves no in-game function
     [AdvancedInspector(false, false)]
-    public class EntityWrapper : BaseBehavior //MonoBehaviour //: BaseBehavior
+    public class EntityWrapper : BaseBehavior
     {
         //[fiInspectorOnly]
 		//[Inspect]

@@ -16,7 +16,7 @@ MonoBehaviour:
   aiId: 5c2ffa03-f52a-42f7-806e-ce7096fcd7f1
   configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":dd4921b435c2427ead82ddb88bd664a6,"_id":5c2ffa03f52a42f7806ece7096fcd7f1,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
     ApexAI","_id":dd4921b435c2427ead82ddb88bd664a6,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","action":{"@type":"Zen.AI.Apex.Actions.RandomMoveAction, Assembly-CSharp"},"_scorers":[{"@type":"Zen.AI.Apex.Qualifiers.IsNotMovingQualifier,
+    ApexAI","action":{"@type":"Zen.AI.Apex.Actions.RandomMoveAction, Assembly-CSharp"},"_scorers":[{"@type":"Zen.AI.Apex.Qualifiers.IsNotMovingScorer,
     Assembly-CSharp","score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI"}}]}'
   editorConfiguration: '{"offset":{"@x":0,"@y":0},"zoom":1,"SelectorView":{"ViewArea":{"@left":100,"@top":100,"@width":200,"@height":160},"QualifierView":{"Name":"Is

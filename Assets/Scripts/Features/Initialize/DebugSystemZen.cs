@@ -35,8 +35,6 @@ namespace Zen.Systems
 
 				  .AddSystem(new PlayerMovementSystem())
 				  .AddSystem(new PlayerTargetingSystem())
-				  .AddSystem(new TacticalAiPlanningSystem())
-				  .AddSystem(new TacticalAiMovementSystem())
 				  .AddSystem(new PositionUpdateSystem())
 				  .AddSystem(new CameraControlSystem())
 

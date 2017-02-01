@@ -121,6 +121,7 @@ namespace Zen.Common.Extensions
 
 			//Get existing wrapper from component list and set cache equal to it, then return
 			var ewrap = go.GetComponent<EntityWrapper>();
+			Debug.Break();
 			map[(int) ECustomGOMapTypes.EntityWrapper] = ewrap;
 			return ewrap;
 		}

@@ -30,6 +30,8 @@ namespace Zen.Weapons
 
         public bool IsReleaseTimerRunning => true;
 
+	    private CoroutineHandle DisableHandle = null;
+
         public void OnStart()
         {
             line = gameObject.AddComponent<LineRenderer>();
@@ -47,8 +49,8 @@ namespace Zen.Weapons
             line.SetPosition(0, attacker.Owner.GetComponent<PositionComp>().Position);
             line.SetPosition(1, target.position);
 
-            Timing.KillCoroutines(DisableLaser());
-            Timing.RunCoroutine(DisableLaser());
+            Timing.KillCoroutines(gameObject.GetInstanceID());
+            Timing.RunCoroutine(DisableLaser(), gameObject.GetInstanceID());
         }
 
         IEnumerator<float> DisableLaser()
@@ -59,13 +61,13 @@ namespace Zen.Weapons
 
         public void OnDisable()
         {
-            Timing.KillCoroutines(DisableLaser());
+	        Timing.KillCoroutines(gameObject.GetInstanceID());
         }
 		
 	    public override void OnDestroy()
         {
-            Timing.KillCoroutines(DisableLaser());
-			base.OnDestroy();
+	        Timing.KillCoroutines(gameObject.GetInstanceID());
+	        base.OnDestroy();
         }
 
 	    public override int ExecutionPriority { get; } = 0;

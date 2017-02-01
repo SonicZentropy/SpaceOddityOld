@@ -87,6 +87,15 @@ namespace Zen.Common.ZenECS
 			return true;
 		}
 
+	    public T GetComponentOrNull<T>() where T :ComponentEcs
+	    {
+		    if (_components.ContainsKey(typeof(T)))
+		    {
+			    return GetComponent<T>();
+		    }
+		    return null;
+	    }
+
         public T GetComponent<T>() where T : ComponentEcs => (T) _components[typeof(T)];
 
 	    public T GetComponentDownward<T>() where T : ComponentEcs

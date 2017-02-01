@@ -134,6 +134,11 @@
                         "w": 1.0
                     },
                     "WeaponFittingGO": null,
+                    "ProjectileSpawnPositionOffset": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
                     "WeaponTypesAllowed": "Laser"
                 }
             ],
@@ -158,11 +163,16 @@
         },
         "Zen.Components.ShieldComp": {
             "shieldTrigger": null,
-            "CurrentShieldEnergy": 50.0,
+            "CurrentShieldEnergy": 20.0,
             "MaxShieldEnergy": 50.0,
             "ShieldRechargeRate": 5.0,
             "Id": "00000000-0000-0000-0000-000000000000",
             "$type": "Zen.Components.ShieldComp"
+        },
+        "Zen.Components.ScannerComp": {
+            "ScanRange": 200.0,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zen.Components.ScannerComp"
         }
     }
 }

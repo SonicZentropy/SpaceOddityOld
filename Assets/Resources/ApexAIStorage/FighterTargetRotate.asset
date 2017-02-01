@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1719459976, guid: 6012f3241c1c1f7409c44769fc0a1db7, type: 3}
+  m_Name: FighterTargetRotate
+  m_EditorClassIdentifier: 
+  description: 
+  version: 16778496
+  aiId: 21c084a3-5d3c-4ace-bba1-059c108dbbed
+  configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":e5d48d405f24493197263131a7aa107f,"_id":21c084a35d3c4acebba1059c108dbbed,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":e5d48d405f24493197263131a7aa107f,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Zen.AI.Apex.Actions.AcquireTargetAction, Assembly-CSharp"},"_scorers":[{"@type":"Zen.AI.Apex.Qualifiers.HasNoTargetScorer,
+    Assembly-CSharp","score":20}]},{"@type":"Apex.AI.CompositeScoreQualifier, ApexAI","action":{"@type":"Zen.AI.Apex.Actions.RotateToTargetAction,
+    Assembly-CSharp"},"_scorers":[{"@type":"Zen.AI.Apex.Qualifiers.HasTargetScorer,
+    Assembly-CSharp","score":5}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI"}}]}'
+  editorConfiguration: '{"offset":{"@x":112,"@y":38},"zoom":1,"SelectorView":{"ViewArea":{"@left":72,"@top":118,"@width":260,"@height":220},"QualifierView":{"Name":"Find
+    Target If Current Is Null","ActionView":{}},"QualifierView":{"Name":"Rotate to
+    target if it exists","ActionView":{}},"DefaultQualifier":{}}}'

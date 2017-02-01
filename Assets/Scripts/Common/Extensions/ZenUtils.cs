@@ -11,6 +11,7 @@ namespace Zen.Common.Extensions
 	using System;
 	using System.Collections.Generic;
 	using Components;
+	using MEC;
 	using UnityEngine;
 	using ZenECS;
 	using Random = System.Random;
@@ -20,6 +21,18 @@ namespace Zen.Common.Extensions
 	public static class ZenUtils
 	{
 		private static readonly Random RandGen = new Random();
+
+		public static void ExecuteAtEndOfFrame(Action callback)
+		{
+			Timing.RunCoroutine(_ExecuteAtEndOfFrame(callback), Segment.EndOfFrame);
+		}
+
+		private static IEnumerator<float> _ExecuteAtEndOfFrame(Action callback)
+		{
+			ZenLogger.Log($"In execute at end of frame");
+			callback?.Invoke();
+			yield return 0f;
+		}
 
 		public static Vector3 GetTerrainPositionFromCursor(int terrainLayerMask)
 		{
