@@ -29,6 +29,7 @@ namespace Zen.Common
 			public const string EnemyShip = "Prefabs/Actors/EnemyShip";
 			public const string Player = "Prefabs/Actors/Player";
 			public const string CameraMain = "Prefabs/Core/CameraMain";
+			public const string DebugArrow = "Prefabs/Core/Debug/DebugArrow";
 			public const string ShieldPFXObj = "Prefabs/Effects/ShieldPFXObj";
 			public const string ExplosionPFX_Blue = "Prefabs/Effects/Explosions/ExplosionPFX_Blue";
 			public const string Explosion_007_example = "Prefabs/Effects/Explosions/Explosion_007_example";

@@ -123,6 +123,12 @@ namespace Zen.Common.Extensions
 				var rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
 				return Quaternion.Euler(0f, 0f, rot_z - 90);
 			}
+
+			public static Quaternion SlerpLookAtTarget(Transform currentTransform, Vector3 positionToFace, float SlerpAmount)
+			{
+				var q = Quaternion.LookRotation(positionToFace - currentTransform.position);
+				return Quaternion.Slerp(currentTransform.rotation, q, SlerpAmount);
+			}
 		}
 
 		public static class Vec2Util

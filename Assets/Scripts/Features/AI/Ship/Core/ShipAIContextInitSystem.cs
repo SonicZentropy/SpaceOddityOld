@@ -1,5 +1,5 @@
 ﻿// /**
-//  * ShipContextInitSystem.cs
+//  * ShipAIContextInitSystem.cs
 //  * Dylan Bailey
 //  * 2/1/2017
 // */
@@ -18,7 +18,7 @@ namespace Zen.Systems
 
 	#endregion
 
-	public class ShipContextInitSystem : AbstractEcsSystem, IDisposable
+	public class ShipAIContextInitSystem : AbstractEcsSystem, IDisposable
 	{
 		public override bool Init()
 		{
@@ -45,7 +45,7 @@ namespace Zen.Systems
 			Debug.Log($"Init context");
 			fcp.context = new ShipContext(fcp.Owner);
 			var client = new ZenAIClient(Apex.AI.AINameMap.FighterAI, fcp);
-			AIClientMgr.Instance.UtilityAIClients.Add(client);
+			AIClientMgr.Instance.AddClient(client, fcp.Owner);
 			client.Start();
 		}
 

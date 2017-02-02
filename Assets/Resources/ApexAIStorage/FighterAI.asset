@@ -18,9 +18,9 @@ MonoBehaviour:
     ApexAI","_id":1e34a7094ee547b2b33a5522f68e039a,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Zen.AI.Apex.Actions.AcquireTargetAction, Assembly-CSharp"},"_scorers":[{"@type":"Zen.AI.Apex.Qualifiers.HasNoTargetScorer,
     Assembly-CSharp","score":50}]},{"@type":"Apex.AI.CompositeScoreQualifier, ApexAI","action":{"@type":"Zen.AI.Apex.Actions.RotateToTargetAction,
-    Assembly-CSharp"},"_scorers":[{"@type":"Zen.AI.Apex.Qualifiers.HasTargetScorer,
+    Assembly-CSharp","rotationSpeed":25},"_scorers":[{"@type":"Zen.AI.Apex.Qualifiers.HasTargetScorer,
     Assembly-CSharp","score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","action":{"@type":"Zen.AI.Apex.Actions.DebugPrintAction, Assembly-CSharp"}}}]}'
-  editorConfiguration: '{"offset":{"@x":0,"@y":0},"zoom":1,"SelectorView":{"ViewArea":{"@left":100,"@top":100,"@width":200,"@height":220},"QualifierView":{"Name":"Has
-    No Target","ActionView":{}},"QualifierView":{"Name":"Has Target","Description":"This
-    AI already has a target entity","ActionView":{}},"DefaultQualifier":{"ActionView":{}}}}'
+  editorConfiguration: '{"offset":{"@x":0,"@y":0},"zoom":1,"SelectorView":{"ViewArea":{"@left":100,"@top":100,"@width":200,"@height":220},"Name":"Main
+    AI","QualifierView":{"Name":"Has No Target","ActionView":{}},"QualifierView":{"Name":"Has
+    Target","Description":"This AI already has a target entity","ActionView":{}},"DefaultQualifier":{"ActionView":{}}}}'
