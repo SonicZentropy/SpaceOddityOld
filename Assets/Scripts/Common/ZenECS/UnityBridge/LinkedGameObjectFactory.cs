@@ -24,7 +24,7 @@ namespace Zen.Common.ZenECS
 
             if (ew == null)
             {
-                ZenLogger.LogError("No entity wrapper on game object to be initialized");
+                Debug.LogError("No entity wrapper on game object to be initialized");
                 return;
             }
 
@@ -112,7 +112,7 @@ namespace Zen.Common.ZenECS
 			    int lay = coll.gameObject.layer;
 			    if (lay == SRLayers.rangetriggerplayer.index || lay == SRLayers.rangetriggerdisable.index)
 			    {
-				    //ZenLogger.Log($"Found collider to be skipped: {coll.gameObject.name}");
+				    //Debug.Log($"Found collider to be skipped: {coll.gameObject.name}");
 				    continue;
 			    }
 				e.GetComponent<ColliderComp>().collider = coll;
@@ -169,7 +169,7 @@ namespace Zen.Common.ZenECS
 	    private void SetGameObjectLayer(Entity entity, GameObject go)
 	    {
 		    UnityPrefabComp upc = entity.GetComponent<UnityPrefabComp>();
-		    //ZenLogger.Log($"Setting {entity.EntityName} layer to {upc.layer.GetLayerIndex()} which is {LayerMask.LayerToName(upc.layer.GetLayerIndex())}");
+		    //Debug.Log($"Setting {entity.EntityName} layer to {upc.layer.GetLayerIndex()} which is {LayerMask.LayerToName(upc.layer.GetLayerIndex())}");
 		    go.layer = upc.layer.GetLayerIndex();
 
 	    }

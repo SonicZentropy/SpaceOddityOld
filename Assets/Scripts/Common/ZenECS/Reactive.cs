@@ -19,7 +19,7 @@ namespace Zen.Common.ZenECS
     ///     currHealth.ValueUpdated += ValueUpdate;
     ///     void ValueUpdate(Reactive<float> val)
     ///     {
-    ///         ZenLogger.Log("Updated: " + val);
+    ///         Debug.Log("Updated: " + val);
     ///     }
     /// </summary>
     [Serializable]

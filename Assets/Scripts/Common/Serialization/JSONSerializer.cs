@@ -35,7 +35,7 @@ namespace Zen.Common.Serialization
             if (!optionalInstanceId.Equals("")) filePath += "_" + optionalInstanceId;
             filePath += ".json";
 
-            //ZenLogger.Log("Saving to: " + filePath);
+            //Debug.Log("Saving to: " + filePath);
             Directory.CreateDirectory(Application.dataPath + "/Resources/JSON/" + classToSave.AssetParentFolder + "/");
 
             using (var file = File.Open(filePath, FileMode.Create))
@@ -58,10 +58,10 @@ namespace Zen.Common.Serialization
             if (!optionalInstanceId.Equals("")) filePath += "_" + optionalInstanceId;
             filePath += ".json";
 
-            //ZenLogger.Log("Loading from: " + filePath);
+            //Debug.Log("Loading from: " + filePath);
             if (!File.Exists(filePath))
             {
-                ZenLogger.Log("No existing JSON file, creating new model now.");
+                Debug.Log("No existing JSON file, creating new model now.");
                 //T newT = new T(classToLoad.Owner);
                 var newT = (T) Activator.CreateInstance(classToLoad.ObjectType, classToLoad.Owner);
                 SaveToJson(newT, optionalInstanceId);
@@ -77,7 +77,7 @@ namespace Zen.Common.Serialization
                 {
                     return deserialized as T;
                 }
-                ZenLogger.Log("Not deserialized");
+                Debug.Log("Not deserialized");
                 return (T) Activator.CreateInstance(classToLoad.ObjectType, classToLoad.Owner);
             }
         }
@@ -90,10 +90,10 @@ namespace Zen.Common.Serialization
             if (!optionalInstanceId.Equals("")) filePath += "_" + optionalInstanceId;
             filePath += ".json";
 
-            //ZenLogger.Log("Overwriting from: " + filePath);
+            //Debug.Log("Overwriting from: " + filePath);
             if (!File.Exists(filePath))
             {
-                ZenLogger.Log("No existing JSON file, creating new model file before overwrite.");
+                Debug.Log("No existing JSON file, creating new model file before overwrite.");
                 var newT = new T();
                 SaveToJson(newT, optionalInstanceId);
                 //var newT = Activator.CreateInstance(classToLoadType);
@@ -116,7 +116,7 @@ namespace Zen.Common.Serialization
             //Debug.Log("Loading from: " + filePath);
             if (!File.Exists(filePath))
             {
-                ZenLogger.Log("No existing JSON file, creating new model now.");
+                Debug.Log("No existing JSON file, creating new model now.");
                 var newT = new T();
                 SaveToJson(newT, optionalInstanceId);
             }
@@ -147,10 +147,10 @@ namespace Zen.Common.Serialization
 			if (!optionalInstanceID.Equals("")) filePath += "_" + optionalInstanceID;
 			filePath += ".json";
 
-			ZenLogger.Log("Overwriting from: " + filePath);
+			Debug.Log("Overwriting from: " + filePath);
 			if (!File.Exists(filePath))
 			{
-				ZenLogger.Log("No existing JSON file, Nothing from which to overwrite.");
+				Debug.Log("No existing JSON file, Nothing from which to overwrite.");
 				//return;
 				var newT = Activator.CreateInstance(classToLoadType);
 				//SaveToJSON(newT, optionalInstanceID);

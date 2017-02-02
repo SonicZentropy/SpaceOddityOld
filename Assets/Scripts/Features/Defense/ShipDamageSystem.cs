@@ -33,7 +33,7 @@ namespace Zen.Systems
 				for (int j = 0; j < dam.damagePackets.Count; j++)
 				{
 					var damageDone = dam.damagePackets.Pop();
-					//ZenLogger.Log($"Dealing damage to ship: {damageDone.HullDamage}");
+					//Debug.Log($"Dealing damage to ship: {damageDone.HullDamage}");
 					ApplyDamage(ref damageDone, matches[i]);
 				}
 			}

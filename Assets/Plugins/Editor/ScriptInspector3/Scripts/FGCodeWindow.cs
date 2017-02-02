@@ -268,7 +268,7 @@ public class FGCodeWindow : EditorWindow
 		if (!prefsLoaded)
 			LoadPrefs();
 		
-		FGConsole.OpenIfConsoleIsOpen();
+		//FGConsole.OpenIfConsoleIsOpen();
 	}
 
 	private static void OnProjectItemGUI(string item, Rect selectionRect)

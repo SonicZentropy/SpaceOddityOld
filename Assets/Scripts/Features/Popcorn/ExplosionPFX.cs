@@ -46,14 +46,14 @@ public class ExplosionPFX : MonoBehaviour//, IOnAwake, IOnUpdate
 	//	}
 	//	else if (!ExplosionPfx.Alive() && deathreported == false)
 	//	{
-	//		ZenLogger.Log($"No longer alive in pudate");
+	//		Debug.Log($"No longer alive in pudate");
 	//		deathreported = true;
 	//	}
 	//}
 
 	//private void OnFxStoppedDelegate(PKFxFX component)
 	//{
-	//	ZenLogger.Log("FX Stopped DELEGATE, releasing");
+	//	Debug.Log("FX Stopped DELEGATE, releasing");
 	//	gameObject.Release();
 	//}
 

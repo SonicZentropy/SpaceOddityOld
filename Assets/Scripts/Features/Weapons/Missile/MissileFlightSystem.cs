@@ -68,7 +68,7 @@ namespace Zen.Systems
 								UpdateRandomSwirlMethod(lmc);
 								break;
 							default:
-								ZenLogger.LogError("Missile homing method not found");
+								Debug.LogError("Missile homing method not found");
 								break;
 						}
 					}

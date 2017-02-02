@@ -16,7 +16,7 @@
 //			}
 //			else
 //			{
-//				ZenLogger.LogError($"Called get ship entity on {inEntity.EntityName} that is neither actor nor ship");
+//				Debug.LogError($"Called get ship entity on {inEntity.EntityName} that is neither actor nor ship");
 //				return null;
 //			}
 //		}
@@ -33,7 +33,7 @@
 //			}
 //			else
 //			{
-//				ZenLogger.LogError($"Called getshipactor on {inEntity.EntityName} which has no actor or ship comp");
+//				Debug.LogError($"Called getshipactor on {inEntity.EntityName} which has no actor or ship comp");
 //				return null;
 //			}
 //

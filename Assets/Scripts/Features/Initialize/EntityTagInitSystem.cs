@@ -44,14 +44,14 @@ namespace Zen.Systems
 		public void TestTags(GameObject go)
 		{
 			if (go.HasEntityTag(EntityTags.Aermedian))
-				ZenLogger.Log($"Working");
-			else ZenLogger.LogError($"FAIL");
+				Debug.Log($"Working");
+			else Debug.LogError($"FAIL");
 			if (go.HasEntityTag(EntityTags.Player))
-				ZenLogger.Log($"Working");
-			else ZenLogger.LogError($"FAIL");
+				Debug.Log($"Working");
+			else Debug.LogError($"FAIL");
 			if (!go.HasEntityTag(EntityTags.Ship))
-				ZenLogger.Log($"Working");
-			else ZenLogger.LogError($"FAIL");
+				Debug.Log($"Working");
+			else Debug.LogError($"FAIL");
 		}
 	}
 }

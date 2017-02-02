@@ -118,7 +118,7 @@ namespace Zen.Common.ZenECS
 					}
 				}
 		    }
-		    //ZenLogger.Log($"GetComponentDownward failed!");
+		    //Debug.Log($"GetComponentDownward failed!");
 		    return null;
 	    }
 
@@ -147,11 +147,23 @@ namespace Zen.Common.ZenECS
 
         public void AddComponent(ComponentEcs component)
         {
-			component.Initialise(engine, this);
+	        if (Application.isPlaying)
+	        {
+		        component.Initialise(engine, this);
+	        }
 
 			_components.Add(component.ObjectType, component);
-	        engine?.AddComponent(component);
+	        if (Application.isPlaying)
+	        {
+		        engine?.AddComponent(component);
+	        }
         }
+
+	    //For EntityGUICreator
+	    public void AddComponentFromGUI(ComponentEcs component)
+	    {
+		    _components.Add(component.ObjectType, component);
+	    }
 
 	    public void RemoveComponent(ComponentEcs component)
 	    {

@@ -63,7 +63,7 @@ namespace Zen.Common.ZenECS
 			}
 			if (!_componentPools.ContainsKey(component.ComponentType))
 			{
-				ZenLogger.LogWarning($"Attempted to add unknown component type to Component Pools - {component.ComponentType}");
+				Debug.LogWarning($"Attempted to add unknown component type to Component Pools - {component.ComponentType}");
 			}
 			else
 			{
@@ -74,7 +74,7 @@ namespace Zen.Common.ZenECS
 			{
 				if (!Application.isEditor || Application.isPlaying)
 				{
-					ZenLogger.LogError("Attempted to add existing GUID");
+					Debug.LogError("Attempted to add existing GUID");
 				}
 			}
 			else

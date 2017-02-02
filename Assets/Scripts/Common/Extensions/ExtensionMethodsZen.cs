@@ -178,6 +178,30 @@ namespace Zen.Common.Extensions
 		}
 
 		#endregion
+		
+		#region DoubleExtensions
+
+		public static bool IsAlmost(this double a, double b)
+		{
+			return ZenUtils.DoubleUtil.AreAlmostEqual(a, b);
+		}
+
+		public static bool IsAlmost(this double a, int b)
+		{
+			return ZenUtils.DoubleUtil.AreAlmostEqual(a, b);
+		}
+
+		public static bool IsNotAlmost(this double a, double b)
+		{
+			return !ZenUtils.DoubleUtil.AreAlmostEqual(a, b);
+		}
+
+		public static bool IsNotAlmost(this double a, int b)
+		{
+			return !ZenUtils.DoubleUtil.AreAlmostEqual(a, b);
+		}
+
+		#endregion
 
 		#region StringExtensions
 

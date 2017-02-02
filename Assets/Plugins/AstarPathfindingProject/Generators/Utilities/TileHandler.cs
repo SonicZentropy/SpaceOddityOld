@@ -378,7 +378,7 @@ namespace Pathfinding.Util {
 
 			if (perturbate > 10) {
 				Debug.LogError("Too many perturbations aborting : " + mode);
-				Debug.Break();
+				//Debug.Break();
 				outVCount = verts.Length;
 				outTCount = tris.Length;
 				outTrisArr = tris;

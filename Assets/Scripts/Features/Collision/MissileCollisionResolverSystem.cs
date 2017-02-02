@@ -12,6 +12,7 @@ namespace Zen.Systems
 	using Common.Helpers;
 	using Common.ZenECS;
 	using Components;
+	using UnityEngine;
 
 	#endregion
 
@@ -36,7 +37,7 @@ namespace Zen.Systems
 
 				if (lmc.projectileInfo.ExplosionImpactRadius > 0 && cc.Other.Count > 0)
 				{
-					ZenLogger.Log($"Performing area explosion from collision");
+					Debug.Log($"Performing area explosion from collision");
 					RangedCombatHelper.PerformAreaExplosion(lmc);
 				}
 				else
@@ -49,7 +50,7 @@ namespace Zen.Systems
 						{
 							if (!oth.Entity.HasComponent(ComponentTypes.DamageComp))
 							{
-								ZenLogger.Log($"Missile Collision system adding collision to {oth.Entity.EntityName}");
+								Debug.Log($"Missile Collision system adding collision to {oth.Entity.EntityName}");
 								var dc = oth.Entity.GetOrAddComponent<DamageComp>(ComponentTypes.DamageComp);
 								dc.damagePackets.Push(new DamagePacket(lmc.projectileInfo.HullDamage, lmc.projectileInfo.ShieldDamage));
 								
@@ -60,7 +61,7 @@ namespace Zen.Systems
 
 					if (cc.Other.Count > 0) // missile hit *something* so blow up
 					{
-						ZenLogger.Log($"Missile Collision system adding damage from collision to missile");
+						Debug.Log($"Missile Collision system adding damage from collision to missile");
 						match.GetOrAddComponent<DamageComp>(ComponentTypes.DamageComp).damagePackets.Push(new DamagePacket());
 					}
 				}

@@ -35,7 +35,7 @@ namespace Zen.Common.Extensions
             {
                 if (_applicationIsQuitting)
                 {
-                    //ZenLogger.LogWarning("[MonoSingleton] Instance '" + typeof(T) +
+                    //Debug.LogWarning("[MonoSingleton] Instance '" + typeof(T) +
                     //	"' already destroyed on application quit." +
                     //	" Won't create again - returning null.");
                     return null;
@@ -49,7 +49,7 @@ namespace Zen.Common.Extensions
 
                     if (FindObjectsOfType(typeof(T)).Length > 1)
                     {
-                        ZenLogger.LogError(
+                        Debug.LogError(
                             "[MonoSingleton] Something went really wrong " +
                             " - there should never be more than 1 singleton!" +
                             " Reopening the scene might fix it.");

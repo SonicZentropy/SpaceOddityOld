@@ -40,7 +40,7 @@ namespace Zen.Common.ZenECS
 
 			if (EcsEngine.Instance == null)
             {
-                ZenLogger.LogWarning($"Attempting to destroy an entity ({Entity.EntityName}) while ECS Engine is null.");
+                Debug.LogWarning($"Attempting to destroy an entity ({Entity.EntityName}) while ECS Engine is null.");
             }
             else
             {
@@ -62,28 +62,28 @@ namespace Zen.Common.ZenECS
 
         public void OnCollisionEnter(Collision other)
         {
-            //ZenLogger.Log($"OnCollEnter");
+            //Debug.Log($"OnCollEnter");
             if (Entity.HasComponent(ComponentTypes.CollisionEnterComp))
                 Entity.GetComponent<CollisionEnterComp>().Other.Add(other);
         }
 
         public void OnCollisionExit(Collision other)
         {
-            //ZenLogger.Log($"OnCollExit");
+            //Debug.Log($"OnCollExit");
             if (Entity.HasComponent(ComponentTypes.CollisionExitComp))
                 Entity.GetComponent<CollisionExitComp>().Other.Add(other);
         }
 
         public void OnTriggerEnter(Collider other)
         {
-            //ZenLogger.Log($"OnTriggerEnter");
+            //Debug.Log($"OnTriggerEnter");
             if (Entity.HasComponent(ComponentTypes.TriggerEnterComp))
                 Entity.GetComponent<TriggerEnterComp>().Other.Add(other);
         }
 
         public void OnTriggerExit(Collider other)
         {
-            //ZenLogger.Log($"OnTriggerExit");
+            //Debug.Log($"OnTriggerExit");
             if (Entity.HasComponent(ComponentTypes.TriggerExitComp))
                 Entity.GetComponent<TriggerExitComp>().Other.Add(other);
         }

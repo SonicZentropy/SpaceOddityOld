@@ -36,7 +36,7 @@ namespace Zen.Systems
 					var ew = (EntityWrapper) hit.gameObject.GetComponentDownThenUp<EntityWrapper>();
 					if (ew != null)
 					{
-						//ZenLogger.Log($"adding dmg comp to {ew.Entity.EntityName}");
+						//Debug.Log($"adding dmg comp to {ew.Entity.EntityName}");
 						var lmc = ((MissileAreaDamageComp) areas[i]).GetComponent<LaunchedMissileComp>();
 						var dc = ew.Entity.GetOrAddComponent<DamageComp>(ComponentTypes.DamageComp);
 						dc.damagePackets.Push(new DamagePacket(lmc.projectileInfo.HullDamage, lmc.projectileInfo.ShieldDamage));

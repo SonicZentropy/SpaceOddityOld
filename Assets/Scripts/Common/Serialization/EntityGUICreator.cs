@@ -168,11 +168,13 @@ namespace Zen.Serialization
 		public void SaveEntityToJson()
 		{
 			_newEnt = new Entity(GetEntityNameFromFullName(EntityName));
+			Debug.Log($"Saving entity: {EntityName}");
 			foreach (var typ in ComponentPools)
 			{
 				foreach (var cmp in typ.Value)
 				{
-					_newEnt.AddComponent(cmp);
+					//Debug.Log($"Adding comp from gui: {cmp.ObjectType.Name}");
+					_newEnt.AddComponentFromGUI(cmp);
 					cmp.SetId(Guid.Empty); //Keep this out of prod code
 				}
 			}
@@ -202,7 +204,7 @@ namespace Zen.Serialization
 		{
 			if (!File.Exists(filePath))
 			{
-				ZenLogger.Log("No existing JSON file");
+				Debug.Log("No existing JSON file");
 			}
 			using (var reader = new StreamReader(filePath))
 			{
@@ -231,7 +233,7 @@ namespace Zen.Serialization
 				}
 				else
 				{
-					ZenLogger.Log("Not deserialized");
+					Debug.Log("Not deserialized");
 				}
 			}
 			OnDataChanged?.Invoke();

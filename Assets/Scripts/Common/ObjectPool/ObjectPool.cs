@@ -41,7 +41,7 @@ namespace Zen.Common.ObjectPool
             where T : class
         {
             var tComp = ObjectPool.Instantiate(prefab).GetComponent<T>();
-            if (tComp == null) ZenLogger.LogError("Object of type " + typeof(T).Name + " is not contained in prefab");
+            if (tComp == null) Debug.LogError("Object of type " + typeof(T).Name + " is not contained in prefab");
             return tComp;
         }
 
@@ -49,7 +49,7 @@ namespace Zen.Common.ObjectPool
             where T : class
         {
             var tComp = ObjectPool.Instantiate(prefab, position, rotation).GetComponent<T>();
-            if (tComp == null) ZenLogger.LogError("Object of type " + typeof(T).Name + " is not contained in prefab");
+            if (tComp == null) Debug.LogError("Object of type " + typeof(T).Name + " is not contained in prefab");
             return tComp;
         }
 
@@ -184,7 +184,7 @@ namespace Zen.Common.ObjectPool
             {
                 if (p.Prefab == null)
                 {
-                    ZenLogger.LogError("Custom object pool exists without prefab assigned to it.");
+                    Debug.LogError("Custom object pool exists without prefab assigned to it.");
                     continue;
                 }
                 //Set keyword if blank
@@ -214,7 +214,7 @@ namespace Zen.Common.ObjectPool
                 }
                 else
                 {
-                    ZenLogger.LogError("Trying to add object that is already registered by object pooler.");
+                    Debug.LogError("Trying to add object that is already registered by object pooler.");
                 }
             }
         }
@@ -365,7 +365,7 @@ namespace Zen.Common.ObjectPool
                     obj.transform.SetParent(obj.MyParentTransform);
                     if (CountTotal > MaxObjectsWarning)
                     {
-                        //ZenLogger.LogError("ObjectPool: More than max objects spawned. --- " + prefab.name + " Max obj set to: " + MaxObjectsWarning + " and the pool already has: " + CountTotal);
+                        //Debug.LogError("ObjectPool: More than max objects spawned. --- " + prefab.name + " Max obj set to: " + MaxObjectsWarning + " and the pool already has: " + CountTotal);
                     }
 
                     obj.transform.SetParent(!InactiveParentGo ? Instance.transform : InactiveParentGo.transform);
@@ -391,7 +391,7 @@ namespace Zen.Common.ObjectPool
                     obj.transform.SetParent(obj.MyParentTransform);
                     //if (CountTotal > MaxObjectsWarning)
                     //{
-                    //    //ZenLogger.LogError("ObjectPool: More than max objects spawned. --- " + prefab.name + " Max obj set to: " + MaxObjectsWarning + " and the pool already has: " + CountTotal);
+                    //    //Debug.LogError("ObjectPool: More than max objects spawned. --- " + prefab.name + " Max obj set to: " + MaxObjectsWarning + " and the pool already has: " + CountTotal);
                     //}
                     obj.SetFree(false);
                 }

@@ -106,7 +106,7 @@ namespace Zen.Systems
 				return true;
 			}
 
-			ZenLogger.LogError($"Selected weapon type not found");
+			Debug.LogError($"Selected weapon type not found");
 			return false;
 		}
 

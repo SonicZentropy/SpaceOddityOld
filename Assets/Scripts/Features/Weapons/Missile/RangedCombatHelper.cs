@@ -30,7 +30,7 @@ namespace Zen.Common.Helpers
 				}
 				catch (Exception)
 				{
-					ZenLogger.Log($"exception");
+					Debug.Log($"exception");
 				}
 				
 			}

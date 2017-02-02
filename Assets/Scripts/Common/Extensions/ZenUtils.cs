@@ -24,12 +24,12 @@ namespace Zen.Common.Extensions
 
 		public static void ExecuteAtEndOfFrame(Action callback)
 		{
-			Timing.RunCoroutine(_ExecuteAtEndOfFrame(callback), Segment.EndOfFrame);
+			Timing.RunCoroutine(_ExecuteAtEndOfFrame(callback), Segment.LateUpdate);
 		}
 
 		private static IEnumerator<float> _ExecuteAtEndOfFrame(Action callback)
 		{
-			ZenLogger.Log($"In execute at end of frame");
+			//Debug.Log($"In execute at end of frame");
 			callback?.Invoke();
 			yield return 0f;
 		}
@@ -107,7 +107,7 @@ namespace Zen.Common.Extensions
 					return;
 				}
 				Vector3 added = forceDirection.normalized * forceMagnitude * 10;
-				//ZenLogger.Log($"Applying force to {objectHit.gameObject.name}: {added}");
+				//Debug.Log($"Applying force to {objectHit.gameObject.name}: {added}");
 
 				rbComp.AddForce(forceDirection.normalized * forceMagnitude * 100, ForceMode.Impulse);
 			}
@@ -162,8 +162,15 @@ namespace Zen.Common.Extensions
 				output /= input.Count;
 				return output;
 			}
+		}
 
-			
+		public static class DoubleUtil
+		{
+			public static bool AreAlmostEqual(double a, double b)
+			{
+				//return Mathf.Abs(b - a) < (double) Mathf.Max(1E-06f * Mathf.Max(Mathf.Abs(a), Mathf.Abs(b)), Mathf.Epsilon * 8f);
+				return Math.Abs(a - b) <= 0.00001;
+			}
 		}
 
 		public static int LayerMaskFromIDs(params int[] ints)

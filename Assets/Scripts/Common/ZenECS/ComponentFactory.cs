@@ -18,6 +18,7 @@ namespace Zen.Common.ZenECS
     {
         public static readonly Dictionary<ComponentTypes, Type> ComponentLookup = new Dictionary<ComponentTypes, Type>(new FastEnumIntEqualityComparer<ComponentTypes>())
         {
+			{ComponentTypes.ShipContextProviderComp, typeof(ShipContextProviderComp)},
 			{ComponentTypes.AbstractActorComp, typeof(AbstractActorComp)},
 			{ComponentTypes.AIActorComp, typeof(AIActorComp)},
 			{ComponentTypes.PlayerComp, typeof(PlayerComp)},
@@ -84,6 +85,7 @@ namespace Zen.Common.ZenECS
 
     public enum ComponentTypes
     {
+		ShipContextProviderComp,
 		AbstractActorComp,
 		AIActorComp,
 		PlayerComp,

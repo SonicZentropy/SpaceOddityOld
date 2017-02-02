@@ -9,15 +9,15 @@ namespace Zen.AI.Apex.Qualifiers
 	using global::Apex.AI;
 	using Zen.AI.Apex.Contexts;
 
-	public class HasTargetScorer  : ContextualScorerBase<TargetContext>
+	public class HasTargetScorer  : ContextualScorerBase<ShipContext>
     {
-	    public override float Score(TargetContext ctx)
+	    public override float Score(ShipContext ctx)
 	    {
-		    float result;
+		    float result = 0f;
 		    //if (ctx?.scannerComp == null || ctx.targetComp == null) result = -10f;
 		    if (ctx?.targetComp?.target != null) result =  score;
-		    else result = 0f;
-		    ZenLogger.Log($"Result is: {result}");
+
+		    //Debug.Log($"Result is: {result}");
 		    return result;
 	    }
     }

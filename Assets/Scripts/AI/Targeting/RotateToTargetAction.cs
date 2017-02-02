@@ -12,18 +12,18 @@ namespace Zen.AI.Apex.Actions
 	using UnityEngine;
 	using Zen.AI.Apex.Contexts;
 
-	public class RotateToTargetAction : ActionBase<TargetContext>
+	public class RotateToTargetAction : ActionBase<ShipContext>
 	{
-		public override void Execute(TargetContext context)
+		public override void Execute(ShipContext context)
 		{
-			ZenLogger.Log($"rotating target action");
+			//Debug.Log($"rotating target action");
 			// #TODO: switch to assert
 			if (context.targetComp.target == null)
 			{
-				ZenLogger.Log($"No target in RotateToTargetAction");
+				Debug.Log($"No target in RotateToTargetAction");
 				return;
 			}
-			ZenLogger.Log($"Looking at {context.targetComp.target}");
+			Debug.Log($"Looking at {context.targetComp.target}");
 			context.transform.LookAt(context.targetComp.target);
 		}
 	}

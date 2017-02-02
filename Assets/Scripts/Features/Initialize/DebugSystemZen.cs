@@ -29,29 +29,26 @@ namespace Zen.Systems
 		private void InitSystems()
 		{
 			engine.AddSystem(new PlayerInitSystem())
-				  //.AddSystem(new SectorGenerationSystem())
-				  .AddSystem(new ShipInitSystem())
-				  .AddSystem(new PlayerInputSystem())
+			      //.AddSystem(new SectorGenerationSystem())
+			      .AddSystem(new ShipInitSystem())
+			      .AddSystem(new ShipContextInitSystem())
+			      .AddSystem(new PlayerInputSystem())
+			      .AddSystem(new PlayerMovementSystem())
+			      .AddSystem(new PlayerTargetingSystem())
+			      .AddSystem(new PositionUpdateSystem())
+			      .AddSystem(new CameraControlSystem())
+			      .AddSystem(new RangedCombatSystem())
+			      .AddSystem(new MissileFlightSystem())
+			      .AddSystem(new MissileCollisionResolverSystem())
+			      .AddSystem(new MissileAreaDamageSystem())
+			      .AddSystem(new MissileExplosionSystem())
+			      .AddSystem(new ShipDamageSystem())
+			      .AddSystem(new DeathRemovalSystem())
+			      .AddSystem(new InertialDamperSystem())
+			      .AddSystem(new CollisionCleanupSystem())
 
-				  .AddSystem(new PlayerMovementSystem())
-				  .AddSystem(new PlayerTargetingSystem())
-				  .AddSystem(new PositionUpdateSystem())
-				  .AddSystem(new CameraControlSystem())
-
-				  .AddSystem(new RangedCombatSystem())
-				  
-				  .AddSystem(new MissileFlightSystem())
-				  .AddSystem(new MissileCollisionResolverSystem())
-				  .AddSystem(new MissileAreaDamageSystem())
-				  .AddSystem(new MissileExplosionSystem())
-				  .AddSystem(new ShipDamageSystem())
-				  .AddSystem(new DeathRemovalSystem())
-				  
-				  .AddSystem(new InertialDamperSystem())
-				  .AddSystem(new CollisionCleanupSystem())
-
-				  //Reactives
-				  ;
+				//Reactives
+				;
 
 			engine.InitAfterECS();
 		}
@@ -62,7 +59,7 @@ namespace Zen.Systems
 			foreach (CollisionEnterComp coll in collenter)
 			{
 				if (coll.Other.Count > 0)
-					//ZenLogger.Log($"System found {coll.Owner} colliding with {coll.other}");
+					//Debug.Log($"System found {coll.Owner} colliding with {coll.other}");
 					_totalCollisions++;
 			}
 
@@ -70,7 +67,7 @@ namespace Zen.Systems
 			foreach (CollisionExitComp coll in collexit)
 			{
 				if (coll.Other.Count > 0)
-					//ZenLogger.Log($"System found {coll.Owner} UNcolliding with {coll.other}");
+					//Debug.Log($"System found {coll.Owner} UNcolliding with {coll.other}");
 					_totalCollisions++;
 			}
 		}

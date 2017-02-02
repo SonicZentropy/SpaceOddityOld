@@ -48,7 +48,7 @@ namespace Zen.Common.Extensions
 
                     if (FindObjectsOfType(typeof(T)).Length > 1)
                     {
-                        ZenLogger.LogError(
+                        Debug.LogError(
                             "[MonoSingleton] Something went really wrong " +
                             " - there should never be more than 1 singleton!" +
                             " Reopening the scene might fix it.");

@@ -251,7 +251,7 @@
 							                                Quaternion.LookRotation(target.position - transform.position),
 							                                Time.deltaTime * alignSpeed);
 						}
-						else ZenLogger.Log($"WRONG MISSILE TYPE");
+						else Debug.Log($"WRONG MISSILE TYPE");
 					}
 				}
 
