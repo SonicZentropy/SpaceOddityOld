@@ -9,5 +9,6 @@
 		public Vector3 ExplosionCenter;
 
 		public override ComponentTypes ComponentType => ComponentTypes.MissileAreaDamageComp;
+		public override string Grouping => "Weapons";
 	}
 }

@@ -17,5 +17,6 @@ namespace Zen.Components
         public UIWidget UIWidget;
 
         public override ComponentTypes ComponentType => ComponentTypes.UIWidgetComp;
+	    public override string Grouping => "UnityGUI";
     }
 }

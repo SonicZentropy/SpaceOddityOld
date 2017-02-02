@@ -8,5 +8,6 @@
 		public bool ModuleEnabled;	
 
 		public override ComponentTypes ComponentType => ComponentTypes.AbstractModuleComp;
+		public override string Grouping => "Modules";
 	}
 }

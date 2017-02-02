@@ -17,5 +17,6 @@ namespace Zen.Components
         public UIPanel UIPanel;
 
         public override ComponentTypes ComponentType => ComponentTypes.UIPanelComp;
+	    public override string Grouping => "UnityGUI";
     }
 }

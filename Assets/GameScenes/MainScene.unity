@@ -503,12 +503,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2458711d42a2dea44a3464f2108e4989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sharedStateGuid: 
-  _objectReferences: []
-  _serializedStateKeys:
-  - Entity
-  _serializedStateValues:
-  - '{"EntityName":"DefaultName","Wrapper":null,"_components":{}}'
 --- !u!1 &908174783
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,7 +767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc6413bbc0abf04e9c82155ed9a47a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AvoidDirtyFlag: 0
+  AvoidDirtyFlag: 1
   EntityName: Actors/Enemy
 --- !u!4 &1250855352
 Transform:

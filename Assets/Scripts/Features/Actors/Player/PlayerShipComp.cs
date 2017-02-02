@@ -5,5 +5,6 @@
 	public class PlayerShipComp : ComponentEcs
 	{
 		public override ComponentTypes ComponentType => ComponentTypes.PlayerShipComp;
+		public override string Grouping => "Player";
 	}
 }

@@ -17,5 +17,6 @@ namespace Zen.Components
         public UIRoot UIRoot;
 
         public override ComponentTypes ComponentType => ComponentTypes.UIRootComp;
+	    public override string Grouping => "UnityGUI";
     }
 }

@@ -18,5 +18,6 @@ namespace Zen.Components
         public TextMeshPro TextMesh;
 
         public override ComponentTypes ComponentType => ComponentTypes.TextMeshProComp;
+	    public override string Grouping => "UnityGUI";
     }
 }

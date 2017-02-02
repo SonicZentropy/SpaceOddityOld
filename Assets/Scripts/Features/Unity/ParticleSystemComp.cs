@@ -18,5 +18,6 @@ namespace Zen.Components
         public ParticleSystem ParticleSystem;
 
         public override ComponentTypes ComponentType => ComponentTypes.ParticleSystemComp;
+	    public override string Grouping => "Unity";
     }
 }

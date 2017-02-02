@@ -24,6 +24,7 @@
 		}
 
 		public override ComponentTypes ComponentType => ComponentTypes.ShipFittingsComp;
+		public override string Grouping => "Weapons";
 	}
 
 	[Serializable]

@@ -18,5 +18,6 @@ namespace Zen.Components
 	    public Vector3 ProjectileLaunchOffset;
 
         public override ComponentTypes ComponentType => ComponentTypes.LauncherComp;
+	    public override string Grouping => "Weapons";
     }
 }

@@ -17,5 +17,6 @@ namespace Zen.Components
         public UICamera UICamera;
 
         public override ComponentTypes ComponentType => ComponentTypes.UICameraComp;
+	    public override string Grouping => "UnityGUI";
     }
 }

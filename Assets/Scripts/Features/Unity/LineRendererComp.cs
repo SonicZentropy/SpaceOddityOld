@@ -18,5 +18,6 @@ namespace Zen.Components
         public LineRenderer LineRenderer;
 
         public override ComponentTypes ComponentType => ComponentTypes.LineRendererComp;
+	    public override string Grouping => "Unity";
     }
 }

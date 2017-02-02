@@ -25,6 +25,9 @@ namespace Zen.Common.ZenECS
         public abstract ComponentTypes ComponentType { get; }
         public Guid Id { get; private set; }
 
+	    //public abstract string Grouping { get; }
+	    public virtual string Grouping { get; } = "Base";
+
         public Type ObjectType => _objectType ?? (_objectType = GetType());
 
         [HideInInspector]

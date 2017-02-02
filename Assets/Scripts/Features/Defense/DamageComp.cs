@@ -8,6 +8,7 @@
 		public Stack<DamagePacket> damagePackets = new Stack<DamagePacket>(10);
 
 		public override ComponentTypes ComponentType => ComponentTypes.DamageComp;
+		public override string Grouping => "Combat";
 	}
 
 	public struct DamagePacket

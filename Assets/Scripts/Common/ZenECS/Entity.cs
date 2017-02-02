@@ -20,17 +20,18 @@ namespace Zen.Common.ZenECS
 	[Serializable]
 	public class Entity
     {
-        //[ShowInInspector]
-
-	    [Inspect]
+	    //[Inspect]
+	    [HideInInspector]
 	    public Dictionary<Type, ComponentEcs> _components = new Dictionary<Type, ComponentEcs>();
 
-	    [Inspect]public List<ComponentEcs> ComponentsList
+	    //[Inspect]
+	    [HideInInspector]
+	    public List<ComponentEcs> ComponentsList
 	    {
 		    get { return _components.Select(x => x.Value).ToList(); }
 	    }
 
-        public Entity()
+	    public Entity()
         {
             //debug purposes
             //_components = new Dictionary<Type, ComponentEcs>();
@@ -168,7 +169,7 @@ namespace Zen.Common.ZenECS
 	    public void RemoveComponent(ComponentEcs component)
 	    {
 		    _components.Remove(component.ObjectType);
-			engine.DestroyComponent(component);
+		    engine.DestroyComponent(component);
 	    }
 
 	    public override string ToString()

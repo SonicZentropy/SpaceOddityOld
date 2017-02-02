@@ -35,5 +35,6 @@ namespace Zen.Components
 	    }
 
         public override ComponentTypes ComponentType => ComponentTypes.UnityPrefabComp;
+	    public override string Grouping => "Unity";
     }
 }

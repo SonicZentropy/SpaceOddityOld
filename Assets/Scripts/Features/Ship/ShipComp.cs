@@ -56,5 +56,6 @@
 		}
 
 		public override ComponentTypes ComponentType => ComponentTypes.ShipComp;
+		public override string Grouping => "Ship";
 	}
 }

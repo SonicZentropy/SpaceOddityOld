@@ -99,7 +99,7 @@
                 "y": 0.0,
                 "z": 0.0
             },
-            "DefaultShields": 100.0,
+            "DefaultShields": 200.0,
             "DefaultHull": 100.0,
             "DefaultRotationSpeed": 300.0,
             "DefaultMaxRotationVelocity": 1.0,
@@ -156,7 +156,7 @@
                         "IsFitted": false,
                         "NextAttackTime": 0.0,
                         "fittingAttached": {
-                            "$ref": "19"
+                            "$ref": "17"
                         },
                         "LauncherPrefab": "Prefabs/None",
                         "WeaponGameObject": null,
@@ -183,7 +183,7 @@
                         "z": 0.0
                     },
                     "WeaponTypesAllowed": "Laser",
-                    "$id": "19"
+                    "$id": "17"
                 },
                 {
                     "FittedWeapon": {
@@ -229,7 +229,7 @@
                         "IsFitted": false,
                         "NextAttackTime": 0.0,
                         "fittingAttached": {
-                            "$ref": "21"
+                            "$ref": "19"
                         },
                         "LauncherPrefab": "Prefabs/Weapons/Launchers/MissileLauncher1",
                         "WeaponGameObject": null,
@@ -256,7 +256,7 @@
                         "z": 0.0
                     },
                     "WeaponTypesAllowed": "Missile",
-                    "$id": "21"
+                    "$id": "19"
                 }
             ],
             "Id": "00000000-0000-0000-0000-000000000000",

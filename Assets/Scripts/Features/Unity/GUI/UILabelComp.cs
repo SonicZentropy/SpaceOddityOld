@@ -17,5 +17,6 @@ namespace Zen.Components
         public UILabel UILabel;
 
         public override ComponentTypes ComponentType => ComponentTypes.UILabelComp;
+	    public override string Grouping => "UnityGUI";
     }
 }

@@ -8,5 +8,6 @@
 		public Renderer renderer;
 
 		public override ComponentTypes ComponentType => ComponentTypes.RendererComp;
+		public override string Grouping => "Unity";
 	}
 }

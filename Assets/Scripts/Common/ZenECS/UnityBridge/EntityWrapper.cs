@@ -18,11 +18,11 @@ namespace Zen.Common.ZenECS
     #endregion
 
     /// Allows viewing in Inspector for debug/dev purposes, serves no in-game function
-    [AdvancedInspector(false, false)]
-    public class EntityWrapper : BaseBehavior
+    //[AdvancedInspector(false, false)]
+    public class EntityWrapper : MonoBehaviour//BaseBehavior
     {
         //[fiInspectorOnly]
-		//[Inspect]
+		[Inspect]
 		public Entity Entity;
 
 

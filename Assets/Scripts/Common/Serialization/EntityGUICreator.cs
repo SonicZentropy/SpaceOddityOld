@@ -11,8 +11,10 @@ namespace Zen.Serialization
 	using System;
 	using System.Collections.Generic;
 	using System.IO;
+	using System.Linq;
 	using AdvancedInspector;
 	using Common.Extensions;
+	using FullInspector;
 	using FullSerializer;
 	using UnityEditor;
 	using UnityEngine;
@@ -47,14 +49,21 @@ namespace Zen.Serialization
 			return IsDirty;
 		}
 
-		[Space]
-		[Descriptor(":", "Components On Entity")]
-		[Inspect(5000)]
+		//[Space]
+		//[Descriptor(":", "Components On Entity")]
+		//[Inspect(5000)]
 		[NonSerialized]
-		[Expandable(Expanded = true)]
+		//[Expandable(Expanded = true)]
 		public readonly Dictionary<ComponentTypes, List<ComponentEcs>>
 			ComponentPools =
 				new Dictionary<ComponentTypes, List<ComponentEcs>>(Enum.GetNames(typeof(ComponentTypes)).Length);
+
+		#if UNITY_EDITOR
+
+		[Inspect(10000), NonSerialized, Expandable(Expanded = true), Descriptor("Components", "Components on Entity")]
+		public Dictionary<string, List<ComponentEcs>> GroupedComponents = new Dictionary<string, List<ComponentEcs>>();
+
+		#endif
 
 		[Inspect(60)]
 		public string EntityName;
@@ -125,7 +134,12 @@ namespace Zen.Serialization
 		public void Reset()
 		{
 			ComponentPools.Clear();
-			_newEnt = new Entity();
+#if UNITY_EDITOR
+
+			GroupedComponents.Clear();
+
+#endif
+		_newEnt = new Entity();
 			EntityName = "";
 			UnityDrawerStatics.RefreshPrefabList();
 			UnityDrawerStatics.RefreshEntityList();
@@ -155,8 +169,16 @@ namespace Zen.Serialization
 			{
 				ComponentPools[TypeToCreate] = new List<ComponentEcs>();
 			}
-			ComponentPools[TypeToCreate].Add(
-				(ComponentEcs)Activator.CreateInstance(ComponentFactory.ComponentLookup[TypeToCreate]));
+			var comp = (ComponentEcs) Activator.CreateInstance(ComponentFactory.ComponentLookup[TypeToCreate]);
+			ComponentPools[TypeToCreate].Add(comp);
+
+#if UNITY_EDITOR
+			if (!GroupedComponents.ContainsKey(comp.Grouping))
+			{
+				GroupedComponents[comp.Grouping] = new List<ComponentEcs>();
+			}
+			GroupedComponents[comp.Grouping].Add(comp);
+#endif
 
 			OnDataChanged?.Invoke();
 			IsDirty = true;
@@ -222,13 +244,21 @@ namespace Zen.Serialization
 				{
 					//return deserialized as Entity;
 					_newEnt = (Entity)deserialized;
-					foreach (var cmp in _newEnt.Components)
+					foreach (var comp in _newEnt.Components)
 					{
-						if (!ComponentPools.ContainsKey(cmp.ComponentType))
+						if (!ComponentPools.ContainsKey(comp.ComponentType))
 						{
-							ComponentPools[cmp.ComponentType] = new List<ComponentEcs>();
+							ComponentPools[comp.ComponentType] = new List<ComponentEcs>();
 						}
-						ComponentPools[cmp.ComponentType].Add(cmp);
+						ComponentPools[comp.ComponentType].Add(comp);
+
+#if UNITY_EDITOR
+						if (!GroupedComponents.ContainsKey(comp.Grouping))
+						{
+							GroupedComponents[comp.Grouping] = new List<ComponentEcs>();
+						}
+						GroupedComponents[comp.Grouping].Add(comp);
+#endif
 					}
 				}
 				else

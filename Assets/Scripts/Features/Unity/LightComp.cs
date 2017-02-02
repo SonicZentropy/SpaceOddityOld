@@ -18,5 +18,6 @@ namespace Zen.Components
         public Light Light;
 
         public override ComponentTypes ComponentType => ComponentTypes.LightComp;
+	    public override string Grouping => "Unity";
     }
 }

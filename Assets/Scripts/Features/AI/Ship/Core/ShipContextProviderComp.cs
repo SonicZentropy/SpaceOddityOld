@@ -27,5 +27,6 @@ namespace Zen.Components
 	    }
 
 	    public override ComponentTypes ComponentType => ComponentTypes.ShipContextProviderComp;
+	    public override string Grouping => "AI";
     }
 }

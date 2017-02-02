@@ -49,6 +49,7 @@ namespace Zen.Components
 	    public Vector3 StartingRotationOffset;
 		
 		public override ComponentTypes ComponentType => ComponentTypes.CameraComp;
+	    public override string Grouping => "Unity";
     }
 
 	public enum CameraType

@@ -18,5 +18,6 @@ namespace Zen.Components
         public Rigidbody Rigidbody;
 
         public override ComponentTypes ComponentType => ComponentTypes.RigidbodyComp;
+	    public override string Grouping => "Unity";
     }
 }

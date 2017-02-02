@@ -18,8 +18,9 @@ namespace Zen.Components
     {
         public AudioSource AudioSource;
         public override ComponentTypes ComponentType => ComponentTypes.AudioSourceComp;
+	    public override string Grouping => "Unity";
 
-        /// <summary>
+	    /// <summary>
         ///     Triggers a positional sound effect centered at this object's location
         /// </summary>
         /// <param name="sfx"></param>

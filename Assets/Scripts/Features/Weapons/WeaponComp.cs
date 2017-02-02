@@ -80,6 +80,7 @@ namespace Zen.Components
 		public ShipFitting fittingAttached { get; set; }
 
 		public override ComponentTypes ComponentType => ComponentTypes.WeaponComp;
+		public override string Grouping => "Weapons";
 	}
 
 	/*public interface ProjectileInfoPacket

@@ -20,6 +20,8 @@ namespace Zen.Components
 		[TextField(TextFieldType.Prefab, "Ships")]
 		public string ShipPrefab = "Prefabs/None";
 
+
+
 		[Inspect]
 		public bool IsPooled { get; set; } = true;
 
@@ -27,5 +29,6 @@ namespace Zen.Components
 		public Vector3 FirstPersonCameraOffset { get; set; }
 
 		public override ComponentTypes ComponentType => ComponentTypes.ShipPrefabComp;
+		public override string Grouping => "Ship";
 	}
 }

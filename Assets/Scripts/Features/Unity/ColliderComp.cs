@@ -18,5 +18,6 @@ namespace Zen.Components
         public Collider collider;
 
         public override ComponentTypes ComponentType => ComponentTypes.ColliderComp;
+	    public override string Grouping => "Unity";
     }
 }

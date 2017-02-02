@@ -20,5 +20,6 @@ namespace Zen.Components
 	    public Transform TargetTransform;
 
         public override ComponentTypes ComponentType => ComponentTypes.AINavigationComp;
+	    public override string Grouping => "AI";
     }
 }

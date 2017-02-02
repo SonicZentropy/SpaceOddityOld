@@ -19,5 +19,6 @@ namespace Zen.Components
         public List<Collision> Other = new List<Collision>(5);
 
         public override ComponentTypes ComponentType => ComponentTypes.CollisionEnterComp;
+	    public override string Grouping => "Unity";
     }
 }

@@ -82,5 +82,6 @@
 		[HideInInspector] public Transform transform;
 
 		public override ComponentTypes ComponentType => ComponentTypes.LaunchedMissileComp;
+		public override string Grouping => "Weapons";
 	}
 }

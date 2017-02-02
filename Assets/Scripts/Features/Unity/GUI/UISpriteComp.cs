@@ -17,5 +17,6 @@ namespace Zen.Components
         public UISprite UISprite;
 
         public override ComponentTypes ComponentType => ComponentTypes.UISpriteComp;
+	    public override string Grouping => "UnityGUI";
     }
 }

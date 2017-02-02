@@ -19,5 +19,6 @@ namespace Zen.Components
         public MeshRenderer MeshRenderer;
 
         public override ComponentTypes ComponentType => ComponentTypes.MeshComp;
+	    public override string Grouping => "Unity";
     }
 }
