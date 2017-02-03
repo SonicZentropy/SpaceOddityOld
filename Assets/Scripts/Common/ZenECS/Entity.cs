@@ -20,12 +20,12 @@ namespace Zen.Common.ZenECS
 	[Serializable]
 	public class Entity
     {
-	    //[Inspect]
-	    [HideInInspector]
+	    //[HideInInspector]
+	    [Inspect]
 	    public Dictionary<Type, ComponentEcs> _components = new Dictionary<Type, ComponentEcs>();
 
-	    //[Inspect]
-	    [HideInInspector]
+	    //[HideInInspector]
+	    [Inspect]
 	    public List<ComponentEcs> ComponentsList
 	    {
 		    get { return _components.Select(x => x.Value).ToList(); }

@@ -18,7 +18,7 @@ namespace Zen.AI.Apex.Actions
 		    if (context.targetComp.target != null) return;
 
 		    var selfpos = context.transform.position;
-		    var targets = Physics.OverlapSphere(context.transform.position, 200f);
+		    var targets = Physics.OverlapSphere(context.transform.position, context.scannerComp.ScanRange);
 
 
 		    float closestdist = 100000f;

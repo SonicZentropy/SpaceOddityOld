@@ -168,6 +168,14 @@ namespace Zen.Common.Extensions
 				output /= input.Count;
 				return output;
 			}
+
+			public static Vector3 GetRandomVector(float xRange = 10f, float yRange = 10f, float zRange = 10f)
+			{
+				return new Vector3(
+				                   UnityEngine.Random.Range(-xRange, xRange),
+				                   UnityEngine.Random.Range(-yRange, yRange),
+				                   UnityEngine.Random.Range(-zRange, zRange));
+			}
 		}
 
 		public static class DoubleUtil

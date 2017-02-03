@@ -10,7 +10,7 @@ class ZenAllAssetPostprocessor : AssetPostprocessor
 		bool regenerateRes = false;
 		bool regenerateComps = false;
 		foreach (string str in importedAssets)
-		{
+		{/*
 			if (str.Contains("Entities") && str.Contains(".json"))
 			{
 				regenerateRes = true;
@@ -20,14 +20,14 @@ class ZenAllAssetPostprocessor : AssetPostprocessor
 			if (str.Contains("Comp.cs"))
 			{
 				regenerateComps = true;
-			}
+			}*/
 
 			if (str.Contains("RA.cs"))
 			{
 				FixRewiredFile(str);
 			}
 		}
-		foreach (string str in deletedAssets)
+		/*foreach (string str in deletedAssets)
 		{
 			if (str.Contains("Entities") && str.Contains(".json"))
 			{
@@ -50,9 +50,9 @@ class ZenAllAssetPostprocessor : AssetPostprocessor
 			{
 				regenerateComps = true;
 			}
-		}
+		}*/
 
-		if (regenerateRes)
+	/*	if (regenerateRes)
 		{
 			//Debug.Log("Regenerating Res File");
 			UnityDrawerStatics.RefreshEntityList();
@@ -64,7 +64,7 @@ class ZenAllAssetPostprocessor : AssetPostprocessor
 			//Debug.Log("In Postprocessor at " +System.DateTime.Now + ", is compiling: " + EditorApplication.isCompiling);
 			UnityDrawerStatics.RefreshAllComponentList();
 			ComponentFactoryGenerator.GenerateCode();
-		}
+		}*/
 	}
 
 	static void FixRewiredFile(string file)

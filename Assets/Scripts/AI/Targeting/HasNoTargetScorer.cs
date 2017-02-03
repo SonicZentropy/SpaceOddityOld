@@ -4,7 +4,7 @@
 * 1/31/2017
 ****************/
 
-namespace Zen.AI.Apex.Qualifiers
+namespace Zen.AI.Apex.Scorers
 {
 	using System.Collections.Generic;
 	using global::Apex.AI;

@@ -21,7 +21,7 @@ namespace Zen.AI.Apex.Contexts
 		public CommandComp commandComp { get; private set; }
 		public Rigidbody rbComp { get; private set; }
 
-		public CNavigation Navigation { get; set; }
+		public AINavigationComp navComp { get; private set; }
 
 		//public GameObject[] targets { get; private set; }
 
@@ -34,18 +34,7 @@ namespace Zen.AI.Apex.Contexts
 			scannerComp = entity.GetComponent<ScannerComp>();
 			commandComp = entity.GetComponent<CommandComp>();
 			rbComp = entity.GetComponent<RigidbodyComp>()?.Rigidbody;
-			Navigation = new CNavigation(entity);
-		}
-
-		public class CNavigation
-		{
-			public bool IsMoving;
-			public AINavigationComp aiNavigationComp { get; private set; }
-
-			public CNavigation(Entity e)
-			{
-				aiNavigationComp = e.GetComponent<AINavigationComp>();
-			}
+			navComp = entity.GetComponent<AINavigationComp>();
 		}
 	}
 } 

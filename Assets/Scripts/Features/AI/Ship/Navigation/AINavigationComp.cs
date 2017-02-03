@@ -16,8 +16,8 @@ namespace Zen.Components
     public class AINavigationComp : ComponentEcs
     {
 	    public bool ShouldMove = true;
+	    public bool HasReachedTarget = true;
 	    public Vector3 TargetPositionOffset;
-	    public Transform TargetTransform;
 
         public override ComponentTypes ComponentType => ComponentTypes.AINavigationComp;
 	    public override string Grouping => "AI";

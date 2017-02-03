@@ -37,6 +37,7 @@ namespace Zen.Systems
 			      .AddSystem(new PlayerMovementSystem())
 			      .AddSystem(new PlayerTargetingSystem())
 			      .AddSystem(new PositionUpdateSystem())
+			      .AddSystem(new AINavigationSystem())
 			      .AddSystem(new CameraControlSystem())
 			      .AddSystem(new RangedCombatSystem())
 			      .AddSystem(new MissileFlightSystem())

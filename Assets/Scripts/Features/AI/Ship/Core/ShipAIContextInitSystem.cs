@@ -44,7 +44,7 @@ namespace Zen.Systems
 		{
 			Debug.Log($"Init context");
 			fcp.context = new ShipContext(fcp.Owner);
-			var client = new ZenAIClient(Apex.AI.AINameMap.FighterAI, fcp);
+			var client = new ZenAIClient(Apex.AI.AINameMap.FighterNavigationAI, fcp);
 			AIClientMgr.Instance.AddClient(client, fcp.Owner);
 			client.Start();
 		}

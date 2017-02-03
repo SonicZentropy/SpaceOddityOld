@@ -69,9 +69,9 @@
         }
 #endif
 
-	    public static void LogGame(object message)
+	    public static void LogGame(object message, bool Timestamp = false)
 	    {
-		    InGameConsole.Instance.Print(message.ToString());
+		    InGameConsole.Instance.Print(Time.timeSinceLevelLoad + ": " +message.ToString());
 	    }
 
         public static void Log(object message)
