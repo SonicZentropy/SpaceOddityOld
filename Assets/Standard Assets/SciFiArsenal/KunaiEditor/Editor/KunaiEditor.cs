@@ -3,6 +3,7 @@ using UnityEngine;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
+#pragma warning disable 0618
 
 namespace Kunai 
 {

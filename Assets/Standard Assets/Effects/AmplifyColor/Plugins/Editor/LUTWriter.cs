@@ -4,6 +4,7 @@
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+#pragma warning disable 0618
 
 namespace AmplifyColor
 {

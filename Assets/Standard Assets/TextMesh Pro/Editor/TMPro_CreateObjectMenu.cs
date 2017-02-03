@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-
+#pragma warning disable 0618
 
 namespace TMPro.EditorUtilities
 {

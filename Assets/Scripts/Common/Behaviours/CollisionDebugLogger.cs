@@ -2,7 +2,7 @@
 
 public class CollisionDebugLogger : MonoBehaviour
 {
-	private int numCollisions = 0;
+	//private int numCollisions = 0;
 	public bool EnableLogging = true;
 	
 	private void OnParticleCollision(GameObject other)

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Rendering;
+#pragma warning disable 0618
 
 namespace ScionEngine
 {

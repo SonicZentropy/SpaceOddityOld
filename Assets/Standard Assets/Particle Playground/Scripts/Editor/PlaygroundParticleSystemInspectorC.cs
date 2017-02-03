@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using ParticlePlayground;
 using ParticlePlaygroundLanguage;
 using PlaygroundSplines;
+#pragma warning disable 0618
+
 
 [CustomEditor (typeof(PlaygroundParticlesC))]
 class PlaygroundParticleSystemInspectorC : Editor {

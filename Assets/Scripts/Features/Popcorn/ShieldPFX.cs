@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class ShieldPFX : MonoBehaviour, IShieldTrigger, ICustomInit
 {
 	public PKFxFX ShieldPfx;
-	private bool EffectTriggered = false;
+	//private bool EffectTriggered = false;
 	private Vector3 AxisRotation;
 
 	public void Awake()

@@ -20,6 +20,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 #endif
 using UnityEngine.Serialization;
+#pragma warning disable 0618
 
 namespace AmplifyMotion
 {

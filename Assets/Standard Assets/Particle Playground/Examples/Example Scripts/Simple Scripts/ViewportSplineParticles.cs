@@ -2,6 +2,7 @@
 using System.Collections;
 using ParticlePlayground;
 using PlaygroundSplines;
+#pragma warning disable 0618
 
 public class ViewportSplineParticles : MonoBehaviour {
 

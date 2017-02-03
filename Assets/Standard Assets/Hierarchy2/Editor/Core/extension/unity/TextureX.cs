@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using vietlabs;
+#pragma warning disable 0618
 
 public static class TextureX {
     private static Dictionary<Color, Texture2D> ColorMap;

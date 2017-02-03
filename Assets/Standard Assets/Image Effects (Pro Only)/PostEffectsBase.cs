@@ -1,4 +1,5 @@
 using UnityEngine;
+#pragma warning disable 0618
 
 [ExecuteInEditMode]
 [RequireComponent (typeof(Camera))]

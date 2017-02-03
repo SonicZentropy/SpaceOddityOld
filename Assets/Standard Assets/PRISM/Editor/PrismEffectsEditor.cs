@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.IO;
 using Prism.Utils;
+#pragma warning disable 0618
 
 #if UNITY_EDITOR
 [CustomEditor(typeof(PrismEffects))]

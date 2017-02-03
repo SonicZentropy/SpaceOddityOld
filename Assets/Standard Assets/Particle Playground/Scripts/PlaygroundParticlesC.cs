@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using PlaygroundSplines;
+#pragma warning disable 0618
 
 namespace ParticlePlayground {
 	[RequireComponent (typeof(ParticleSystem))]

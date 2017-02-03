@@ -71,7 +71,8 @@ public class DebugCamera : MonoBehaviour
                 if (!togglePressed)
                 {
                     togglePressed = true;
-                    Screen.lockCursor = !Screen.lockCursor;
+                    //Screen.lockCursor = !Screen.lockCursor;
+	                Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = !Cursor.visible;
                 }
             }

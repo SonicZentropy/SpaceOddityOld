@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+#pragma warning disable 0618
 
 public sealed class EnginePlasma : MonoBehaviour
 {

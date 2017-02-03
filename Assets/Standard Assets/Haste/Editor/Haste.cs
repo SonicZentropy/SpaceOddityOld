@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+#pragma warning disable 0618
 
 namespace Haste {
 

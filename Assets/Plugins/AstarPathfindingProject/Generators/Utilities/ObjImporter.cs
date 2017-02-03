@@ -13,7 +13,7 @@ using System.Text;
 #if NETFX_CORE && !UNITY_EDITOR
 //using MarkerMetro.Unity.WinLegacy.IO;
 #endif
-
+#pragma warning disable 0618, 0649, 0414
 namespace Pathfinding {
 	public class ObjImporter {
 		private struct meshStruct {

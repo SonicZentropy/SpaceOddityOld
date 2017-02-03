@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DevConsole;
 using StringBuilder = System.Text.StringBuilder;
+#pragma warning disable 0618, 0649, 0414
 
 namespace DevConsole{
 	[System.Serializable]

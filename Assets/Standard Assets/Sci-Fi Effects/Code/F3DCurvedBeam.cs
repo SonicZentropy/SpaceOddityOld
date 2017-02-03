@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+#pragma warning disable 0618
 
 namespace Forge3D
 { 

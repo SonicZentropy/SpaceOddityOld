@@ -7,8 +7,8 @@ class ZenAllAssetPostprocessor : AssetPostprocessor
 {
 	static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
 	{
-		bool regenerateRes = false;
-		bool regenerateComps = false;
+		//bool regenerateRes = false;
+		//bool regenerateComps = false;
 		foreach (string str in importedAssets)
 		{/*
 			if (str.Contains("Entities") && str.Contains(".json"))

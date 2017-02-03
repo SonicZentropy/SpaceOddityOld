@@ -1,4 +1,5 @@
-﻿namespace Zen.Weapons
+﻿#pragma warning disable 0618, 0649, 0414
+namespace Zen.Weapons
 {
 	using System;
 	using Common.ZenECS;

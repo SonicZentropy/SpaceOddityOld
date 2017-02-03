@@ -24,6 +24,7 @@
 //
 using UnityEngine;
 using UnityEngine.Serialization;
+#pragma warning disable 0618, 0649, 0414
 
 namespace Kino
 {

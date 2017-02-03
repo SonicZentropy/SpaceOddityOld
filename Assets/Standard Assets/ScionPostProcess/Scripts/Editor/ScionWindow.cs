@@ -8,6 +8,7 @@ using ScionEngine;
 #if UNITY_EDITOR
 using System.IO;
 using UnityEditor;
+#pragma warning disable 0618
 
 namespace ScionGUI
 {

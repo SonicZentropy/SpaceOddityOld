@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+#pragma warning disable 0618
 
 public class WFP_CameraSelectionAndReturnButton : MonoBehaviour {
 		

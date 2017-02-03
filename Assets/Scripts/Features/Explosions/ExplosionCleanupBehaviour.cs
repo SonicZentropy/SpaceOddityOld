@@ -7,6 +7,6 @@ public class ExplosionCleanupBehaviour : MonoBehaviour
 	{
 		ParticleSystem ps = (ParticleSystem)gameObject.GetComponentInChildren(typeof(ParticleSystem), true);
 		ps.Play(true);
-		gameObject.ReleaseDelayed(ps.main.duration + ps.startLifetime);
+		gameObject.ReleaseDelayed(ps.main.duration + ps.main.startLifetime.constantMax);
 	}
 }

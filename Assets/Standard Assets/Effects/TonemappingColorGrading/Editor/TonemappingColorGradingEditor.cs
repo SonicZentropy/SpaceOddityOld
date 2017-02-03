@@ -1,3 +1,5 @@
+#pragma warning disable 0618
+
 namespace UnityStandardAssets.CinematicEffects
 {
     using UnityEngine;

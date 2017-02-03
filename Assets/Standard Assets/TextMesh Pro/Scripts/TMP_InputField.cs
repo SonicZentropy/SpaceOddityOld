@@ -12,7 +12,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
-
+#pragma warning disable 0618
 
 namespace TMPro
 {

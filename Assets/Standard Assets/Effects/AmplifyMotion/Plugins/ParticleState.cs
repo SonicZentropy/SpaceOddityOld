@@ -17,6 +17,7 @@ using UnityEngine;
 using UnityEngine.Profiling;
 #if !UNITY_PRE_5_3
 using UnityEngine.Rendering;
+#pragma warning disable 0618
 
 namespace AmplifyMotion
 {

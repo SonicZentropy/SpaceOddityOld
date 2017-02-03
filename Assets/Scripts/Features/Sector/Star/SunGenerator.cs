@@ -10,6 +10,7 @@
 //
 
 using UnityEngine;
+#pragma warning disable 0618, 0649, 0414
 
 namespace Panteleymonov {
 [ExecuteInEditMode]

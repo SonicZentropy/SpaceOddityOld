@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MEC;
 using UnityEngine;
 using Zen.Common.ObjectPool;
+#pragma warning disable 0618, 0649, 0414
 
 [RequireComponent(typeof(PKFxFX))]
 public class ExplosionPFX : MonoBehaviour//, IOnAwake, IOnUpdate
@@ -13,8 +14,8 @@ public class ExplosionPFX : MonoBehaviour//, IOnAwake, IOnUpdate
 	[Range(0, 10)]
 	public float ExplosionScale = 1.0f;
 	private bool EffectTriggered = false;
-	private bool updatereported = false;
-	private bool deathreported = false;
+	//private bool updatereported = false;
+	//private bool deathreported = false;
 
 	public void Awake()
 	{

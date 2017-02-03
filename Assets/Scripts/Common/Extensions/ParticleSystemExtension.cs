@@ -3,6 +3,7 @@
 //  * Dylan Bailey
 //  * 20161209
 // */
+#pragma warning disable 0618, 0649, 0414
 
 namespace Zen.Common.Extensions
 {

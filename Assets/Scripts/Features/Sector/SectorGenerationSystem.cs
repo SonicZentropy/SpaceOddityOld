@@ -3,6 +3,7 @@
 // * Dylan Bailey
 // * 20161213
 // */
+#pragma warning disable 0618, 0649, 0414
 
 namespace Zen.Systems
 {
@@ -30,13 +31,13 @@ namespace Zen.Systems
 		private int sectorMin;
 		private int sectorMax;
 
-		private Vector3 pShipPos = new Vector3();
+//		private Vector3 pShipPos = new Vector3();
 		private Vector3 objPos = new Vector3();
 		
 		Vector3 pos = new Vector3();
 		private int mask;
 		private int[,] arrayObjs;
-		private bool bPanic = false;
+//		private bool bPanic = false;
 		private static WaitForSeconds wait = new WaitForSeconds(1.5f);
 
 		private SectorGenerationComp sg;

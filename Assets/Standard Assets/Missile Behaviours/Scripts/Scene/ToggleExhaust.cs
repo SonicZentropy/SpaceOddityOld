@@ -1,5 +1,6 @@
 ﻿using MissileBehaviours.Controller;
 using UnityEngine;
+#pragma warning disable 0618
 
 namespace MissileBehaviours.Scene
 {

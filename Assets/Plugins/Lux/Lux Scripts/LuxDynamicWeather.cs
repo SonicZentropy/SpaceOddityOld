@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+#pragma warning disable 0618
 
 [ExecuteInEditMode]
 public class LuxDynamicWeather : MonoBehaviour {
@@ -230,7 +231,7 @@ public float SnowMelt = 0.0f;
 			if (SnowGIMasterRenderers.Length > 0) {
 				for (int i = 0; i < SnowGIMasterRenderers.Length; i++) {
 					if (SnowGIMasterRenderers[i] != null) {
-						RendererExtensions.UpdateGIMaterials(SnowGIMasterRenderers[i]);	
+						//RendererExtensions.UpdateGIMaterials(SnowGIMasterRenderers[i]);	
 					}
 				}
 			}

@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Serialization;
+#pragma warning disable 0618
 
 namespace AmplifyColor
 {

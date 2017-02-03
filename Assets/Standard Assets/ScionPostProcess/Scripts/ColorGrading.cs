@@ -4,6 +4,7 @@ using System.Collections;
 using System.IO;
 using UnityEditor;
 #endif
+#pragma warning disable 0618
 
 namespace ScionEngine
 {

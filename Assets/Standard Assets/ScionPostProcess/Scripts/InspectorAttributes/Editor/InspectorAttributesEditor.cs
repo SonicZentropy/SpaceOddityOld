@@ -7,6 +7,7 @@ using UnityEditorInternal;
 using System.Reflection;
 using Inspector;
 using Object = UnityEngine.Object;
+#pragma warning disable 0618
 
 namespace InspectorDrawers {
     public abstract class InspectorAttributeDrawer : PropertyDrawer {
