@@ -21,6 +21,6 @@ namespace Zen.Components
 	    public float ShieldRechargeRate;
 
         public override ComponentTypes ComponentType => ComponentTypes.ShieldComp;
-	    public override string Grouping => "Combat";
+	    public override string Grouping => "Ship";
     }
 }

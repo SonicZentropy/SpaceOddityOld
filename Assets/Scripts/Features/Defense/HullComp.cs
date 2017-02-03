@@ -18,6 +18,6 @@ namespace Zen.Components
 	    public float CurrentHull;
 
         public override ComponentTypes ComponentType => ComponentTypes.HullComp;
-	    public override string Grouping => "Combat";
+	    public override string Grouping => "Ship";
     }
 }

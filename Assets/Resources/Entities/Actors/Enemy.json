@@ -82,19 +82,11 @@
             "$type": "Zen.Components.InertialDamperModComp"
         },
         "Zen.Components.ShipComp": {
-            "CurrentShields": {
-                "_value": 0.0
-            },
-            "CurrentHull": {
-                "_value": 0.0
-            },
             "CameraOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
             },
-            "DefaultShields": 100.0,
-            "DefaultHull": 100.0,
             "DefaultRotationSpeed": 300.0,
             "DefaultMaxRotationVelocity": 1.0,
             "DefaultMaxSpeed": 10000.0,
@@ -163,8 +155,8 @@
         },
         "Zen.Components.ShieldComp": {
             "shieldTrigger": null,
-            "CurrentShieldEnergy": 20.0,
-            "MaxShieldEnergy": 50.0,
+            "CurrentShieldEnergy": 50000.0,
+            "MaxShieldEnergy": 50000.0,
             "ShieldRechargeRate": 5.0,
             "Id": "00000000-0000-0000-0000-000000000000",
             "$type": "Zen.Components.ShieldComp"

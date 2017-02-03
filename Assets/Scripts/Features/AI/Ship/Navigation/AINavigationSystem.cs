@@ -37,20 +37,21 @@ namespace Zen.Systems
 					}
 					else
 					{
+						Debug.Log($"No target so moving to {nc.TargetPositionOffset}");
 						moveto = nc.TargetPositionOffset;
 					}
 					var pc = nav.GetComponent<PositionComp>().transform;
 					var move = moveto - pc.position;
 
-					pc.Translate(move.normalized * 5f * Time.deltaTime);
+					pc.Translate(move.normalized * 5f * Time.deltaTime, Space.World);
 
 					pc.rotation =
-						ZenUtils.QuaternionUtil.SlerpLookAtTarget(pc, moveto, 5f /*Rotatoin speed*/ * Time.deltaTime);
+						ZenUtils.QuaternionUtil.SlerpLookAtTarget(pc, move, 5f /*Rotation speed*/ * Time.deltaTime);
 
 					//getting close to target
-					if ((pc.position - moveto).sqrMagnitude < 2f)
+					if ((pc.position - moveto).sqrMagnitude < 1.1f)
 					{
-						ZenLogger.LogGame("Close to target", true);
+						//ZenLogger.Log("Close to target");
 						nc.HasReachedTarget = true;
 					}
 					else

@@ -18,8 +18,8 @@ MonoBehaviour:
     ApexAI","_id":e3dc443d69ad4e359b69e4b6781fe85d,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Zen.AI.Apex.Actions.AcquireTargetAction, Assembly-CSharp"},"_scorers":[{"@type":"Zen.AI.Apex.Scorers.HasNoTargetScorer,
     Assembly-CSharp","score":100}]},{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
-    ApexAI","action":{"@type":"Zen.AI.Apex.Actions.RandomlyOrbitTargetAction, Assembly-CSharp"},"threshold":10,"_scorers":[{"@type":"Zen.AI.Apex.Scorers.HasReachedTargetScorer,
-    Assembly-CSharp","score":10},{"@type":"Zen.AI.Apex.Scorers.HasNavigationTargetScorer,
+    ApexAI","action":{"@type":"Zen.AI.Apex.Actions.RandomlyOrbitTargetAction, Assembly-CSharp"},"threshold":1,"_scorers":[{"@type":"Zen.AI.Apex.Scorers.HasNavigationTargetScorer,
+    Assembly-CSharp","score":10},{"@type":"Zen.AI.Apex.Scorers.HasReachedTargetScorer,
     Assembly-CSharp","score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI"}}]}'
   editorConfiguration: '{"offset":{"@x":0,"@y":0},"zoom":1,"SelectorView":{"ViewArea":{"@left":100,"@top":100,"@width":200,"@height":220},"QualifierView":{"Name":"Has

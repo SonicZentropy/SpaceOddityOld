@@ -8,9 +8,6 @@
 	{
 		public Vector3 CameraOffset;
 
-		public float DefaultShields;
-		public float DefaultHull;
-
 		public float DefaultRotationSpeed;
 		public float DefaultMaxRotationVelocity;
 		public float DefaultMaxSpeed;
@@ -31,11 +28,9 @@
 		}
 
 		[HideInInspector][ReadOnly]public bool HasInertialDampers;
-		
-		[ReadOnly]public Reactive<float> CurrentShields { get; set; } = new Reactive<float>(0);
-		[ReadOnly]public Reactive<float> CurrentHull { get; set; } = new Reactive<float>(0);
+
 		[ReadOnly]public float CurrentRotationSpeed;
-		[ReadOnly] public float CurrentMaxRotationVelocity;
+		[ReadOnly]public float CurrentMaxRotationVelocity;
 		[ReadOnly]public float CurrentMaxSpeed;
 		[ReadOnly]public float CurrentAcceleration;
 		[ReadOnly]public float CurrentReverseAcceleration;
@@ -43,12 +38,6 @@
 		[ReadOnly]public float CurrentShieldRecharge;
 		[ReadOnly]public float CurrentEnergy;
 		[ReadOnly]public float CurrentEnergyRecharge;
-
-		public ShipComp() 
-		{
-			CurrentHull.ValueUpdated += ReactToChanges;
-			CurrentShields.ValueUpdated += ReactToChanges;
-		}
 
 		private void ReactToChanges(Reactive<float> reactive)
 		{

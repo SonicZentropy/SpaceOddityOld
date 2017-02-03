@@ -119,7 +119,8 @@
 			Execute();
 			if (executionIntervalMin.IsNotAlmost(executionIntervalMax))
 				return UnityEngine.Random.Range(executionIntervalMin, executionIntervalMax);
-			return new float?();
+			//return new float?();
+			return executionIntervalMax;
 		}
 
 		// <summary>

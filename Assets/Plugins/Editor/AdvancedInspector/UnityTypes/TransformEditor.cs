@@ -56,10 +56,10 @@ namespace Unitilities
 			GUILayout.BeginHorizontal();
 			Vector3 worldPosition = t.position;
 			EditorGUILayout.LabelField("World Pos:", GUILayout.Width(labelWidth));
-			if (GUILayout.Button("Z", GUILayout.Width(buttonWidth)))
-			{
-				position += new Vector3(-worldPosition.x, -worldPosition.y, -worldPosition.z);
-			}
+			//if (GUILayout.Button("Z", GUILayout.Width(buttonWidth)))
+			//{
+			//	position += new Vector3(-worldPosition.x, -worldPosition.y, -worldPosition.z);
+			//}
 			GUILayout.Space(8);
 			worldPosition = EditorGUILayout.Vector3Field(GUIContent.none, worldPosition, GUILayout.MinWidth(fieldWidth));
 			GUILayout.EndHorizontal();

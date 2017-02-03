@@ -53,8 +53,6 @@ namespace Zen.Systems
 			sdc.CurrentReverseAcceleration = sdc.DefaultReverseAcceleration;
 			sdc.CurrentRotationSpeed = sdc.DefaultRotationSpeed;
 			sdc.CurrentMaxRotationVelocity = sdc.DefaultMaxRotationVelocity;
-			sdc.CurrentHull.Value = sdc.DefaultHull;
-			sdc.CurrentShields.Value = sdc.DefaultShields;
 			sdc.CurrentCargoSize = sdc.DefaultCargoSize;
 			sdc.CurrentShieldRecharge = sdc.DefaultShieldRecharge;
 			sdc.CurrentEnergy = sdc.DefaultEnergy;

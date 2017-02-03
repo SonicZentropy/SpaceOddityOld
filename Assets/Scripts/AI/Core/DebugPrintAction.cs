@@ -21,7 +21,7 @@ namespace Zen.AI.Apex.Actions
 	{
 		public override void Execute(ZenContext context)
 		{
-			UnityEngine.Debug.Log("In Debug print action TWO execute");
+			UnityEngine.Debug.Log("In Debug print action 2 execute");
 		}
 	}
 }

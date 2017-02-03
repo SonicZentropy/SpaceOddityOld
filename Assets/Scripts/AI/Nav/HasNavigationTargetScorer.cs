@@ -7,6 +7,7 @@
 namespace Zen.AI.Apex.Scorers
 {
 	using global::Apex.AI;
+	using UnityEngine;
 	using Zen.AI.Apex.Contexts;
 
 	public sealed class HasNavigationTargetScorer  : ContextualScorerBase<ShipContext>
@@ -17,6 +18,7 @@ namespace Zen.AI.Apex.Scorers
 			{
 				return score;
 			}
+			Debug.Log("Has no nav target");
 			return 0f;
 		}
 	}

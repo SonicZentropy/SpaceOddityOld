@@ -7,6 +7,8 @@
 	{
 		public Stack<DamagePacket> damagePackets = new Stack<DamagePacket>(10);
 
+		public bool IsImmortal = false;
+
 		public override ComponentTypes ComponentType => ComponentTypes.DamageComp;
 		public override string Grouping => "Combat";
 	}

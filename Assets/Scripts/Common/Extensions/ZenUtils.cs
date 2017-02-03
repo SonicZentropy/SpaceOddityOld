@@ -70,16 +70,24 @@ namespace Zen.Common.Extensions
 			return -clockwiseDistance;
 		}
 
-		public static long RandomLong()
+		public static class RandUtil
 		{
-			var buffer = new byte[8];
-			RandGen.NextBytes(buffer);
-			return BitConverter.ToInt64(buffer, 0);
-		}
+			public static long RandomLong()
+			{
+				var buffer = new byte[8];
+				RandGen.NextBytes(buffer);
+				return BitConverter.ToInt64(buffer, 0);
+			}
 
-		public static byte RandomByte()
-		{
-			return (byte)UnityEngine.Random.Range(0, byte.MaxValue);
+			public static byte RandomByte()
+			{
+				return (byte) UnityEngine.Random.Range(0, byte.MaxValue);
+			}
+
+			public static float GetRandomSign()
+			{
+				return UnityEngine.Random.Range(0, 1f) < 0.5 ? -1 : 1f;
+			}
 		}
 
 		public static float SmoothApproach(
