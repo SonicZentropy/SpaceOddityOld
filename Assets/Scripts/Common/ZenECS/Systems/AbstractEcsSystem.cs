@@ -8,15 +8,18 @@ namespace Zen.Systems
 {
     #region Dependencies
 
-	using UnityEngine;
+    using System;
+    using UnityEngine;
 	using Zen.Common.ZenECS;
 
     #endregion
 
     public abstract class AbstractEcsSystem : IEcsSystem
     {
+        [HideInInspector, NonSerialized]
 	    private EcsEngine _engine;
 
+        [HideInInspector]
 	    protected EcsEngine engine
 	    {
 		    get

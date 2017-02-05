@@ -16,29 +16,51 @@ namespace Zen.Common.ZenECS
     using AdvancedInspector;
     using Common.ObjectPool;
     using Editor.Utils;
+    using FullInspector;
     using Zen.Systems;
     using UnityEngine;
 
 	#endregion
 
-    public class EcsEngine
+    [Serializable]
+    public class EcsEngine : BaseObject
 	{
 		private readonly Dictionary<Guid, ComponentEcs> _componentsById = new Dictionary<Guid, ComponentEcs>();
 
-	    [Inspect]public List<Entity> EntityList { get; set; } = new List<Entity>();
+	    public string EngineName = "EcsEngine";
 
-	    [Descriptor("Comps:", "Components On Entity")]
-		[SerializeField] private readonly Dictionary<ComponentTypes, List<ComponentEcs>> _componentPools =
+        //[Inspect]
+        public List<Entity> EntityList  = new List<Entity>();
+
+        public readonly List<IEcsSystem> _systemPool;
+
+	    //[Descriptor("Comps:", "Components On Entity")]
+		[Inspect]
+        private readonly Dictionary<ComponentTypes, List<ComponentEcs>> _componentPools =
 			new Dictionary<ComponentTypes, List<ComponentEcs>>(Enum.GetNames(typeof(ComponentTypes)).Length, new FastEnumIntEqualityComparer<ComponentTypes>());
 
-		[SerializeField] private readonly List<IEcsSystem> _systemPool = new List<IEcsSystem>();
+		//[Inspect]
 
-		public readonly EntityFactory Factory;
+	    private EntityFactory _Factory;
 
-		public Guid CurrentHash = Guid.NewGuid();
+	    public EntityFactory Factory
+	    {
+	        get
+	        {
+	            if (_Factory == null)
+	            {
+	                _Factory = new EntityFactory();
+	            }
+	            return _Factory;
+	        }
+	    }
 
-		public event Action<ComponentEcs> OnComponentAdded;
-		public event Action<ComponentEcs> OnComponentRemoved;
+        [NonSerialized]
+        public Guid CurrentHash = Guid.NewGuid();
+        
+        public event Action<ComponentEcs> OnComponentAdded;
+        
+        public event Action<ComponentEcs> OnComponentRemoved;
 		public event Action<Entity> OnEntityAdded;
 		public event Action<Entity> OnEntityRemoved;
 
@@ -386,22 +408,26 @@ namespace Zen.Common.ZenECS
 
 		private EcsEngine()
 		{
-			Factory = new EntityFactory();
+            //Factory = new EntityFactory();
+		    _systemPool = new List<IEcsSystem>();
+
 		}
 
-		private static EcsEngine _instance;
+        [SerializeField]
+		private static EcsEngine _instanceOfEngine;
 
+        [HideInInspector]
 		public static EcsEngine Instance
 		{
 			get
 			{
-				if (_instance != null) return _instance;
+				if (_instanceOfEngine != null) return _instanceOfEngine;
 
-				_instance = new EcsEngine();
-				_instance.Reset();
-				return _instance;
+				_instanceOfEngine = new EcsEngine();
+				_instanceOfEngine.Reset();
+				return _instanceOfEngine;
 			}
-			private set { _instance = value; }
+			private set { _instanceOfEngine = value; }
 		}
 
 		#endregion

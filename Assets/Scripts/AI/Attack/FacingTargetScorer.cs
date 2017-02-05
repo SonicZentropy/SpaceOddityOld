@@ -33,12 +33,12 @@ namespace Zen.AI.Apex.Scorers
 
 		    if (dot > AngleDelta)
 		    {
-			    Debug.Log("Starting attack");
+			    //Debug.Log("Starting attack");
 			    return Success;
 			    //objectSpotted = true;
 		    }
 
-		    Debug.Log("Not attackign");
+		    //Debug.Log("Not attackign");
 
 
 		    return Failure;

@@ -50,9 +50,11 @@ namespace Zen.Common.ZenECS
 
 	    [HideInInspector]public IEnumerable<ComponentEcs> Components => _components.Values;
 
-		private EcsEngine _engine;
-
-		public EcsEngine engine
+		[NonSerialized, HideInInspector]
+        private EcsEngine _engine;
+        
+        [HideInInspector]
+        public EcsEngine engine
 		{
 			set { _engine = value; }
 			get

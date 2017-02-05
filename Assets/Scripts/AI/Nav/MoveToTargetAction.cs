@@ -10,8 +10,9 @@ namespace Zen.AI.Apex.Actions
 	using UnityEngine;
 	using Zen.AI.Apex.Contexts;
 	using Zen.Common.Extensions;
+	using Zen.Components;
 
-	public class MoveToTargetAction : ActionBase<ShipContext>
+    public class MoveToTargetAction : ActionBase<ShipContext>
 	{
 		public override void Execute(ShipContext context)
 		{
@@ -19,7 +20,7 @@ namespace Zen.AI.Apex.Actions
 			{
 				Debug.Log($"moving to target action set");
 				var navComp = context.navComp;
-				navComp.ShouldMove = true;
+				navComp.AINavState = EAINavState.APPROACH;
 				navComp.HasReachedTarget = false;
 				//navComp.TargetTransform = context.targetComp.target;
 				navComp.TargetPositionOffset = Vector3.zero;

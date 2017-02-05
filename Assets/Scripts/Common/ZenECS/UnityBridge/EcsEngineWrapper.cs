@@ -10,20 +10,25 @@ namespace Zen.Common.ZenECS
 
 	using Systems;
 	using AdvancedInspector;
+	using FullInspector;
 	using UnityEngine;
 
 	#endregion
 
+    [fiInspectorOnly]
 	public class EcsEngineWrapper : MonoBehaviour
-	{
-		private EcsEngine _engine;
+    {
+        public string wrapperName = "Wrapper";
+		[SerializeField]
+        private EcsEngine _engine;
 
-		[Inspect]public EcsEngine engine
+		//[Inspect]
+        public EcsEngine engine
 		{
 			get { return _engine ?? (_engine = EcsEngine.Instance); }
 		}
 
-		private void Awake()
+		protected void Awake()
 		{
 			EcsEngine.Instance.AddSystem(new GameInitSystem());
 			EcsEngine.Instance.AddSystem(new DebugSystemZen());

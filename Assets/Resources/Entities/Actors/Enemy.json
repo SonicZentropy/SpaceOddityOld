@@ -98,9 +98,9 @@
                 "z": 0.0
             },
             "DefaultRotationSpeed": 300.0,
-            "DefaultMaxRotationVelocity": 1.0,
-            "DefaultMaxSpeed": 10000.0,
-            "DefaultAcceleration": 100.0,
+            "DefaultMaxRotationVelocity": 5.0,
+            "DefaultMaxSpeed": 100.0,
+            "DefaultAcceleration": 10.0,
             "DefaultReverseAcceleration": 50.0,
             "DefaultCargoSize": 1000.0,
             "DefaultShieldRecharge": 10.0,
@@ -218,7 +218,7 @@
             "$type": "Zen.Components.ShipContextProviderComp"
         },
         "Zen.Components.AINavigationComp": {
-            "ShouldMove": true,
+            "HasReachedTarget": true,
             "TargetPositionOffset": {
                 "x": 0.0,
                 "y": 0.0,

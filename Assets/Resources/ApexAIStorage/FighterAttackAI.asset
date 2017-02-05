@@ -25,6 +25,6 @@ MonoBehaviour:
     Assembly-CSharp","Invert":true,"score":10},{"@type":"Zen.AI.Apex.Scorers.IsAttackingScorer,
     Assembly-CSharp","score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI"}}]}'
-  editorConfiguration: '{"offset":{"@x":57,"@y":89},"zoom":0.85000002,"SelectorView":{"ViewArea":{"@left":142,"@top":174,"@width":289,"@height":187},"QualifierView":{"Name":"Is
+  editorConfiguration: '{"offset":{"@x":-93,"@y":5},"zoom":0.85000002,"SelectorView":{"ViewArea":{"@left":26,"@top":90,"@width":289,"@height":187},"QualifierView":{"Name":"Is
     Facing Target And Not Attacking","ActionView":{}},"QualifierView":{"Name":"Is
     Not Facing Target but IS attacking","ActionView":{}},"DefaultQualifier":{}}}'

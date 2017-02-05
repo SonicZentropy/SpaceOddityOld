@@ -8,32 +8,43 @@ namespace Zen.Components
 {
     #region Dependencies
 
+    using AdvancedInspector;
     using UnityEngine;
+    using Zen.Common.Debug;
     using Zen.Common.ZenECS;
 
 	#endregion
 
     public class AINavigationComp : ComponentEcs
     {
-	    public bool ShouldMove { get; set; }
+        private EAINavState _AINavState = EAINavState.IDLE;
+        [Inspect, Enum(false, EnumDisplay.DropDown)]
+        public EAINavState AINavState
+        {
+            get { return _AINavState; }
+            set
+            {
+                _AINavState = value;
+                InGameConsole.Instance.SetAIState(value);
+            }
+        } 
 
-	    private bool hasReachedTarg = true;
+        public bool HasReachedTarget { get; set; } = false;
 
-	    public bool HasReachedTarget
-	    {
-		    get
-		    {
-			    return hasReachedTarg;
-		    }
-		    set
-		    {
-			    hasReachedTarg = value;
-		    }
-	    }
-
-	    public Vector3 TargetPositionOffset;
+        public Vector3 TargetPositionOffset;
 
         public override ComponentTypes ComponentType => ComponentTypes.AINavigationComp;
 	    public override string Grouping => "AI";
+    }
+
+    public enum EAINavState
+    {
+        IDLE,
+        PURSUE,
+        FLEE,
+        ORBIT,
+        APPROACH,
+        ATTACKING,
+        AVOIDANCE
     }
 }
