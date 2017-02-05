@@ -42,7 +42,6 @@ public class SelectionBox : ZenBehaviour, IOnAwake, IOnUpdate, IInitAfterECS
 		boxSprite.enabled = true;
 		//followTarget.target = targetComp.target;
 		//hudText.Add(2f, Color.yellow, 0f);
-		// todo: optimize this
 		Bounds b = targetComp.target.GetComponentInChildren<Renderer>().bounds;
 
 		//The object is behind us

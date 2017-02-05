@@ -407,7 +407,7 @@ namespace Zen.Common.ZenECS
 		#endregion
 	}
 
-	// todo; check if your TEnum is enum && typeCode == TypeCode.Int
+	// check if your TEnum is enum && typeCode == TypeCode.Int
 	struct FastEnumIntEqualityComparer<TEnum> : IEqualityComparer<TEnum>
 		where TEnum : struct
 	{

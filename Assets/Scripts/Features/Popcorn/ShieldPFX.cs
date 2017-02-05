@@ -7,7 +7,10 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(PKFxFX))]
 public class ShieldPFX : MonoBehaviour, IShieldTrigger, ICustomInit
 {
-	public PKFxFX ShieldPfx;
+    // #TODO: Changing camera on player should enable/disable based on cockpit view
+    public bool DisableParticleFX;
+    public PKFxFX ShieldPfx;
+
 	//private bool EffectTriggered = false;
 	private Vector3 AxisRotation;
 
@@ -20,6 +23,8 @@ public class ShieldPFX : MonoBehaviour, IShieldTrigger, ICustomInit
     
 	public void TriggerShield()
 	{
+	    if (DisableParticleFX) return;
+
 		AxisRotation = Random.onUnitSphere.normalized;
 		var aor = ShieldPfx.GetAttribute("AxisOfRotation");
 		if (aor != null)

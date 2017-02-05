@@ -170,7 +170,6 @@ namespace Zen.Weapons
 
 		void OnHit()
 		{
-			//TODO: SEND DAMAGE
 			meshRenderer.enabled = false;
 			IsHit = true;
 
