@@ -19,12 +19,19 @@ namespace Zen.AI.Apex.Actions
 		[ApexSerialization(defaultValue = true), FriendlyName("Enable", "Enables or disables glide")]
 		public bool Enable;
 
+	    [ApexSerialization(defaultValue = 0f), FriendlyName("GlideDrag", "Drag value used when glide enabled")]
+	    public float GlideDrag;
+
+	    [ApexSerialization(defaultValue = 1f),
+	     FriendlyName("GlideAngularDrag", "Angular drag value used when glide enabled")]
+	    public float GlideAngularDrag;
+
 		public override void Execute(ShipContext context)
 		{
 			if (Enable)
 			{
-				context.rbComp.angularDrag = 0f;
-				context.rbComp.drag = 0f;
+				context.rbComp.angularDrag = GlideAngularDrag;
+				context.rbComp.drag = GlideDrag;
 			}
 			else
 			{

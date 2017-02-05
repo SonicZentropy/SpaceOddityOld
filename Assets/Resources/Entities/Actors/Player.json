@@ -239,7 +239,7 @@
                         "Id": "2738919a-cb4e-46b3-b5b5-6c1d8d1ebb35",
                         "$type": "Zen.Components.MissileComp"
                     },
-                    "IsEnabled": true,
+                    "IsEnabled": false,
                     "PositionOffset": {
                         "x": 0.0,
                         "y": -0.3765,

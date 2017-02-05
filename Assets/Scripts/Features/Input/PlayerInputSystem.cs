@@ -9,6 +9,7 @@ namespace Zen.Systems
 	#region Dependencies
 
 	using Rewired;
+	using Zen.Common.Extensions;
 	using Zen.Common.ZenECS;
 	using Zen.Components;
 
@@ -38,7 +39,12 @@ namespace Zen.Systems
 			_command.Acceleration = player.GetAxisRaw(RA.Accelerate);
 			
 			_command.RollMovement = player.GetAxisRaw(RA.Roll);
-			_command.InertialDampersOn = player.GetButton(RA.InertialDampers);
+
+		    if (player.GetButtonDown(RA.InertialDampers))
+		    {
+		        _command.InertialDampersOn.Toggle();
+		    }
+            _command.InertialDampersOn = player.GetButton(RA.InertialDampers);
 			_command.StrafeHorizontal = player.GetAxisRaw(RA.StrafeHorizontal);
 			_command.StrafeVertical = player.GetAxisRaw(RA.StrafeVertical);
 			_command.FullHalt = player.GetButton(RA.FullHalt);

@@ -220,8 +220,15 @@ namespace Zen.Common.Extensions
 			return !inString.Contains(doesNotContain);
 		}
 
-		#endregion
+        #endregion
 
+        #region BoolExtensions
 
-	}
+	    public static void Toggle(this bool b)
+	    {
+            b = !b;
+	    }
+
+        #endregion
+    }
 }

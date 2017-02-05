@@ -18,8 +18,8 @@ namespace Zen.Systems
 
     public class AINavigationSystem : AbstractEcsSystem
     {
-        public float frequency = 1f;
-        public float damping = 1f;
+        public float frequency = 0.13f;
+        public float damping = 0.35f;
 
         public override bool Init()
         {
@@ -140,7 +140,13 @@ namespace Zen.Systems
                                            rb.velocity,
                                            moveToPosition,
                                            Vector3.zero);
-            rb.AddForce(force);
+            //rb.AddForce(force, ForceMode.VelocityChange);
+            Vector3 v = (force / rb.mass) * Time.deltaTime;
+            Vector3 totalVelocity = rb.velocity + v;
+            Vector3 limitedV = Vector3.ClampMagnitude(totalVelocity, nc.GetComponent<ShipComp>().CurrentMaxSpeed);
+            rb.velocity = limitedV;
+
+            //float maxspeed = nc.GetComponent<ShipComp>().CurrentMaxSpeed;
             //getting close to target
             if ((pc.position - moveToPosition).sqrMagnitude < 50.1f)
             {

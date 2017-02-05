@@ -97,9 +97,9 @@
                 "y": 0.0,
                 "z": 0.0
             },
-            "DefaultRotationSpeed": 300.0,
+            "DefaultRotationSpeed": 20.0,
             "DefaultMaxRotationVelocity": 5.0,
-            "DefaultMaxSpeed": 100.0,
+            "DefaultMaxSpeed": 20.0,
             "DefaultAcceleration": 10.0,
             "DefaultReverseAcceleration": 50.0,
             "DefaultCargoSize": 1000.0,
