@@ -18,7 +18,8 @@ public class ShieldPFX : MonoBehaviour, IShieldTrigger, ICustomInit
 	{
 		if (!ShieldPfx)
 			ShieldPfx = GetComponent<PKFxFX>();
-		AxisRotation = new Vector3(0, 1, 0);
+		//AxisRotation = new Vector3(0, 1, 0);
+	    AxisRotation = Random.onUnitSphere.normalized;
 	}
     
 	public void TriggerShield()

@@ -1,4 +1,5 @@
-﻿namespace Common.Utility
+﻿#pragma warning disable 649
+namespace Common.Utility
 {
 	using UnityEngine;
 	using Zen.Common.Extensions;
