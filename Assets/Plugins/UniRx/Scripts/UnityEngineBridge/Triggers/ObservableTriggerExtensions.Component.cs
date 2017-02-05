@@ -13,7 +13,7 @@ namespace UniRx.Triggers
         #region ObservableAnimatorTrigger
 
         /// <summary>Callback for setting up animation IK (inverse kinematics).</summary>
-        public static IObservable<int> OnAnimatorIKAsObservable(this Component component)
+        /*public static IObservable<int> OnAnimatorIKAsObservable(this Component component)
         {
             if (component == null || component.gameObject == null) return Observable.Empty<int>();
             return GetOrAddComponent<ObservableAnimatorTrigger>(component.gameObject).OnAnimatorIKAsObservable();
@@ -24,14 +24,14 @@ namespace UniRx.Triggers
         {
             if (component == null || component.gameObject == null) return Observable.Empty<Unit>();
             return GetOrAddComponent<ObservableAnimatorTrigger>(component.gameObject).OnAnimatorMoveAsObservable();
-        }
+        }*/
 
         #endregion
 
         #region ObservableCollision2DTrigger
 
         /// <summary>Sent when an incoming collider makes contact with this object's collider (2D physics only).</summary>
-        public static IObservable<Collision2D> OnCollisionEnter2DAsObservable(this Component component)
+        /*public static IObservable<Collision2D> OnCollisionEnter2DAsObservable(this Component component)
         {
             if (component == null || component.gameObject == null) return Observable.Empty<Collision2D>();
             return GetOrAddComponent<ObservableCollision2DTrigger>(component.gameObject).OnCollisionEnter2DAsObservable();
@@ -50,7 +50,7 @@ namespace UniRx.Triggers
         {
             if (component == null || component.gameObject == null) return Observable.Empty<Collision2D>();
             return GetOrAddComponent<ObservableCollision2DTrigger>(component.gameObject).OnCollisionStay2DAsObservable();
-        }
+        }*/
 
         #endregion
 
@@ -72,11 +72,11 @@ namespace UniRx.Triggers
         }
 
         /// <summary>OnCollisionStay is called once per frame for every collider/rigidbody that is touching rigidbody/collider.</summary>
-        public static IObservable<Collision> OnCollisionStayAsObservable(this Component component)
+        /*public static IObservable<Collision> OnCollisionStayAsObservable(this Component component)
         {
             if (component == null || component.gameObject == null) return Observable.Empty<Collision>();
             return GetOrAddComponent<ObservableCollisionTrigger>(component.gameObject).OnCollisionStayAsObservable();
-        }
+        }*/
 
         #endregion
 
@@ -137,7 +137,7 @@ namespace UniRx.Triggers
         #region ObservableMouseTrigger
 
         /// <summary>OnMouseDown is called when the user has pressed the mouse button while over the GUIElement or Collider.</summary>
-        public static IObservable<Unit> OnMouseDownAsObservable(this Component component)
+        /*public static IObservable<Unit> OnMouseDownAsObservable(this Component component)
         {
             if (component == null || component.gameObject == null) return Observable.Empty<Unit>();
             return GetOrAddComponent<ObservableMouseTrigger>(component.gameObject).OnMouseDownAsObservable();
@@ -184,7 +184,7 @@ namespace UniRx.Triggers
             if (component == null || component.gameObject == null) return Observable.Empty<Unit>();
             return GetOrAddComponent<ObservableMouseTrigger>(component.gameObject).OnMouseUpAsButtonAsObservable();
         }
-
+*/
         #endregion
 
 #endif
@@ -232,12 +232,12 @@ namespace UniRx.Triggers
             return GetOrAddComponent<ObservableTriggerTrigger>(component.gameObject).OnTriggerExitAsObservable();
         }
 
-        /// <summary>OnTriggerStay is called once per frame for every Collider other that is touching the trigger.</summary>
+       /* /// <summary>OnTriggerStay is called once per frame for every Collider other that is touching the trigger.</summary>
         public static IObservable<Collider> OnTriggerStayAsObservable(this Component component)
         {
             if (component == null || component.gameObject == null) return Observable.Empty<Collider>();
             return GetOrAddComponent<ObservableTriggerTrigger>(component.gameObject).OnTriggerStayAsObservable();
-        }
+        }*/
 
         #endregion
 
@@ -254,7 +254,7 @@ namespace UniRx.Triggers
 
         #region ObservableVisibleTrigger
 
-        /// <summary>OnBecameInvisible is called when the renderer is no longer visible by any camera.</summary>
+       /* /// <summary>OnBecameInvisible is called when the renderer is no longer visible by any camera.</summary>
         public static IObservable<Unit> OnBecameInvisibleAsObservable(this Component component)
         {
             if (component == null || component.gameObject == null) return Observable.Empty<Unit>();
@@ -266,7 +266,7 @@ namespace UniRx.Triggers
         {
             if (component == null || component.gameObject == null) return Observable.Empty<Unit>();
             return GetOrAddComponent<ObservableVisibleTrigger>(component.gameObject).OnBecameVisibleAsObservable();
-        }
+        }*/
 
         #endregion
 
@@ -275,7 +275,7 @@ namespace UniRx.Triggers
         #region ObservableTransformChangedTrigger
 
         /// <summary>Callback sent to the graphic before a Transform parent change occurs.</summary>
-        public static IObservable<Unit> OnBeforeTransformParentChangedAsObservable(this Component component)
+        /*public static IObservable<Unit> OnBeforeTransformParentChangedAsObservable(this Component component)
         {
             if (component == null || component.gameObject == null) return Observable.Empty<Unit>();
             return GetOrAddComponent<ObservableTransformChangedTrigger>(component.gameObject).OnBeforeTransformParentChangedAsObservable();
@@ -286,7 +286,7 @@ namespace UniRx.Triggers
         {
             if (component == null || component.gameObject == null) return Observable.Empty<Unit>();
             return GetOrAddComponent<ObservableTransformChangedTrigger>(component.gameObject).OnTransformParentChangedAsObservable();
-        }
+        }*/
 
         /// <summary>This function is called when the list of children of the transform of the GameObject has changed.</summary>
         public static IObservable<Unit> OnTransformChildrenChangedAsObservable(this Component component)
@@ -300,18 +300,18 @@ namespace UniRx.Triggers
         #region ObservableCanvasGroupChangedTrigger
 
         /// <summary>Callback that is sent if the canvas group is changed.</summary>
-        public static IObservable<Unit> OnCanvasGroupChangedAsObservable(this Component component)
+       /* public static IObservable<Unit> OnCanvasGroupChangedAsObservable(this Component component)
         {
             if (component == null || component.gameObject == null) return Observable.Empty<Unit>();
             return GetOrAddComponent<ObservableCanvasGroupChangedTrigger>(component.gameObject).OnCanvasGroupChangedAsObservable();
-        }
+        }*/
 
         #endregion
 
         #region ObservableRectTransformTrigger
 
         /// <summary>Callback that is sent if an associated RectTransform has it's dimensions changed.</summary>
-        public static IObservable<Unit> OnRectTransformDimensionsChangeAsObservable(this Component component)
+       /* public static IObservable<Unit> OnRectTransformDimensionsChangeAsObservable(this Component component)
         {
             if (component == null || component.gameObject == null) return Observable.Empty<Unit>();
             return GetOrAddComponent<ObservableRectTransformTrigger>(component.gameObject).OnRectTransformDimensionsChangeAsObservable();
@@ -322,7 +322,7 @@ namespace UniRx.Triggers
         {
             if (component == null || component.gameObject == null) return Observable.Empty<Unit>();
             return GetOrAddComponent<ObservableRectTransformTrigger>(component.gameObject).OnRectTransformRemovedAsObservable();
-        }
+        }*/
 
         #endregion
 
@@ -439,20 +439,20 @@ namespace UniRx.Triggers
         #region ObservableParticleTrigger
 
         /// <summary>OnParticleCollision is called when a particle hits a collider.</summary>
-        public static IObservable<GameObject> OnParticleCollisionAsObservable(this Component component)
+        /*public static IObservable<GameObject> OnParticleCollisionAsObservable(this Component component)
         {
             if (component == null || component.gameObject == null) return Observable.Empty<GameObject>();
             return GetOrAddComponent<ObservableParticleTrigger>(component.gameObject).OnParticleCollisionAsObservable();
-        }
+        }*/
 
 #if UNITY_5_4_OR_NEWER
 
         /// <summary>OnParticleTrigger is called when any particles in a particle system meet the conditions in the trigger module.</summary>
-        public static IObservable<Unit> OnParticleTriggerAsObservable(this Component component)
+        /*public static IObservable<Unit> OnParticleTriggerAsObservable(this Component component)
         {
             if (component == null || component.gameObject == null) return Observable.Empty<Unit>();
             return GetOrAddComponent<ObservableParticleTrigger>(component.gameObject).OnParticleTriggerAsObservable();
-        }
+        }*/
 
 #endif
 

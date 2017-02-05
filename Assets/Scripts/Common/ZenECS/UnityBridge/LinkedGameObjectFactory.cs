@@ -65,7 +65,7 @@ namespace Zen.Common.ZenECS
             if (e.HasComponent(ComponentTypes.ParticleSystemComp))
                 e.GetComponent<ParticleSystemComp>().ParticleSystem = go.GetComponentInChildren<ParticleSystem>();
             if (e.HasComponent(ComponentTypes.RigidbodyComp))
-                e.GetComponent<RigidbodyComp>().Rigidbody = go.GetComponentInChildren<Rigidbody>();
+                e.GetComponent<RigidbodyComp>().rigidbody = go.GetComponentInChildren<Rigidbody>();
             if (e.HasComponent(ComponentTypes.TextMeshProComp))
                 e.GetComponent<TextMeshProComp>().TextMesh = go.GetComponentInChildren<TextMeshPro>();
             if (e.HasComponent(ComponentTypes.UICameraComp))

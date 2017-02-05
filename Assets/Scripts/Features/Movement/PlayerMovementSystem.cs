@@ -53,7 +53,7 @@ namespace Zen.Systems
 			//_command = _playerMatcher.GetSingleMatch().GetComponent<CommandComp>();
 			cc = engine.FindEntity(Res.Entities.Player).GetComponent<CommandComp>();
 			pc = cc.Owner.GetComponent<PositionComp>();
-			rbComp = cc.Owner.GetComponent<RigidbodyComp>().Rigidbody;
+			rbComp = cc.Owner.GetComponent<RigidbodyComp>().rigidbody;
 			sdc = cc.GetComponent<ShipComp>();
 			cam = Camera.main;
 			invertYAxis = engine.GetSingle<GameSettingsComp>(ComponentTypes.GameSettingsComp).InvertYAxis;

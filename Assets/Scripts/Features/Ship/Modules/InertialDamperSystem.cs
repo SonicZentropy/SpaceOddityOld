@@ -10,6 +10,7 @@ namespace Zen.Systems
 
 	using Common.ZenECS;
 	using Components;
+	using UnityEngine.Assertions;
 
 	#endregion
 
@@ -26,9 +27,19 @@ namespace Zen.Systems
 		protected override void ApplyModule(ComponentEcs comp)
 		{
 			comp.Owner.GetComponent<ShipComp>().HasInertialDampers = true;
-			var rb = comp.GetComponent<RigidbodyComp>().Rigidbody;
+
+			var rb = comp.GetComponent<RigidbodyComp>().rigidbody;
 			rb.angularDrag = 5f;
 			rb.drag = 1;
+		}
+
+		protected void DeactivateModule(ComponentEcs comp)
+		{
+			((InertialDamperModComp) comp).ModuleEnabled = false;
+			var rb = comp.GetComponent<RigidbodyComp>()?.rigidbody;
+			Assert.IsNotNull(rb, "Inertial damper comp without a rigidbody");
+			rb.angularDrag = 0f;
+			rb.drag = 0f;
 		}
 
 		protected override void AddModule(ComponentEcs comp)
@@ -43,7 +54,7 @@ namespace Zen.Systems
 			if (comp.Owner == null) return;
 
 			comp.Owner.GetComponent<ShipComp>().HasInertialDampers = false;
-			var rb = comp.GetComponent<RigidbodyComp>()?.Rigidbody;
+			var rb = comp.GetComponent<RigidbodyComp>()?.rigidbody;
 			if (rb == null) return;
 			rb.angularDrag = 0f;
 			rb.drag = 0f;

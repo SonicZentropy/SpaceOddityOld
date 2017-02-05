@@ -40,7 +40,7 @@ namespace Zen.Systems
 						var lmc = ((MissileAreaDamageComp) areas[i]).GetComponent<LaunchedMissileComp>();
 						var dc = ew.Entity.GetOrAddComponent<DamageComp>(ComponentTypes.DamageComp);
 						dc.damagePackets.Push(new DamagePacket(lmc.projectileInfo.HullDamage, lmc.projectileInfo.ShieldDamage));
-						ZenUtils.PhysicsUtil.ApplyExplosionForce(ew, lmc.Owner.Wrapper.transform.position, lmc.projectileInfo.ExplosionForce);
+						ZenUtils.ApplyExplosionForce(ew, lmc.Owner.Wrapper.transform.position, lmc.projectileInfo.ExplosionForce);
 					}
 				}
 

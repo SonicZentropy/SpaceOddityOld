@@ -66,7 +66,7 @@ MonoBehaviour:
       MinValue1: 0
       MinValue2: 0
       MinValue3: 0
-      MaxValue0: 1
+      MaxValue0: 10
       MaxValue1: 0
       MaxValue2: 0
       MaxValue3: 0
@@ -112,4 +112,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ExplosionPfx: {fileID: 0}
   ExplosionRGBA: {x: 0.1, y: 0.1, z: 1, w: 1}
-  ExplosionScale: 0.44
+  ExplosionScale: 2.62

@@ -90,6 +90,11 @@
 
 			if (ent.HasComponent(ComponentTypes.UnityPrefabComp))
 				LinkedGameObjectFactory.Instance.CreateGameObjectForEntity(ent);
+
+			foreach (var cmp in ent.Components)
+			{
+				cmp.InitialiseLate(engine, ent);
+			}
 		}
 	}
 }

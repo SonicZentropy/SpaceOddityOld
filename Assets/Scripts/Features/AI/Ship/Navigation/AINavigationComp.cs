@@ -30,6 +30,7 @@ namespace Zen.Components
 			    hasReachedTarg = value;
 		    }
 	    }
+
 	    public Vector3 TargetPositionOffset;
 
         public override ComponentTypes ComponentType => ComponentTypes.AINavigationComp;

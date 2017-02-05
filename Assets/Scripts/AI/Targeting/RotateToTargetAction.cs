@@ -6,10 +6,8 @@
 
 namespace Zen.AI.Apex.Actions
 {
-	using System.Collections.Generic;
 	using global::Apex.AI;
 	using global::Apex.Serialization;
-	using UniRx.Examples;
 	using UnityEngine;
 	using Zen.AI.Apex.Contexts;
 	using Zen.Common.Extensions;
@@ -32,9 +30,8 @@ namespace Zen.AI.Apex.Actions
 			//context.transform.LookAt(context.targetComp.target);
 			var targDir = context.targetComp.target.position - context.transform.position;
 			context.transform.rotation =
-				ZenUtils.QuaternionUtil.SlerpLookAtTarget(context.transform, context.targetComp.target.position,
-				                                          rotationSpeed * Time.deltaTime);
-
+				ZenMath.QuaternionUtil.SlerpLookAtTarget(context.transform, context.targetComp.target.position,
+				                                         rotationSpeed * Time.deltaTime);
 
 			//context.transform.rotation = Quaternion.Slerp(context.transform.rotation, context.targetComp.target)
 		}

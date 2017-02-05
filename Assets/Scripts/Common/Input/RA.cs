@@ -1,5 +1,5 @@
 /* Rewired Actions
-   This list was generated on 12/30/2016 2:41:11 AM
+   This list was generated on 2/4/2017 8:47:10 AM
    The list applies to only the Rewired Input Manager from which it was generated.
    If you use a different Rewired Input Manager, you will have to generate a new list.
    If you make changes to the Rewired Actions, you will need to regenerate this list.
@@ -40,5 +40,7 @@ public static class RA {
     public const int FullHalt = 14;
     [Rewired.Dev.ActionIdFieldInfo(categoryName = "Default", friendlyName = "Click select a target")]
     public const int SelectTarget = 18;
+    [Rewired.Dev.ActionIdFieldInfo(categoryName = "Default", friendlyName = "rotate ship immediately to target")]
+    public const int DEBUG_LookAtTarget = 19;
 
 }

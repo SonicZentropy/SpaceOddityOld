@@ -47,6 +47,10 @@ namespace Zen.Systems
 			var client = new ZenAIClient(Apex.AI.AINameMap.FighterNavigationAI, fcp);
 			AIClientMgr.Instance.AddClient(client, fcp.Owner);
 			client.Start();
+
+			client = new ZenAIClient(Apex.AI.AINameMap.FighterAttackAI, fcp);
+			AIClientMgr.Instance.AddClient(client, fcp.Owner);
+			client.Start();
 		}
 
 		public void Dispose()

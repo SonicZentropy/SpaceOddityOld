@@ -6,16 +6,17 @@
 
 namespace Zen.AI.Apex.Scorers
 {
+	using global::AI.Core;
 	using global::Apex.AI;
 	using Zen.AI.Apex.Contexts;
 
-	public sealed class HasReachedTargetScorer  : ContextualScorerBase<ShipContext>
+	public sealed class HasReachedTargetScorer  : ZenContextualScorer<ShipContext>
     {
 	    public override float Score(ShipContext context)
 	    {
 		    if(context.navComp.HasReachedTarget)
-		    	return score;
-		    return 0f;
+		    	return Success;
+		    return Failure;
 	    }
     }
 }

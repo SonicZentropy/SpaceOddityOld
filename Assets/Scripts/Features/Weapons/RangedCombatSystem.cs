@@ -65,7 +65,8 @@ namespace Zen.Systems
 
 			foreach (var ent in combatComps)
 			{
-				ExecuteAttack(ent);
+				if (ent.GetComponent<CommandComp>().AttackPressed)
+					ExecuteAttack(ent);
 			}
 		}
 
@@ -135,7 +136,7 @@ namespace Zen.Systems
 			lc.laserInfoPacket.OwningActorPos = pc;
 			lc.laserInfoPacket.FiringWeaponComp = selectedWeapon;
 			lc.laserInfoPacket.ProjectileSpeed = selectedWeapon.ProjectileSpeed;
-			lc.laserInfoPacket.laserFireType = LaserFireType.ProjectileGO;
+			//lc.laserInfoPacket.laserFireType = lc.laserInfoPacket.laserFireType;
 		}
 
 		private static void SetNextAttackTime( WeaponComp selectedWeapon)

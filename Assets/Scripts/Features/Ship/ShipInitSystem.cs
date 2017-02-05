@@ -88,6 +88,7 @@ namespace Zen.Systems
 				var weaponPF = Res.CreateFromPool(fit.FittedWeapon.LauncherPrefab);
 				weaponPF.SetActive(true);
 				weaponPF.transform.SetParent(tf, false);
+				fit.FittedWeapon.WeaponGameObject = weaponPF;
 				//weaponPF.transform.localPosition = fit.PositionOffset;
 				fit.ProjectileSpawnPositionOffset = weaponPF.GetComponent<LauncherBehaviour>()?.LaunchPosOffset ?? Vector3.zero;
 			}

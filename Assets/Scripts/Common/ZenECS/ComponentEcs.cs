@@ -51,6 +51,11 @@ namespace Zen.Common.ZenECS
 			
 		}
 
+	    public virtual void InitialiseLate(EcsEngine _engine, Entity owner)
+	    {
+		    return;
+	    }
+
         //[Inspect("IsNotOverridden", 500)]
         //[Method]
         public virtual void Save()

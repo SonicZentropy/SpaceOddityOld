@@ -20,7 +20,17 @@
             "$type": "Zen.Components.UnityPrefabComp"
         },
         "Zen.Components.RigidbodyComp": {
-            "Rigidbody": null,
+            "rigidbody": null,
+            "UseDefaults": true,
+            "mass": 1.0,
+            "drag": 0.0,
+            "angularDrag": 0.05,
+            "useGravity": false,
+            "isKinematic": false,
+            "interpolation": "None",
+            "collisionDetectionMode": "Discrete",
+            "constraints": "None",
+            "maxAngularVelocity": 7.0,
             "Id": "00000000-0000-0000-0000-000000000000",
             "$type": "Zen.Components.RigidbodyComp"
         },
@@ -88,19 +98,11 @@
             "$type": "Zen.Components.InertialDamperModComp"
         },
         "Zen.Components.ShipComp": {
-            "CurrentShields": {
-                "_value": 0.0
-            },
-            "CurrentHull": {
-                "_value": 0.0
-            },
             "CameraOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
             },
-            "DefaultShields": 200.0,
-            "DefaultHull": 100.0,
             "DefaultRotationSpeed": 300.0,
             "DefaultMaxRotationVelocity": 1.0,
             "DefaultMaxSpeed": 10000.0,
@@ -142,25 +144,25 @@
                             },
                             "OwningActorPos": null,
                             "FiringWeaponComp": null,
-                            "laserFireType": "None"
+                            "laserFireType": "Particle"
                         },
                         "ShieldDamage": 7,
                         "HullDamage": 6,
                         "AttackRange": 50.0,
                         "AttackRate": 0.05,
                         "WeaponType": "Laser",
-                        "ResolutionType": "Projectile",
+                        "ResolutionType": "Particle",
                         "FiringSoundEffect": "GunFire",
                         "ProjectileSpeed": 50.0,
                         "ProjectileEntity": null,
                         "IsFitted": false,
                         "NextAttackTime": 0.0,
                         "fittingAttached": {
-                            "$ref": "17"
+                            "$ref": "15"
                         },
-                        "LauncherPrefab": "Prefabs/None",
+                        "LauncherPrefab": "Prefabs/Weapons/Launchers/LaserTurretParticle",
                         "WeaponGameObject": null,
-                        "ProjectilePrefab": "Prefabs/Weapons/Projectiles/LaserBeamPrefab",
+                        "ProjectilePrefab": "Prefabs/None",
                         "Id": "ab3e4e2d-2193-4b84-93ed-6acd2558c3f9",
                         "$type": "Zen.Components.LaserComp"
                     },
@@ -183,7 +185,7 @@
                         "z": 0.0
                     },
                     "WeaponTypesAllowed": "Laser",
-                    "$id": "17"
+                    "$id": "15"
                 },
                 {
                     "FittedWeapon": {
@@ -229,7 +231,7 @@
                         "IsFitted": false,
                         "NextAttackTime": 0.0,
                         "fittingAttached": {
-                            "$ref": "19"
+                            "$ref": "17"
                         },
                         "LauncherPrefab": "Prefabs/Weapons/Launchers/MissileLauncher1",
                         "WeaponGameObject": null,
@@ -256,7 +258,7 @@
                         "z": 0.0
                     },
                     "WeaponTypesAllowed": "Missile",
-                    "$id": "19"
+                    "$id": "17"
                 }
             ],
             "Id": "00000000-0000-0000-0000-000000000000",
@@ -269,6 +271,7 @@
         },
         "Zen.Components.DamageComp": {
             "damagePackets": [],
+            "IsImmortal": false,
             "Id": "00000000-0000-0000-0000-000000000000",
             "$type": "Zen.Components.DamageComp"
         },

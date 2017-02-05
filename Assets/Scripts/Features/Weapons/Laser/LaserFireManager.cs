@@ -36,11 +36,8 @@ public class LaserFireManager : Singleton<LaserFireManager>
 
 	private void FireParticleLaser(LaserComp wc)
 	{
-		//var lpc = Res.Load(Res.Prefabs.LaserBeamPrefabLR);
-		//var laser = lpc.InstantiateFromPool().GetComponent<LaserProjectileController>();
-		//laser.transform.position = projectileInfo.StartPosition;
-		//laser.transform.rotation = projectileInfo.Owner.transform.rotation;
-		//laser.projectileInfo = projectileInfo;
+		var ps = wc.WeaponGameObject.GetComponentInChildren<ParticleSystem>();
+		ps.Emit(1);
 	}
 
 	//public void FireLaserFastLR(ProjectileInfoPacket projectileInfo)

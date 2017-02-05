@@ -30,6 +30,13 @@ namespace Zen.Systems
 			for (int i = 0; i < matches.Count; ++i)
 			{
 				var dam = matches[i].GetComponent<DamageComp>();
+
+				if (dam.IsImmortal)
+				{
+					dam.damagePackets.Clear();
+					return;
+				}
+
 				for (int j = 0; j < dam.damagePackets.Count; j++)
 				{
 					var damageDone = dam.damagePackets.Pop();

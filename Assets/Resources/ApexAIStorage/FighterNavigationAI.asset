@@ -16,12 +16,12 @@ MonoBehaviour:
   aiId: dc2bf779-79b1-4302-9701-726ac3a928fe
   configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":e3dc443d69ad4e359b69e4b6781fe85d,"_id":dc2bf77979b143029701726ac3a928fe,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
     ApexAI","_id":e3dc443d69ad4e359b69e4b6781fe85d,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","action":{"@type":"Zen.AI.Apex.Actions.AcquireTargetAction, Assembly-CSharp"},"_scorers":[{"@type":"Zen.AI.Apex.Scorers.HasNoTargetScorer,
-    Assembly-CSharp","score":100}]},{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
+    ApexAI","action":{"@type":"Zen.AI.Apex.Actions.AcquireTargetAction, Assembly-CSharp"},"_scorers":[{"@type":"Zen.AI.Apex.Scorers.HasTargetScorer,
+    Assembly-CSharp","Invert":true,"score":100}]},{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
     ApexAI","action":{"@type":"Zen.AI.Apex.Actions.RandomlyOrbitTargetAction, Assembly-CSharp"},"threshold":1,"_scorers":[{"@type":"Zen.AI.Apex.Scorers.HasNavigationTargetScorer,
     Assembly-CSharp","score":10},{"@type":"Zen.AI.Apex.Scorers.HasReachedTargetScorer,
-    Assembly-CSharp","score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","Invert":true,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI"}}]}'
-  editorConfiguration: '{"offset":{"@x":0,"@y":0},"zoom":1,"SelectorView":{"ViewArea":{"@left":100,"@top":100,"@width":200,"@height":220},"QualifierView":{"Name":"Has
+  editorConfiguration: '{"offset":{"@x":9,"@y":5},"zoom":0.94999999,"SelectorView":{"ViewArea":{"@left":104,"@top":100,"@width":323,"@height":209},"QualifierView":{"Name":"Has
     No Target","ActionView":{}},"QualifierView":{"Name":"Has Target, Not Moving Toward
     It","ActionView":{}},"DefaultQualifier":{}}}'

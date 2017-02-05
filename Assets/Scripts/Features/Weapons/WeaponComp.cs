@@ -117,7 +117,8 @@ namespace Zen.Components
 	public enum WeaponResolutionTypes
 	{
 		Raycast,
-		Projectile
+		Projectile,
+		Particle
 	}
 
 	public enum LaserFireType

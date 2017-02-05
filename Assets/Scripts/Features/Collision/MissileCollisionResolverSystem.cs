@@ -54,7 +54,7 @@ namespace Zen.Systems
 								var dc = oth.Entity.GetOrAddComponent<DamageComp>(ComponentTypes.DamageComp);
 								dc.damagePackets.Push(new DamagePacket(lmc.projectileInfo.HullDamage, lmc.projectileInfo.ShieldDamage));
 								
-								ZenUtils.PhysicsUtil.ApplyExplosionForce(oth, coll.contacts[0].point, lmc.projectileInfo.ExplosionImpactRadius);
+								ZenUtils.ApplyExplosionForce(oth, coll.contacts[0].point, lmc.projectileInfo.ExplosionImpactRadius);
 							}
 						}
 					}

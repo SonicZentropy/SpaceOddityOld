@@ -33,7 +33,7 @@ namespace Zen.AI.Apex.Contexts
 			targetComp = entity.GetComponent<TargetComp>();
 			scannerComp = entity.GetComponent<ScannerComp>();
 			commandComp = entity.GetComponent<CommandComp>();
-			rbComp = entity.GetComponent<RigidbodyComp>()?.Rigidbody;
+			rbComp = entity.GetComponent<RigidbodyComp>()?.rigidbody;
 			navComp = entity.GetComponent<AINavigationComp>();
 		}
 	}

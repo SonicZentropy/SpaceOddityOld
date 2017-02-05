@@ -32,6 +32,7 @@ namespace Zen.Common
 			public const string DebugArrow = "Prefabs/Core/Debug/DebugArrow";
 			public const string ShieldPFXObj = "Prefabs/Effects/ShieldPFXObj";
 			public const string ExplosionPFX_Blue = "Prefabs/Effects/Explosions/ExplosionPFX_Blue";
+			public const string ExplosionPFX_Blue_Local = "Prefabs/Effects/Explosions/ExplosionPFX_Blue_Local";
 			public const string Explosion_007_example = "Prefabs/Effects/Explosions/Explosion_007_example";
 			public const string Explosion_01 = "Prefabs/Effects/Explosions/Explosion_01";
 			public const string Explosion_02 = "Prefabs/Effects/Explosions/Explosion_02";
@@ -56,11 +57,11 @@ namespace Zen.Common
 			public const string Frigate = "Prefabs/Ships/Frigate";
 			public const string MK6_Strike_Drone = "Prefabs/Ships/MK6_Strike_Drone";
 			public const string Ship_Corvette = "Prefabs/Ships/Ship_Corvette";
+			public const string LaserTurretParticle = "Prefabs/Weapons/Launchers/LaserTurretParticle";
 			public const string MissileLauncher1 = "Prefabs/Weapons/Launchers/MissileLauncher1";
 			public const string DumbfireMissile = "Prefabs/Weapons/Projectiles/DumbfireMissile";
 			public const string HomingMissile = "Prefabs/Weapons/Projectiles/HomingMissile";
 			public const string LaserBeamPrefab = "Prefabs/Weapons/Projectiles/LaserBeamPrefab";
-			public const string LaserBeamPrefabLR = "Prefabs/Weapons/Projectiles/LaserBeamPrefabLR";
 			public const string laser_impulse_projectile_002 = "Prefabs/Weapons/Projectiles/laser_impulse_projectile_002";
 			public const string PIDMissile = "Prefabs/Weapons/Projectiles/PIDMissile";
 			public const string plasma_gun_bolt = "Prefabs/Weapons/Projectiles/plasma_gun_bolt";
