@@ -83,17 +83,6 @@ namespace Zen.Components
 		public override string Grouping => "Weapons";
 	}
 
-	/*public interface ProjectileInfoPacket
-	{
-		float TimeToLive { get; set; }
-		float ProjectileSpeed { get; set; }
-		Vector3 StartPosition { get; set; }
-		Vector3 fireDirection { get; set; }
-
-		PositionComp OwningActorPos { get; set; }
-		WeaponComp FiringWeaponComp { get; set; }
-	}*/
-
 	public enum DamageMode
 	{
 		Single,

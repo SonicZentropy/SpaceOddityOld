@@ -1,4 +1,10 @@
-﻿namespace Zen.Components
+﻿// /** 
+//  * TargetComp.cs
+//  * Dylan Bailey
+//  * 20170205
+// */
+
+namespace Zen.Components
 {
 	using Common.ZenECS;
 	using UnityEngine;
@@ -11,3 +17,4 @@
 		public override string Grouping => "Combat";
 	}
 }
+
