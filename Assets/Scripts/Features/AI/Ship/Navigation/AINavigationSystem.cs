@@ -113,8 +113,9 @@ namespace Zen.Systems
 
         private void MoveTowardPosition(AINavigationComp nc, Vector3 moveToPosition)
         {
-            ZenGizmosDebug.Instance.targetPosition = moveToPosition;
+            //ZenGizmosDebug.Instance.targetPosition = moveToPosition;
             var pc = nc.GetComponent<PositionComp>().transform;
+            var sc = nc.GetComponent<ShipComp>();
             var moveVector = moveToPosition - pc.position;
             //var rb = nav.GetComponent<RigidbodyComp>().rigidbody;
             //pc.Translate(move.normalized * 5f * Time.deltaTime, Space.World);
@@ -139,11 +140,11 @@ namespace Zen.Systems
                                            pc.position,
                                            rb.velocity,
                                            moveToPosition,
-                                           Vector3.zero);
+                                           Vector3.zero); // #TODO: Change this zero to a next waypoint direction velocity
             //rb.AddForce(force, ForceMode.VelocityChange);
-            Vector3 v = (force / rb.mass) * Time.deltaTime;
+            Vector3 v = (force / rb.mass) * Time.deltaTime * sc.CurrentAcceleration / 60f;
             Vector3 totalVelocity = rb.velocity + v;
-            Vector3 limitedV = Vector3.ClampMagnitude(totalVelocity, nc.GetComponent<ShipComp>().CurrentMaxSpeed);
+            Vector3 limitedV = Vector3.ClampMagnitude(totalVelocity, sc.CurrentMaxSpeed);
             rb.velocity = limitedV;
 
             //float maxspeed = nc.GetComponent<ShipComp>().CurrentMaxSpeed;
@@ -167,6 +168,7 @@ namespace Zen.Systems
         //close to your target within 1/6 seconds.
         private Vector3 CalculateForce(Vector3 currentPosition, Vector3 currentVelocity, Vector3 desiredPosition, Vector3 desiredVelocity)
         {
+            // #TODO: factor everything down through ksg/kdg out to precalculate area or put in component
             float kp = (6f * frequency) * (6f * frequency) * 0.25f;
             float kd = 4.5f * frequency * damping;
             float dt = Time.fixedDeltaTime;

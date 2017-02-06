@@ -288,6 +288,11 @@
             "CurrentHull": 100.0,
             "Id": "00000000-0000-0000-0000-000000000000",
             "$type": "Zen.Components.HullComp"
+        },
+        "Zen.Components.TrackingCrosshairComp": {
+            "crosshairSprite": null,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "$type": "Zen.Components.TrackingCrosshairComp"
         }
     }
 }

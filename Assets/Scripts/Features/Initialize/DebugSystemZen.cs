@@ -45,6 +45,7 @@ namespace Zen.Systems
 			      .AddSystem(new MissileAreaDamageSystem())
 			      .AddSystem(new MissileExplosionSystem())
 			      .AddSystem(new ShipDamageSystem())
+                  .AddSystem(new TrackingCrosshairSystem())
 			      .AddSystem(new DeathRemovalSystem())
 			      .AddSystem(new InertialDamperSystem())
 			      .AddSystem(new CollisionCleanupSystem())

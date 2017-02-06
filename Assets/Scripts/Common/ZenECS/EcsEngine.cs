@@ -64,6 +64,8 @@ namespace Zen.Common.ZenECS
 		public event Action<Entity> OnEntityAdded;
 		public event Action<Entity> OnEntityRemoved;
 
+	    private Entity _playerEntity;
+
 		//ZenBehaviour stuff
 		private List<IOnStart> OnStartList = new List<IOnStart>();
 		private List<IOnStart> StartToRemoveList = new List<IOnStart>();
@@ -202,6 +204,15 @@ namespace Zen.Common.ZenECS
 			string entName = FileOps.GetStringAfterLastSlash(entityToFind);
 
 			return EntityList.Find(x => x.EntityName.Equals(entName));
+	    }
+
+	    public Entity GetPlayer()
+	    {
+	        if (_playerEntity == null)
+	        {
+	            _playerEntity = FindEntity(Res.Entities.Player);
+	        }
+	        return _playerEntity;
 	    }
 
 		public void DestroyComponent(ComponentEcs component)
