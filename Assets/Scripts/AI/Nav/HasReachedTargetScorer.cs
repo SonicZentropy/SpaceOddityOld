@@ -14,7 +14,7 @@ namespace Zen.AI.Apex.Scorers
     {
 	    public override float Score(ShipContext context)
 	    {
-		    if(context.navComp.HasReachedTarget)
+		    if(context.AiShipComp.Navigation.HasReachedTarget)
 		    	return Success;
 		    return Failure;
 	    }

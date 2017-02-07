@@ -13,9 +13,10 @@ namespace Zen.AI.Apex.Actions
 	using global::Apex.Serialization.Converters;
 	using UnityEngine;
 	using Zen.AI.Apex.Contexts;
+	using Zen.AI.Common;
 	using Zen.Common.Extensions;
 	using Zen.Components;
-	using ZR = Common.Extensions.ZenUtils.RandUtil;
+	using ZR = Zen.Common.Extensions.ZenUtils.RandUtil;
 
 	#endregion
 
@@ -33,21 +34,21 @@ namespace Zen.AI.Apex.Actions
 			//Debug.Log($"In randomly orbit action");
 			if (context.targetComp.target != null)
 			{
-				var navComp = context.navComp;
-				navComp.AINavState = EAINavState.ORBIT;
-				navComp.HasReachedTarget = false;
-                //navComp.TargetPositionOffset = ZenUtils.Vec3Util.GetRandomVector(3, 3, 3);
-                //navComp.TargetPositionOffset = GetRandomOrbitPosition(15, 6);
+				var AIShipComp = context.AiShipComp;
+				AIShipComp.Navigation.SetNavState(EAINavState.ORBIT);
+				AIShipComp.Navigation.HasReachedTarget = false;
+                //AiShipComp.TargetPositionOffset = ZenUtils.Vec3Util.GetRandomVector(3, 3, 3);
+                //AiShipComp.TargetPositionOffset = GetRandomOrbitPosition(15, 6);
 
                 //Find new orbit point with no immediate collisions
 			    bool FoundFreePoint = false;
 			    while (!FoundFreePoint)
 			    {
 			        //Try getting vector on the other side of the target diff
-			        navComp.TargetPositionOffset = (context.targetComp.target.position - context.transform.position)
+			        AIShipComp.Navigation.TargetPositionOffset = (context.targetComp.target.position - context.transform.position)
 			                                       + GetRandomOrbitPosition(MinOrbitRange, MaxOrbitRange);
 			        if (!Physics.Linecast(context.transform.position,
-			                              context.targetComp.target.position + navComp.TargetPositionOffset,
+			                              context.targetComp.target.position + AIShipComp.Navigation.TargetPositionOffset,
 			                              ZenUtils.LayerMaskFromIDs(SRLayers.foreground, SRLayers.npc, SRLayers.player)))
 			        {
 			            FoundFreePoint = true;

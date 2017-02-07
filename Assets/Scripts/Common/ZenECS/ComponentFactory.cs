@@ -10,6 +10,7 @@ namespace Zen.Common.ZenECS
 
     using System;
     using System.Collections.Generic;
+    using Features.AI.Ship.Core;
     using Zen.Components;
 
     #endregion
@@ -22,8 +23,8 @@ namespace Zen.Common.ZenECS
 			{ComponentTypes.AIActorComp, typeof(AIActorComp)},
 			{ComponentTypes.PlayerComp, typeof(PlayerComp)},
 			{ComponentTypes.PlayerShipComp, typeof(PlayerShipComp)},
+			{ComponentTypes.AIShipComp, typeof(AIShipComp)},
 			{ComponentTypes.ShipContextProviderComp, typeof(ShipContextProviderComp)},
-			{ComponentTypes.AINavigationComp, typeof(AINavigationComp)},
 			{ComponentTypes.AbstractCollisionComp, typeof(AbstractCollisionComp)},
 			{ComponentTypes.DamageComp, typeof(DamageComp)},
 			{ComponentTypes.HullComp, typeof(HullComp)},
@@ -90,8 +91,8 @@ namespace Zen.Common.ZenECS
 		AIActorComp,
 		PlayerComp,
 		PlayerShipComp,
+		AIShipComp,
 		ShipContextProviderComp,
-		AINavigationComp,
 		AbstractCollisionComp,
 		DamageComp,
 		HullComp,

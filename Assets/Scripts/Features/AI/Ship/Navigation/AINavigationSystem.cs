@@ -9,8 +9,9 @@ namespace Zen.Systems
     #region Dependencies
 
     using Common.ZenECS;
-    using Plugins.Zenobit;
+    using Features.AI.Ship.Core;
     using UnityEngine;
+    using Zen.AI.Common;
     using Zen.Common.Extensions;
     using Zen.Components;
 
@@ -28,11 +29,11 @@ namespace Zen.Systems
 
         public override void FixedUpdate()
         {
-            foreach (var nav in engine.Get(ComponentTypes.AINavigationComp))
+            foreach (var nav in engine.Get(ComponentTypes.AIShipComp))
             {
-                var nc = (AINavigationComp) nav;
-                var targ = nav.GetComponent<TargetComp>().target;
-                switch (nc.AINavState)
+                var nc = (AIShipComp) nav;
+                //var targ = nav.GetComponent<TargetComp>().target;
+                switch (nc.Navigation.GetNavState())
                 {
                     case EAINavState.ORBIT:
                         UpdateOrbit(nc);
@@ -49,47 +50,15 @@ namespace Zen.Systems
                         Debug.Log("Default triggered!");
                         break;
                 }
-                //if (nc.ShouldMove)
-                //{
-                //	Vector3 moveto;
-                //	if (targ != null)
-                //	{
-                //		moveto = targ.position + nc.TargetPositionOffset;
-                //	}
-                //	else
-                //	{
-                //		Debug.Log($"No target so moving to {nc.TargetPositionOffset}");
-                //		moveto = nc.TargetPositionOffset;
-                //	}
-                //	var pc = nav.GetComponent<PositionComp>().transform;
-                //	var move = moveto - pc.position;
-                //	//var rb = nav.GetComponent<RigidbodyComp>().rigidbody;
-                //	//pc.Translate(move.normalized * 5f * Time.deltaTime, Space.World);
-                //	//rb.AddForce(move.normalized * 5f * Time.deltaTime);
-                //
-                //	pc.rotation =
-                //		ZenMath.QuaternionUtil.SlerpLookAtTarget(pc, move, 5f /*Rotation speed*/ * Time.deltaTime);
-                //
-                //	//getting close to target
-                //	if ((pc.position - moveto).sqrMagnitude < 1.1f)
-                //	{
-                //		//ZenLogger.Log("Close to target");
-                //		nc.HasReachedTarget = true;
-                //	}
-                //	else
-                //	{
-                //		ZenLogger.LogGame($"Travel distance: {(pc.position - moveto).sqrMagnitude}");
-                //	}
-                //}
             }
         }
 
-        private void UpdateAttacking(AINavigationComp nc)
+        private void UpdateAttacking(AIShipComp nc)
         {
             RotateTowardPosition(nc, nc.GetComponent<TargetComp>().target.position);
         }
 
-        private void RotateTowardPosition(AINavigationComp nc, Vector3 targetPosition)
+        private void RotateTowardPosition(AIShipComp nc, Vector3 targetPosition)
         {
             var pc = nc.GetComponent<PositionComp>().transform;
             var moveVector = targetPosition - pc.position;
@@ -100,32 +69,28 @@ namespace Zen.Systems
                                                          Time.deltaTime);
         }
 
-        private void UpdateApproach(AINavigationComp nc)
+        private void UpdateApproach(AIShipComp nc)
         {
             MoveTowardPosition(nc, nc.GetComponent<TargetComp>().target.position);
         }
 
-        private void UpdateOrbit(AINavigationComp nc)
+        private void UpdateOrbit(AIShipComp nc)
         {
-            Vector3 moveto = nc.GetComponent<TargetComp>().target.position + nc.TargetPositionOffset;
+            Vector3 moveto = nc.GetComponent<TargetComp>().target.position + nc.Navigation.TargetPositionOffset;
             MoveTowardPosition(nc, moveto);
         }
 
-        private void MoveTowardPosition(AINavigationComp nc, Vector3 moveToPosition)
+        private void MoveTowardPosition(AIShipComp nc, Vector3 moveToPosition)
         {
             //ZenGizmosDebug.Instance.targetPosition = moveToPosition;
             var pc = nc.GetComponent<PositionComp>().transform;
             var sc = nc.GetComponent<ShipComp>();
-            var moveVector = moveToPosition - pc.position;
-            //var rb = nav.GetComponent<RigidbodyComp>().rigidbody;
-            //pc.Translate(move.normalized * 5f * Time.deltaTime, Space.World);
-            //rb.AddForce(move.normalized * 5f * Time.deltaTime);
-
+           
             pc.rotation =
                 //ZenMath.QuaternionUtil.SlerpLookAtTarget(pc, moveVector, 5f /*Rotation speed*/* Time.deltaTime);
                 ZenMath.QuaternionUtil.SlerpLookAtTarget(pc, moveToPosition, 0.5f /*Rotation speed*/* Time.deltaTime);
 
-            float faceAngle = Vector3.Dot(pc.forward, moveVector.normalized);
+            //float faceAngle = Vector3.Dot(pc.forward, moveVector.normalized);
             Debug.DrawLine(pc.position, moveToPosition, Color.yellow);
             //if (faceAngle > 0.75) // only accelerate if pointing in the right general direction
             //{
@@ -152,7 +117,7 @@ namespace Zen.Systems
             if ((pc.position - moveToPosition).sqrMagnitude < 50.1f)
             {
                 //Debug.Log("Close to target");
-                nc.HasReachedTarget = true;
+                nc.Navigation.HasReachedTarget = true;
             }
             else
             {
@@ -183,9 +148,9 @@ namespace Zen.Systems
 
         //public override void FixedUpdate()
         //{
-        //	foreach (var nav in engine.Get(ComponentTypes.AINavigationComp))
+        //	foreach (var nav in engine.Get(ComponentTypes.AIShipComp))
         //	{
-        //		var nc = (AINavigationComp) nav;
+        //		var nc = (AIShipComp) nav;
         //		var targ = nav.GetComponent<TargetComp>().target;
         //		if (nc.ShouldMove)
         //		{

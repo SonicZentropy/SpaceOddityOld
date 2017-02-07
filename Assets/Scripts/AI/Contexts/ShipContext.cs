@@ -6,7 +6,8 @@
 
 namespace Zen.AI.Apex.Contexts
 {
-	using global::Apex.AI;
+    using Features.AI.Ship.Core;
+    using global::Apex.AI;
 	using UnityEngine;
 	using Zen.Common.ZenECS;
 	using Zen.Components;
@@ -21,7 +22,7 @@ namespace Zen.AI.Apex.Contexts
 		public CommandComp commandComp { get; private set; }
 		public Rigidbody rbComp { get; private set; }
 
-		public AINavigationComp navComp { get; private set; }
+		public AIShipComp AiShipComp { get; private set; }
 
 		//public GameObject[] targets { get; private set; }
 
@@ -34,7 +35,7 @@ namespace Zen.AI.Apex.Contexts
 			scannerComp = entity.GetComponent<ScannerComp>();
 			commandComp = entity.GetComponent<CommandComp>();
 			rbComp = entity.GetComponent<RigidbodyComp>()?.rigidbody;
-			navComp = entity.GetComponent<AINavigationComp>();
+			AiShipComp = entity.GetComponent<AIShipComp>();
 		}
 	}
 } 

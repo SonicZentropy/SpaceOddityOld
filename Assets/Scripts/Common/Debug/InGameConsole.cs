@@ -2,8 +2,8 @@
 {
     using System;
     using UnityEngine;
-	using Zen.Common.Extensions;
-	using Zen.Components;
+    using Zen.AI.Common;
+    using Zen.Common.Extensions;
 
     public class InGameConsole : Singleton<InGameConsole>
 	{

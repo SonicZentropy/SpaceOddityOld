@@ -9,6 +9,7 @@ namespace Zen.AI.Apex.Actions
 	using global::Apex.AI;
 	using UnityEngine;
 	using Zen.AI.Apex.Contexts;
+	using Zen.AI.Common;
 	using Zen.Common.Extensions;
 	using Zen.Components;
 
@@ -19,11 +20,11 @@ namespace Zen.AI.Apex.Actions
 			if (context.targetComp.target != null)
 			{
 				Debug.Log($"moving to target action set");
-				var navComp = context.navComp;
-				navComp.AINavState = EAINavState.APPROACH;
-				navComp.HasReachedTarget = false;
-				//navComp.TargetTransform = context.targetComp.target;
-				navComp.TargetPositionOffset = Vector3.zero;
+				var AiShipComp = context.AiShipComp;
+				AiShipComp.Navigation.SetNavState(EAINavState.APPROACH);
+				AiShipComp.Navigation.HasReachedTarget = false;
+				AiShipComp.Navigation.TargetPositionOffset = Vector3.zero;
+				//AiShipComp.TargetTransform = context.targetComp.target;
 			}
 		}
 	}
