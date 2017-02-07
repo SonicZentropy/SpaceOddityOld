@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 using Zen.Common;
 using Zen.Common.ZenECS;
 using Zen.Components;
@@ -11,13 +12,13 @@ public class SelectionBox : ZenBehaviour, IOnAwake, IOnUpdate, IInitAfterECS
 	public GameObject selectionBoxSprite;
 
 	private Vector3[] pts = new Vector3[8];
-	public UISprite boxSprite;
+	public Image boxSprite;
 	public TargetComp targetComp;
 	private Rect r;
 
 	private Camera cam;
 
-	public void OnAwake() { boxSprite = GetComponent<UISprite>(); }
+	public void OnAwake() { boxSprite = GetComponent<Image>(); }
 
 	void GetTargetComp()
 	{
@@ -89,7 +90,16 @@ public class SelectionBox : ZenBehaviour, IOnAwake, IOnUpdate, IInitAfterECS
 		r.yMin -= Screen.height / 2f;
 		r.yMax -= Screen.height / 2f;
 
-		boxSprite.SetRect(r.xMin, r.yMin, r.width, r.height);
+        //Vector3 screenpos = cam.WorldToScreenPoint(estimatedPositionOfTarget);
+        //screenpos = new Vector3(screenpos.x - (Screen.width / 2f), screenpos.y - (Screen.height / 2f), 0);
+        //crosshairComp.crosshairSprite.transform.localPosition = new Vector3(screenpos.x, screenpos.y, 0);
+        Vector3 screenpos = cam.WorldToScreenPoint(targetComp.target.position);
+        screenpos = new Vector3(screenpos.x - (Screen.width / 2f), screenpos.y - (Screen.height / 2f), 0);
+
+        boxSprite.rectTransform.sizeDelta = new Vector2(r.width, r.height);
+	    boxSprite.rectTransform.localPosition = new Vector3(screenpos.x, screenpos.y, 0f);
+
+	    //boxSprite.SetRect(r.xMin, r.yMin, r.width, r.height);
 	}
 
 	public override int ExecutionPriority { get; } = 0;

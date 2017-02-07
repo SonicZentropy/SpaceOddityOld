@@ -25,8 +25,8 @@ namespace Zen.Systems
         private TargetComp tc;
         private ShipFittingsComp sfc;
         private Camera cam;
-        private Camera UICam;
-        private UIRoot uiRoot;
+        //private Camera UICam;
+        //private UIRoot uiRoot;
         private TrackingCrosshairComp crosshairComp;
 
         public override bool Init()
@@ -37,8 +37,8 @@ namespace Zen.Systems
             sfc = player.GetComponent<ShipFittingsComp>();
             crosshairComp = player.GetComponent<TrackingCrosshairComp>();
             cam = Camera.main;
-            UICam = GameObject.Find("CameraUI").GetComponent<Camera>();
-            uiRoot = GameObject.Find("UIRoot").GetComponent<UIRoot>();
+            //UICam = GameObject.Find("CameraUI").GetComponent<Camera>();
+            //uiRoot = GameObject.Find("UIRoot").GetComponent<UIRoot>();
             return true;
         }
 
