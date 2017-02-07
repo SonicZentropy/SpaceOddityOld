@@ -6,8 +6,6 @@
 
 namespace Zen.AI.Apex.Contexts
 {
-    using Features.AI.Ship.Core;
-    using global::Apex.AI;
 	using UnityEngine;
 	using Zen.Common.ZenECS;
 	using Zen.Components;

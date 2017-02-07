@@ -20,7 +20,7 @@ namespace Zen.Components
         public override void Initialise(EcsEngine _engine, Entity owner)
         {
             base.Initialise(_engine, owner);
-            crosshairSprite = GameObject.Find("TrackingCrosshairNGUI");
+            crosshairSprite = GameObject.Find("TrackingCrosshair");
         }
 
         public override ComponentTypes ComponentType => ComponentTypes.TrackingCrosshairComp;

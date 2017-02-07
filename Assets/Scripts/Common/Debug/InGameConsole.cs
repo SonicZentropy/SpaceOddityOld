@@ -1,34 +1,35 @@
 ﻿namespace Zen.Common.Debug
 {
     using System;
+    using TMPro;
     using UnityEngine;
     using Zen.AI.Common;
     using Zen.Common.Extensions;
 
     public class InGameConsole : Singleton<InGameConsole>
 	{
-		private UILabel _debugLabel;
-		public UILabel DebugLabel
+		private TextMeshProUGUI _debugLabel;
+		public TextMeshProUGUI DebugLabel
 		{
 			get
 			{
 				if (_debugLabel == null)
 				{
-					_debugLabel = GameObject.Find("DebugConsole")?.GetComponent<UILabel>();
+					_debugLabel = GameObject.Find("DebugConsole")?.GetComponent<TextMeshProUGUI>();
 				}
 				return _debugLabel;
 			}
 		}
 
-	    private UILabel _AIStateLabel;
+	    private TextMeshProUGUI _AIStateLabel;
 
-	    public UILabel AIStateLabel
+	    public TextMeshProUGUI AIStateLabel
 	    {
 	        get
 	        {
 	            if (_AIStateLabel == null)
 	            {
-	                _AIStateLabel = GameObject.Find("AIStateConsole")?.GetComponent<UILabel>();
+	                _AIStateLabel = GameObject.Find("AIStateConsole")?.GetComponent<TextMeshProUGUI>();
 	            }
                 return _AIStateLabel;
 	        }

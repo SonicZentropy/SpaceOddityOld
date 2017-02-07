@@ -10,7 +10,6 @@ namespace Zen.Common.ZenECS
 
     using System;
     using System.Collections.Generic;
-    using Features.AI.Ship.Core;
     using Zen.Components;
 
     #endregion

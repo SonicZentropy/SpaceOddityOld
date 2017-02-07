@@ -9,7 +9,6 @@ namespace Zen.Systems
     #region Dependencies
 
     using Common.ZenECS;
-    using Features.AI.Ship.Core;
     using UnityEngine;
     using Zen.AI.Common;
     using Zen.Common.Extensions;

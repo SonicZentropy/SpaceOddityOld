@@ -3,13 +3,11 @@
 // //  * Dylan Bailey
 // //  * 20170206
 // // */
-namespace Features.AI.Ship.Core
+namespace Zen.Components
 {
     using System.Collections.Generic;
-    using AdvancedInspector;
     using UnityEngine;
     using Zen.AI.Common;
-    using Zen.Common.Debug;
     using Zen.Common.ZenECS;
 
     public class AIShipComp : ComponentEcs
@@ -20,7 +18,8 @@ namespace Features.AI.Ship.Core
 
             public void SetNavState(EAINavState newState)
             {
-                AINavState.Pop();
+                if(AINavState.Count > 0)
+                    AINavState.Pop();
                 AINavState.Push(newState);
             }
 
@@ -31,6 +30,10 @@ namespace Features.AI.Ship.Core
 
             public EAINavState GetNavState()
             {
+                if (AINavState.Count <= 0)
+                {
+                    AINavState.Push(EAINavState.IDLE);
+                }
                 return AINavState.Peek();
             }
 

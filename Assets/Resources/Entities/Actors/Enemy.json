@@ -217,15 +217,17 @@
             "Id": "00000000-0000-0000-0000-000000000000",
             "$type": "Zen.Components.ShipContextProviderComp"
         },
-        "Zen.Components.AINavigationComp": {
-            "HasReachedTarget": true,
-            "TargetPositionOffset": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+        "Zen.Components.AIShipComp": {
+            "Navigation": {
+                "HasReachedTarget": false,
+                "TargetPositionOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
             },
             "Id": "00000000-0000-0000-0000-000000000000",
-            "$type": "Zen.Components.AINavigationComp"
+            "$type": "Zen.Components.AIShipComp"
         }
     }
 }
