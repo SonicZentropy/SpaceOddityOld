@@ -30,10 +30,12 @@ namespace Zen.Systems
 
 			for (int i = matches.Count -1; i >= 0; i--)
 			{
+			    if (matches[i].GetComponent<DamageComp>().damagePackets.Count <= 0) continue;  // don't blow up missiles that haven't hit something yet
 				var lmc = matches[i].GetComponent<LaunchedMissileComp>();
 				var ps = lmc.ExplosionPrefab.InstantiateFromPool(lmc.GetComponent<PositionComp>().transform.position);
 				//ps.GetComponent<ParticleSystem>()?.ScaleByTransform(lmc.projectileInfo.ExplosionImpactRadius, true);
 				ps.GetComponent<ParticleScalingController>()?.SetScale(lmc.projectileInfo.ExplosionImpactRadius, true);
+                
 				engine.DestroyEntity(matches[i]);
 			}
 

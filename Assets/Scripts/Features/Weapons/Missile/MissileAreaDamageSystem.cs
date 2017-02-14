@@ -44,9 +44,11 @@ namespace Zen.Systems
 					}
 				}
 
-				//Adding damage comp here so the missile itself explodes
-				areas[i].Owner.AddComponent(ComponentTypes.DamageComp);
-				areas[i].Owner.RemoveComponent(areas[i]);
+                //Adding damage comp here so the missile itself explodes
+                //areas[i].Owner.AddComponent(ComponentTypes.DamageComp);
+                areas[i].GetComponent<DamageComp>().damagePackets.Push(new DamagePacket());
+
+                areas[i].Owner.RemoveComponent(areas[i]);
 			}
 		}
 		

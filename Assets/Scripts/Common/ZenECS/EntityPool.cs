@@ -60,7 +60,7 @@ namespace Zen.Common.ZenECS
 
         private void CleanupEntity(Entity e)
         {
-            e.RemoveComponent<DamageComp>();
+            //e.RemoveComponent<DamageComp>();
         }
 
         public void ResetEntityPool()

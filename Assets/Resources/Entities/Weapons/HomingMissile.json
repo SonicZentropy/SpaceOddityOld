@@ -144,8 +144,15 @@
             "Id": "00000000-0000-0000-0000-000000000000",
             "Enabled": true,
             "$type": "Zen.Components.RendererComp"
+        },
+        "Zen.Components.DamageComp": {
+            "damagePackets": [],
+            "IsImmortal": false,
+            "Id": "00000000-0000-0000-0000-000000000000",
+            "Enabled": true,
+            "$type": "Zen.Components.DamageComp"
         }
     },
     "Enabled": false,
-    "IsPooled": true
+    "IsPooled": false
 }
