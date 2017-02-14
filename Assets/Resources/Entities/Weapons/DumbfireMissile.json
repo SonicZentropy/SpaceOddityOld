@@ -16,6 +16,7 @@
             },
             "UseLateUpdate": false,
             "Id": "00000000-0000-0000-0000-000000000000",
+            "Enabled": true,
             "$type": "Zen.Components.PositionComp"
         },
         "Zen.Components.UnityPrefabComp": {
@@ -27,6 +28,7 @@
             "entityTags": "IsEntity,IsProjectile",
             "tags": "",
             "Id": "00000000-0000-0000-0000-000000000000",
+            "Enabled": true,
             "$type": "Zen.Components.UnityPrefabComp"
         },
         "Zen.Components.LaunchedMissileComp": {
@@ -122,28 +124,35 @@
             "particles": null,
             "transform": null,
             "Id": "00000000-0000-0000-0000-000000000000",
+            "Enabled": true,
             "$type": "Zen.Components.LaunchedMissileComp"
         },
         "Zen.Components.ParticleSystemComp": {
             "ParticleSystem": null,
             "Id": "00000000-0000-0000-0000-000000000000",
+            "Enabled": true,
             "$type": "Zen.Components.ParticleSystemComp"
         },
         "Zen.Components.ColliderComp": {
             "collider": null,
             "Id": "00000000-0000-0000-0000-000000000000",
+            "Enabled": true,
             "$type": "Zen.Components.ColliderComp"
         },
         "Zen.Components.RendererComp": {
             "renderer": null,
             "Id": "00000000-0000-0000-0000-000000000000",
+            "Enabled": true,
             "$type": "Zen.Components.RendererComp"
         },
         "Zen.Components.CollisionEnterComp": {
             "Other": [],
             "CollisionHandlingEnabled": true,
             "Id": "00000000-0000-0000-0000-000000000000",
+            "Enabled": true,
             "$type": "Zen.Components.CollisionEnterComp"
         }
-    }
+    },
+    "Enabled": false,
+    "IsPooled": true
 }

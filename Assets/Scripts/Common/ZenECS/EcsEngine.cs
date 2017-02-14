@@ -164,8 +164,9 @@ namespace Zen.Common.ZenECS
 
 		public Entity CreateEntity(string entityName)
 		{
-			Entity newEnt =  Factory.CreateEntityFromTemplate(entityName);
-			OnEntityAdded?.Invoke(newEnt);
+            //Entity newEnt =  Factory.CreateEntityFromTemplate(entityName);
+            Entity newEnt = Factory.CreateEntityFromPool(entityName);
+            OnEntityAdded?.Invoke(newEnt);
 			return newEnt;
 		}
 
@@ -188,10 +189,17 @@ namespace Zen.Common.ZenECS
                         UnityEngine.Object.Destroy(go);
                     }
                 }
-
+                //if (entity.IsPooled)
+                //{
+                //    comp.Enabled = false;
+                //}
                 DestroyComponent(comp);
             }
 	        EntityList.Remove(entity);
+            if (entity.IsPooled)
+            {
+                EntityPool.Instance.ReleaseToPool(entity);
+            }
         }
 
 		/// <summary>

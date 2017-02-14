@@ -8,6 +8,7 @@ namespace Zen.Editor.Utils
 {
     #region Dependencies
 
+    using System;
     using System.IO;
 
     #endregion
@@ -24,15 +25,33 @@ namespace Zen.Editor.Utils
             return Path.Combine(path, filename);
         }
 
+        public static string GetTypeFromFullName(string fullName)
+        {
+            var tokens = fullName.Split("/".ToCharArray());
+            return tokens[0];
+        }
+
+        public static string GetFileNameFromFullName(string fullName)
+        {
+            var tokens = fullName.Split("/".ToCharArray());
+            return tokens[tokens.Length - 1] + ".json";
+        }
+
+        public static string GetEntityNameFromFullName(string fullName)
+        {
+            var tokens = fullName.Split("/".ToCharArray());
+            return tokens[tokens.Length - 1];
+        }
+
         public static FileInfo[] FindAllFilesRecursively(string basePath, string fileExtension = null)
         {
             var files = new FileInfo[1];
-            if (string.IsNullOrEmpty(basePath))
+            if (String.IsNullOrEmpty(basePath))
                 return files;
 
             var dirPath = Path.GetDirectoryName(basePath);
 
-            return string.IsNullOrEmpty(dirPath)
+            return String.IsNullOrEmpty(dirPath)
                 ? files
                 : new DirectoryInfo(basePath).GetFiles("*" + fileExtension, SearchOption.AllDirectories);
         }

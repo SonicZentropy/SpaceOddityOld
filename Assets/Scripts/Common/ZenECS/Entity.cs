@@ -30,21 +30,17 @@ namespace Zen.Common.ZenECS
 	    {
 		    get { return _components.Select(x => x.Value).ToList(); }
 	    }
-
-	    public Entity()
-        {
-            //debug purposes
-            //_components = new Dictionary<Type, ComponentEcs>();
-        }
-
-        public Entity(string entityName)
+        
+        public Entity(string entityName = "")
         {
             //debug purposes
             //_components = new Dictionary<Type, ComponentEcs>();
             EntityName = entityName;
         }
 
-	    [Inspect]public string EntityName { get; set; } = "DefaultName";
+	    [Inspect]public string EntityName { get; set; }
+        public bool Enabled;
+        public bool IsPooled;
 
 	    [HideInInspector]public EntityWrapper Wrapper { get; set; }
 
@@ -167,6 +163,17 @@ namespace Zen.Common.ZenECS
 	    {
 		    _components.Add(component.ObjectType, component);
 	    }
+
+        public void RemoveComponent<T>() where T : ComponentEcs
+        {
+            if (_components.ContainsKey(typeof(T)))
+            {
+                 //GetComponent<T>();
+                var comp = _components[typeof(T)];
+                engine.DestroyComponent(comp);
+                _components.Remove(typeof(T));
+            }
+        }
 
 	    public void RemoveComponent(ComponentEcs component)
 	    {

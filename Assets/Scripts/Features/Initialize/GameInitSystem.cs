@@ -1,7 +1,6 @@
 ﻿namespace Zen.Systems
 {
 	using Common;
-	using Unik.JSON;
 	using UnityEngine;
 
 	public class GameInitSystem : AbstractEcsSystem
@@ -16,13 +15,13 @@
 			
 			engine.CreateEntity(Res.Entities.Player);
 			engine.CreateEntity(Res.Entities.Camera);
-			engine.CreateEntity(Res.Entities.SectorGenerationMain);
+			//engine.CreateEntity(Res.Entities.SectorGenerationMain);
 			engine.CreateEntity(Res.Entities.GameSettings);
 
-			var ets = engine.CreateEntity(Res.Entities.Enemy);
-			ets.Wrapper.transform.position = new Vector3(0, 0, 10);
+			//var ets = engine.CreateEntity(Res.Entities.Enemy);
+			//ets.Wrapper.transform.position = new Vector3(0, 0, 10);
 
-			ZenLogger.LogGame("Completed init");
+			//ZenLogger.LogGame("Completed init");
 
 			return false;
 		}

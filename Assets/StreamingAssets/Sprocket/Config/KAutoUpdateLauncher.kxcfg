@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfKeyValuePairOfStringObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <KeyValuePairOfStringObject>
+    <Key>ChannelServerURLs</Key>
+    <Value xsi:type="ArrayOfKeyValuePairOfStringObject" />
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>ActiveUpdateChannel</Key>
+    <Value xsi:type="EAutoUpdateChannel">Clockwork</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>AutoUpdaterAddress</Key>
+    <Value xsi:type="string">UpdateServer/AutoUpdater</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>LibAddress</Key>
+    <Value xsi:type="string">UpdateServer/Lib</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>UnitypackageAddress</Key>
+    <Value xsi:type="string">UpdateServer/Unitypackage</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>SymbolAddress</Key>
+    <Value xsi:type="string">UpdateServer/SymbolData/{0}/{1}</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>AutoUpdateInterval</Key>
+    <Value xsi:type="int">30</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>AutoCheckForUpdates</Key>
+    <Value xsi:type="boolean">true</Value>
+  </KeyValuePairOfStringObject>
+</ArrayOfKeyValuePairOfStringObject>

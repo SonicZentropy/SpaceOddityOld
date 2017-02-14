@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfKeyValuePairOfStringObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <KeyValuePairOfStringObject>
+    <Key>WriteContinuousValuesToLogFile</Key>
+    <Value xsi:type="boolean">false</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>ShowContinuousValuesInUnityLog</Key>
+    <Value xsi:type="boolean">false</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>LoggingSuppressed</Key>
+    <Value xsi:type="boolean">false</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>LogCategoryThresholds</Key>
+    <Value xsi:type="ArrayOfKeyValuePairOfStringObject" />
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>ErrorThreshold</Key>
+    <Value xsi:type="ELogLevel">Assert</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>SendErrorReports</Key>
+    <Value xsi:type="boolean">true</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>RouteUnityLogIn</Key>
+    <Value xsi:type="boolean">true</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>RouteOutToUnityLog</Key>
+    <Value xsi:type="boolean">true</Value>
+  </KeyValuePairOfStringObject>
+</ArrayOfKeyValuePairOfStringObject>

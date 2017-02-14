@@ -22,7 +22,7 @@ namespace Zen.Systems
 		public override bool Init()
 		{
 			InitSystems();
-
+            EntityPool.Instance.ResetEntityPool();
 			return true;
 		}
 

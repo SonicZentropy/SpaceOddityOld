@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfKeyValuePairOfStringObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <KeyValuePairOfStringObject>
+    <Key>HideBrandingAndVersionInfo</Key>
+    <Value xsi:type="boolean">false</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>VersionLabelFontPath</Key>
+    <Value xsi:type="string">font/04B_03__.TTF</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>ScrollViewLightTexturePath</Key>
+    <Value xsi:type="string">tex/Edges-Light.png</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>ScrollViewDarkTexturePath</Key>
+    <Value xsi:type="string">tex/Edges-Dark.png</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>FooterFillColorLightTexturePath</Key>
+    <Value xsi:type="string">tex/FooterFillColor-Light.png</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>FooterFillColorDarkTexturePath</Key>
+    <Value xsi:type="string">tex/FooterFillColor-Dark.png</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>DisablePrereleaseNotification</Key>
+    <Value xsi:type="boolean">false</Value>
+  </KeyValuePairOfStringObject>
+</ArrayOfKeyValuePairOfStringObject>

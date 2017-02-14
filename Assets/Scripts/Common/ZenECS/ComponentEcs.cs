@@ -27,6 +27,7 @@ namespace Zen.Common.ZenECS
 
 	    //public abstract string Grouping { get; }
 	    public virtual string Grouping { get; } = "Base";
+        public bool Enabled = true;
 
         public Type ObjectType => _objectType ?? (_objectType = GetType());
 

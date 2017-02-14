@@ -216,7 +216,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 624ed21a0b71e1e4cb582870534047e9, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -242,7 +242,7 @@ MonoBehaviour:
   transform: {fileID: 0}
   gameObject: {fileID: 0}
   player: {fileID: 0}
-  margin: 10
+  margin: 5
   selectionBoxSprite: {fileID: 84122025}
   boxSprite: {fileID: 84122027}
 --- !u!1 &103400700
@@ -412,8 +412,11 @@ MonoBehaviour:
   - {fileID: 985349694}
   _values:
   - _keys:
-    - _engine._instanceOfEngine.EditProperty.EntityList.EditProperty
+    - _engine._instanceOfEngine.EditProperty.EntityList.EditProperty.0._components.EditProperty
+    - _engine._instanceOfEngine.EditProperty.EntityList.EditProperty.1._components.EditProperty
     _values:
+    - _showDropdown: 1
+      _serializedIsActive: 0
     - _showDropdown: 1
       _serializedIsActive: 0
     _target: {fileID: 985349694}
@@ -999,7 +1002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AvoidDirtyFlag: 1
-  EntityName: Actors/Enemy
+  EntityName: Actors/Player
 --- !u!4 &1250855352
 Transform:
   m_ObjectHideFlags: 0

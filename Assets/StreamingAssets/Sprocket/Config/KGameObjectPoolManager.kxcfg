@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfKeyValuePairOfStringObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <KeyValuePairOfStringObject>
+    <Key>PooledPrefabPath</Key>
+    <Value xsi:type="string">Assets/Resources/PooledPrefabs</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>GameObjectPoolDebuggingEnabled</Key>
+    <Value xsi:type="boolean">true</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>GameObjectPoolLearningEnabled</Key>
+    <Value xsi:type="boolean">true</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>GameObjectPoolLearningDecreaseEnabled</Key>
+    <Value xsi:type="boolean">false</Value>
+  </KeyValuePairOfStringObject>
+  <KeyValuePairOfStringObject>
+    <Key>PathChoice</Key>
+    <Value xsi:type="EStoragePathList">streamingAssetsPath</Value>
+  </KeyValuePairOfStringObject>
+</ArrayOfKeyValuePairOfStringObject>

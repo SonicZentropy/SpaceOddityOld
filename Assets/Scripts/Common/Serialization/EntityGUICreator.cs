@@ -19,8 +19,9 @@ namespace Zen.Serialization
 	using UnityEditor;
 	using UnityEngine;
 	using Zen.Common.ZenECS;
+	using Zen.Editor.Utils;
 
-	#endregion
+    #endregion
 
 	[ExecuteInEditMode]
 	[AdvancedInspector(true, false)]
@@ -189,7 +190,8 @@ namespace Zen.Serialization
 		[Descriptor("Save Entity", "Save Entity To JSON In Resources folder", "", 1, 0.5f, 0.5f)]
 		public void SaveEntityToJson()
 		{
-			_newEnt = new Entity(GetEntityNameFromFullName(EntityName));
+			_newEnt = new Entity(FileOps.GetEntityNameFromFullName(EntityName));
+		    //_newEnt = new Entity(EntityName);
 			Debug.Log($"Saving entity: {EntityName}");
 			foreach (var typ in ComponentPools)
 			{
@@ -205,7 +207,7 @@ namespace Zen.Serialization
 
 			var filePath = Application.dataPath + "/Resources/Entities/" + EntityName + ".json";
 
-			Directory.CreateDirectory(Application.dataPath + "/Resources/Entities/" + GetTypeFromFullName(EntityName) + "/");
+			Directory.CreateDirectory(Application.dataPath + "/Resources/Entities/" + FileOps.GetTypeFromFullName(EntityName) + "/");
 
 			using (var file = File.Open(filePath, FileMode.Create))
 			{
@@ -268,24 +270,6 @@ namespace Zen.Serialization
 			}
 			OnDataChanged?.Invoke();
 			AvoidDirtyFlag = true;
-		}
-
-		private static string GetTypeFromFullName(string fullName)
-		{
-			var tokens = fullName.Split("/".ToCharArray());
-			return tokens[0];
-		}
-
-		private static string GetFileNameFromFullName(string fullName)
-		{
-			var tokens = fullName.Split("/".ToCharArray());
-			return tokens[tokens.Length - 1] + ".json";
-		}
-
-		private static string GetEntityNameFromFullName(string fullName)
-		{
-			var tokens = fullName.Split("/".ToCharArray());
-			return tokens[tokens.Length - 1];
 		}
 	}
 }
