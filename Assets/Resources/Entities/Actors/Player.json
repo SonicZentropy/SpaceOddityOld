@@ -225,9 +225,9 @@
                             "DispersalRandomTime": 0.0,
                             "DetonationDistance": 0.0,
                             "PIDNavigationalConstant": 1.0,
-                            "missileFireType": "Dumbfire",
+                            "missileFireType": "Homing",
                             "target": null,
-                            "missileHomingMethod": "None"
+                            "missileHomingMethod": "AdvNav"
                         },
                         "numberSwarmMissiles": 1,
                         "ShieldDamage": 10,
@@ -238,7 +238,7 @@
                         "ResolutionType": "Projectile",
                         "FiringSoundEffect": "Explosion",
                         "ProjectileSpeed": 10.0,
-                        "ProjectileEntity": "Weapons/DumbfireMissile",
+                        "ProjectileEntity": "Weapons/HomingMissile",
                         "IsFitted": false,
                         "NextAttackTime": 0.0,
                         "fittingAttached": {

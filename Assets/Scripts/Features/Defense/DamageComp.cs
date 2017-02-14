@@ -9,7 +9,13 @@
 
 		public bool IsImmortal = false;
 
-		public override ComponentTypes ComponentType => ComponentTypes.DamageComp;
+        public override void OnDestroy()
+        {
+            damagePackets.Clear();
+        }
+
+
+        public override ComponentTypes ComponentType => ComponentTypes.DamageComp;
 		public override string Grouping => "Combat";
 	}
 

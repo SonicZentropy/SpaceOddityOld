@@ -18,6 +18,12 @@ namespace Zen.Components
     {
         public List<Collider> Other = new List<Collider>(5);
 
+        public override void OnDestroy()
+        {
+            Other.Clear();
+        }
+
+
         public override ComponentTypes ComponentType => ComponentTypes.TriggerExitComp;
 	    public override string Grouping => "Unity";
     }

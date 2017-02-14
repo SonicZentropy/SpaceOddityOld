@@ -58,7 +58,7 @@
 
 		public Entity CreateEntityFromTemplate(string entityName)
 		{
-		    Debug.Log($"{entityName} creating from template");
+		    //Debug.Log($"{entityName} creating from template");
 
             object deserialized = null;
 			entityName = FileOps.GetStringAfterLastSlash(entityName);
@@ -80,20 +80,20 @@
 
 	    public Entity CreateEntityFromPool(string entityName)
 	    {
-	        Entity e;
 	        entityName = FileOps.GetEntityNameFromFullName(entityName);
-	        if (EntityPool.Instance.CheckPoolHasFreeItems(entityName))
+	        if (!EntityPool.Instance.CheckPoolHasFreeItems(entityName))
 	        {
-	            Debug.Log($"{entityName} retrieved from pool");
-	            e = EntityPool.Instance.RetrieveFromPool(entityName);
-	            e.Enabled = true;
-                InitializeNewEntity(e);
-                engine?.EntityList.Add(e);
+	            return CreateEntityFromTemplate(entityName);
+	        }
 
-                engine?.TriggerEntityAdded(e);
-                return e;
-            }
-	        return CreateEntityFromTemplate(entityName);
+	        //Debug.Log($"{entityName} retrieved from pool");
+	        Entity e = EntityPool.Instance.RetrieveFromPool(entityName);
+	        e.Enabled = true;
+	        InitializeNewEntity(e);
+	        engine?.EntityList.Add(e);
+
+	        engine?.TriggerEntityAdded(e);
+	        return e;
 	    }
 
 		public fsData GetTemplate(string entityName)

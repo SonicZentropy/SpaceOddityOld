@@ -411,14 +411,8 @@ MonoBehaviour:
   _keys:
   - {fileID: 985349694}
   _values:
-  - _keys:
-    - _engine._instanceOfEngine.EditProperty.EntityList.EditProperty.0._components.EditProperty
-    - _engine._instanceOfEngine.EditProperty.EntityList.EditProperty.1._components.EditProperty
-    _values:
-    - _showDropdown: 1
-      _serializedIsActive: 0
-    - _showDropdown: 1
-      _serializedIsActive: 0
+  - _keys: []
+    _values: []
     _target: {fileID: 985349694}
 --- !u!1001 &418817622
 Prefab:
