@@ -59,6 +59,34 @@ public sealed class SRTags {
     
     public const string ReactionGround = "ReactionGround";
     
+    public const string spark = "spark";
+    
+    public const string SolidObject = "SolidObject";
+    
+    public const string plat = "plat";
+    
+    public const string Life = "Life";
+    
+    public const string Enemy = "Enemy";
+    
+    public const string blocks = "blocks";
+    
+    public const string _2DRadar = "2DRadar";
+    
+    public const string cyl = "cyl";
+    
+    public const string RedTeamFlag = "RedTeamFlag";
+    
+    public const string Satellite = "Satellite";
+    
+    public const string BlueTeamFlag = "BlueTeamFlag";
+    
+    public const string ground = "ground";
+    
+    public const string TargetButton = "TargetButton";
+    
+    public const string Sub_Component = "Sub_Component";
+    
     private static global::System.Collections.Generic.IList<string> __all = new global::System.Collections.ObjectModel.ReadOnlyCollection<string>(new string[] {
                 "Untagged",
                 "Respawn",
@@ -78,7 +106,21 @@ public sealed class SRTags {
                 "Distant",
                 "UICanvas",
                 "Weapon",
-                "ReactionGround"});
+                "ReactionGround",
+                "spark",
+                "SolidObject",
+                "plat",
+                "Life",
+                "Enemy",
+                "blocks",
+                "2DRadar",
+                "cyl",
+                "RedTeamFlag",
+                "Satellite",
+                "BlueTeamFlag",
+                "ground",
+                "TargetButton",
+                "Sub_Component"});
     
     public static global::System.Collections.Generic.IList<string> All {
         get {

@@ -129,6 +129,12 @@ public sealed class SRLayers {
         }
     }
     
+    public static global::TypeSafe.Layer radar {
+        get {
+            return __all[18];
+        }
+    }
+    
     private static global::System.Collections.Generic.IList<global::TypeSafe.Layer> __all = new global::System.Collections.ObjectModel.ReadOnlyCollection<global::TypeSafe.Layer>(new global::TypeSafe.Layer[] {
                 new global::TypeSafe.Layer("Default", 0),
                 new global::TypeSafe.Layer("TransparentFX", 1),
@@ -147,7 +153,8 @@ public sealed class SRLayers {
                 new global::TypeSafe.Layer("stars", 17),
                 new global::TypeSafe.Layer("rangetriggerdisable", 18),
                 new global::TypeSafe.Layer("rangetriggerplayer", 19),
-                new global::TypeSafe.Layer("particles", 20)});
+                new global::TypeSafe.Layer("particles", 20),
+                new global::TypeSafe.Layer("radar", 21)});
     
     public static global::System.Collections.Generic.IList<global::TypeSafe.Layer> All {
         get {

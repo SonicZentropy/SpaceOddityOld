@@ -11,6 +11,7 @@ namespace Zen.Systems
 	using Common.Extensions;
 	using Common.ZenECS;
 	using Components;
+	using global::Common.Utility;
 	using UnityEngine;
 
 	#endregion
@@ -20,7 +21,7 @@ namespace Zen.Systems
 		int mask;
 		public override bool Init()
 		{
-			mask = ZenUtils.LayerMaskFromIDs(SRLayerMask.npc, SRLayerMask.player, SRLayerMask.foreground);
+		    mask = ZenLayerMasks.AllInteractables;
 			return true;
 		}
 

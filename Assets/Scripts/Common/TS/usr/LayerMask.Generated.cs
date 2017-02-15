@@ -60,4 +60,6 @@ public sealed class SRLayerMask {
     public const int rangetriggerplayer = 524288;
     
     public const int particles = 1048576;
+    
+    public const int radar = 2097152;
 }

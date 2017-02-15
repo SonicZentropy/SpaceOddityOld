@@ -2,8 +2,9 @@
 {
 	using Common;
 	using UnityEngine;
+	using Zen.Components;
 
-	public class GameInitSystem : AbstractEcsSystem
+    public class GameInitSystem : AbstractEcsSystem
 	{
 		public override bool Init()
 		{
@@ -20,11 +21,21 @@
 
 			var ets = engine.CreateEntity(Res.Entities.Enemy);
 			ets.Wrapper.transform.position = new Vector3(0, 0, 10);
+            ets = engine.CreateEntity(Res.Entities.Enemy);
+            ets.Wrapper.transform.position = new Vector3(10, 0, 10);
+            ets = engine.CreateEntity(Res.Entities.Enemy);
+            ets.Wrapper.transform.position = new Vector3(0, 10, 10);
 
-			//ZenLogger.LogGame("Completed init");
-
+            InitRadar();
 			return false;
 		}
+
+	    private void InitRadar()
+	    {
+	        var mgr = GameObject.Find("_GameMgr").GetComponent<FX_3DRadar_Mgr>();
+	        mgr.Player = engine.FindEntity(Res.Entities.Player).GetComponent<PositionComp>().transform;
+	        mgr.PlayerCameraC = engine.FindEntity(Res.Entities.Camera).GetComponent<CameraComp>().MainCamera;
+	    }
 
 
 	}

@@ -7,18 +7,20 @@
 namespace Zen.AI.Apex.Actions
 {
 	using global::Apex.AI;
+	using global::Common.Utility;
 	using UnityEngine;
 	using Zen.AI.Apex.Contexts;
 
 	public class AcquireTargetAction : ActionBase<ShipContext>
-    {
+	{
+	    public static int TargetsMask = ZenLayerMasks.NPCTargets;
 	    public override void Execute(ShipContext context)
 	    {
 		    Debug.Log($"In acquire target execute");
 		    if (context.targetComp.target != null) return;
 
 		    var selfpos = context.transform.position;
-		    var targets = Physics.OverlapSphere(context.transform.position, context.scannerComp.ScanRange);
+		    var targets = Physics.OverlapSphere(context.transform.position, context.scannerComp.ScanRange, TargetsMask);
 
 
 		    float closestdist = 100000f;

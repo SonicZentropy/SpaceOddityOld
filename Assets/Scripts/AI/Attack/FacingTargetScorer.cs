@@ -27,6 +27,12 @@ namespace Zen.AI.Apex.Scorers
 		    //behind (+-180 degrees); it is the cosine of the angle between the
 		    //object and forward.
 
+	        if (context.targetComp.target == null)
+	        {
+	            //Debug.LogWarning("AI Target null in Facing target scorer");
+	            return Failure;
+	        }
+
 		    var normforward = context.transform.forward.normalized;
 		    var dir = (context.targetComp.target.position - context.transform.position).normalized;
 		    var dot = Vector3.Dot(dir, normforward);

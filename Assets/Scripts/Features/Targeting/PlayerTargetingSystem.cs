@@ -28,6 +28,8 @@ namespace Zen.Systems
 		private int selectableLayerMask;
 		private GameObject Target;
 		//private Highlighter targetHighlighter;
+	    private GameObject radarRIDGO;
+	    private FX_3DRadar_RID radarRID;
 
 		public override bool Init()
 		{
@@ -37,6 +39,8 @@ namespace Zen.Systems
 			selectableLayerMask = ZenUtils.LayerMaskFromIDs(SRLayerMask.npc, SRLayerMask.foreground);
 
 			player.GetComponent<CommandComp>().SelectTarget.Where(x => x).Subscribe(SelectTargetClicked);
+		    //radarRIDGO = GameObject.Find("Target_1");
+		    //radarRID = radarRIDGO.GetComponent<FX_3DRadar_RID>();
 			return false;
 		}
 
@@ -58,11 +62,15 @@ namespace Zen.Systems
 				//DisableHighlight();
 				targetComp.target = hitInfo.transform;
 				Target = hitInfo.transform.gameObject;
-				//targetHighlighter = Target.GetComponent<Highlighter>();
-				//if (targetHighlighter == null) targetHighlighter = Target.AddComponent<HighlighterOccluder>().gameObject.GetComponent<Highlighter>();
-				//targetHighlighter.ConstantOn(Color.red);
-				//Target.GetComponent<Highlighter>().SeeThroughOn();
-				//ShowSelectionBox();
+			    radarRID = Target.GetComponentInChildren<FX_3DRadar_RID>();
+			    radarRID.ThisRigidbody = Target.GetComponentInChildren<Rigidbody>();
+                radarRID.ThisRenderer.Add(Target.GetComponentInChildren<Renderer>());
+			    radarRID.ThisButton = Target.GetComponentInChildren<RectTransform>();
+			    //targetHighlighter = Target.GetComponent<Highlighter>();
+			    //if (targetHighlighter == null) targetHighlighter = Target.AddComponent<HighlighterOccluder>().gameObject.GetComponent<Highlighter>();
+			    //targetHighlighter.ConstantOn(Color.red);
+			    //Target.GetComponent<Highlighter>().SeeThroughOn();
+			    //ShowSelectionBox();
 			}
 		}
 
