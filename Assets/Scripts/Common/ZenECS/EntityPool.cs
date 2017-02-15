@@ -6,7 +6,7 @@
 namespace Zen.Common.ZenECS
 {
     using System.Collections.Generic;
-    using System.Diagnostics;
+    //using System.Diagnostics;
     using Zen.Common.Extensions;
     using Zen.Components;
     using Zen.Editor.Utils;
@@ -36,9 +36,11 @@ namespace Zen.Common.ZenECS
                 if (stack.Count > 0)
                 {
                     Entity e = stack.Pop();
+                    //UnityEngine.Debug.Log($"Retrieved from pool - Stack now has {stack.Count} items in it");
                     return e;
                 }
             }
+           
             return null;
         }
 
@@ -56,6 +58,8 @@ namespace Zen.Common.ZenECS
             {
                 EntityMap[e.EntityName].Push(e);
             }
+
+            //UnityEngine.Debug.Log($"Released item to pool - Stack now has {EntityMap[e.EntityName].Count} items in it");
         }
 
         private void CleanupEntity(Entity e)

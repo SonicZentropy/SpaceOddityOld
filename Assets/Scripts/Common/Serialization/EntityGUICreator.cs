@@ -33,6 +33,9 @@ namespace Zen.Serialization
 		private string _entityLoad;
 		private static Vector3 colorDirty = new Vector3(1, 0, 0);
 
+	    [Inspect(11000)]
+	    private bool ShouldPoolEntity;
+
 		[HideInInspector]
 		public bool AvoidDirtyFlag;
 		private bool isDirty;
@@ -202,6 +205,7 @@ namespace Zen.Serialization
 					cmp.SetId(Guid.Empty); //Keep this out of prod code
 				}
 			}
+		    _newEnt.IsPooled = ShouldPoolEntity;
 
 			Serializer.TrySerialize(typeof(Entity), _newEnt, out _data).AssertSuccess();
 
@@ -262,6 +266,8 @@ namespace Zen.Serialization
 						GroupedComponents[comp.Grouping].Add(comp);
 #endif
 					}
+				    ShouldPoolEntity = _newEnt.IsPooled;
+
 				}
 				else
 				{

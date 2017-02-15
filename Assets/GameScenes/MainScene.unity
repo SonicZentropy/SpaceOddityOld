@@ -996,7 +996,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AvoidDirtyFlag: 1
-  EntityName: Weapons/SwarmMissile
+  EntityName: Weapons/HomingMissile
 --- !u!4 &1250855352
 Transform:
   m_ObjectHideFlags: 0

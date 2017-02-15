@@ -19,9 +19,10 @@ MonoBehaviour:
     ApexAI","action":{"@type":"Zen.AI.Apex.Actions.AcquireTargetAction, Assembly-CSharp"},"_scorers":[{"@type":"Zen.AI.Apex.Scorers.HasTargetScorer,
     Assembly-CSharp","Invert":true,"score":100}]},{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
     ApexAI","action":{"@type":"Apex.AI.CompositeAction, ApexAI","_actions":[{"@type":"Zen.AI.Apex.Actions.ChangeGlideAction,
-    Assembly-CSharp"},{"@type":"Zen.AI.Apex.Actions.RandomlyOrbitTargetAction, Assembly-CSharp","MinOrbitRange":-14}]},"threshold":1,"_scorers":[{"@type":"Zen.AI.Apex.Scorers.HasNavigationTargetScorer,
+    Assembly-CSharp","Enable":false,"GlideAngularDrag":0},{"@type":"Zen.AI.Apex.Actions.RandomlyOrbitTargetAction,
+    Assembly-CSharp","MinOrbitRange":-14}]},"threshold":1,"_scorers":[{"@type":"Zen.AI.Apex.Scorers.HasNavigationTargetScorer,
     Assembly-CSharp","score":10},{"@type":"Zen.AI.Apex.Scorers.HasReachedTargetScorer,
-    Assembly-CSharp","score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","Invert":true,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI"}}]}'
   editorConfiguration: '{"offset":{"@x":37,"@y":23},"zoom":0.69999999,"SelectorView":{"ViewArea":{"@left":23,"@top":65,"@width":238,"@height":154},"QualifierView":{"Name":"Has
     No Target","ActionView":{}},"QualifierView":{"Name":"Has Target, Not Moving Toward
