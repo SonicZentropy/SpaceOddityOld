@@ -174,10 +174,10 @@
                         "WeaponGameObject": null,
                         "ProjectilePrefab": "Prefabs/None",
                         "Id": "ab3e4e2d-2193-4b84-93ed-6acd2558c3f9",
-                        "Enabled": false,
+                        "Enabled": true,
                         "$type": "Zen.Components.LaserComp"
                     },
-                    "IsEnabled": false,
+                    "IsEnabled": true,
                     "PositionOffset": {
                         "x": 0.0,
                         "y": -0.116,

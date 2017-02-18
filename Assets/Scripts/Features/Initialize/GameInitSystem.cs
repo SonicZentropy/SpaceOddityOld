@@ -32,7 +32,7 @@
 
 	    private void InitRadar()
 	    {
-	        var mgr = GameObject.Find("_GameMgr").GetComponent<FX_3DRadar_Mgr>();
+	        var mgr = GameObject.Find("RadarMgr").GetComponent<FX_3DRadar_Mgr>();
 	        mgr.Player = engine.FindEntity(Res.Entities.Player).GetComponent<PositionComp>().transform;
 	        mgr.PlayerCameraC = engine.FindEntity(Res.Entities.Camera).GetComponent<CameraComp>().MainCamera;
 	    }
